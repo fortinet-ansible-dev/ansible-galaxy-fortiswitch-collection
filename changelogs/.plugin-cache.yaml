@@ -1,0 +1,20 @@
+objects:
+  role: {}
+plugins:
+  become: {}
+  cache: {}
+  callback: {}
+  cliconf: {}
+  connection: {}
+  httpapi:
+    fortios:
+      description: HttpApi Plugin for Fortinet FortiSwitch Appliance or VM
+      name: fortiswitch
+      version_added: '2.11'
+  inventory: {}
+  lookup: {}
+  netconf: {}
+  shell: {}
+  strategy: {}
+  vars: {}
+version: 1.0.0
