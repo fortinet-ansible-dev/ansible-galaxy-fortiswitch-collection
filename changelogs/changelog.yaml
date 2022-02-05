@@ -1,0 +1,21 @@
+ancestor: null
+releases:
+  1.0.0:
+    changes:
+      major_changes:
+      - Support Exporting playbook for configuration modules.
+      - Support FortiSwitch 7.0.0.
+      - Support all the Configuration Modules and Monitor Modules.
+      - Support fact retrieval feature, ``fortios_monitor_fact`` and ``fortios_log_fact``.
+      release_summary: major release of 1.0.0
+    fragments:
+    - 1.0.0_release.yml
+    release_date: '2021-12-15'
+  1.0.1:
+    changes:
+      major_changes:
+      - Supports FSW versions 7.0.1, 7.0.2 and 7.0.3
+      release_summary: patch release of 1.0.1
+    fragments:
+    - 1.0.1_release.yml
+    release_date: '2022-01-31'
