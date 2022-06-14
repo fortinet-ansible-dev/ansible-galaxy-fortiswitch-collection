@@ -1,0 +1,14 @@
+- hosts: fortiswitch01
+  connection: httpapi
+  collections:
+    - fortinet.fortiswitch
+  vars:
+    ansible_httpapi_use_ssl: yes
+    ansible_httpapi_validate_certs: no
+    ansible_httpapi_port: 443
+  tasks:
+  - name: Get multiple selectors info concurrently
+    fortiswitch_monitor_fact:
+        selectors:
+        - selector: system_status
+        - selector: hardware_cpu
