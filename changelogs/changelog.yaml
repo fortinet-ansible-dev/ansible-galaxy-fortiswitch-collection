@@ -1,0 +1,63 @@
+ancestor: null
+releases:
+  1.0.0:
+    changes:
+      major_changes:
+      - Support Exporting playbook for configuration modules.
+      - Support FortiSwitch 7.0.0.
+      - Support all the Configuration Modules and Monitor Modules.
+      - Support fact retrieval feature, ``fortios_monitor_fact`` and ``fortios_log_fact``.
+      release_summary: major release of 1.0.0
+    fragments:
+    - 1.0.0_release.yml
+    release_date: '2021-12-15'
+  1.0.1:
+    changes:
+      major_changes:
+      - Supports FSW versions 7.0.1, 7.0.2 and 7.0.3
+      release_summary: patch release of 1.0.1
+    fragments:
+    - 1.0.1_release.yml
+    release_date: '2022-01-31'
+  1.1.0:
+    changes:
+      major_changes:
+      - Support ``execute`` schema including backup, restore and other features.
+      release_summary: minor release of 1.1.0
+    fragments:
+    - 1.1.0_release.yml
+    release_date: '2022-04-01'
+  1.1.1:
+    changes:
+      bugfixes:
+      - Add GPLv3 License.
+      - Add default value for enable_log param and unify the type in both doc and
+        spec.
+      - Fix import errors in sanity-test.
+      - Fix no-log-needed errors in sanity-test.
+      - Fix paramter-list-no-elements errors in sanity-test.
+      - Fix redundant state param in the some of the Examples.
+      - Fix the issue of empty children in execute schema.
+      - Fix unnecessary comprehension for FACT_DETAIL_SUBSETS.
+      - Support multiple values for allowaccess in the module ``fortiswitch_system_interface``.
+      - Support syntax for Python 2.7.
+      - Use collection version in the doc section.
+      release_summary: patch release of 1.1.1
+    fragments:
+    - 1.1.1_release.yml
+    release_date: '2022-06-10'
+  1.1.2:
+    changes:
+      bugfixes:
+      - Disable log information for some sensitive parameters.
+      - Fix bugs in the comparison function.
+      - Fix member_operation issue.
+      - Fix str_obj_has_no_attribute_items issue.
+      - Remove invalid value in a list or dict.
+      major_changes:
+      - Support Diff feature in check_mode.
+      - Support check_mode for configuration modules.
+      release_summary: patch release of 1.1.2
+    fragments:
+    - 1.1.2_release.yml
+    release_date: '2022-08-17'
