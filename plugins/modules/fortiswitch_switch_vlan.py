@@ -30,7 +30,6 @@ author:
     - Hongbin Lu (@fgtdev-hblu)
     - Frank Shen (@frankshen01)
     - Miguel Angel Munoz (@mamunozgonzalez)
-notes:
 
 requirements:
     - ansible>=2.11
@@ -75,15 +74,15 @@ options:
                     - Block port-to-port traffic.
                 type: str
                 choices:
-                    - disable
-                    - enable
+                    - 'disable'
+                    - 'enable'
             arp_inspection:
                 description:
                     - Enable/Disable Dynamic ARP Inspection.
                 type: str
                 choices:
-                    - disable
-                    - enable
+                    - 'disable'
+                    - 'enable'
             community_vlans:
                 description:
                     - Communities within this private VLAN.
@@ -119,29 +118,29 @@ options:
                     - Enable/Disable dhcp snooping on this vlan.
                 type: str
                 choices:
-                    - disable
-                    - enable
+                    - 'disable'
+                    - 'enable'
             dhcp_snooping_option82:
                 description:
                     - Enable/Disable inserting option82.
                 type: str
                 choices:
-                    - disable
-                    - enable
+                    - 'disable'
+                    - 'enable'
             dhcp_snooping_verify_mac:
                 description:
                     - Enable/Disable verify source mac.
                 type: str
                 choices:
-                    - disable
-                    - enable
+                    - 'disable'
+                    - 'enable'
             dhcp6_snooping:
                 description:
                     - Enable/Disable DHCPv6 snooping on this vlan.
                 type: str
                 choices:
-                    - disable
-                    - enable
+                    - 'disable'
+                    - 'enable'
             id:
                 description:
                     - VLAN ID.
@@ -152,29 +151,29 @@ options:
                     - Enable/disable IGMP-snooping for the VLAN interface.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             igmp_snooping_fast_leave:
                 description:
                     - Enable/disable IGMP snooping fast leave.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             igmp_snooping_proxy:
                 description:
                     - Enable/disable IGMP snooping proxy for the VLAN interface.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             igmp_snooping_querier:
                 description:
                     - Enable/disable IGMP-snooping-querier for the VLAN interface.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             igmp_snooping_querier_addr:
                 description:
                     - IGMP-snooping-querier address.
@@ -216,8 +215,8 @@ options:
                     - Enable/disable LAN Segment.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             lan_segment_primary_vlan:
                 description:
                     - LAN Segment Primary VLAN ID.
@@ -235,8 +234,8 @@ options:
                     - Enable/disable L2 learning on this VLAN.
                 type: str
                 choices:
-                    - disable
-                    - enable
+                    - 'disable'
+                    - 'enable'
             learning_limit:
                 description:
                     - Limit the number of dynamic MAC addresses on this VLAN.
@@ -310,9 +309,9 @@ options:
                             - Ethernet frame types to check.
                         type: str
                         choices:
-                            - ethernet2
-                            - 802.3d
-                            - llc
+                            - 'ethernet2'
+                            - '802.3d'
+                            - 'llc'
                     id:
                         description:
                             - Entry ID.
@@ -326,29 +325,29 @@ options:
                     - Enable/disable MLD snooping for the VLAN interface.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             mld_snooping_fast_leave:
                 description:
                     - Enable/disable MLD snooping fast leave.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             mld_snooping_proxy:
                 description:
                     - Enable/disable MLD snooping proxy for the VLAN interface.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             mld_snooping_querier:
                 description:
                     - Enable/disable MLD snooping querier for the VLAN interface.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             mld_snooping_querier_addr:
                 description:
                     - MLD-querier address.
@@ -400,8 +399,8 @@ options:
                     - Enable/disable private VLAN.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             private_vlan_type:
                 description:
                     - Private VLAN type.
@@ -411,8 +410,8 @@ options:
                     - Stop L2 learning and interception of BPDUs and other packets on this VLAN.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
 '''
 
 EXAMPLES = '''
@@ -565,7 +564,6 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.secret_field import is_secret_field
 
 
 def filter_switch_vlan_data(json):
@@ -608,9 +606,7 @@ def underscore_to_hyphen(data):
 
 
 def switch_vlan(data, fos, check_mode=False):
-
     state = data['state']
-
     switch_vlan_data = data['switch_vlan']
     filtered_data = underscore_to_hyphen(filter_switch_vlan_data(switch_vlan_data))
 
@@ -672,7 +668,6 @@ def is_successful_status(resp):
 
 
 def fortiswitch_switch(data, fos, check_mode):
-
     fos.do_member_operation('switch', 'vlan')
     current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
     if data['switch_vlan']:
@@ -696,7 +691,10 @@ versioned_schema = {
             "revisions": {
                 "v7.0.3": True,
                 "v7.0.2": True,
-                "v7.0.1": True
+                "v7.0.1": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "arp_inspection": {
@@ -708,7 +706,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -717,7 +718,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -725,7 +729,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "dhcp_snooping": {
@@ -737,7 +744,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -746,7 +756,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -754,7 +767,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "primary_vlan": {
@@ -763,7 +779,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "lan_segment_primary_vlan": {
@@ -771,7 +790,10 @@ versioned_schema = {
             "revisions": {
                 "v7.0.3": True,
                 "v7.0.2": True,
-                "v7.0.1": True
+                "v7.0.1": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "igmp_snooping_static_group": {
@@ -784,7 +806,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "name": {
@@ -793,7 +818,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "members": {
@@ -806,7 +834,10 @@ versioned_schema = {
                                 "v7.0.3": True,
                                 "v7.0.2": True,
                                 "v7.0.1": True,
-                                "v7.0.0": True
+                                "v7.0.0": True,
+                                "v7.0.6": True,
+                                "v7.0.5": True,
+                                "v7.0.4": True
                             }
                         }
                     },
@@ -814,7 +845,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             },
@@ -822,7 +856,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "isolated_vlan": {
@@ -831,7 +868,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "policer": {
@@ -840,7 +880,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "learning": {
@@ -852,7 +895,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -861,7 +907,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -869,7 +918,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "private_vlan": {
@@ -881,7 +933,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -890,7 +945,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -898,7 +956,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "dhcp_snooping_verify_mac": {
@@ -910,7 +971,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -919,7 +983,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -927,7 +994,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mld_snooping_querier_addr": {
@@ -936,7 +1006,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "id": {
@@ -945,7 +1018,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "member_by_proto": {
@@ -961,7 +1037,10 @@ versioned_schema = {
                                 "v7.0.3": True,
                                 "v7.0.2": True,
                                 "v7.0.1": True,
-                                "v7.0.0": True
+                                "v7.0.0": True,
+                                "v7.0.6": True,
+                                "v7.0.5": True,
+                                "v7.0.4": True
                             }
                         },
                         {
@@ -970,7 +1049,10 @@ versioned_schema = {
                                 "v7.0.3": True,
                                 "v7.0.2": True,
                                 "v7.0.1": True,
-                                "v7.0.0": True
+                                "v7.0.0": True,
+                                "v7.0.6": True,
+                                "v7.0.5": True,
+                                "v7.0.4": True
                             }
                         },
                         {
@@ -979,7 +1061,10 @@ versioned_schema = {
                                 "v7.0.3": True,
                                 "v7.0.2": True,
                                 "v7.0.1": True,
-                                "v7.0.0": True
+                                "v7.0.0": True,
+                                "v7.0.6": True,
+                                "v7.0.5": True,
+                                "v7.0.4": True
                             }
                         }
                     ],
@@ -987,7 +1072,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "protocol": {
@@ -996,7 +1084,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "id": {
@@ -1005,7 +1096,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "description": {
@@ -1014,7 +1108,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             },
@@ -1022,7 +1119,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "access_vlan": {
@@ -1034,7 +1134,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1043,7 +1146,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1051,7 +1157,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mrouter_ports": {
@@ -1064,7 +1173,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             },
@@ -1072,7 +1184,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mld_snooping_proxy": {
@@ -1084,7 +1199,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1093,7 +1211,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1101,7 +1222,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "lan_subvlans": {
@@ -1109,7 +1233,10 @@ versioned_schema = {
             "revisions": {
                 "v7.0.3": True,
                 "v7.0.2": True,
-                "v7.0.1": True
+                "v7.0.1": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mld_snooping_fast_leave": {
@@ -1121,7 +1248,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1130,7 +1260,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1138,7 +1271,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "igmp_snooping_proxy": {
@@ -1150,7 +1286,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1159,7 +1298,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1167,7 +1309,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "igmp_snooping": {
@@ -1179,7 +1324,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1188,7 +1336,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1196,7 +1347,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "igmp_snooping_querier": {
@@ -1208,7 +1362,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1217,7 +1374,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1225,7 +1385,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "private_vlan_type": {
@@ -1234,7 +1397,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "description": {
@@ -1243,7 +1409,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mld_snooping_querier": {
@@ -1255,7 +1424,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1264,7 +1436,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1272,7 +1447,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "dhcp_server_access_list": {
@@ -1285,7 +1463,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "name": {
@@ -1294,7 +1475,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "server_ip": {
@@ -1303,7 +1487,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             },
@@ -1311,7 +1498,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "dhcp6_snooping": {
@@ -1323,7 +1513,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1332,7 +1525,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1340,7 +1536,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "cos_queue": {
@@ -1349,7 +1548,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mld_snooping": {
@@ -1361,7 +1563,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1370,7 +1575,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1378,7 +1586,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "member_by_ipv4": {
@@ -1391,7 +1602,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "id": {
@@ -1400,7 +1614,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "description": {
@@ -1409,7 +1626,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             },
@@ -1417,7 +1637,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "member_by_mac": {
@@ -1430,7 +1653,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "id": {
@@ -1439,7 +1665,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "description": {
@@ -1448,7 +1677,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             },
@@ -1456,7 +1688,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "lan_segment": {
@@ -1467,7 +1702,10 @@ versioned_schema = {
                     "revisions": {
                         "v7.0.3": True,
                         "v7.0.2": True,
-                        "v7.0.1": True
+                        "v7.0.1": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1475,14 +1713,20 @@ versioned_schema = {
                     "revisions": {
                         "v7.0.3": True,
                         "v7.0.2": True,
-                        "v7.0.1": True
+                        "v7.0.1": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
             "revisions": {
                 "v7.0.3": True,
                 "v7.0.2": True,
-                "v7.0.1": True
+                "v7.0.1": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "community_vlans": {
@@ -1491,7 +1735,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "igmp_snooping_querier_version": {
@@ -1500,7 +1747,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "rspan_mode": {
@@ -1512,7 +1762,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1521,7 +1774,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1529,7 +1785,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "igmp_snooping_fast_leave": {
@@ -1541,7 +1800,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1550,7 +1812,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1558,7 +1823,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "member_by_ipv6": {
@@ -1571,7 +1839,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "id": {
@@ -1580,7 +1851,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "description": {
@@ -1589,7 +1863,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             },
@@ -1597,7 +1874,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "dhcp_snooping_option82": {
@@ -1609,7 +1889,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1618,7 +1901,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1626,7 +1912,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "learning_limit": {
@@ -1635,7 +1924,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mld_snooping_static_group": {
@@ -1648,7 +1940,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "name": {
@@ -1657,7 +1952,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "members": {
@@ -1670,7 +1968,10 @@ versioned_schema = {
                                 "v7.0.3": True,
                                 "v7.0.2": True,
                                 "v7.0.1": True,
-                                "v7.0.0": True
+                                "v7.0.0": True,
+                                "v7.0.6": True,
+                                "v7.0.5": True,
+                                "v7.0.4": True
                             }
                         }
                     },
@@ -1678,7 +1979,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             },
@@ -1686,7 +1990,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "igmp_snooping_querier_addr": {
@@ -1695,7 +2002,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         }
     },
@@ -1703,7 +2013,10 @@ versioned_schema = {
         "v7.0.3": True,
         "v7.0.2": True,
         "v7.0.1": True,
-        "v7.0.0": True
+        "v7.0.0": True,
+        "v7.0.6": True,
+        "v7.0.5": True,
+        "v7.0.4": True
     }
 }
 
@@ -1723,8 +2036,7 @@ def main():
                   "choices": ["present", "absent"]},
         "switch_vlan": {
             "required": False, "type": "dict", "default": None,
-            "options": {
-            }
+            "options": {}
         }
     }
     for attribute_name in module_spec['options']:
@@ -1745,9 +2057,7 @@ def main():
             connection.set_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
         versions_check_result = check_schema_versioning(fos, versioned_schema, "switch_vlan")
-
         is_error, has_changed, result, diff = fortiswitch_switch(module.params, fos, module.check_mode)
-
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 

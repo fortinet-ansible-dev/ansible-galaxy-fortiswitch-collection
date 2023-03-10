@@ -30,7 +30,6 @@ author:
     - Hongbin Lu (@fgtdev-hblu)
     - Frank Shen (@frankshen01)
     - Miguel Angel Munoz (@mamunozgonzalez)
-notes:
 
 requirements:
     - ansible>=2.11
@@ -67,8 +66,8 @@ options:
                     - Enable/disable stp bpdu flood.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             forward_time:
                 description:
                     - Forwarding delay.
@@ -90,8 +89,8 @@ options:
                     - MCLAG STP bpdu.
                 type: str
                 choices:
-                    - both
-                    - single
+                    - 'both'
+                    - 'single'
             mclag_stp_mac:
                 description:
                     - MCLAG STP mac address.
@@ -113,8 +112,8 @@ options:
                     - Enable/disable spanning tree.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
 '''
 
 EXAMPLES = '''
@@ -199,7 +198,6 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.f
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.secret_field import is_secret_field
 
 
 def filter_switch_stp_settings_data(json):
@@ -248,7 +246,6 @@ def is_successful_status(resp):
 
 
 def fortiswitch_switch_stp(data, fos):
-
     fos.do_member_operation('switch.stp', 'settings')
     current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
     if data['switch_stp_settings']:
@@ -274,7 +271,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -283,7 +283,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -291,7 +294,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "max_age": {
@@ -300,7 +306,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "pending_timer": {
@@ -309,7 +318,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "name": {
@@ -318,7 +330,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "hello_time": {
@@ -327,7 +342,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mclag_stp_bpdu": {
@@ -339,7 +357,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -348,7 +369,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -356,7 +380,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mclag_stp_mac": {
@@ -365,7 +392,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "flood": {
@@ -377,7 +407,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -386,7 +419,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -394,7 +430,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "max_hops": {
@@ -403,7 +442,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "forward_time": {
@@ -412,7 +454,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "revision": {
@@ -421,7 +466,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         }
     },
@@ -429,7 +477,10 @@ versioned_schema = {
         "v7.0.3": True,
         "v7.0.2": True,
         "v7.0.1": True,
-        "v7.0.0": True
+        "v7.0.0": True,
+        "v7.0.6": True,
+        "v7.0.5": True,
+        "v7.0.4": True
     }
 }
 
@@ -447,8 +498,7 @@ def main():
         },
         "switch_stp_settings": {
             "required": False, "type": "dict", "default": None,
-            "options": {
-            }
+            "options": {}
         }
     }
     for attribute_name in module_spec['options']:
@@ -469,9 +519,7 @@ def main():
             connection.set_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
         versions_check_result = check_schema_versioning(fos, versioned_schema, "switch_stp_settings")
-
         is_error, has_changed, result, diff = fortiswitch_switch_stp(module.params, fos)
-
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 

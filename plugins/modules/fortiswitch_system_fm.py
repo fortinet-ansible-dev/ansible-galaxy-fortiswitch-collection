@@ -30,7 +30,6 @@ author:
     - Hongbin Lu (@fgtdev-hblu)
     - Frank Shen (@frankshen01)
     - Miguel Angel Munoz (@mamunozgonzalez)
-notes:
 
 requirements:
     - ansible>=2.11
@@ -67,8 +66,8 @@ options:
                     - Auto-backup.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             id:
                 description:
                     - Id.
@@ -82,22 +81,22 @@ options:
                     - IPSec.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             scheduled_config_restore:
                 description:
                     - Scheduled-config-restore.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             status:
                 description:
                     - Status.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             vdom:
                 description:
                     - Vdom. Source system.vdom.name.
@@ -182,7 +181,6 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.f
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.secret_field import is_secret_field
 
 
 def filter_system_fm_data(json):
@@ -230,7 +228,6 @@ def is_successful_status(resp):
 
 
 def fortiswitch_system(data, fos):
-
     fos.do_member_operation('system', 'fm')
     current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
     if data['system_fm']:
@@ -256,7 +253,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -265,7 +265,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -273,7 +276,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "scheduled_config_restore": {
@@ -285,7 +291,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -294,7 +303,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -302,7 +314,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "auto_backup": {
@@ -314,7 +329,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -323,7 +341,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -331,7 +352,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "ip": {
@@ -340,7 +364,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "id": {
@@ -349,7 +376,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "vdom": {
@@ -358,7 +388,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "ipsec": {
@@ -370,7 +403,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -379,7 +415,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -387,7 +426,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         }
     },
@@ -395,7 +437,10 @@ versioned_schema = {
         "v7.0.3": True,
         "v7.0.2": True,
         "v7.0.1": True,
-        "v7.0.0": True
+        "v7.0.0": True,
+        "v7.0.6": True,
+        "v7.0.5": True,
+        "v7.0.4": True
     }
 }
 
@@ -413,8 +458,7 @@ def main():
         },
         "system_fm": {
             "required": False, "type": "dict", "default": None,
-            "options": {
-            }
+            "options": {}
         }
     }
     for attribute_name in module_spec['options']:
@@ -435,9 +479,7 @@ def main():
             connection.set_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
         versions_check_result = check_schema_versioning(fos, versioned_schema, "system_fm")
-
         is_error, has_changed, result, diff = fortiswitch_system(module.params, fos)
-
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 

@@ -30,7 +30,6 @@ author:
     - Hongbin Lu (@fgtdev-hblu)
     - Frank Shen (@frankshen01)
     - Miguel Angel Munoz (@mamunozgonzalez)
-notes:
 
 requirements:
     - ansible>=2.11
@@ -75,10 +74,10 @@ options:
                     - CDP transmit and receive status (LLDP must be enabled in LLDP settings).
                 type: str
                 choices:
-                    - disable
-                    - rx-only
-                    - tx-only
-                    - tx-rx
+                    - 'disable'
+                    - 'rx-only'
+                    - 'tx-only'
+                    - 'tx-rx'
             description:
                 description:
                     - Description.
@@ -88,9 +87,9 @@ options:
                     - DMI status.
                 type: str
                 choices:
-                    - enable
-                    - disable
-                    - global
+                    - 'enable'
+                    - 'disable'
+                    - 'global'
             eee_tx_idle_time:
                 description:
                     - EEE Transmit idle time (microseconds)(0-2560).
@@ -104,15 +103,15 @@ options:
                     - Enable/Disable egress drop.
                 type: str
                 choices:
-                    - enabled
-                    - disabled
+                    - 'enabled'
+                    - 'disabled'
             energy_efficient_ethernet:
                 description:
                     - Enable / disable energy efficient ethernet.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             flap_duration:
                 description:
                     - Period over which flap events are calculated (seconds).
@@ -134,8 +133,8 @@ options:
                     - Enable / disable FlapGuard.
                 type: str
                 choices:
-                    - enabled
-                    - disabled
+                    - 'enabled'
+                    - 'disabled'
             flapguard_state:
                 description:
                     - Timestamp of last triggered event (or 0 if none).
@@ -145,31 +144,31 @@ options:
                     - Configure flow control pause frames.
                 type: str
                 choices:
-                    - disable
-                    - tx
-                    - rx
-                    - both
+                    - 'disable'
+                    - 'tx'
+                    - 'rx'
+                    - 'both'
             fortilink_p2p:
                 description:
                     - FortiLink point-to-point.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             l2_learning:
                 description:
                     - Enable / disable dynamic MAC address learning.
                 type: str
                 choices:
-                    - enabled
-                    - disabled
+                    - 'enabled'
+                    - 'disabled'
             l2_sa_unknown:
                 description:
                     - Forward / drop unknown(SMAC) packets when dynamic MAC address learning is disabled.
                 type: str
                 choices:
-                    - forward
-                    - drop
+                    - 'forward'
+                    - 'drop'
             link_status:
                 description:
                     - Physical link status.
@@ -183,18 +182,18 @@ options:
                     - LLDP transmit and receive status.
                 type: str
                 choices:
-                    - disable
-                    - rx-only
-                    - tx-only
-                    - tx-rx
+                    - 'disable'
+                    - 'rx-only'
+                    - 'tx-only'
+                    - 'tx-rx'
             loopback:
                 description:
                     - Phy Port Loopback.
                 type: str
                 choices:
-                    - local
-                    - remote
-                    - disable
+                    - 'local'
+                    - 'remote'
+                    - 'disable'
             max_frame_size:
                 description:
                     - Maximum frame size.
@@ -204,10 +203,10 @@ options:
                     - Configure port preference for shared ports.
                 type: str
                 choices:
-                    - fiber-preferred
-                    - copper-preferred
-                    - fiber-forced
-                    - copper-forced
+                    - 'fiber-preferred'
+                    - 'copper-preferred'
+                    - 'fiber-forced'
+                    - 'copper-forced'
             name:
                 description:
                     - Port name.
@@ -226,31 +225,31 @@ options:
                     - Resume threshold for resuming reception on pause metering of an ingress port.
                 type: str
                 choices:
-                    - 75%
-                    - 50%
-                    - 25%
+                    - '75%'
+                    - '50%'
+                    - '25%'
             poe_port_mode:
                 description:
                     - IEEE802.3AF/IEEE802.3AT
                 type: str
                 choices:
-                    - IEEE802_3AF
-                    - IEEE802_3AT
+                    - 'IEEE802_3AF'
+                    - 'IEEE802_3AT'
             poe_port_priority:
                 description:
                     - Configure port priority
                 type: str
                 choices:
-                    - low-priority
-                    - high-priority
-                    - critical-priority
+                    - 'low-priority'
+                    - 'high-priority'
+                    - 'critical-priority'
             poe_status:
                 description:
                     - Enable/disable PSE.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             port_index:
                 description:
                     - Port index.
@@ -260,55 +259,55 @@ options:
                     - Enable / disable priority-based flow control. 802.3 flow control will be applied when disabled
                 type: str
                 choices:
-                    - disable
-                    - enable
+                    - 'disable'
+                    - 'enable'
             qsfp_low_power_mode:
                 description:
                     - Enable/Disable QSFP low power mode.
                 type: str
                 choices:
-                    - enabled
-                    - disabled
+                    - 'enabled'
+                    - 'disabled'
             speed:
                 description:
                     - Configure interface speed and duplex.
                 type: str
                 choices:
-                    - auto
-                    - 10half
-                    - 10full
-                    - 100half
-                    - 100full
-                    - 100FX-half
-                    - 100FX-full
-                    - 1000full
-                    - 2500auto
-                    - 5000auto
-                    - 10000full
-                    - 10000cr
-                    - 10000sr
-                    - 40000full
-                    - 40000sr4
-                    - 40000cr4
-                    - 100000full
-                    - 100000cr4
-                    - 100000sr4
-                    - auto-module
-                    - 1000full-fiber
-                    - 1000auto
-                    - 25000full
-                    - 25000cr
-                    - 25000sr
-                    - 50000full
-                    - 50000cr
-                    - 50000sr
+                    - 'auto'
+                    - '10half'
+                    - '10full'
+                    - '100half'
+                    - '100full'
+                    - '100FX-half'
+                    - '100FX-full'
+                    - '1000full'
+                    - '2500auto'
+                    - '5000auto'
+                    - '10000full'
+                    - '10000cr'
+                    - '10000sr'
+                    - '40000full'
+                    - '40000sr4'
+                    - '40000cr4'
+                    - '100000full'
+                    - '100000cr4'
+                    - '100000sr4'
+                    - 'auto-module'
+                    - '1000full-fiber'
+                    - '1000auto'
+                    - '25000full'
+                    - '25000cr'
+                    - '25000sr'
+                    - '50000full'
+                    - '50000cr'
+                    - '50000sr'
             status:
                 description:
                     - Administrative status.
                 type: str
                 choices:
-                    - up
-                    - down
+                    - 'up'
+                    - 'down'
             storm_control:
                 description:
                     - Storm control.
@@ -319,8 +318,8 @@ options:
                             - Enable/disable broadcast storm control.
                         type: str
                         choices:
-                            - enable
-                            - disable
+                            - 'enable'
+                            - 'disable'
                     burst_size_level:
                         description:
                             - Storm control burst size level 0-4.
@@ -334,23 +333,23 @@ options:
                             - Enable/disable unknown multicast storm control.
                         type: str
                         choices:
-                            - enable
-                            - disable
+                            - 'enable'
+                            - 'disable'
                     unknown_unicast:
                         description:
                             - Enable/disable unknown unicast storm control.
                         type: str
                         choices:
-                            - enable
-                            - disable
+                            - 'enable'
+                            - 'disable'
             storm_control_mode:
                 description:
                     - Storm control mode.
                 type: str
                 choices:
-                    - global
-                    - override
-                    - disabled
+                    - 'global'
+                    - 'override'
+                    - 'disabled'
 '''
 
 EXAMPLES = '''
@@ -469,7 +468,6 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.secret_field import is_secret_field
 
 
 def filter_switch_physical_port_data(json):
@@ -511,9 +509,7 @@ def underscore_to_hyphen(data):
 
 
 def switch_physical_port(data, fos, check_mode=False):
-
     state = data['state']
-
     switch_physical_port_data = data['switch_physical_port']
     filtered_data = underscore_to_hyphen(filter_switch_physical_port_data(switch_physical_port_data))
 
@@ -575,7 +571,6 @@ def is_successful_status(resp):
 
 
 def fortiswitch_switch(data, fos, check_mode):
-
     fos.do_member_operation('switch', 'physical-port')
     current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
     if data['switch_physical_port']:
@@ -603,7 +598,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -612,7 +610,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -620,7 +621,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "pause_resume": {
@@ -632,7 +636,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -641,7 +648,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -650,7 +660,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -658,7 +671,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "cdp_status": {
@@ -670,7 +686,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -679,7 +698,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -688,7 +710,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -697,7 +722,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -705,7 +733,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "l2_sa_unknown": {
@@ -717,7 +748,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -726,7 +760,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -734,7 +771,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "egress_drop_mode": {
@@ -746,7 +786,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -755,7 +798,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -763,7 +809,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "speed": {
@@ -775,7 +824,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -784,7 +836,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -793,7 +848,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -802,7 +860,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -811,7 +872,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -820,7 +884,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -829,7 +896,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -838,7 +908,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -847,7 +920,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -856,7 +932,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -865,7 +944,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -874,7 +956,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -883,7 +968,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -892,7 +980,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -901,7 +992,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -910,7 +1004,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -919,7 +1016,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -928,7 +1028,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -937,7 +1040,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -946,7 +1052,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -955,7 +1064,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -964,7 +1076,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -973,7 +1088,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -982,7 +1100,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -991,7 +1112,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1000,7 +1124,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1009,7 +1136,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1018,7 +1148,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1026,7 +1159,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "description": {
@@ -1035,7 +1171,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "poe_port_priority": {
@@ -1047,7 +1186,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1056,7 +1198,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1065,7 +1210,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1073,7 +1221,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "qsfp_low_power_mode": {
@@ -1085,7 +1236,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1094,7 +1248,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1102,7 +1259,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "loopback": {
@@ -1114,7 +1274,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1123,7 +1286,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1132,7 +1298,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1140,7 +1309,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "flap_duration": {
@@ -1149,7 +1321,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "pause_meter_rate": {
@@ -1158,7 +1333,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "lldp_status": {
@@ -1170,7 +1348,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1179,7 +1360,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1188,7 +1372,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1197,7 +1384,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1205,7 +1395,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "poe_status": {
@@ -1217,7 +1410,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1226,7 +1422,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1234,7 +1433,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "owning_interface": {
@@ -1243,7 +1445,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "poe_port_mode": {
@@ -1255,7 +1460,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1264,7 +1472,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1272,7 +1483,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "lldp_profile": {
@@ -1281,7 +1495,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "medium": {
@@ -1293,7 +1510,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1302,7 +1522,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1311,7 +1534,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1320,7 +1546,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1328,7 +1557,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "flapguard_state": {
@@ -1337,7 +1569,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "flapguard": {
@@ -1349,7 +1584,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1358,7 +1596,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1366,7 +1607,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "fortilink_p2p": {
@@ -1378,7 +1622,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1387,7 +1634,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1395,7 +1645,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "flap_rate": {
@@ -1404,7 +1657,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "eee_tx_wake_time": {
@@ -1413,7 +1669,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "storm_control": {
@@ -1428,7 +1687,10 @@ versioned_schema = {
                                 "v7.0.3": True,
                                 "v7.0.2": True,
                                 "v7.0.1": True,
-                                "v7.0.0": True
+                                "v7.0.0": True,
+                                "v7.0.6": True,
+                                "v7.0.5": True,
+                                "v7.0.4": True
                             }
                         },
                         {
@@ -1437,7 +1699,10 @@ versioned_schema = {
                                 "v7.0.3": True,
                                 "v7.0.2": True,
                                 "v7.0.1": True,
-                                "v7.0.0": True
+                                "v7.0.0": True,
+                                "v7.0.6": True,
+                                "v7.0.5": True,
+                                "v7.0.4": True
                             }
                         }
                     ],
@@ -1445,7 +1710,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "rate": {
@@ -1454,7 +1722,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "unknown_unicast": {
@@ -1466,7 +1737,10 @@ versioned_schema = {
                                 "v7.0.3": True,
                                 "v7.0.2": True,
                                 "v7.0.1": True,
-                                "v7.0.0": True
+                                "v7.0.0": True,
+                                "v7.0.6": True,
+                                "v7.0.5": True,
+                                "v7.0.4": True
                             }
                         },
                         {
@@ -1475,7 +1749,10 @@ versioned_schema = {
                                 "v7.0.3": True,
                                 "v7.0.2": True,
                                 "v7.0.1": True,
-                                "v7.0.0": True
+                                "v7.0.0": True,
+                                "v7.0.6": True,
+                                "v7.0.5": True,
+                                "v7.0.4": True
                             }
                         }
                     ],
@@ -1483,7 +1760,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "unknown_multicast": {
@@ -1495,7 +1775,10 @@ versioned_schema = {
                                 "v7.0.3": True,
                                 "v7.0.2": True,
                                 "v7.0.1": True,
-                                "v7.0.0": True
+                                "v7.0.0": True,
+                                "v7.0.6": True,
+                                "v7.0.5": True,
+                                "v7.0.4": True
                             }
                         },
                         {
@@ -1504,7 +1787,10 @@ versioned_schema = {
                                 "v7.0.3": True,
                                 "v7.0.2": True,
                                 "v7.0.1": True,
-                                "v7.0.0": True
+                                "v7.0.0": True,
+                                "v7.0.6": True,
+                                "v7.0.5": True,
+                                "v7.0.4": True
                             }
                         }
                     ],
@@ -1512,7 +1798,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "burst_size_level": {
@@ -1521,7 +1810,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             },
@@ -1529,7 +1821,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "port_index": {
@@ -1538,7 +1833,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "energy_efficient_ethernet": {
@@ -1550,7 +1848,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1559,7 +1860,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1567,7 +1871,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "name": {
@@ -1576,7 +1883,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "link_status": {
@@ -1585,7 +1895,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "eee_tx_idle_time": {
@@ -1594,7 +1907,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "max_frame_size": {
@@ -1603,7 +1919,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "storm_control_mode": {
@@ -1615,7 +1934,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1624,7 +1946,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1633,7 +1958,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1641,7 +1969,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "priority_based_flow_control": {
@@ -1653,7 +1984,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1662,7 +1996,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1670,7 +2007,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "flap_trig": {
@@ -1679,7 +2019,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "flow_control": {
@@ -1691,7 +2034,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1700,7 +2046,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1709,7 +2058,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1718,7 +2070,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1726,7 +2081,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "flap_timeout": {
@@ -1735,7 +2093,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "l2_learning": {
@@ -1747,7 +2108,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1756,7 +2120,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1764,7 +2131,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "dmi_status": {
@@ -1776,7 +2146,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1785,7 +2158,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1794,7 +2170,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1802,7 +2181,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         }
     },
@@ -1810,7 +2192,10 @@ versioned_schema = {
         "v7.0.3": True,
         "v7.0.2": True,
         "v7.0.1": True,
-        "v7.0.0": True
+        "v7.0.0": True,
+        "v7.0.6": True,
+        "v7.0.5": True,
+        "v7.0.4": True
     }
 }
 
@@ -1830,8 +2215,7 @@ def main():
                   "choices": ["present", "absent"]},
         "switch_physical_port": {
             "required": False, "type": "dict", "default": None,
-            "options": {
-            }
+            "options": {}
         }
     }
     for attribute_name in module_spec['options']:
@@ -1852,9 +2236,7 @@ def main():
             connection.set_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
         versions_check_result = check_schema_versioning(fos, versioned_schema, "switch_physical_port")
-
         is_error, has_changed, result, diff = fortiswitch_switch(module.params, fos, module.check_mode)
-
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 

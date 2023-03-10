@@ -98,7 +98,7 @@ version:
 results:
   description: the main output of the execution
   returned: only for successful calls
-  type: json
+  type: str
 '''
 
 EXAMPLES = '''
@@ -154,7 +154,7 @@ def sign_data(data, fos):
     sign_data_data = data['execute_sign_data']
     filtered_data = underscore_to_hyphen(filter_sign_data_data(sign_data_data))
 
-    return fos.call_execute_api(
+    return fos.invoke_execute_api(
         'sign',
         'data',
         data=filtered_data,
@@ -184,7 +184,10 @@ params = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "signature": {
@@ -193,7 +196,10 @@ params = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         }
     },
@@ -201,7 +207,10 @@ params = {
         "v7.0.3": True,
         "v7.0.2": True,
         "v7.0.1": True,
-        "v7.0.0": True
+        "v7.0.0": True,
+        "v7.0.6": True,
+        "v7.0.5": True,
+        "v7.0.4": True
     }
 }
 

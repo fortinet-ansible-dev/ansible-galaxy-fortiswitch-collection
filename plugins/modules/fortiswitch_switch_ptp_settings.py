@@ -30,7 +30,6 @@ author:
     - Hongbin Lu (@fgtdev-hblu)
     - Frank Shen (@frankshen01)
     - Miguel Angel Munoz (@mamunozgonzalez)
-notes:
 
 requirements:
     - ansible>=2.11
@@ -67,9 +66,9 @@ options:
                     - Disable/enable PTP mode.
                 type: str
                 choices:
-                    - disable
-                    - transparent-e2e
-                    - transparent-p2p
+                    - 'disable'
+                    - 'transparent-e2e'
+                    - 'transparent-p2p'
 '''
 
 EXAMPLES = '''
@@ -144,7 +143,6 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.f
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.secret_field import is_secret_field
 
 
 def filter_switch_ptp_settings_data(json):
@@ -190,7 +188,6 @@ def is_successful_status(resp):
 
 
 def fortiswitch_switch_ptp(data, fos):
-
     fos.do_member_operation('switch.ptp', 'settings')
     current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
     if data['switch_ptp_settings']:
@@ -216,7 +213,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -225,7 +225,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -234,7 +237,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -242,7 +248,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         }
     },
@@ -250,7 +259,10 @@ versioned_schema = {
         "v7.0.3": True,
         "v7.0.2": True,
         "v7.0.1": True,
-        "v7.0.0": True
+        "v7.0.0": True,
+        "v7.0.6": True,
+        "v7.0.5": True,
+        "v7.0.4": True
     }
 }
 
@@ -268,8 +280,7 @@ def main():
         },
         "switch_ptp_settings": {
             "required": False, "type": "dict", "default": None,
-            "options": {
-            }
+            "options": {}
         }
     }
     for attribute_name in module_spec['options']:
@@ -290,9 +301,7 @@ def main():
             connection.set_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
         versions_check_result = check_schema_versioning(fos, versioned_schema, "switch_ptp_settings")
-
         is_error, has_changed, result, diff = fortiswitch_switch_ptp(module.params, fos)
-
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 

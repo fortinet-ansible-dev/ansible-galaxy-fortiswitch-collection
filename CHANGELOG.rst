@@ -5,6 +5,27 @@ Fortinet.Fortiswitch Release Notes
 .. contents:: Topics
 
 
+v1.1.3
+======
+
+Release Summary
+---------------
+
+patch release of 1.1.3
+
+Major Changes
+-------------
+
+- Support new FortiSwitch versions 7.0.4, 7.0.5 and 7.0.6.
+
+Bugfixes
+--------
+
+- Fix Github issue
+- Fix errors when deleting an object.
+- Fix multiple values issue in the module ``fortiswitch_system_interface``.
+- Fix sanity-test errors.
+
 v1.1.2
 ======
 

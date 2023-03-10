@@ -30,7 +30,6 @@ author:
     - Hongbin Lu (@fgtdev-hblu)
     - Frank Shen (@frankshen01)
     - Miguel Angel Munoz (@mamunozgonzalez)
-notes:
 
 requirements:
     - ansible>=2.11
@@ -79,8 +78,8 @@ options:
                     - Enable/disable FortiLAN-cloud service.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
 '''
 
 EXAMPLES = '''
@@ -158,7 +157,6 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.f
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.secret_field import is_secret_field
 
 
 def filter_system_flan_cloud_data(json):
@@ -205,7 +203,6 @@ def is_successful_status(resp):
 
 
 def fortiswitch_system(data, fos):
-
     fos.do_member_operation('system', 'flan-cloud')
     current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
     if data['system_flan_cloud']:
@@ -228,41 +225,62 @@ versioned_schema = {
                 {
                     "value": "enable",
                     "revisions": {
-                        "v7.0.3": True
+                        "v7.0.3": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
                     "value": "disable",
                     "revisions": {
-                        "v7.0.3": True
+                        "v7.0.3": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
             "revisions": {
-                "v7.0.3": True
+                "v7.0.3": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "interval": {
             "type": "integer",
             "revisions": {
-                "v7.0.3": True
+                "v7.0.3": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "port": {
             "type": "integer",
             "revisions": {
-                "v7.0.3": True
+                "v7.0.3": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "name": {
             "type": "string",
             "revisions": {
-                "v7.0.3": True
+                "v7.0.3": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         }
     },
     "revisions": {
-        "v7.0.3": True
+        "v7.0.3": True,
+        "v7.0.6": True,
+        "v7.0.5": True,
+        "v7.0.4": True
     }
 }
 
@@ -280,8 +298,7 @@ def main():
         },
         "system_flan_cloud": {
             "required": False, "type": "dict", "default": None,
-            "options": {
-            }
+            "options": {}
         }
     }
     for attribute_name in module_spec['options']:
@@ -302,9 +319,7 @@ def main():
             connection.set_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
         versions_check_result = check_schema_versioning(fos, versioned_schema, "system_flan_cloud")
-
         is_error, has_changed, result, diff = fortiswitch_system(module.params, fos)
-
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 

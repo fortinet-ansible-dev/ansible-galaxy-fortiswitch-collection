@@ -30,7 +30,6 @@ author:
     - Hongbin Lu (@fgtdev-hblu)
     - Frank Shen (@frankshen01)
     - Miguel Angel Munoz (@mamunozgonzalez)
-notes:
 
 requirements:
     - ansible>=2.11
@@ -67,15 +66,15 @@ options:
                     - Enable/disable automatic FortiLink discovery.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             auto_isl:
                 description:
                     - Enable/Disable automatic inter switch LAG.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             auto_isl_port_group:
                 description:
                     - Configure global automatic inter-switch link port groups (overrides port level port groups).
@@ -85,36 +84,50 @@ options:
                     - Automatic assignment of STP priority for tier1 and tier2 switches.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
+            bpdu_learn:
+                description:
+                    - Enable/disable BPDU learn.
+                type: str
+                choices:
+                    - 'enable'
+                    - 'disable'
             dhcp_snooping_database_export:
                 description:
                     - Enable/disable DHCP snoop database export to file.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             dmi_global_all:
                 description:
                     - Enable/disable DMI global status.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             flapguard_retain_trigger:
                 description:
                     - Enable/disable retention of triggered state upon reboot.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             flood_unknown_multicast:
                 description:
                     - Enable/disable unknown mcast flood in the vlan.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
+            flood_vtp:
+                description:
+                    - Enable/disable Cisco VTP flood in the vlan.
+                type: str
+                choices:
+                    - 'enable'
+                    - 'disable'
             forti_trunk_dmac:
                 description:
                     - Destination MAC address to be used for FortiTrunk heartbeat packets.
@@ -136,22 +149,22 @@ options:
                     - Controls VLAN assignment on ISL ports (assigns all 4k vlans when disabled).
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             ip_mac_binding:
                 description:
                     - Configure ip-mac-binding status.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             l2_memory_check:
                 description:
                     - Enable/disable L2 memory check, default interval is 120 seconds.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             l2_memory_check_interval:
                 description:
                     - User defined interval to check L2 memory(second).
@@ -161,8 +174,8 @@ options:
                     - Enable/disable logs for Learning Limit Violations globally.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             loop_guard_tx_interval:
                 description:
                     - Loop guard packet Tx interval (sec).
@@ -174,11 +187,11 @@ options:
             mac_address_algorithm:
                 description:
                     - 'Method to configure the fifth byte of the MAC address (12:34:56:78:XX:XX, sixth byte automatically generated from managmenet MAC,
-                       channel, and port information).'
+                      channel, and port information).'
                 type: str
                 choices:
-                    - auto
-                    - manual
+                    - 'auto'
+                    - 'manual'
             mac_aging_interval:
                 description:
                     - MAC address aging interval (sec; remove any MAC addresses unused since the the last check.
@@ -196,8 +209,8 @@ options:
                     - MCLAG IGMP-snooping aware.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             mclag_peer_info_timeout:
                 description:
                     - MCLAG peer info timeout.
@@ -211,15 +224,15 @@ options:
                     - Enable/disable MCLAG split brain all ports down
                 type: str
                 choices:
-                    - disable
-                    - enable
+                    - 'disable'
+                    - 'enable'
             mclag_split_brain_detect:
                 description:
                     - Enable/disable MCLAG split brain detect.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             mclag_split_brain_priority:
                 description:
                     - Set MCLAG split brain priority
@@ -229,8 +242,8 @@ options:
                     - MCLAG STP aware.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             mirror_qos:
                 description:
                     - QOS value for locally mirrored traffic.
@@ -256,15 +269,15 @@ options:
                     - Set poe power mode to priority based or first come first served.
                 type: str
                 choices:
-                    - priority
-                    - first-come-first-served
+                    - 'priority'
+                    - 'first-come-first-served'
             poe_pre_standard_detect:
                 description:
                     - set poe-pre-standard-detect
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             port_security:
                 description:
                     - Global parameters for port-security.
@@ -275,15 +288,15 @@ options:
                             - If link down detected, "set-unauth" reverts to un-authorized state.
                         type: str
                         choices:
-                            - set-unauth
-                            - no-action
+                            - 'set-unauth'
+                            - 'no-action'
                     mab_reauth:
                         description:
                             - Enable or disable MAB reauthentication settings.
                         type: str
                         choices:
-                            - disable
-                            - enable
+                            - 'disable'
+                            - 'enable'
                     max_reauth_attempt:
                         description:
                             - 802.1X/MAB maximum reauthorization attempt.
@@ -293,8 +306,8 @@ options:
                             - Enable or disable Quarantine VLAN detection.
                         type: str
                         choices:
-                            - disable
-                            - enable
+                            - 'disable'
+                            - 'enable'
                     reauth_period:
                         description:
                             - 802.1X/MAB reauthentication period ( minute ).
@@ -308,22 +321,22 @@ options:
                     - Trunk hash mode.
                 type: str
                 choices:
-                    - default
-                    - enhanced
+                    - 'default'
+                    - 'enhanced'
             trunk_hash_unicast_src_port:
                 description:
                     - Enable/disable source port in Unicast trunk hashing.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             trunk_hash_unkunicast_src_dst:
                 description:
                     - Enable/disable trunk hash for unknown unicast src-dst.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
             virtual_wire_tpid:
                 description:
                     - TPID value used by virtual-wires.
@@ -347,50 +360,52 @@ EXAMPLES = '''
         auto_isl: "enable"
         auto_isl_port_group: "5"
         auto_stp_priority: "enable"
+        bpdu_learn: "enable"
         dhcp_snooping_database_export: "enable"
         dmi_global_all: "enable"
         flapguard_retain_trigger: "enable"
         flood_unknown_multicast: "enable"
+        flood_vtp: "enable"
         forti_trunk_dmac: "<your_own_value>"
-        fortilink_heartbeat_timeout: "12"
-        fortilink_p2p_native_vlan: "13"
-        fortilink_p2p_tpid: "14"
+        fortilink_heartbeat_timeout: "14"
+        fortilink_p2p_native_vlan: "15"
+        fortilink_p2p_tpid: "16"
         fortilink_vlan_optimization: "enable"
         ip_mac_binding: "enable"
         l2_memory_check: "enable"
-        l2_memory_check_interval: "18"
+        l2_memory_check_interval: "20"
         log_mac_limit_violations: "enable"
-        loop_guard_tx_interval: "20"
-        mac_address: "21"
+        loop_guard_tx_interval: "22"
+        mac_address: "23"
         mac_address_algorithm: "auto"
-        mac_aging_interval: "23"
-        mac_violation_timer: "24"
-        max_path_in_ecmp_group: "25"
+        mac_aging_interval: "25"
+        mac_violation_timer: "26"
+        max_path_in_ecmp_group: "27"
         mclag_igmpsnooping_aware: "enable"
-        mclag_peer_info_timeout: "27"
-        mclag_port_base: "28"
+        mclag_peer_info_timeout: "29"
+        mclag_port_base: "30"
         mclag_split_brain_all_ports_down: "disable"
         mclag_split_brain_detect: "enable"
-        mclag_split_brain_priority: "31"
+        mclag_split_brain_priority: "33"
         mclag_stp_aware: "enable"
-        mirror_qos: "33"
-        name: "default_name_34"
-        poe_alarm_threshold: "35"
-        poe_guard_band: "36"
-        poe_power_budget: "37"
+        mirror_qos: "35"
+        name: "default_name_36"
+        poe_alarm_threshold: "37"
+        poe_guard_band: "38"
+        poe_power_budget: "39"
         poe_power_mode: "priority"
         poe_pre_standard_detect: "enable"
         port_security:
             link_down_auth: "set-unauth"
             mab_reauth: "disable"
-            max_reauth_attempt: "43"
+            max_reauth_attempt: "45"
             quarantine_vlan: "disable"
-            reauth_period: "45"
-            tx_period: "46"
+            reauth_period: "47"
+            tx_period: "48"
         trunk_hash_mode: "default"
         trunk_hash_unicast_src_port: "enable"
         trunk_hash_unkunicast_src_dst: "enable"
-        virtual_wire_tpid: "50"
+        virtual_wire_tpid: "52"
 
 '''
 
@@ -449,24 +464,24 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.f
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.secret_field import is_secret_field
 
 
 def filter_switch_global_data(json):
     option_list = ['auto_fortilink_discovery', 'auto_isl', 'auto_isl_port_group',
-                   'auto_stp_priority', 'dhcp_snooping_database_export', 'dmi_global_all',
-                   'flapguard_retain_trigger', 'flood_unknown_multicast', 'forti_trunk_dmac',
-                   'fortilink_heartbeat_timeout', 'fortilink_p2p_native_vlan', 'fortilink_p2p_tpid',
-                   'fortilink_vlan_optimization', 'ip_mac_binding', 'l2_memory_check',
-                   'l2_memory_check_interval', 'log_mac_limit_violations', 'loop_guard_tx_interval',
-                   'mac_address', 'mac_address_algorithm', 'mac_aging_interval',
-                   'mac_violation_timer', 'max_path_in_ecmp_group', 'mclag_igmpsnooping_aware',
-                   'mclag_peer_info_timeout', 'mclag_port_base', 'mclag_split_brain_all_ports_down',
-                   'mclag_split_brain_detect', 'mclag_split_brain_priority', 'mclag_stp_aware',
-                   'mirror_qos', 'name', 'poe_alarm_threshold',
-                   'poe_guard_band', 'poe_power_budget', 'poe_power_mode',
-                   'poe_pre_standard_detect', 'port_security', 'trunk_hash_mode',
-                   'trunk_hash_unicast_src_port', 'trunk_hash_unkunicast_src_dst', 'virtual_wire_tpid']
+                   'auto_stp_priority', 'bpdu_learn', 'dhcp_snooping_database_export',
+                   'dmi_global_all', 'flapguard_retain_trigger', 'flood_unknown_multicast',
+                   'flood_vtp', 'forti_trunk_dmac', 'fortilink_heartbeat_timeout',
+                   'fortilink_p2p_native_vlan', 'fortilink_p2p_tpid', 'fortilink_vlan_optimization',
+                   'ip_mac_binding', 'l2_memory_check', 'l2_memory_check_interval',
+                   'log_mac_limit_violations', 'loop_guard_tx_interval', 'mac_address',
+                   'mac_address_algorithm', 'mac_aging_interval', 'mac_violation_timer',
+                   'max_path_in_ecmp_group', 'mclag_igmpsnooping_aware', 'mclag_peer_info_timeout',
+                   'mclag_port_base', 'mclag_split_brain_all_ports_down', 'mclag_split_brain_detect',
+                   'mclag_split_brain_priority', 'mclag_stp_aware', 'mirror_qos',
+                   'name', 'poe_alarm_threshold', 'poe_guard_band',
+                   'poe_power_budget', 'poe_power_mode', 'poe_pre_standard_detect',
+                   'port_security', 'trunk_hash_mode', 'trunk_hash_unicast_src_port',
+                   'trunk_hash_unkunicast_src_dst', 'virtual_wire_tpid']
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -508,7 +523,6 @@ def is_successful_status(resp):
 
 
 def fortiswitch_switch(data, fos):
-
     fos.do_member_operation('switch', 'global')
     current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
     if data['switch_global']:
@@ -531,7 +545,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "poe_power_budget": {
@@ -540,7 +557,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "trunk_hash_unicast_src_port": {
@@ -552,7 +572,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -561,7 +584,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -569,7 +595,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mclag_stp_aware": {
@@ -581,7 +610,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -590,7 +622,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -598,7 +633,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "l2_memory_check_interval": {
@@ -607,7 +645,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mclag_port_base": {
@@ -616,7 +657,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mclag_split_brain_detect": {
@@ -628,7 +672,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -637,7 +684,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -645,7 +695,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "auto_fortilink_discovery": {
@@ -657,7 +710,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -666,7 +722,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -674,7 +733,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mac_violation_timer": {
@@ -683,7 +745,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "ip_mac_binding": {
@@ -695,7 +760,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -704,7 +772,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -712,7 +783,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "flood_unknown_multicast": {
@@ -724,7 +798,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -733,7 +810,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -741,7 +821,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "max_path_in_ecmp_group": {
@@ -750,7 +833,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "fortilink_heartbeat_timeout": {
@@ -759,7 +845,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "fortilink_p2p_native_vlan": {
@@ -768,7 +857,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mclag_peer_info_timeout": {
@@ -777,7 +869,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mirror_qos": {
@@ -786,7 +881,33 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
+            }
+        },
+        "bpdu_learn": {
+            "type": "string",
+            "options": [
+                {
+                    "value": "enable",
+                    "revisions": {
+                        "v7.0.6": True,
+                        "v7.0.5": True
+                    }
+                },
+                {
+                    "value": "disable",
+                    "revisions": {
+                        "v7.0.6": True,
+                        "v7.0.5": True
+                    }
+                }
+            ],
+            "revisions": {
+                "v7.0.6": True,
+                "v7.0.5": True
             }
         },
         "dmi_global_all": {
@@ -798,7 +919,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -807,7 +931,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -815,7 +942,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "poe_pre_standard_detect": {
@@ -827,7 +957,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -836,7 +969,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -844,7 +980,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mac_aging_interval": {
@@ -853,7 +992,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "log_mac_limit_violations": {
@@ -865,7 +1007,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -874,7 +1019,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -882,7 +1030,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mac_address_algorithm": {
@@ -894,7 +1045,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -903,7 +1057,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -911,7 +1068,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "trunk_hash_unkunicast_src_dst": {
@@ -923,7 +1083,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -932,7 +1095,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -940,7 +1106,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "trunk_hash_mode": {
@@ -952,7 +1121,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -961,7 +1133,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -969,7 +1144,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "loop_guard_tx_interval": {
@@ -978,7 +1156,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mclag_igmpsnooping_aware": {
@@ -990,7 +1171,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -999,7 +1183,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1007,7 +1194,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "flapguard_retain_trigger": {
@@ -1019,7 +1209,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1028,7 +1221,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1036,7 +1232,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "l2_memory_check": {
@@ -1048,7 +1247,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1057,7 +1259,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1065,7 +1270,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mac_address": {
@@ -1074,7 +1282,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mclag_split_brain_all_ports_down": {
@@ -1085,7 +1296,10 @@ versioned_schema = {
                     "revisions": {
                         "v7.0.3": True,
                         "v7.0.2": True,
-                        "v7.0.1": True
+                        "v7.0.1": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1093,14 +1307,20 @@ versioned_schema = {
                     "revisions": {
                         "v7.0.3": True,
                         "v7.0.2": True,
-                        "v7.0.1": True
+                        "v7.0.1": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
             "revisions": {
                 "v7.0.3": True,
                 "v7.0.2": True,
-                "v7.0.1": True
+                "v7.0.1": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "poe_alarm_threshold": {
@@ -1109,7 +1329,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "poe_guard_band": {
@@ -1118,7 +1341,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "port_security": {
@@ -1130,7 +1356,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "max_reauth_attempt": {
@@ -1139,7 +1368,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "link_down_auth": {
@@ -1151,7 +1383,10 @@ versioned_schema = {
                                 "v7.0.3": True,
                                 "v7.0.2": True,
                                 "v7.0.1": True,
-                                "v7.0.0": True
+                                "v7.0.0": True,
+                                "v7.0.6": True,
+                                "v7.0.5": True,
+                                "v7.0.4": True
                             }
                         },
                         {
@@ -1160,7 +1395,10 @@ versioned_schema = {
                                 "v7.0.3": True,
                                 "v7.0.2": True,
                                 "v7.0.1": True,
-                                "v7.0.0": True
+                                "v7.0.0": True,
+                                "v7.0.6": True,
+                                "v7.0.5": True,
+                                "v7.0.4": True
                             }
                         }
                     ],
@@ -1168,7 +1406,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "quarantine_vlan": {
@@ -1180,7 +1421,10 @@ versioned_schema = {
                                 "v7.0.3": True,
                                 "v7.0.2": True,
                                 "v7.0.1": True,
-                                "v7.0.0": True
+                                "v7.0.0": True,
+                                "v7.0.6": True,
+                                "v7.0.5": True,
+                                "v7.0.4": True
                             }
                         },
                         {
@@ -1189,7 +1433,10 @@ versioned_schema = {
                                 "v7.0.3": True,
                                 "v7.0.2": True,
                                 "v7.0.1": True,
-                                "v7.0.0": True
+                                "v7.0.0": True,
+                                "v7.0.6": True,
+                                "v7.0.5": True,
+                                "v7.0.4": True
                             }
                         }
                     ],
@@ -1197,7 +1444,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "mab_reauth": {
@@ -1209,7 +1459,10 @@ versioned_schema = {
                                 "v7.0.3": True,
                                 "v7.0.2": True,
                                 "v7.0.1": True,
-                                "v7.0.0": True
+                                "v7.0.0": True,
+                                "v7.0.6": True,
+                                "v7.0.5": True,
+                                "v7.0.4": True
                             }
                         },
                         {
@@ -1218,7 +1471,10 @@ versioned_schema = {
                                 "v7.0.3": True,
                                 "v7.0.2": True,
                                 "v7.0.1": True,
-                                "v7.0.0": True
+                                "v7.0.0": True,
+                                "v7.0.6": True,
+                                "v7.0.5": True,
+                                "v7.0.4": True
                             }
                         }
                     ],
@@ -1226,7 +1482,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 "tx_period": {
@@ -1235,7 +1494,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             },
@@ -1243,7 +1505,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "auto_isl_port_group": {
@@ -1252,7 +1517,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "dhcp_snooping_database_export": {
@@ -1264,7 +1532,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1273,7 +1544,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1281,7 +1555,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "virtual_wire_tpid": {
@@ -1290,7 +1567,33 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
+            }
+        },
+        "flood_vtp": {
+            "type": "string",
+            "options": [
+                {
+                    "value": "enable",
+                    "revisions": {
+                        "v7.0.6": True,
+                        "v7.0.5": True
+                    }
+                },
+                {
+                    "value": "disable",
+                    "revisions": {
+                        "v7.0.6": True,
+                        "v7.0.5": True
+                    }
+                }
+            ],
+            "revisions": {
+                "v7.0.6": True,
+                "v7.0.5": True
             }
         },
         "fortilink_vlan_optimization": {
@@ -1302,7 +1605,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1311,7 +1617,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1319,7 +1628,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "name": {
@@ -1328,7 +1640,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "auto_stp_priority": {
@@ -1340,7 +1655,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1349,7 +1667,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1357,7 +1678,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "poe_power_mode": {
@@ -1369,7 +1693,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1378,7 +1705,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1386,7 +1716,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "auto_isl": {
@@ -1398,7 +1731,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -1407,7 +1743,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -1415,7 +1754,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "mclag_split_brain_priority": {
@@ -1423,7 +1765,10 @@ versioned_schema = {
             "revisions": {
                 "v7.0.3": True,
                 "v7.0.2": True,
-                "v7.0.1": True
+                "v7.0.1": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "fortilink_p2p_tpid": {
@@ -1432,7 +1777,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         }
     },
@@ -1440,7 +1788,10 @@ versioned_schema = {
         "v7.0.3": True,
         "v7.0.2": True,
         "v7.0.1": True,
-        "v7.0.0": True
+        "v7.0.0": True,
+        "v7.0.6": True,
+        "v7.0.5": True,
+        "v7.0.4": True
     }
 }
 
@@ -1458,8 +1809,7 @@ def main():
         },
         "switch_global": {
             "required": False, "type": "dict", "default": None,
-            "options": {
-            }
+            "options": {}
         }
     }
     for attribute_name in module_spec['options']:
@@ -1480,9 +1830,7 @@ def main():
             connection.set_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
         versions_check_result = check_schema_versioning(fos, versioned_schema, "switch_global")
-
         is_error, has_changed, result, diff = fortiswitch_switch(module.params, fos)
-
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 

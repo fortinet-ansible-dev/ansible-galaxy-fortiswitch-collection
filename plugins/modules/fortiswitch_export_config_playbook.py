@@ -1160,7 +1160,7 @@ MODULE_MKEY_DEFINITONS = {
 }
 
 SPECIAL_ATTRIBUTE_TABLE = {
-    "system_interface": [[u'allowaccess']],
+    "system_interface": [[u'allowaccess'], [u'ipv6', u'ip6_allowaccess'], [u'secondaryip', u'allowaccess']],
 }
 
 
@@ -1312,7 +1312,7 @@ def fortiswitch_configuration_fact(params, fos):
 
         target_playbook.append(copied_element)
 
-    with open(selector + "_playbook.yml", "w") as f:
+    with open(params["output_path"] + "/" + selector + "_playbook.yml", "w") as f:
         yaml.dump(target_playbook, f, sort_keys=False)
 
     return not is_successful_status(fact), False, fact

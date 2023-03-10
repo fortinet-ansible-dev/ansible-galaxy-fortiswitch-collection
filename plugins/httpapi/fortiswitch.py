@@ -11,7 +11,7 @@ __metaclass__ = type
 
 DOCUMENTATION = """
 ---
-modules: fortiswitch
+name: fortiswitch
 short_description: HttpApi Plugin for Fortinet FortiSwitch Appliance or VM
 description:
   - This HttpApi plugin provides methods to connect to Fortinet FortiSwitch Appliance or VM via REST API
@@ -37,7 +37,7 @@ class HttpApi(HttpApiBase):
         self._ccsrftoken = ''
         self._system_version = None
         self._ansible_fos_version = '{{__fortios_version__}}'
-        self._ansible_galaxy_version = '1.1.2'
+        self._ansible_galaxy_version = '1.1.3'
         self._log = None
 
     def log(self, msg):

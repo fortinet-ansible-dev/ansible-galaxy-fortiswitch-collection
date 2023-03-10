@@ -30,7 +30,6 @@ author:
     - Hongbin Lu (@fgtdev-hblu)
     - Frank Shen (@frankshen01)
     - Miguel Angel Munoz (@mamunozgonzalez)
-notes:
 
 requirements:
     - ansible>=2.11
@@ -83,8 +82,19 @@ options:
                     - Enable/disable snmp.
                 type: str
                 choices:
-                    - enable
-                    - disable
+                    - 'enable'
+                    - 'disable'
+            trap_high_cpu_interval:
+                description:
+                    - Time period over which the CPU usage is calculated.
+                type: str
+                choices:
+                    - '1min'
+                    - '10min'
+                    - '30min'
+                    - '1hr'
+                    - '12hr'
+                    - '24hr'
             trap_high_cpu_threshold:
                 description:
                     - CPU usage when trap is sent.
@@ -125,11 +135,12 @@ EXAMPLES = '''
         engine_id: "<your_own_value>"
         location: "<your_own_value>"
         status: "enable"
-        trap_high_cpu_threshold: "8"
-        trap_log_full_threshold: "9"
-        trap_low_memory_threshold: "10"
-        trap_temp_alarm_threshold: "11"
-        trap_temp_warning_threshold: "12"
+        trap_high_cpu_interval: "1min"
+        trap_high_cpu_threshold: "9"
+        trap_log_full_threshold: "10"
+        trap_low_memory_threshold: "11"
+        trap_temp_alarm_threshold: "12"
+        trap_temp_warning_threshold: "13"
 
 '''
 
@@ -188,14 +199,13 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.f
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.secret_field import is_secret_field
 
 
 def filter_system_snmp_sysinfo_data(json):
     option_list = ['contact_info', 'description', 'engine_id',
-                   'location', 'status', 'trap_high_cpu_threshold',
-                   'trap_log_full_threshold', 'trap_low_memory_threshold', 'trap_temp_alarm_threshold',
-                   'trap_temp_warning_threshold']
+                   'location', 'status', 'trap_high_cpu_interval',
+                   'trap_high_cpu_threshold', 'trap_log_full_threshold', 'trap_low_memory_threshold',
+                   'trap_temp_alarm_threshold', 'trap_temp_warning_threshold']
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -237,7 +247,6 @@ def is_successful_status(resp):
 
 
 def fortiswitch_system_snmp(data, fos):
-
     fos.do_member_operation('system.snmp', 'sysinfo')
     current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
     if data['system_snmp_sysinfo']:
@@ -263,7 +272,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 },
                 {
@@ -272,7 +284,10 @@ versioned_schema = {
                         "v7.0.3": True,
                         "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.0": True,
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
                     }
                 }
             ],
@@ -280,7 +295,68 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
+            }
+        },
+        "trap_high_cpu_interval": {
+            "type": "string",
+            "options": [
+                {
+                    "value": "1min",
+                    "revisions": {
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
+                    }
+                },
+                {
+                    "value": "10min",
+                    "revisions": {
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
+                    }
+                },
+                {
+                    "value": "30min",
+                    "revisions": {
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
+                    }
+                },
+                {
+                    "value": "1hr",
+                    "revisions": {
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
+                    }
+                },
+                {
+                    "value": "12hr",
+                    "revisions": {
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
+                    }
+                },
+                {
+                    "value": "24hr",
+                    "revisions": {
+                        "v7.0.6": True,
+                        "v7.0.5": True,
+                        "v7.0.4": True
+                    }
+                }
+            ],
+            "revisions": {
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "trap_log_full_threshold": {
@@ -289,7 +365,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "contact_info": {
@@ -298,7 +377,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "description": {
@@ -307,7 +389,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "engine_id": {
@@ -316,7 +401,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "location": {
@@ -325,7 +413,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "trap_high_cpu_threshold": {
@@ -334,7 +425,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "trap_temp_warning_threshold": {
@@ -343,7 +437,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "trap_temp_alarm_threshold": {
@@ -352,7 +449,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         },
         "trap_low_memory_threshold": {
@@ -361,7 +461,10 @@ versioned_schema = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         }
     },
@@ -369,7 +472,10 @@ versioned_schema = {
         "v7.0.3": True,
         "v7.0.2": True,
         "v7.0.1": True,
-        "v7.0.0": True
+        "v7.0.0": True,
+        "v7.0.6": True,
+        "v7.0.5": True,
+        "v7.0.4": True
     }
 }
 
@@ -387,8 +493,7 @@ def main():
         },
         "system_snmp_sysinfo": {
             "required": False, "type": "dict", "default": None,
-            "options": {
-            }
+            "options": {}
         }
     }
     for attribute_name in module_spec['options']:
@@ -409,9 +514,7 @@ def main():
             connection.set_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
         versions_check_result = check_schema_versioning(fos, versioned_schema, "system_snmp_sysinfo")
-
         is_error, has_changed, result, diff = fortiswitch_system_snmp(module.params, fos)
-
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 

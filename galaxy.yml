@@ -1,6 +1,6 @@
 namespace: "fortinet"
 name: "fortiswitch"
-version: "1.1.2"
+version: "1.1.3"
 description: "A collection of Ansible Modules for FortiSwitch v7"
 readme: "README.md"
 authors:
@@ -20,7 +20,7 @@ tags:
     - firewall
     - security
     - fortinet
-repository: "https://github.com/fortinet-ansible-dev/ansible-galaxy-fortiswitch-collection/tree/fsw_v7.0.0/galaxy_1.1.2"
-documentation: "https://ansible-galaxy-fortiswitch-docs.readthedocs.io/en/galaxy-1.1.2"
+repository: "https://github.com/fortinet-ansible-dev/ansible-galaxy-fortiswitch-collection/tree/fsw_v7.0.0/galaxy_1.1.3"
+documentation: "https://ansible-galaxy-fortiswitch-docs.readthedocs.io/en/galaxy-1.1.3"
 homepage: "https://www.fortinet.com"
 issues: "https://github.com/fortinet-ansible-dev/ansible-galaxy-fortiswitch-collection/issues"

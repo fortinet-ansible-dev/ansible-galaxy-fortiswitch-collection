@@ -94,7 +94,7 @@ version:
 results:
   description: the main output of the execution
   returned: only for successful calls
-  type: json
+  type: str
 '''
 
 EXAMPLES = '''
@@ -149,7 +149,7 @@ def download_sniffer_profile(data, fos):
     download_sniffer_profile_data = data['execute_download_sniffer_profile']
     filtered_data = underscore_to_hyphen(filter_download_sniffer_profile_data(download_sniffer_profile_data))
 
-    return fos.call_execute_api(
+    return fos.invoke_execute_api(
         'download',
         'sniffer-profile',
         data=filtered_data,
@@ -179,7 +179,10 @@ params = {
                 "v7.0.3": True,
                 "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True
+                "v7.0.0": True,
+                "v7.0.6": True,
+                "v7.0.5": True,
+                "v7.0.4": True
             }
         }
     },
@@ -187,7 +190,10 @@ params = {
         "v7.0.3": True,
         "v7.0.2": True,
         "v7.0.1": True,
-        "v7.0.0": True
+        "v7.0.0": True,
+        "v7.0.6": True,
+        "v7.0.5": True,
+        "v7.0.4": True
     }
 }
 

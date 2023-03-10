@@ -15,7 +15,6 @@ import traceback
 
 from ansible.module_utils._text import to_text
 import json
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.secret_field import is_secret_field
 
 try:
     import urllib.parse as urlencoding
@@ -500,6 +499,8 @@ class FortiOSHandler(object):
         keyname = self.get_mkeyname(path, name, vdom)
         if not keyname:
             return None
+        elif not data:
+            return None
         else:
             try:
                 mkey = data[keyname]
@@ -549,7 +550,7 @@ class FortiOSHandler(object):
             mkey = self.get_mkey(path, name, data, vdom=vdom)
         url = self.cmdb_url(path, name, vdom, mkey)
 
-        http_status, result_data = self._conn.send_request(url=url, params=parameters, data=json.dumps(data), method='PUT')
+        http_status, result_data = self._conn.send_request(url=url, params=parameters, data=json.dumps({'json': data}), method='PUT')
 
         if parameters and 'action' in parameters and parameters['action'] == 'move':
             return self.formatresponse(result_data, http_status, vdom=vdom)
@@ -568,7 +569,7 @@ class FortiOSHandler(object):
 
         url = self.cmdb_url(path, name, vdom, mkey=None)
 
-        http_status, result_data = self._conn.send_request(url=url, params=parameters, data=json.dumps(data), method='POST')
+        http_status, result_data = self._conn.send_request(url=url, params=parameters, data=json.dumps({'json': data}), method='POST')
 
         return self.formatresponse(result_data, http_status, vdom=vdom)
 
@@ -580,7 +581,7 @@ class FortiOSHandler(object):
 
         return self.formatresponse(result_data, http_status, vdom=vdom)
 
-    def call_execute_api(self, path, name, data=None, parameters=None):
+    def invoke_execute_api(self, path, name, data=None, parameters=None):
         http_status, result_data = self._conn.send_request(
             url="/api/v2/execute/" + path + "/" + name,
             params=parameters,
