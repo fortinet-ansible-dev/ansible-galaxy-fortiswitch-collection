@@ -75,11 +75,11 @@ options:
                 type: str
                 choices:
                     - 'recursive'
-                    - 'non-recursive'
-                    - 'forward-only'
+                    - 'non_recursive'
+                    - 'forward_only'
             name:
                 description:
-                    - Dns server name. Source system.interface.name.
+                    - Dns server name.
                 required: true
                 type: str
 '''
@@ -266,87 +266,116 @@ def fortiswitch_system(data, fos, check_mode):
 
 
 versioned_schema = {
-    "elements": "dict",
     "type": "list",
+    "elements": "dict",
     "children": {
         "name": {
-            "type": "string",
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "name",
+            "help": "Dns server name.",
+            "category": "unitary"
         },
         "mode": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "string",
             "options": [
                 {
                     "value": "recursive",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 },
                 {
-                    "value": "non-recursive",
+                    "value": "non_recursive",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 },
                 {
-                    "value": "forward-only",
+                    "value": "forward_only",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 }
             ],
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+            "name": "mode",
+            "help": "Dns server mode.",
+            "category": "unitary"
         }
     },
     "revisions": {
-        "v7.0.3": True,
-        "v7.0.2": True,
-        "v7.0.1": True,
         "v7.0.0": True,
-        "v7.0.6": True,
+        "v7.0.1": True,
+        "v7.0.2": True,
+        "v7.0.3": True,
+        "v7.0.4": True,
         "v7.0.5": True,
-        "v7.0.4": True
-    }
+        "v7.0.6": True,
+        "v7.2.1": True,
+        "v7.2.2": True,
+        "v7.2.3": True
+    },
+    "name": "dns_server",
+    "help": "Dns-server.",
+    "mkey": "name",
+    "category": "table"
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = 'name'
+    # mkeyname = None
+    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},

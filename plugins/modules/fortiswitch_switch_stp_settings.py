@@ -260,234 +260,325 @@ def fortiswitch_switch_stp(data, fos):
 
 
 versioned_schema = {
+    "revisions": {
+        "v7.0.0": True,
+        "v7.0.1": True,
+        "v7.0.2": True,
+        "v7.0.3": True,
+        "v7.0.4": True,
+        "v7.0.5": True,
+        "v7.0.6": True,
+        "v7.2.1": True,
+        "v7.2.2": True,
+        "v7.2.3": True
+    },
     "type": "dict",
     "children": {
         "status": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "string",
             "options": [
                 {
                     "value": "enable",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 },
                 {
                     "value": "disable",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 }
             ],
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "max_age": {
-            "type": "integer",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "pending_timer": {
-            "type": "integer",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "name": {
-            "type": "string",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+            "name": "status",
+            "help": "Enable/disable spanning tree.",
+            "category": "unitary"
         },
         "hello_time": {
-            "type": "integer",
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "integer",
+            "name": "hello_time",
+            "help": "Hello time.",
+            "category": "unitary"
+        },
+        "name": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "name",
+            "help": "Name.",
+            "category": "unitary"
+        },
+        "mclag_stp_mac": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "mclag_stp_mac",
+            "help": "MCLAG STP mac address.",
+            "category": "unitary"
+        },
+        "pending_timer": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "integer",
+            "name": "pending_timer",
+            "help": "Pending time.",
+            "category": "unitary"
+        },
+        "forward_time": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "integer",
+            "name": "forward_time",
+            "help": "Forwarding delay.",
+            "category": "unitary"
+        },
+        "flood": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "options": [
+                {
+                    "value": "enable",
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    }
+                },
+                {
+                    "value": "disable",
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    }
+                }
+            ],
+            "name": "flood",
+            "help": "Enable/disable stp bpdu flood.",
+            "category": "unitary"
         },
         "mclag_stp_bpdu": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "string",
             "options": [
                 {
                     "value": "both",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 },
                 {
                     "value": "single",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 }
             ],
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "mclag_stp_mac": {
-            "type": "string",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "flood": {
-            "type": "string",
-            "options": [
-                {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                }
-            ],
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+            "name": "mclag_stp_bpdu",
+            "help": "MCLAG STP bpdu.",
+            "category": "unitary"
         },
         "max_hops": {
-            "type": "integer",
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "integer",
+            "name": "max_hops",
+            "help": "Maximum number of hops.",
+            "category": "unitary"
         },
-        "forward_time": {
-            "type": "integer",
+        "max_age": {
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "integer",
+            "name": "max_age",
+            "help": "Maximum aging time.",
+            "category": "unitary"
         },
         "revision": {
-            "type": "integer",
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "integer",
+            "name": "revision",
+            "help": "Stp revision.",
+            "category": "unitary"
         }
     },
-    "revisions": {
-        "v7.0.3": True,
-        "v7.0.2": True,
-        "v7.0.1": True,
-        "v7.0.0": True,
-        "v7.0.6": True,
-        "v7.0.5": True,
-        "v7.0.4": True
-    }
+    "name": "settings",
+    "help": "Switch-global stp settings.",
+    "category": "complex"
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = None
+    # mkeyname = None
+    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},

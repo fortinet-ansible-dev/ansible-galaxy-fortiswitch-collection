@@ -227,122 +227,171 @@ def fortiswitch_system(data, fos):
 
 
 versioned_schema = {
+    "revisions": {
+        "v7.0.0": True,
+        "v7.0.1": True,
+        "v7.0.2": True,
+        "v7.0.3": True,
+        "v7.0.4": True,
+        "v7.0.5": True,
+        "v7.0.6": True,
+        "v7.2.1": True,
+        "v7.2.2": True,
+        "v7.2.3": True
+    },
     "type": "dict",
     "children": {
-        "source_ip": {
-            "type": "string",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "primary": {
-            "type": "string",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
         "vdom_dns": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "string",
             "options": [
                 {
                     "value": "enable",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 },
                 {
                     "value": "disable",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 }
             ],
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+            "name": "vdom_dns",
+            "help": "Enable/Disable dns per vdom.",
+            "category": "unitary"
         },
-        "ip6_primary": {
-            "type": "string",
+        "source_ip": {
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "source_ip",
+            "help": "Source IP for communications to DNS server.",
+            "category": "unitary"
+        },
+        "primary": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "primary",
+            "help": "Vdom primary dns ip.",
+            "category": "unitary"
         },
         "ip6_secondary": {
-            "type": "string",
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "ip6_secondary",
+            "help": "Vdom IPv6 seondary dns ip.",
+            "category": "unitary"
+        },
+        "ip6_primary": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "ip6_primary",
+            "help": "Vdom IPv6 primary dns ip.",
+            "category": "unitary"
         },
         "secondary": {
-            "type": "string",
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "secondary",
+            "help": "Vdom secondary dns ip.",
+            "category": "unitary"
         }
     },
-    "revisions": {
-        "v7.0.3": True,
-        "v7.0.2": True,
-        "v7.0.1": True,
-        "v7.0.0": True,
-        "v7.0.6": True,
-        "v7.0.5": True,
-        "v7.0.4": True
-    }
+    "name": "vdom_dns",
+    "help": "Vdom dns configuration.",
+    "category": "complex"
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = None
+    # mkeyname = None
+    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},

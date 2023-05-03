@@ -89,7 +89,7 @@ options:
                 type: str
             device:
                 description:
-                    - Gateway out interface. Source system.interface.name.
+                    - Gateway out interface.
                 type: str
             devindex:
                 description:
@@ -110,6 +110,7 @@ options:
             seq_num:
                 description:
                     - entry No.
+                required: true
                 type: int
             status:
                 description:
@@ -120,7 +121,7 @@ options:
                     - 'disable'
             vrf:
                 description:
-                    - VRF. Source router.vrf.name.
+                    - VRF.
                 type: str
 '''
 
@@ -318,235 +319,327 @@ def fortiswitch_router(data, fos, check_mode):
 
 
 versioned_schema = {
-    "elements": "dict",
     "type": "list",
+    "elements": "dict",
     "children": {
         "status": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "string",
             "options": [
                 {
                     "value": "enable",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 },
                 {
                     "value": "disable",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 }
             ],
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+            "name": "status",
+            "help": "Status.",
+            "category": "unitary"
         },
         "distance": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "integer",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "devindex": {
-            "type": "integer",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "dst": {
-            "type": "string",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "seq_num": {
-            "type": "integer",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "blackhole": {
-            "type": "string",
-            "options": [
-                {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                }
-            ],
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "vrf": {
-            "type": "string",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "device": {
-            "type": "string",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+            "name": "distance",
+            "help": "Administrative distance (1-255).",
+            "category": "unitary"
         },
         "bfd": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "string",
             "options": [
                 {
                     "value": "enable",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 },
                 {
                     "value": "disable",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 }
             ],
+            "name": "bfd",
+            "help": "Bidirectional Forwarding Detection (BFD).",
+            "category": "unitary"
+        },
+        "dst": {
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "dst",
+            "help": "Destination IPv6 prefix for this route.",
+            "category": "unitary"
+        },
+        "devindex": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "integer",
+            "name": "devindex",
+            "help": "devindex",
+            "category": "unitary"
+        },
+        "seq_num": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "integer",
+            "name": "seq_num",
+            "help": "entry No.",
+            "category": "unitary"
+        },
+        "blackhole": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "options": [
+                {
+                    "value": "enable",
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    }
+                },
+                {
+                    "value": "disable",
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    }
+                }
+            ],
+            "name": "blackhole",
+            "help": "Enable/disable black hole.",
+            "category": "unitary"
+        },
+        "vrf": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "vrf",
+            "help": "VRF.",
+            "category": "unitary"
+        },
+        "device": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "device",
+            "help": "Gateway out interface.",
+            "category": "unitary"
         },
         "gateway": {
-            "type": "string",
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "gateway",
+            "help": "Gateway IPv6 address for this route.",
+            "category": "unitary"
         },
         "comment": {
-            "type": "string",
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "comment",
+            "help": "comment",
+            "category": "unitary"
         }
     },
     "revisions": {
-        "v7.0.3": True,
-        "v7.0.2": True,
-        "v7.0.1": True,
         "v7.0.0": True,
-        "v7.0.6": True,
+        "v7.0.1": True,
+        "v7.0.2": True,
+        "v7.0.3": True,
+        "v7.0.4": True,
         "v7.0.5": True,
-        "v7.0.4": True
-    }
+        "v7.0.6": True,
+        "v7.2.1": True,
+        "v7.2.2": True,
+        "v7.2.3": True
+    },
+    "name": "static6",
+    "help": "Ipv6 static routes configuration.",
+    "mkey": "seq_num",
+    "category": "table"
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = 'seq-num'
+    # mkeyname = None
+    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},

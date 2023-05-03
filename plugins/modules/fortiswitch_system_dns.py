@@ -243,158 +243,225 @@ def fortiswitch_system(data, fos):
 
 
 versioned_schema = {
+    "revisions": {
+        "v7.0.0": True,
+        "v7.0.1": True,
+        "v7.0.2": True,
+        "v7.0.3": True,
+        "v7.0.4": True,
+        "v7.0.5": True,
+        "v7.0.6": True,
+        "v7.2.1": True,
+        "v7.2.2": True,
+        "v7.2.3": True
+    },
     "type": "dict",
     "children": {
-        "dns_cache_limit": {
-            "type": "integer",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
         "domain": {
-            "type": "string",
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "domain",
+            "help": "Local domain name.",
+            "category": "unitary"
+        },
+        "dns_cache_ttl": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "integer",
+            "name": "dns_cache_ttl",
+            "help": "TTL in DNS cache (60 - 86400).",
+            "category": "unitary"
+        },
+        "primary": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "primary",
+            "help": "IP address for primary DNS server.",
+            "category": "unitary"
+        },
+        "dns_cache_limit": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "integer",
+            "name": "dns_cache_limit",
+            "help": "Maximum number of entries in DNS cache.",
+            "category": "unitary"
         },
         "cache_notfound_responses": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "string",
             "options": [
                 {
                     "value": "disable",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 },
                 {
                     "value": "enable",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 }
             ],
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "source_ip": {
-            "type": "string",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "primary": {
-            "type": "string",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "ip6_primary": {
-            "type": "string",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+            "name": "cache_notfound_responses",
+            "help": "Enable/disable caching of NOTFOUND responses from DNS server.",
+            "category": "unitary"
         },
         "ip6_secondary": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "string",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+            "name": "ip6_secondary",
+            "help": "IPv6 address for secondary DNS server.",
+            "category": "unitary"
         },
-        "dns_cache_ttl": {
-            "type": "integer",
+        "ip6_primary": {
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "ip6_primary",
+            "help": "IPv6 address for primary DNS server.",
+            "category": "unitary"
+        },
+        "source_ip": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "source_ip",
+            "help": "Source IP for DNS queries.",
+            "category": "unitary"
         },
         "secondary": {
-            "type": "string",
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "secondary",
+            "help": "IP address for secondary DNS server.",
+            "category": "unitary"
         }
     },
-    "revisions": {
-        "v7.0.3": True,
-        "v7.0.2": True,
-        "v7.0.1": True,
-        "v7.0.0": True,
-        "v7.0.6": True,
-        "v7.0.5": True,
-        "v7.0.4": True
-    }
+    "name": "dns",
+    "help": "Configure DNS.",
+    "category": "complex"
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = None
+    # mkeyname = None
+    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},

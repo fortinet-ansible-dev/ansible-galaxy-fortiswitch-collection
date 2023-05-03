@@ -217,70 +217,86 @@ def fortiswitch_system(data, fos):
 
 
 versioned_schema = {
+    "revisions": {
+        "v7.0.0": True,
+        "v7.0.1": True,
+        "v7.0.2": True
+    },
     "type": "dict",
     "children": {
         "status": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True
+            },
             "type": "string",
             "options": [
                 {
                     "value": "enable",
                     "revisions": {
-                        "v7.0.2": True,
+                        "v7.0.0": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.2": True
                     }
                 },
                 {
                     "value": "disable",
                     "revisions": {
-                        "v7.0.2": True,
+                        "v7.0.0": True,
                         "v7.0.1": True,
-                        "v7.0.0": True
+                        "v7.0.2": True
                     }
                 }
             ],
-            "revisions": {
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True
-            }
+            "name": "status",
+            "help": "Enable/disable fsw-cloud service.",
+            "category": "unitary"
         },
         "interval": {
-            "type": "integer",
             "revisions": {
-                "v7.0.2": True,
+                "v7.0.0": True,
                 "v7.0.1": True,
-                "v7.0.0": True
-            }
+                "v7.0.2": True
+            },
+            "type": "integer",
+            "name": "interval",
+            "help": "Service name resolution time interval (3-300sec,default=45).",
+            "category": "unitary"
         },
         "port": {
-            "type": "integer",
             "revisions": {
-                "v7.0.2": True,
+                "v7.0.0": True,
                 "v7.0.1": True,
-                "v7.0.0": True
-            }
+                "v7.0.2": True
+            },
+            "type": "integer",
+            "name": "port",
+            "help": "Port Number.",
+            "category": "unitary"
         },
         "name": {
-            "type": "string",
             "revisions": {
-                "v7.0.2": True,
+                "v7.0.0": True,
                 "v7.0.1": True,
-                "v7.0.0": True
-            }
+                "v7.0.2": True
+            },
+            "type": "string",
+            "name": "name",
+            "help": "Fully qualified domain name or IP address of fsw-cloud service.",
+            "category": "unitary"
         }
     },
-    "revisions": {
-        "v7.0.2": True,
-        "v7.0.1": True,
-        "v7.0.0": True
-    }
+    "name": "fsw_cloud",
+    "help": "FortiSwitch cloud manager configuration.",
+    "category": "complex"
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = None
+    # mkeyname = None
+    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},

@@ -478,611 +478,892 @@ def fortiswitch_system(data, fos, check_mode):
 
 
 versioned_schema = {
-    "elements": "dict",
     "type": "list",
+    "elements": "dict",
     "children": {
+        "address_civic": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "dict",
+            "children": {
+                "country_subdivision": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "country_subdivision",
+                    "help": "National subdivisions (state,canton,region,province,or prefecture).",
+                    "category": "unitary"
+                },
+                "sub_branch_road": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "sub_branch_road",
+                    "help": "Sub branch road name.",
+                    "category": "unitary"
+                },
+                "street_name_pre_mod": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "street_name_pre_mod",
+                    "help": "Street name pre modifier.",
+                    "category": "unitary"
+                },
+                "number": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "number",
+                    "help": "House number.",
+                    "category": "unitary"
+                },
+                "seat": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "seat",
+                    "help": "Seat number.",
+                    "category": "unitary"
+                },
+                "county": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "county",
+                    "help": "County,parish,gun (JP),or district (IN).",
+                    "category": "unitary"
+                },
+                "street": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "street",
+                    "help": "Street.",
+                    "category": "unitary"
+                },
+                "unit": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "unit",
+                    "help": "Unit (apartment,suite).",
+                    "category": "unitary"
+                },
+                "city": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "city",
+                    "help": "City,township,or shi (JP).",
+                    "category": "unitary"
+                },
+                "additional": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "additional",
+                    "help": "Additional location information.",
+                    "category": "unitary"
+                },
+                "zip": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "zip",
+                    "help": "Postal/zip code.",
+                    "category": "unitary"
+                },
+                "floor": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "floor",
+                    "help": "Floor.",
+                    "category": "unitary"
+                },
+                "branch_road": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "branch_road",
+                    "help": "Branch road name.",
+                    "category": "unitary"
+                },
+                "street_name_post_mod": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "street_name_post_mod",
+                    "help": "Street name post modifier.",
+                    "category": "unitary"
+                },
+                "post_office_box": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "post_office_box",
+                    "help": "Post office box (P.O. box).",
+                    "category": "unitary"
+                },
+                "primary_road": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "primary_road",
+                    "help": "Primary road name.",
+                    "category": "unitary"
+                },
+                "place_type": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "place_type",
+                    "help": "Placetype.",
+                    "category": "unitary"
+                },
+                "direction": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "direction",
+                    "help": "Leading street direction.",
+                    "category": "unitary"
+                },
+                "street_suffix": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "street_suffix",
+                    "help": "Street suffix.",
+                    "category": "unitary"
+                },
+                "road_section": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "road_section",
+                    "help": "Road section.",
+                    "category": "unitary"
+                },
+                "number_suffix": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "number_suffix",
+                    "help": "House number suffix.",
+                    "category": "unitary"
+                },
+                "name": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "name",
+                    "help": "Name (residence and office occupant).",
+                    "category": "unitary"
+                },
+                "building": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "building",
+                    "help": "Building (structure).",
+                    "category": "unitary"
+                },
+                "room": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "room",
+                    "help": "Room number.",
+                    "category": "unitary"
+                },
+                "language": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "language",
+                    "help": "Language.",
+                    "category": "unitary"
+                },
+                "additional_code": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "additional_code",
+                    "help": "Additional code.",
+                    "category": "unitary"
+                },
+                "country": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "country",
+                    "help": "The two-letter ISO 3166 country code in capital ASCII letters eg. US,CA,DK,DE.",
+                    "category": "unitary"
+                },
+                "script": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "script",
+                    "help": "Script used to present the address information.",
+                    "category": "unitary"
+                },
+                "city_division": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "city_division",
+                    "help": "City division,borough,city district,ward,or chou (JP).",
+                    "category": "unitary"
+                },
+                "trailing_str_suffix": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "trailing_str_suffix",
+                    "help": "Trailing street suffix.",
+                    "category": "unitary"
+                },
+                "landmark": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "landmark",
+                    "help": "Landmark or vanity address.",
+                    "category": "unitary"
+                },
+                "block": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "block",
+                    "help": "Neighborhood or block.",
+                    "category": "unitary"
+                },
+                "postal_community": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "postal_community",
+                    "help": "Postal community name.",
+                    "category": "unitary"
+                }
+            },
+            "name": "address_civic",
+            "help": "Configure Location Civic Address.",
+            "category": "complex"
+        },
         "elin_number": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "dict",
             "children": {
                 "elin_number": {
-                    "type": "string",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "elin_number",
+                    "help": "Configure Elin Callback Number,10 to 20 bytes numerial string.",
+                    "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "address_civic": {
-            "type": "dict",
-            "children": {
-                "number": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "seat": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "county": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "street": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "road_section": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "primary_road": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "postal_community": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "unit": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "post_office_box": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "city": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "additional": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "zip": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "floor": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "street_suffix": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "city_division": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "sub_branch_road": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "direction": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "branch_road": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "country_subdivision": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "additional_code": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "number_suffix": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "street_name_pre_mod": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "room": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "building": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "name": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "language": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "country": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "script": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "place_type": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "street_name_post_mod": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "trailing_str_suffix": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "landmark": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "block": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                }
-            },
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+            "name": "elin_number",
+            "help": "Configure Location ELIN Number.",
+            "category": "complex"
         },
         "name": {
-            "type": "string",
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "name",
+            "help": "Unique Location Item Name.",
+            "category": "unitary"
         },
         "coordinates": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "dict",
             "children": {
                 "latitude": {
-                    "type": "string",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "altitude": {
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
                     "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                    "name": "latitude",
+                    "help": "Floating point start with ( +/- )  or end with ( N or S ) eg. +/-16.67 or 16.67N.",
+                    "category": "unitary"
                 },
                 "datum": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
                     "type": "string",
                     "options": [
                         {
                             "value": "WGS84",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         },
                         {
                             "value": "NAD83",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         },
                         {
                             "value": "NAD83/MLLW",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         }
                     ],
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                    "name": "datum",
+                    "help": "WGS84,NAD83,NAD83/MLLW .",
+                    "category": "unitary"
                 },
-                "longitude": {
-                    "type": "string",
+                "altitude": {
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "altitude",
+                    "help": "+/- Floating point no. eg. 117.47.",
+                    "category": "unitary"
                 },
                 "altitude_unit": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
                     "type": "string",
                     "options": [
                         {
                             "value": "m",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         },
                         {
                             "value": "f",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         }
                     ],
+                    "name": "altitude_unit",
+                    "help": "m ( meters),f ( floors).",
+                    "category": "unitary"
+                },
+                "longitude": {
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "longitude",
+                    "help": "Floating point start with ( +/- )  or end with ( E or W ) eg. +/-26.789 or 26.789E.",
+                    "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+            "name": "coordinates",
+            "help": "Configure Location GPS Coordinates.",
+            "category": "complex"
         }
     },
     "revisions": {
-        "v7.0.3": True,
-        "v7.0.2": True,
-        "v7.0.1": True,
         "v7.0.0": True,
-        "v7.0.6": True,
+        "v7.0.1": True,
+        "v7.0.2": True,
+        "v7.0.3": True,
+        "v7.0.4": True,
         "v7.0.5": True,
-        "v7.0.4": True
-    }
+        "v7.0.6": True,
+        "v7.2.1": True,
+        "v7.2.2": True,
+        "v7.2.3": True
+    },
+    "name": "location",
+    "help": "Configure Location table.",
+    "mkey": "name",
+    "category": "table"
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = 'name'
+    # mkeyname = None
+    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},

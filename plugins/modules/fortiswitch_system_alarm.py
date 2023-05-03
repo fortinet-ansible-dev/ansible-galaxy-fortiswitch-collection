@@ -321,358 +321,516 @@ def fortiswitch_system(data, fos):
 
 
 versioned_schema = {
+    "revisions": {
+        "v7.0.0": True,
+        "v7.0.1": True,
+        "v7.0.2": True,
+        "v7.0.3": True,
+        "v7.0.4": True,
+        "v7.0.5": True,
+        "v7.0.6": True,
+        "v7.2.1": True,
+        "v7.2.2": True,
+        "v7.2.3": True
+    },
     "type": "dict",
     "children": {
         "status": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "string",
             "options": [
                 {
                     "value": "enable",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 },
                 {
                     "value": "disable",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 }
             ],
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+            "name": "status",
+            "help": "Enable/disable alarm.",
+            "category": "unitary"
         },
         "audible": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "string",
             "options": [
                 {
                     "value": "enable",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 },
                 {
                     "value": "disable",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 }
             ],
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+            "name": "audible",
+            "help": "Enable/disable audible alarm.",
+            "category": "unitary"
         },
         "groups": {
-            "elements": "dict",
             "type": "list",
+            "elements": "dict",
             "children": {
-                "fw_policy_id_threshold": {
-                    "type": "integer",
+                "user_auth_failure_threshold": {
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "user_auth_failure_threshold",
+                    "help": "User authentication failure threshold.",
+                    "category": "unitary"
+                },
+                "encryption_failure_threshold": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "encryption_failure_threshold",
+                    "help": "Encryption failure threshold.",
+                    "category": "unitary"
                 },
                 "admin_auth_lockout_threshold": {
-                    "type": "integer",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "admin_auth_lockout_threshold",
+                    "help": "Admin authentication lockout threshold.",
+                    "category": "unitary"
                 },
-                "user_auth_lockout_threshold": {
-                    "type": "integer",
+                "fw_policy_id_threshold": {
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "fw_policy_id_threshold",
+                    "help": "Firewall policy id threshold.",
+                    "category": "unitary"
+                },
+                "self_test_failure_threshold": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "self_test_failure_threshold",
+                    "help": "Self-test failure threshold.",
+                    "category": "unitary"
                 },
                 "fw_policy_violations": {
-                    "elements": "dict",
                     "type": "list",
+                    "elements": "dict",
                     "children": {
                         "threshold": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
                             "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "src_ip": {
-                            "type": "string",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "src_port": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
+                            "name": "threshold",
+                            "help": "Firewall policy violation threshold.",
+                            "category": "unitary"
                         },
                         "dst_port": {
-                            "type": "integer",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
-                            }
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "dst_port",
+                            "help": "Destination port (0=all).",
+                            "category": "unitary"
+                        },
+                        "src_port": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "src_port",
+                            "help": "Source port (0=all).",
+                            "category": "unitary"
+                        },
+                        "src_ip": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "name": "src_ip",
+                            "help": "Source ip (0=all).",
+                            "category": "unitary"
                         },
                         "dst_ip": {
-                            "type": "string",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
-                            }
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "name": "dst_ip",
+                            "help": "Destination ip (0=all).",
+                            "category": "unitary"
                         }
                     },
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "user_auth_failure_threshold": {
-                    "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "period": {
-                    "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
                         "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "admin_auth_failure_threshold": {
-                    "type": "integer",
-                    "revisions": {
                         "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "log_full_warning_threshold": {
-                    "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
                         "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "decryption_failure_threshold": {
-                    "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "replay_attempt_threshold": {
-                    "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "id": {
-                    "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "self_test_failure_threshold": {
-                    "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "encryption_failure_threshold": {
-                    "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "name": "fw_policy_violations",
+                    "help": "Firewall policy violations.",
+                    "category": "table"
                 },
                 "fw_policy_id": {
-                    "type": "integer",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "fw_policy_id",
+                    "help": "Firewall policy id.",
+                    "category": "unitary"
+                },
+                "period": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "period",
+                    "help": "Time period in seconds (0=from start up).",
+                    "category": "unitary"
+                },
+                "replay_attempt_threshold": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "replay_attempt_threshold",
+                    "help": "Replay attempt threshold.",
+                    "category": "unitary"
+                },
+                "admin_auth_failure_threshold": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "admin_auth_failure_threshold",
+                    "help": "Admin authentication failure threshold.",
+                    "category": "unitary"
+                },
+                "decryption_failure_threshold": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "decryption_failure_threshold",
+                    "help": "Decryption failure threshold.",
+                    "category": "unitary"
+                },
+                "user_auth_lockout_threshold": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "user_auth_lockout_threshold",
+                    "help": "User authentication lockout threshold.",
+                    "category": "unitary"
+                },
+                "log_full_warning_threshold": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "log_full_warning_threshold",
+                    "help": "Log full warning threshold.",
+                    "category": "unitary"
+                },
+                "id": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "id",
+                    "help": "Group id.",
+                    "category": "unitary"
                 }
             },
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "name": "groups",
+            "help": "Alarm groups.",
+            "mkey": "id",
+            "category": "table"
         },
         "sequence": {
-            "type": "integer",
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "integer",
+            "name": "sequence",
+            "help": "Sequence id of alarms.",
+            "category": "unitary"
         }
     },
-    "revisions": {
-        "v7.0.3": True,
-        "v7.0.2": True,
-        "v7.0.1": True,
-        "v7.0.0": True,
-        "v7.0.6": True,
-        "v7.0.5": True,
-        "v7.0.4": True
-    }
+    "name": "alarm",
+    "help": "Alarm configuration.",
+    "category": "complex"
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = None
+    # mkeyname = None
+    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},

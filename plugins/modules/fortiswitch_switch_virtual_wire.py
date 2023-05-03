@@ -71,7 +71,7 @@ options:
         suboptions:
             first_member:
                 description:
-                    - First member of virtual wire pair. Source switch.physical-port.name.
+                    - First member of virtual wire pair.
                 type: str
             name:
                 description:
@@ -80,7 +80,7 @@ options:
                 type: str
             second_member:
                 description:
-                    - Second member of virtual wire pair. Source switch.physical-port.name.
+                    - Second member of virtual wire pair.
                 type: str
             vlan:
                 description:
@@ -102,9 +102,9 @@ EXAMPLES = '''
     fortiswitch_switch_virtual_wire:
       state: "present"
       switch_virtual_wire:
-        first_member: "<your_own_value> (source switch.physical-port.name)"
+        first_member: "<your_own_value> (source switch.physical_port.name)"
         name: "default_name_4"
-        second_member: "<your_own_value> (source switch.physical-port.name)"
+        second_member: "<your_own_value> (source switch.physical_port.name)"
         vlan: "6"
 
 '''
@@ -273,73 +273,105 @@ def fortiswitch_switch(data, fos, check_mode):
 
 
 versioned_schema = {
-    "elements": "dict",
     "type": "list",
+    "elements": "dict",
     "children": {
-        "second_member": {
-            "type": "string",
+        "first_member": {
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "first_member",
+            "help": "First member of virtual wire pair.",
+            "category": "unitary"
         },
         "vlan": {
-            "type": "integer",
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "integer",
+            "name": "vlan",
+            "help": "VLAN (can be shared between virtual wires and non-virtual wire ports).",
+            "category": "unitary"
         },
         "name": {
-            "type": "string",
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "name",
+            "help": "Virtual wire name.",
+            "category": "unitary"
         },
-        "first_member": {
-            "type": "string",
+        "second_member": {
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "second_member",
+            "help": "Second member of virtual wire pair.",
+            "category": "unitary"
         }
     },
     "revisions": {
-        "v7.0.3": True,
-        "v7.0.2": True,
-        "v7.0.1": True,
         "v7.0.0": True,
-        "v7.0.6": True,
+        "v7.0.1": True,
+        "v7.0.2": True,
+        "v7.0.3": True,
+        "v7.0.4": True,
         "v7.0.5": True,
-        "v7.0.4": True
-    }
+        "v7.0.6": True,
+        "v7.2.1": True,
+        "v7.2.2": True,
+        "v7.2.3": True
+    },
+    "name": "virtual_wire",
+    "help": "Configure virtual wire.",
+    "mkey": "name",
+    "category": "table"
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = 'name'
+    # mkeyname = None
+    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},

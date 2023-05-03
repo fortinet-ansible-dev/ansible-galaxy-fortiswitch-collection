@@ -5,6 +5,19 @@ Fortinet.Fortiswitch Release Notes
 .. contents:: Topics
 
 
+v1.2.0
+======
+
+Release Summary
+---------------
+
+patch release of 1.2.0
+
+Major Changes
+-------------
+
+- Support new FortiSwitch versions 7.2.1, 7.2.2 and 7.2.3.
+
 v1.1.3
 ======
 

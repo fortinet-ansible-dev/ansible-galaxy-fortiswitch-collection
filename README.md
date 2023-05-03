@@ -9,7 +9,7 @@ The collection is the FortiSwitch Ansible Automation project. It includes the mo
 This collection is distributed via [ansible-galaxy](https://galaxy.ansible.com/), the installation steps are as follows:
 
 1. Install or upgrade to Ansible 2.11
-2. Download this collection from galaxy: `ansible-galaxy collection install fortinet.fortiswitch:1.1.3`
+2. Download this collection from galaxy: `ansible-galaxy collection install fortinet.fortiswitch:1.2.0`
 
 ## Requirements
 * Ansible 2.11 is required to support the newer Ansible Collections format
@@ -80,8 +80,8 @@ The collection provides the following modules:
 * `fortiswitch_router_policy` Policy routing configuration in Fortinet's FortiSwitch
 * `fortiswitch_router_prefix_list6` IPv6 prefix list configuration in Fortinet's FortiSwitch
 * `fortiswitch_router_prefix_list` Prefix list configuration in Fortinet's FortiSwitch
-* `fortiswitch_router_ripng` router ripng configuratio in Fortinet's FortiSwitch
 * `fortiswitch_router_rip` RIP configuration in Fortinet's FortiSwitch
+* `fortiswitch_router_ripng` router ripng configuratio in Fortinet's FortiSwitch
 * `fortiswitch_router_route_map` Route map configuration in Fortinet's FortiSwitch
 * `fortiswitch_router_setting` Set rib settings in Fortinet's FortiSwitch
 * `fortiswitch_router_static6` Ipv6 static routes configuration in Fortinet's FortiSwitch
@@ -125,8 +125,8 @@ The collection provides the following modules:
 * `fortiswitch_switch_stp_settings` Switch-global stp settings in Fortinet's FortiSwitch
 * `fortiswitch_switch_trunk` Link-aggregation in Fortinet's FortiSwitch
 * `fortiswitch_switch_virtual_wire` Configure virtual wire in Fortinet's FortiSwitch
-* `fortiswitch_switch_vlan` Configure optional per-VLAN settings in Fortinet's FortiSwitch
 * `fortiswitch_switch_vlan_tpid` Configure switch global ether-types in Fortinet's FortiSwitch
+* `fortiswitch_switch_vlan` Configure optional per-VLAN settings in Fortinet's FortiSwitch
 * `fortiswitch_system_accprofile` Configure system administrative access group in Fortinet's FortiSwitch
 * `fortiswitch_system_admin` Administrative user configuration in Fortinet's FortiSwitch
 * `fortiswitch_system_alarm` Alarm configuration in Fortinet's FortiSwitch
@@ -134,6 +134,11 @@ The collection provides the following modules:
 * `fortiswitch_system_alias_command` Alias command definitions in Fortinet's FortiSwitch
 * `fortiswitch_system_alias_group` Groups of alias commands in Fortinet's FortiSwitch
 * `fortiswitch_system_arp_table` Configure arp table in Fortinet's FortiSwitch
+* `fortiswitch_system_auto_script` Configure auto script in Fortinet's FortiSwitch
+* `fortiswitch_system_automation_action` Action for automation stitches in Fortinet's FortiSwitch
+* `fortiswitch_system_automation_destination` Automation destinations in Fortinet's FortiSwitch
+* `fortiswitch_system_automation_stitch` Automation stitches in Fortinet's FortiSwitch
+* `fortiswitch_system_automation_trigger` Trigger for automation stitches in Fortinet's FortiSwitch
 * `fortiswitch_system_autoupdate_clientoverride` Configure client override for the FDN in Fortinet's FortiSwitch
 * `fortiswitch_system_autoupdate_override` Configure override FDS server in Fortinet's FortiSwitch
 * `fortiswitch_system_autoupdate_push_update` Configure push updates in Fortinet's FortiSwitch
@@ -148,9 +153,10 @@ The collection provides the following modules:
 * `fortiswitch_system_certificate_remote` Remote certificate in Fortinet's FortiSwitch
 * `fortiswitch_system_console` Configure console in Fortinet's FortiSwitch
 * `fortiswitch_system_dhcp_server` Configure DHCP servers in Fortinet's FortiSwitch
-* `fortiswitch_system_dns` Configure DNS in Fortinet's FortiSwitch
 * `fortiswitch_system_dns_database` Dns-database in Fortinet's FortiSwitch
 * `fortiswitch_system_dns_server` Dns-server in Fortinet's FortiSwitch
+* `fortiswitch_system_dns` Configure DNS in Fortinet's FortiSwitch
+* `fortiswitch_system_email_server` Email server configuration in Fortinet's FortiSwitch
 * `fortiswitch_system_flan_cloud` FortiLAN cloud manager configuration in Fortinet's FortiSwitch
 * `fortiswitch_system_flow_export` System Flow Export settings in Fortinet's FortiSwitch
 * `fortiswitch_system_fm` Fm in Fortinet's FortiSwitch
@@ -187,6 +193,8 @@ The collection provides the following modules:
 * `fortiswitch_system_vdom_dns` Vdom dns configuration in Fortinet's FortiSwitch
 * `fortiswitch_system_vdom_property` Vdom-property configuration in Fortinet's FortiSwitch
 * `fortiswitch_system_vdom` Virtual domain configuration in Fortinet's FortiSwitch
+* `fortiswitch_system_vxlan` Configure VXLAN devices in Fortinet's FortiSwitch
+* `fortiswitch_system_web` Configure web attributes in Fortinet's FortiSwitch
 * `fortiswitch_system_zone` Zone configuration in Fortinet's FortiSwitch
 * `fortiswitch_user_group` User group configuration in Fortinet's FortiSwitch
 * `fortiswitch_user_ldap` LDAP server entry configuration in Fortinet's FortiSwitch

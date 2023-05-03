@@ -103,7 +103,7 @@ options:
                 type: str
                 choices:
                     - 'read'
-                    - 'read-write'
+                    - 'read_write'
             read_only_attributes:
                 description:
                     - Additional attributes allowed in get/show output when limit-shown-attributes is enabled.
@@ -171,7 +171,7 @@ options:
                         choices:
                             - 'string'
                             - 'integer'
-                            - 'table-id'
+                            - 'table_id'
             table_entry_create:
                 description:
                     - Allow/prevent this script from creating new entries in config tables.
@@ -418,557 +418,770 @@ def fortiswitch_system_alias(data, fos, check_mode):
 
 
 versioned_schema = {
-    "elements": "dict",
     "type": "list",
+    "elements": "dict",
     "children": {
-        "read_only_attributes": {
-            "elements": "dict",
-            "type": "list",
-            "children": {
-                "attribute_name": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                }
-            },
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "description": {
-            "type": "string",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "table_ids_allowed": {
-            "elements": "dict",
-            "type": "list",
-            "children": {
-                "entry_id": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                }
-            },
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "attribute": {
-            "type": "string",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
         "limit_shown_attributes": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "string",
             "options": [
                 {
                     "value": "disable",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 },
                 {
                     "value": "enable",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 }
             ],
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+            "name": "limit_shown_attributes",
+            "help": "Enable/disable limiting of config displayed in show and get.",
+            "category": "unitary"
         },
-        "script_arguments": {
-            "elements": "dict",
-            "type": "list",
-            "children": {
-                "table_path": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "help": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "type": {
-                    "type": "string",
-                    "options": [
-                        {
-                            "value": "string",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        {
-                            "value": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        {
-                            "value": "table-id",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
-                    ],
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "allowed_values": {
-                    "elements": "dict",
-                    "type": "list",
-                    "children": {
-                        "value": {
-                            "type": "string",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
-                    },
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "range_delay": {
-                    "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "range": {
-                    "type": "string",
-                    "options": [
-                        {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
-                    ],
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "optional": {
-                    "type": "string",
-                    "options": [
-                        {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
-                    ],
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "id": {
-                    "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "name": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                }
+        "name": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
             },
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "command": {
             "type": "string",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+            "name": "name",
+            "help": "Alias name.",
+            "category": "unitary"
         },
-        "type": {
+        "table_entry_create": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "string",
             "options": [
                 {
-                    "value": "configuration",
+                    "value": "allow",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 },
                 {
-                    "value": "script",
+                    "value": "deny",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 }
             ],
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "path": {
-            "type": "string",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+            "name": "table_entry_create",
+            "help": "Allow/prevent this script from creating new entries in config tables.",
+            "category": "unitary"
         },
         "permission": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "string",
             "options": [
                 {
                     "value": "read",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 },
                 {
-                    "value": "read-write",
+                    "value": "read_write",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 }
             ],
+            "name": "permission",
+            "help": "Allow read and write operations,or only read operations on this path.",
+            "category": "unitary"
+        },
+        "attribute": {
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "attribute",
+            "help": "Attribute which can be retreived or modified.",
+            "category": "unitary"
+        },
+        "table_ids_allowed": {
+            "type": "list",
+            "elements": "dict",
+            "children": {
+                "entry_id": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "entry_id",
+                    "help": "Entry ID.",
+                    "category": "unitary"
+                }
+            },
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "name": "table_ids_allowed",
+            "help": "Table entries this command is limited to.",
+            "mkey": "entry_id",
+            "category": "table"
+        },
+        "script_arguments": {
+            "type": "list",
+            "elements": "dict",
+            "children": {
+                "help": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "help",
+                    "help": "A help message for the argument.",
+                    "category": "unitary"
+                },
+                "range_delay": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "range_delay",
+                    "help": "When running against a range of values,delay this many seconds between values when executing.",
+                    "category": "unitary"
+                },
+                "optional": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "disable",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "enable",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        }
+                    ],
+                    "name": "optional",
+                    "help": "Enable/disable the option to omit this argument.",
+                    "category": "unitary"
+                },
+                "table_path": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "table_path",
+                    "help": "Path to configuration object or table.",
+                    "category": "unitary"
+                },
+                "allowed_values": {
+                    "type": "list",
+                    "elements": "dict",
+                    "children": {
+                        "value": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "name": "value",
+                            "help": "Allowed value.",
+                            "category": "unitary"
+                        }
+                    },
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "name": "allowed_values",
+                    "help": "Values to limit this argument to.",
+                    "mkey": "value",
+                    "category": "table"
+                },
+                "range": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "disable",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "enable",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        }
+                    ],
+                    "name": "range",
+                    "help": "Enable/disable the option to pass a range,or list,of values for this argument.",
+                    "category": "unitary"
+                },
+                "type": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "string",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "integer",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "table_id",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        }
+                    ],
+                    "name": "type",
+                    "help": "Argument data type.",
+                    "category": "unitary"
+                },
+                "id": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "id",
+                    "help": "Argument ID.",
+                    "category": "unitary"
+                },
+                "name": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "name",
+                    "help": "Display name for the argument.",
+                    "category": "unitary"
+                }
+            },
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "name": "script_arguments",
+            "help": "Optional meta-data and control values for script arguments.",
+            "mkey": "id",
+            "category": "table"
+        },
+        "command": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "command",
+            "help": "Script command template (use $1 for user argument).",
+            "category": "unitary"
+        },
+        "path": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "path",
+            "help": "Path to configuration object or table.",
+            "category": "unitary"
         },
         "table_listing": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "string",
             "options": [
                 {
                     "value": "allow",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 },
                 {
                     "value": "deny",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 }
             ],
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+            "name": "table_listing",
+            "help": "Allow/prevent listing of all entries in the config table.",
+            "category": "unitary"
         },
-        "table_entry_create": {
+        "read_only_attributes": {
+            "type": "list",
+            "elements": "dict",
+            "children": {
+                "attribute_name": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "attribute_name",
+                    "help": "Attribute name.",
+                    "category": "unitary"
+                }
+            },
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "name": "read_only_attributes",
+            "help": "Additional attributes allowed in get/show output when limit-shown-attributes is enabled.",
+            "mkey": "attribute_name",
+            "category": "table"
+        },
+        "type": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "string",
             "options": [
                 {
-                    "value": "allow",
+                    "value": "configuration",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 },
                 {
-                    "value": "deny",
+                    "value": "script",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 }
             ],
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+            "name": "type",
+            "help": "Command type to alias.",
+            "category": "unitary"
         },
-        "name": {
-            "type": "string",
+        "description": {
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "description",
+            "help": "Command description and/or help message.",
+            "category": "unitary"
         }
     },
     "revisions": {
-        "v7.0.3": True,
-        "v7.0.2": True,
-        "v7.0.1": True,
         "v7.0.0": True,
-        "v7.0.6": True,
+        "v7.0.1": True,
+        "v7.0.2": True,
+        "v7.0.3": True,
+        "v7.0.4": True,
         "v7.0.5": True,
-        "v7.0.4": True
-    }
+        "v7.0.6": True,
+        "v7.2.1": True,
+        "v7.2.2": True,
+        "v7.2.3": True
+    },
+    "name": "command",
+    "help": "Alias command definitions.",
+    "mkey": "name",
+    "category": "table"
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = 'name'
+    # mkeyname = None
+    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},

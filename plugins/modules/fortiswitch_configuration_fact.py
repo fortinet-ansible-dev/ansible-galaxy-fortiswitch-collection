@@ -105,167 +105,175 @@ options:
                 type: str
                 required: true
                 choices:
-                 - log.syslogd3_filter
-                 - user_radius
-                 - system_interface
-                 - log.fortianalyzer_override-setting
-                 - log_gui
-                 - system_session-ttl
-                 - log.memory_filter
-                 - system_accprofile
-                 - router_key-chain
-                 - log.syslogd_filter
-                 - router_aspath-list
-                 - system.certificate_remote
-                 - switch_domain
-                 - log.fortianalyzer_filter
-                 - system_arp-table
-                 - switch_physical-port
-                 - switch_ip-mac-binding
-                 - log.disk_filter
-                 - system_ntp
-                 - user_tacacs+
-                 - system_fm
-                 - switch_static-mac
-                 - system_global
-                 - switch_global
-                 - system_location
-                 - log.syslogd2_filter
-                 - system_flan-cloud
-                 - system_object-tag
-                 - log.syslogd_setting
-                 - system_resource-limits
-                 - system.autoupdate_schedule
-                 - switch.acl.service_custom
-                 - switch.igmp-snooping_globals
-                 - switch.lldp_settings
-                 - switch.network-monitor_directed
-                 - user_setting
-                 - log.fortianalyzer_override-filter
-                 - log.fortianalyzer3_setting
-                 - router_ospf6
-                 - user_peergrp
-                 - log.fortiguard_setting
-                 - router_rip
-                 - system.snmp_community
-                 - switch.qos_qos-policy
-                 - log.syslogd_override-filter
-                 - system.snmp_user
-                 - system_settings
-                 - switch_mirror
-                 - switch.acl_settings
-                 - system_proxy-arp
-                 - system_link-monitor
-                 - router_prefix-list
-                 - system.alias_command
-                 - system_dns-server
-                 - router_bgp
-                 - system.autoupdate_clientoverride
-                 - switch_quarantine
-                 - system_fortiguard
-                 - switch-controller_global
-                 - system.schedule_recurring
-                 - switch.ptp_policy
-                 - system.schedule_group
-                 - system_bug-report
-                 - switch_vlan
-                 - router_prefix-list6
-                 - log.memory_setting
-                 - system_vdom-property
-                 - switch_security-feature
-                 - router_auth-path
-                 - system.autoupdate_tunneling
-                 - user_ldap
-                 - switch_auto-network
-                 - log_eventfilter
-                 - system.dhcp_server
-                 - switch_auto-isl-port-group
-                 - switch.network-monitor_settings
-                 - switch.acl_policer
-                 - router_access-list
-                 - log.fortianalyzer3_filter
-                 - switch.ptp_settings
-                 - system_dns
-                 - log.syslogd2_setting
-                 - log.syslogd3_setting
-                 - system.autoupdate_push-update
-                 - system_fortianalyzer
-                 - system_management-tunnel
-                 - system.alias_group
-                 - switch_trunk
-                 - switch_vlan-tpid
-                 - log.remote_setting
-                 - system_sniffer-profile
-                 - router_setting
-                 - user_local
-                 - system_fortianalyzer3
-                 - system_console
-                 - system.snmp_sysinfo
-                 - system_password-policy
-                 - router_static6
-                 - router_multicast
-                 - system_fortiguard-log
-                 - system_fortimanager
-                 - system_mac-address-table
-                 - router_gwdetect
-                 - log.memory_global-setting
-                 - router_isis
-                 - log.syslogd_override-setting
-                 - router_multicast-flow
-                 - router_vrf
-                 - system.certificate_ocsp
-                 - log.fortianalyzer2_setting
-                 - router_static
-                 - alertemail_setting
-                 - log.fortianalyzer2_filter
-                 - system_fortianalyzer2
-                 - gui_console
-                 - router_community-list
-                 - log.fortianalyzer_setting
-                 - switch.acl_egress
-                 - switch.lldp_profile
-                 - system.autoupdate_override
-                 - user_peer
-                 - system_central-management
-                 - switch.qos_dot1p-map
-                 - switch_virtual-wire
-                 - system.certificate_crl
-                 - switch.acl_ingress
-                 - system_flow-export
-                 - system.certificate_local
-                 - system_alertemail
-                 - router_ripng
-                 - switch_raguard-policy
-                 - router_policy
-                 - system_fsw-cloud
-                 - system_zone
-                 - system_vdom-dns
-                 - system_tos-based-priority
-                 - router_route-map
-                 - system.schedule_onetime
-                 - router_ospf
-                 - log_custom-field
-                 - system_dns-database
-                 - switch_storm-control
-                 - system_admin
-                 - system_port-pair
-                 - switch.stp_instance
-                 - system_sflow
-                 - router_access-list6
                  - system_vdom
-                 - switch.acl_prelookup
-                 - system_alarm
+                 - system_global
+                 - system.alias_command
+                 - system.alias_group
+                 - system_accprofile
+                 - system_object-tag
+                 - system_interface
+                 - system_password-policy
+                 - system_admin
+                 - system_settings
+                 - system_resource-limits
+                 - system_vdom-property
+                 - system_dns-database
+                 - system_dns-server
+                 - system_arp-table
                  - system_ipv6-neighbor-cache
-                 - user_group
-                 - switch.macsec_profile
-                 - switch_interface
-                 - switch.qos_ip-dscp-map
-                 - switch.stp_settings
-                 - switch.acl_802-1X
+                 - system_location
+                 - system_dns
+                 - system_sflow
+                 - system_vdom-dns
+                 - system.snmp_sysinfo
+                 - system.snmp_community
+                 - system.snmp_user
+                 - system.autoupdate_override
+                 - system.autoupdate_push-update
+                 - system.autoupdate_schedule
+                 - system.autoupdate_tunneling
+                 - system.autoupdate_clientoverride
+                 - system_session-ttl
+                 - system.dhcp_server
+                 - system_port-pair
+                 - system_management-tunnel
+                 - system_fortimanager
+                 - system_fm
+                 - system_central-management
+                 - system_zone
                  - system.certificate_ca
+                 - system.certificate_local
+                 - system.certificate_crl
+                 - system.certificate_remote
+                 - system.certificate_ocsp
+                 - system_fortianalyzer
+                 - system_fortianalyzer2
+                 - system_fortianalyzer3
+                 - system_fortiguard
+                 - system_fortiguard-log
+                 - system_alertemail
+                 - system_alarm
+                 - system_mac-address-table
+                 - system_proxy-arp
+                 - system_tos-based-priority
+                 - system_link-monitor
+                 - system_console
+                 - system_bug-report
+                 - system_ntp
+                 - system_fsw-cloud
+                 - system_sniffer-profile
+                 - system.schedule_onetime
+                 - system.schedule_recurring
+                 - system.schedule_group
+                 - system_flow-export
+                 - router_access-list6
+                 - router_prefix-list6
+                 - router_vrf
+                 - router_aspath-list
+                 - router_community-list
+                 - router_access-list
+                 - router_prefix-list
+                 - router_route-map
+                 - router_key-chain
+                 - router_static
+                 - router_policy
+                 - router_rip
+                 - router_ripng
+                 - router_isis
+                 - router_multicast-flow
+                 - router_multicast
+                 - router_static6
+                 - router_ospf
+                 - router_ospf6
+                 - router_bgp
+                 - router_auth-path
+                 - router_setting
+                 - router_gwdetect
+                 - switch_domain
+                 - switch_global
+                 - switch.lldp_settings
+                 - switch.lldp_profile
+                 - switch.macsec_profile
+                 - switch_vlan-tpid
+                 - switch.qos_dot1p-map
+                 - switch.qos_ip-dscp-map
+                 - switch.qos_qos-policy
+                 - switch.ptp_settings
+                 - switch.ptp_policy
+                 - switch_physical-port
+                 - switch_vlan
+                 - switch_trunk
+                 - switch_raguard-policy
+                 - switch_interface
+                 - switch.stp_settings
+                 - switch.stp_instance
+                 - switch_static-mac
+                 - switch_mirror
+                 - switch_storm-control
+                 - switch.acl_policer
+                 - switch.acl_settings
+                 - switch.acl.service_custom
+                 - switch.acl_ingress
+                 - switch.acl_egress
+                 - switch.acl_prelookup
+                 - switch_ip-mac-binding
+                 - switch.igmp-snooping_globals
                  - switch.mld-snooping_globals
-                 - log.disk_setting
+                 - switch_virtual-wire
+                 - switch_security-feature
                  - switch_phy-mode
+                 - switch_auto-isl-port-group
+                 - switch_auto-network
+                 - switch.network-monitor_settings
+                 - switch.network-monitor_directed
+                 - switch_quarantine
+                 - user_radius
+                 - user_tacacs+
+                 - user_ldap
+                 - user_local
+                 - user_setting
+                 - user_peer
+                 - user_peergrp
+                 - user_group
+                 - log_custom-field
+                 - log.syslogd_setting
+                 - log.syslogd_override-setting
+                 - log.syslogd_filter
+                 - log.syslogd_override-filter
+                 - log.syslogd2_setting
+                 - log.syslogd2_filter
+                 - log.syslogd3_setting
+                 - log.syslogd3_filter
+                 - log.memory_global-setting
+                 - log.memory_setting
+                 - log.memory_filter
+                 - log.disk_setting
+                 - log.disk_filter
+                 - log_eventfilter
+                 - log.fortiguard_setting
+                 - log.remote_setting
+                 - log_gui
+                 - log.fortianalyzer_setting
+                 - log.fortianalyzer_override-setting
+                 - log.fortianalyzer_filter
+                 - log.fortianalyzer_override-filter
+                 - log.fortianalyzer2_setting
+                 - log.fortianalyzer2_filter
+                 - log.fortianalyzer3_setting
+                 - log.fortianalyzer3_filter
+                 - switch-controller_global
+                 - alertemail_setting
+                 - gui_console
+                 - switch.acl_802-1X
+                 - system_flan-cloud
+                 - system_email-server
+                 - system_vxlan
+                 - system_web
+                 - system_automation-trigger
+                 - system_automation-action
+                 - system_automation-destination
+                 - system_automation-stitch
+                 - system_auto-script
 
     selector:
         description:
@@ -273,167 +281,175 @@ options:
         type: str
         required: false
         choices:
-         - log.syslogd3_filter
-         - user_radius
-         - system_interface
-         - log.fortianalyzer_override-setting
-         - log_gui
-         - system_session-ttl
-         - log.memory_filter
-         - system_accprofile
-         - router_key-chain
-         - log.syslogd_filter
-         - router_aspath-list
-         - system.certificate_remote
-         - switch_domain
-         - log.fortianalyzer_filter
-         - system_arp-table
-         - switch_physical-port
-         - switch_ip-mac-binding
-         - log.disk_filter
-         - system_ntp
-         - user_tacacs+
-         - system_fm
-         - switch_static-mac
-         - system_global
-         - switch_global
-         - system_location
-         - log.syslogd2_filter
-         - system_flan-cloud
-         - system_object-tag
-         - log.syslogd_setting
-         - system_resource-limits
-         - system.autoupdate_schedule
-         - switch.acl.service_custom
-         - switch.igmp-snooping_globals
-         - switch.lldp_settings
-         - switch.network-monitor_directed
-         - user_setting
-         - log.fortianalyzer_override-filter
-         - log.fortianalyzer3_setting
-         - router_ospf6
-         - user_peergrp
-         - log.fortiguard_setting
-         - router_rip
-         - system.snmp_community
-         - switch.qos_qos-policy
-         - log.syslogd_override-filter
-         - system.snmp_user
-         - system_settings
-         - switch_mirror
-         - switch.acl_settings
-         - system_proxy-arp
-         - system_link-monitor
-         - router_prefix-list
-         - system.alias_command
-         - system_dns-server
-         - router_bgp
-         - system.autoupdate_clientoverride
-         - switch_quarantine
-         - system_fortiguard
-         - switch-controller_global
-         - system.schedule_recurring
-         - switch.ptp_policy
-         - system.schedule_group
-         - system_bug-report
-         - switch_vlan
-         - router_prefix-list6
-         - log.memory_setting
-         - system_vdom-property
-         - switch_security-feature
-         - router_auth-path
-         - system.autoupdate_tunneling
-         - user_ldap
-         - switch_auto-network
-         - log_eventfilter
-         - system.dhcp_server
-         - switch_auto-isl-port-group
-         - switch.network-monitor_settings
-         - switch.acl_policer
-         - router_access-list
-         - log.fortianalyzer3_filter
-         - switch.ptp_settings
-         - system_dns
-         - log.syslogd2_setting
-         - log.syslogd3_setting
-         - system.autoupdate_push-update
-         - system_fortianalyzer
-         - system_management-tunnel
-         - system.alias_group
-         - switch_trunk
-         - switch_vlan-tpid
-         - log.remote_setting
-         - system_sniffer-profile
-         - router_setting
-         - user_local
-         - system_fortianalyzer3
-         - system_console
-         - system.snmp_sysinfo
-         - system_password-policy
-         - router_static6
-         - router_multicast
-         - system_fortiguard-log
-         - system_fortimanager
-         - system_mac-address-table
-         - router_gwdetect
-         - log.memory_global-setting
-         - router_isis
-         - log.syslogd_override-setting
-         - router_multicast-flow
-         - router_vrf
-         - system.certificate_ocsp
-         - log.fortianalyzer2_setting
-         - router_static
-         - alertemail_setting
-         - log.fortianalyzer2_filter
-         - system_fortianalyzer2
-         - gui_console
-         - router_community-list
-         - log.fortianalyzer_setting
-         - switch.acl_egress
-         - switch.lldp_profile
-         - system.autoupdate_override
-         - user_peer
-         - system_central-management
-         - switch.qos_dot1p-map
-         - switch_virtual-wire
-         - system.certificate_crl
-         - switch.acl_ingress
-         - system_flow-export
-         - system.certificate_local
-         - system_alertemail
-         - router_ripng
-         - switch_raguard-policy
-         - router_policy
-         - system_fsw-cloud
-         - system_zone
-         - system_vdom-dns
-         - system_tos-based-priority
-         - router_route-map
-         - system.schedule_onetime
-         - router_ospf
-         - log_custom-field
-         - system_dns-database
-         - switch_storm-control
-         - system_admin
-         - system_port-pair
-         - switch.stp_instance
-         - system_sflow
-         - router_access-list6
          - system_vdom
-         - switch.acl_prelookup
-         - system_alarm
+         - system_global
+         - system.alias_command
+         - system.alias_group
+         - system_accprofile
+         - system_object-tag
+         - system_interface
+         - system_password-policy
+         - system_admin
+         - system_settings
+         - system_resource-limits
+         - system_vdom-property
+         - system_dns-database
+         - system_dns-server
+         - system_arp-table
          - system_ipv6-neighbor-cache
-         - user_group
-         - switch.macsec_profile
-         - switch_interface
-         - switch.qos_ip-dscp-map
-         - switch.stp_settings
-         - switch.acl_802-1X
+         - system_location
+         - system_dns
+         - system_sflow
+         - system_vdom-dns
+         - system.snmp_sysinfo
+         - system.snmp_community
+         - system.snmp_user
+         - system.autoupdate_override
+         - system.autoupdate_push-update
+         - system.autoupdate_schedule
+         - system.autoupdate_tunneling
+         - system.autoupdate_clientoverride
+         - system_session-ttl
+         - system.dhcp_server
+         - system_port-pair
+         - system_management-tunnel
+         - system_fortimanager
+         - system_fm
+         - system_central-management
+         - system_zone
          - system.certificate_ca
+         - system.certificate_local
+         - system.certificate_crl
+         - system.certificate_remote
+         - system.certificate_ocsp
+         - system_fortianalyzer
+         - system_fortianalyzer2
+         - system_fortianalyzer3
+         - system_fortiguard
+         - system_fortiguard-log
+         - system_alertemail
+         - system_alarm
+         - system_mac-address-table
+         - system_proxy-arp
+         - system_tos-based-priority
+         - system_link-monitor
+         - system_console
+         - system_bug-report
+         - system_ntp
+         - system_fsw-cloud
+         - system_sniffer-profile
+         - system.schedule_onetime
+         - system.schedule_recurring
+         - system.schedule_group
+         - system_flow-export
+         - router_access-list6
+         - router_prefix-list6
+         - router_vrf
+         - router_aspath-list
+         - router_community-list
+         - router_access-list
+         - router_prefix-list
+         - router_route-map
+         - router_key-chain
+         - router_static
+         - router_policy
+         - router_rip
+         - router_ripng
+         - router_isis
+         - router_multicast-flow
+         - router_multicast
+         - router_static6
+         - router_ospf
+         - router_ospf6
+         - router_bgp
+         - router_auth-path
+         - router_setting
+         - router_gwdetect
+         - switch_domain
+         - switch_global
+         - switch.lldp_settings
+         - switch.lldp_profile
+         - switch.macsec_profile
+         - switch_vlan-tpid
+         - switch.qos_dot1p-map
+         - switch.qos_ip-dscp-map
+         - switch.qos_qos-policy
+         - switch.ptp_settings
+         - switch.ptp_policy
+         - switch_physical-port
+         - switch_vlan
+         - switch_trunk
+         - switch_raguard-policy
+         - switch_interface
+         - switch.stp_settings
+         - switch.stp_instance
+         - switch_static-mac
+         - switch_mirror
+         - switch_storm-control
+         - switch.acl_policer
+         - switch.acl_settings
+         - switch.acl.service_custom
+         - switch.acl_ingress
+         - switch.acl_egress
+         - switch.acl_prelookup
+         - switch_ip-mac-binding
+         - switch.igmp-snooping_globals
          - switch.mld-snooping_globals
-         - log.disk_setting
+         - switch_virtual-wire
+         - switch_security-feature
          - switch_phy-mode
+         - switch_auto-isl-port-group
+         - switch_auto-network
+         - switch.network-monitor_settings
+         - switch.network-monitor_directed
+         - switch_quarantine
+         - user_radius
+         - user_tacacs+
+         - user_ldap
+         - user_local
+         - user_setting
+         - user_peer
+         - user_peergrp
+         - user_group
+         - log_custom-field
+         - log.syslogd_setting
+         - log.syslogd_override-setting
+         - log.syslogd_filter
+         - log.syslogd_override-filter
+         - log.syslogd2_setting
+         - log.syslogd2_filter
+         - log.syslogd3_setting
+         - log.syslogd3_filter
+         - log.memory_global-setting
+         - log.memory_setting
+         - log.memory_filter
+         - log.disk_setting
+         - log.disk_filter
+         - log_eventfilter
+         - log.fortiguard_setting
+         - log.remote_setting
+         - log_gui
+         - log.fortianalyzer_setting
+         - log.fortianalyzer_override-setting
+         - log.fortianalyzer_filter
+         - log.fortianalyzer_override-filter
+         - log.fortianalyzer2_setting
+         - log.fortianalyzer2_filter
+         - log.fortianalyzer3_setting
+         - log.fortianalyzer3_filter
+         - switch-controller_global
+         - alertemail_setting
+         - gui_console
+         - switch.acl_802-1X
+         - system_flan-cloud
+         - system_email-server
+         - system_vxlan
+         - system_web
+         - system_automation-trigger
+         - system_automation-action
+         - system_automation-destination
+         - system_automation-stitch
+         - system_auto-script
 
     params:
         description:
@@ -522,649 +538,681 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.f
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
 
 MODULE_MKEY_DEFINITONS = {
-    "log.syslogd3_filter": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "user_radius": {
-        "mkey_type": str,
+    "system_vdom": {
         "mkey": "name",
-    },
-    "system_interface": {
         "mkey_type": str,
-        "mkey": "name",
-    },
-    "log.fortianalyzer_override-setting": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "log_gui": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_session-ttl": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "log.memory_filter": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_accprofile": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "router_key-chain": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "log.syslogd_filter": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "router_aspath-list": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "system.certificate_remote": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "switch_domain": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "log.fortianalyzer_filter": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_arp-table": {
-        "mkey_type": int,
-        "mkey": "id",
-    },
-    "switch_physical-port": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "switch_ip-mac-binding": {
-        "mkey_type": int,
-        "mkey": "seq_num",
-    },
-    "log.disk_filter": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_ntp": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "user_tacacs+": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "system_fm": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "switch_static-mac": {
-        "mkey_type": int,
-        "mkey": "seq_num",
     },
     "system_global": {
-        "mkey_type": None,
         "mkey": "None",
-    },
-    "switch_global": {
         "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_location": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "log.syslogd2_filter": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_flan-cloud": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_object-tag": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "log.syslogd_setting": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_resource-limits": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system.autoupdate_schedule": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "switch.acl.service_custom": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "switch.igmp-snooping_globals": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "switch.lldp_settings": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "switch.network-monitor_directed": {
-        "mkey_type": int,
-        "mkey": "id",
-    },
-    "user_setting": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "log.fortianalyzer_override-filter": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "log.fortianalyzer3_setting": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "router_ospf6": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "user_peergrp": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "log.fortiguard_setting": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "router_rip": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system.snmp_community": {
-        "mkey_type": int,
-        "mkey": "id",
-    },
-    "switch.qos_qos-policy": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "log.syslogd_override-filter": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system.snmp_user": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "system_settings": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "switch_mirror": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "switch.acl_settings": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_proxy-arp": {
-        "mkey_type": int,
-        "mkey": "id",
-    },
-    "system_link-monitor": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "router_prefix-list": {
-        "mkey_type": str,
-        "mkey": "name",
     },
     "system.alias_command": {
-        "mkey_type": str,
         "mkey": "name",
-    },
-    "system_dns-server": {
         "mkey_type": str,
-        "mkey": "name",
-    },
-    "router_bgp": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system.autoupdate_clientoverride": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "switch_quarantine": {
-        "mkey_type": str,
-        "mkey": "mac",
-    },
-    "system_fortiguard": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "switch-controller_global": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system.schedule_recurring": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "switch.ptp_policy": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "system.schedule_group": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "system_bug-report": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "switch_vlan": {
-        "mkey_type": int,
-        "mkey": "id",
-    },
-    "router_prefix-list6": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "log.memory_setting": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_vdom-property": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "switch_security-feature": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "router_auth-path": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "system.autoupdate_tunneling": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "user_ldap": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "switch_auto-network": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "log_eventfilter": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system.dhcp_server": {
-        "mkey_type": int,
-        "mkey": "id",
-    },
-    "switch_auto-isl-port-group": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "switch.network-monitor_settings": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "switch.acl_policer": {
-        "mkey_type": int,
-        "mkey": "id",
-    },
-    "router_access-list": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "log.fortianalyzer3_filter": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "switch.ptp_settings": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_dns": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "log.syslogd2_setting": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "log.syslogd3_setting": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system.autoupdate_push-update": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_fortianalyzer": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_management-tunnel": {
-        "mkey_type": None,
-        "mkey": "None",
     },
     "system.alias_group": {
-        "mkey_type": str,
         "mkey": "name",
-    },
-    "switch_trunk": {
         "mkey_type": str,
+    },
+    "system_accprofile": {
         "mkey": "name",
-    },
-    "switch_vlan-tpid": {
         "mkey_type": str,
+    },
+    "system_object-tag": {
         "mkey": "name",
-    },
-    "log.remote_setting": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_sniffer-profile": {
         "mkey_type": str,
-        "mkey": "profile_name",
     },
-    "router_setting": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "user_local": {
-        "mkey_type": str,
+    "system_interface": {
         "mkey": "name",
-    },
-    "system_fortianalyzer3": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_console": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system.snmp_sysinfo": {
-        "mkey_type": None,
-        "mkey": "None",
+        "mkey_type": str,
     },
     "system_password-policy": {
-        "mkey_type": None,
         "mkey": "None",
-    },
-    "router_static6": {
-        "mkey_type": int,
-        "mkey": "seq_num",
-    },
-    "router_multicast": {
         "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_fortiguard-log": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_fortimanager": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_mac-address-table": {
-        "mkey_type": str,
-        "mkey": "mac",
-    },
-    "router_gwdetect": {
-        "mkey_type": str,
-        "mkey": "interface",
-    },
-    "log.memory_global-setting": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "router_isis": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "log.syslogd_override-setting": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "router_multicast-flow": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "router_vrf": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "system.certificate_ocsp": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "log.fortianalyzer2_setting": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "router_static": {
-        "mkey_type": int,
-        "mkey": "seq_num",
-    },
-    "alertemail_setting": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "log.fortianalyzer2_filter": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_fortianalyzer2": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "gui_console": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "router_community-list": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "log.fortianalyzer_setting": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "switch.acl_egress": {
-        "mkey_type": int,
-        "mkey": "id",
-    },
-    "switch.lldp_profile": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "system.autoupdate_override": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "user_peer": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "system_central-management": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "switch.qos_dot1p-map": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "switch_virtual-wire": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "system.certificate_crl": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "switch.acl_ingress": {
-        "mkey_type": int,
-        "mkey": "id",
-    },
-    "system_flow-export": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system.certificate_local": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "system_alertemail": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "router_ripng": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "switch_raguard-policy": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "router_policy": {
-        "mkey_type": int,
-        "mkey": "seq_num",
-    },
-    "system_fsw-cloud": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_zone": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "system_vdom-dns": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "system_tos-based-priority": {
-        "mkey_type": int,
-        "mkey": "id",
-    },
-    "router_route-map": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "system.schedule_onetime": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "router_ospf": {
-        "mkey_type": None,
-        "mkey": "None",
-    },
-    "log_custom-field": {
-        "mkey_type": str,
-        "mkey": "id",
-    },
-    "system_dns-database": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "switch_storm-control": {
-        "mkey_type": None,
-        "mkey": "None",
     },
     "system_admin": {
-        "mkey_type": str,
         "mkey": "name",
-    },
-    "system_port-pair": {
         "mkey_type": str,
-        "mkey": "name",
     },
-    "switch.stp_instance": {
-        "mkey_type": str,
-        "mkey": "id",
-    },
-    "system_sflow": {
-        "mkey_type": None,
+    "system_settings": {
         "mkey": "None",
+        "mkey_type": None,
     },
-    "router_access-list6": {
-        "mkey_type": str,
+    "system_resource-limits": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_vdom-property": {
         "mkey": "name",
-    },
-    "system_vdom": {
         "mkey_type": str,
-        "mkey": "name",
     },
-    "switch.acl_prelookup": {
+    "system_dns-database": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "system_dns-server": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "system_arp-table": {
+        "mkey": "id",
         "mkey_type": int,
-        "mkey": "id",
-    },
-    "system_alarm": {
-        "mkey_type": None,
-        "mkey": "None",
     },
     "system_ipv6-neighbor-cache": {
-        "mkey_type": int,
         "mkey": "id",
+        "mkey_type": int,
     },
-    "user_group": {
-        "mkey_type": str,
+    "system_location": {
         "mkey": "name",
-    },
-    "switch.macsec_profile": {
         "mkey_type": str,
-        "mkey": "name",
     },
-    "switch_interface": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "switch.qos_ip-dscp-map": {
-        "mkey_type": str,
-        "mkey": "name",
-    },
-    "switch.stp_settings": {
-        "mkey_type": None,
+    "system_dns": {
         "mkey": "None",
+        "mkey_type": None,
     },
-    "switch.acl_802-1X": {
-        "mkey_type": int,
+    "system_sflow": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_vdom-dns": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system.snmp_sysinfo": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system.snmp_community": {
         "mkey": "id",
+        "mkey_type": int,
+    },
+    "system.snmp_user": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "system.autoupdate_override": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system.autoupdate_push-update": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system.autoupdate_schedule": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system.autoupdate_tunneling": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system.autoupdate_clientoverride": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_session-ttl": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system.dhcp_server": {
+        "mkey": "id",
+        "mkey_type": int,
+    },
+    "system_port-pair": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "system_management-tunnel": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_fortimanager": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_fm": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_central-management": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_zone": {
+        "mkey": "name",
+        "mkey_type": str,
     },
     "system.certificate_ca": {
-        "mkey_type": str,
         "mkey": "name",
+        "mkey_type": str,
+    },
+    "system.certificate_local": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "system.certificate_crl": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "system.certificate_remote": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "system.certificate_ocsp": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_fortianalyzer": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_fortianalyzer2": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_fortianalyzer3": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_fortiguard": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_fortiguard-log": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_alertemail": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_alarm": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_mac-address-table": {
+        "mkey": "mac",
+        "mkey_type": str,
+    },
+    "system_proxy-arp": {
+        "mkey": "id",
+        "mkey_type": int,
+    },
+    "system_tos-based-priority": {
+        "mkey": "id",
+        "mkey_type": int,
+    },
+    "system_link-monitor": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "system_console": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_bug-report": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_ntp": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_fsw-cloud": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_sniffer-profile": {
+        "mkey": "profile_name",
+        "mkey_type": str,
+    },
+    "system.schedule_onetime": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "system.schedule_recurring": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "system.schedule_group": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "system_flow-export": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "router_access-list6": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "router_prefix-list6": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "router_vrf": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "router_aspath-list": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "router_community-list": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "router_access-list": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "router_prefix-list": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "router_route-map": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "router_key-chain": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "router_static": {
+        "mkey": "seq_num",
+        "mkey_type": int,
+    },
+    "router_policy": {
+        "mkey": "seq_num",
+        "mkey_type": int,
+    },
+    "router_rip": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "router_ripng": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "router_isis": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "router_multicast-flow": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "router_multicast": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "router_static6": {
+        "mkey": "seq_num",
+        "mkey_type": int,
+    },
+    "router_ospf": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "router_ospf6": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "router_bgp": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "router_auth-path": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "router_setting": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "router_gwdetect": {
+        "mkey": "interface",
+        "mkey_type": str,
+    },
+    "switch_domain": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "switch_global": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "switch.lldp_settings": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "switch.lldp_profile": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "switch.macsec_profile": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "switch_vlan-tpid": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "switch.qos_dot1p-map": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "switch.qos_ip-dscp-map": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "switch.qos_qos-policy": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "switch.ptp_settings": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "switch.ptp_policy": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "switch_physical-port": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "switch_vlan": {
+        "mkey": "id",
+        "mkey_type": int,
+    },
+    "switch_trunk": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "switch_raguard-policy": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "switch_interface": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "switch.stp_settings": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "switch.stp_instance": {
+        "mkey": "id",
+        "mkey_type": str,
+    },
+    "switch_static-mac": {
+        "mkey": "seq_num",
+        "mkey_type": int,
+    },
+    "switch_mirror": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "switch_storm-control": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "switch.acl_policer": {
+        "mkey": "id",
+        "mkey_type": int,
+    },
+    "switch.acl_settings": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "switch.acl.service_custom": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "switch.acl_ingress": {
+        "mkey": "id",
+        "mkey_type": int,
+    },
+    "switch.acl_egress": {
+        "mkey": "id",
+        "mkey_type": int,
+    },
+    "switch.acl_prelookup": {
+        "mkey": "id",
+        "mkey_type": int,
+    },
+    "switch_ip-mac-binding": {
+        "mkey": "seq_num",
+        "mkey_type": int,
+    },
+    "switch.igmp-snooping_globals": {
+        "mkey": "None",
+        "mkey_type": None,
     },
     "switch.mld-snooping_globals": {
-        "mkey_type": None,
         "mkey": "None",
+        "mkey_type": None,
     },
-    "log.disk_setting": {
-        "mkey_type": None,
+    "switch_virtual-wire": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "switch_security-feature": {
         "mkey": "None",
+        "mkey_type": None,
     },
     "switch_phy-mode": {
-        "mkey_type": None,
         "mkey": "None",
+        "mkey_type": None,
+    },
+    "switch_auto-isl-port-group": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "switch_auto-network": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "switch.network-monitor_settings": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "switch.network-monitor_directed": {
+        "mkey": "id",
+        "mkey_type": int,
+    },
+    "switch_quarantine": {
+        "mkey": "mac",
+        "mkey_type": str,
+    },
+    "user_radius": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "user_tacacs+": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "user_ldap": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "user_local": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "user_setting": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "user_peer": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "user_peergrp": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "user_group": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "log_custom-field": {
+        "mkey": "id",
+        "mkey_type": str,
+    },
+    "log.syslogd_setting": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.syslogd_override-setting": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.syslogd_filter": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.syslogd_override-filter": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.syslogd2_setting": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.syslogd2_filter": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.syslogd3_setting": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.syslogd3_filter": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.memory_global-setting": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.memory_setting": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.memory_filter": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.disk_setting": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.disk_filter": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log_eventfilter": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.fortiguard_setting": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.remote_setting": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log_gui": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.fortianalyzer_setting": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.fortianalyzer_override-setting": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.fortianalyzer_filter": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.fortianalyzer_override-filter": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.fortianalyzer2_setting": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.fortianalyzer2_filter": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.fortianalyzer3_setting": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "log.fortianalyzer3_filter": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "switch-controller_global": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "alertemail_setting": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "gui_console": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "switch.acl_802-1X": {
+        "mkey": "id",
+        "mkey_type": int,
+    },
+    "system_flan-cloud": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_email-server": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_vxlan": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "system_web": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "system_automation-trigger": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "system_automation-action": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "system_automation-destination": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "system_automation-stitch": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "system_auto-script": {
+        "mkey": "name",
+        "mkey_type": str,
     },
 }
 
@@ -1252,167 +1300,175 @@ def main():
             "required": False,
             "type": "str",
             "choices": [
-                "log.syslogd3_filter",
-                "user_radius",
-                "system_interface",
-                "log.fortianalyzer_override-setting",
-                "log_gui",
-                "system_session-ttl",
-                "log.memory_filter",
-                "system_accprofile",
-                "router_key-chain",
-                "log.syslogd_filter",
-                "router_aspath-list",
-                "system.certificate_remote",
-                "switch_domain",
-                "log.fortianalyzer_filter",
-                "system_arp-table",
-                "switch_physical-port",
-                "switch_ip-mac-binding",
-                "log.disk_filter",
-                "system_ntp",
-                "user_tacacs+",
-                "system_fm",
-                "switch_static-mac",
-                "system_global",
-                "switch_global",
-                "system_location",
-                "log.syslogd2_filter",
-                "system_flan-cloud",
-                "system_object-tag",
-                "log.syslogd_setting",
-                "system_resource-limits",
-                "system.autoupdate_schedule",
-                "switch.acl.service_custom",
-                "switch.igmp-snooping_globals",
-                "switch.lldp_settings",
-                "switch.network-monitor_directed",
-                "user_setting",
-                "log.fortianalyzer_override-filter",
-                "log.fortianalyzer3_setting",
-                "router_ospf6",
-                "user_peergrp",
-                "log.fortiguard_setting",
-                "router_rip",
-                "system.snmp_community",
-                "switch.qos_qos-policy",
-                "log.syslogd_override-filter",
-                "system.snmp_user",
-                "system_settings",
-                "switch_mirror",
-                "switch.acl_settings",
-                "system_proxy-arp",
-                "system_link-monitor",
-                "router_prefix-list",
-                "system.alias_command",
-                "system_dns-server",
-                "router_bgp",
-                "system.autoupdate_clientoverride",
-                "switch_quarantine",
-                "system_fortiguard",
-                "switch-controller_global",
-                "system.schedule_recurring",
-                "switch.ptp_policy",
-                "system.schedule_group",
-                "system_bug-report",
-                "switch_vlan",
-                "router_prefix-list6",
-                "log.memory_setting",
-                "system_vdom-property",
-                "switch_security-feature",
-                "router_auth-path",
-                "system.autoupdate_tunneling",
-                "user_ldap",
-                "switch_auto-network",
-                "log_eventfilter",
-                "system.dhcp_server",
-                "switch_auto-isl-port-group",
-                "switch.network-monitor_settings",
-                "switch.acl_policer",
-                "router_access-list",
-                "log.fortianalyzer3_filter",
-                "switch.ptp_settings",
-                "system_dns",
-                "log.syslogd2_setting",
-                "log.syslogd3_setting",
-                "system.autoupdate_push-update",
-                "system_fortianalyzer",
-                "system_management-tunnel",
-                "system.alias_group",
-                "switch_trunk",
-                "switch_vlan-tpid",
-                "log.remote_setting",
-                "system_sniffer-profile",
-                "router_setting",
-                "user_local",
-                "system_fortianalyzer3",
-                "system_console",
-                "system.snmp_sysinfo",
-                "system_password-policy",
-                "router_static6",
-                "router_multicast",
-                "system_fortiguard-log",
-                "system_fortimanager",
-                "system_mac-address-table",
-                "router_gwdetect",
-                "log.memory_global-setting",
-                "router_isis",
-                "log.syslogd_override-setting",
-                "router_multicast-flow",
-                "router_vrf",
-                "system.certificate_ocsp",
-                "log.fortianalyzer2_setting",
-                "router_static",
-                "alertemail_setting",
-                "log.fortianalyzer2_filter",
-                "system_fortianalyzer2",
-                "gui_console",
-                "router_community-list",
-                "log.fortianalyzer_setting",
-                "switch.acl_egress",
-                "switch.lldp_profile",
-                "system.autoupdate_override",
-                "user_peer",
-                "system_central-management",
-                "switch.qos_dot1p-map",
-                "switch_virtual-wire",
-                "system.certificate_crl",
-                "switch.acl_ingress",
-                "system_flow-export",
-                "system.certificate_local",
-                "system_alertemail",
-                "router_ripng",
-                "switch_raguard-policy",
-                "router_policy",
-                "system_fsw-cloud",
-                "system_zone",
-                "system_vdom-dns",
-                "system_tos-based-priority",
-                "router_route-map",
-                "system.schedule_onetime",
-                "router_ospf",
-                "log_custom-field",
-                "system_dns-database",
-                "switch_storm-control",
-                "system_admin",
-                "system_port-pair",
-                "switch.stp_instance",
-                "system_sflow",
-                "router_access-list6",
                 "system_vdom",
-                "switch.acl_prelookup",
-                "system_alarm",
+                "system_global",
+                "system.alias_command",
+                "system.alias_group",
+                "system_accprofile",
+                "system_object-tag",
+                "system_interface",
+                "system_password-policy",
+                "system_admin",
+                "system_settings",
+                "system_resource-limits",
+                "system_vdom-property",
+                "system_dns-database",
+                "system_dns-server",
+                "system_arp-table",
                 "system_ipv6-neighbor-cache",
-                "user_group",
-                "switch.macsec_profile",
-                "switch_interface",
-                "switch.qos_ip-dscp-map",
-                "switch.stp_settings",
-                "switch.acl_802-1X",
+                "system_location",
+                "system_dns",
+                "system_sflow",
+                "system_vdom-dns",
+                "system.snmp_sysinfo",
+                "system.snmp_community",
+                "system.snmp_user",
+                "system.autoupdate_override",
+                "system.autoupdate_push-update",
+                "system.autoupdate_schedule",
+                "system.autoupdate_tunneling",
+                "system.autoupdate_clientoverride",
+                "system_session-ttl",
+                "system.dhcp_server",
+                "system_port-pair",
+                "system_management-tunnel",
+                "system_fortimanager",
+                "system_fm",
+                "system_central-management",
+                "system_zone",
                 "system.certificate_ca",
+                "system.certificate_local",
+                "system.certificate_crl",
+                "system.certificate_remote",
+                "system.certificate_ocsp",
+                "system_fortianalyzer",
+                "system_fortianalyzer2",
+                "system_fortianalyzer3",
+                "system_fortiguard",
+                "system_fortiguard-log",
+                "system_alertemail",
+                "system_alarm",
+                "system_mac-address-table",
+                "system_proxy-arp",
+                "system_tos-based-priority",
+                "system_link-monitor",
+                "system_console",
+                "system_bug-report",
+                "system_ntp",
+                "system_fsw-cloud",
+                "system_sniffer-profile",
+                "system.schedule_onetime",
+                "system.schedule_recurring",
+                "system.schedule_group",
+                "system_flow-export",
+                "router_access-list6",
+                "router_prefix-list6",
+                "router_vrf",
+                "router_aspath-list",
+                "router_community-list",
+                "router_access-list",
+                "router_prefix-list",
+                "router_route-map",
+                "router_key-chain",
+                "router_static",
+                "router_policy",
+                "router_rip",
+                "router_ripng",
+                "router_isis",
+                "router_multicast-flow",
+                "router_multicast",
+                "router_static6",
+                "router_ospf",
+                "router_ospf6",
+                "router_bgp",
+                "router_auth-path",
+                "router_setting",
+                "router_gwdetect",
+                "switch_domain",
+                "switch_global",
+                "switch.lldp_settings",
+                "switch.lldp_profile",
+                "switch.macsec_profile",
+                "switch_vlan-tpid",
+                "switch.qos_dot1p-map",
+                "switch.qos_ip-dscp-map",
+                "switch.qos_qos-policy",
+                "switch.ptp_settings",
+                "switch.ptp_policy",
+                "switch_physical-port",
+                "switch_vlan",
+                "switch_trunk",
+                "switch_raguard-policy",
+                "switch_interface",
+                "switch.stp_settings",
+                "switch.stp_instance",
+                "switch_static-mac",
+                "switch_mirror",
+                "switch_storm-control",
+                "switch.acl_policer",
+                "switch.acl_settings",
+                "switch.acl.service_custom",
+                "switch.acl_ingress",
+                "switch.acl_egress",
+                "switch.acl_prelookup",
+                "switch_ip-mac-binding",
+                "switch.igmp-snooping_globals",
                 "switch.mld-snooping_globals",
-                "log.disk_setting",
+                "switch_virtual-wire",
+                "switch_security-feature",
                 "switch_phy-mode",
+                "switch_auto-isl-port-group",
+                "switch_auto-network",
+                "switch.network-monitor_settings",
+                "switch.network-monitor_directed",
+                "switch_quarantine",
+                "user_radius",
+                "user_tacacs+",
+                "user_ldap",
+                "user_local",
+                "user_setting",
+                "user_peer",
+                "user_peergrp",
+                "user_group",
+                "log_custom-field",
+                "log.syslogd_setting",
+                "log.syslogd_override-setting",
+                "log.syslogd_filter",
+                "log.syslogd_override-filter",
+                "log.syslogd2_setting",
+                "log.syslogd2_filter",
+                "log.syslogd3_setting",
+                "log.syslogd3_filter",
+                "log.memory_global-setting",
+                "log.memory_setting",
+                "log.memory_filter",
+                "log.disk_setting",
+                "log.disk_filter",
+                "log_eventfilter",
+                "log.fortiguard_setting",
+                "log.remote_setting",
+                "log_gui",
+                "log.fortianalyzer_setting",
+                "log.fortianalyzer_override-setting",
+                "log.fortianalyzer_filter",
+                "log.fortianalyzer_override-filter",
+                "log.fortianalyzer2_setting",
+                "log.fortianalyzer2_filter",
+                "log.fortianalyzer3_setting",
+                "log.fortianalyzer3_filter",
+                "switch-controller_global",
+                "alertemail_setting",
+                "gui_console",
+                "switch.acl_802-1X",
+                "system_flan-cloud",
+                "system_email-server",
+                "system_vxlan",
+                "system_web",
+                "system_automation-trigger",
+                "system_automation-action",
+                "system_automation-destination",
+                "system_automation-stitch",
+                "system_auto-script",
             ],
         },
         "selectors": {
@@ -1428,167 +1484,175 @@ def main():
                     "required": True,
                     "type": "str",
                     "choices": [
-                        "log.syslogd3_filter",
-                        "user_radius",
-                        "system_interface",
-                        "log.fortianalyzer_override-setting",
-                        "log_gui",
-                        "system_session-ttl",
-                        "log.memory_filter",
-                        "system_accprofile",
-                        "router_key-chain",
-                        "log.syslogd_filter",
-                        "router_aspath-list",
-                        "system.certificate_remote",
-                        "switch_domain",
-                        "log.fortianalyzer_filter",
-                        "system_arp-table",
-                        "switch_physical-port",
-                        "switch_ip-mac-binding",
-                        "log.disk_filter",
-                        "system_ntp",
-                        "user_tacacs+",
-                        "system_fm",
-                        "switch_static-mac",
-                        "system_global",
-                        "switch_global",
-                        "system_location",
-                        "log.syslogd2_filter",
-                        "system_flan-cloud",
-                        "system_object-tag",
-                        "log.syslogd_setting",
-                        "system_resource-limits",
-                        "system.autoupdate_schedule",
-                        "switch.acl.service_custom",
-                        "switch.igmp-snooping_globals",
-                        "switch.lldp_settings",
-                        "switch.network-monitor_directed",
-                        "user_setting",
-                        "log.fortianalyzer_override-filter",
-                        "log.fortianalyzer3_setting",
-                        "router_ospf6",
-                        "user_peergrp",
-                        "log.fortiguard_setting",
-                        "router_rip",
-                        "system.snmp_community",
-                        "switch.qos_qos-policy",
-                        "log.syslogd_override-filter",
-                        "system.snmp_user",
-                        "system_settings",
-                        "switch_mirror",
-                        "switch.acl_settings",
-                        "system_proxy-arp",
-                        "system_link-monitor",
-                        "router_prefix-list",
-                        "system.alias_command",
-                        "system_dns-server",
-                        "router_bgp",
-                        "system.autoupdate_clientoverride",
-                        "switch_quarantine",
-                        "system_fortiguard",
-                        "switch-controller_global",
-                        "system.schedule_recurring",
-                        "switch.ptp_policy",
-                        "system.schedule_group",
-                        "system_bug-report",
-                        "switch_vlan",
-                        "router_prefix-list6",
-                        "log.memory_setting",
-                        "system_vdom-property",
-                        "switch_security-feature",
-                        "router_auth-path",
-                        "system.autoupdate_tunneling",
-                        "user_ldap",
-                        "switch_auto-network",
-                        "log_eventfilter",
-                        "system.dhcp_server",
-                        "switch_auto-isl-port-group",
-                        "switch.network-monitor_settings",
-                        "switch.acl_policer",
-                        "router_access-list",
-                        "log.fortianalyzer3_filter",
-                        "switch.ptp_settings",
-                        "system_dns",
-                        "log.syslogd2_setting",
-                        "log.syslogd3_setting",
-                        "system.autoupdate_push-update",
-                        "system_fortianalyzer",
-                        "system_management-tunnel",
-                        "system.alias_group",
-                        "switch_trunk",
-                        "switch_vlan-tpid",
-                        "log.remote_setting",
-                        "system_sniffer-profile",
-                        "router_setting",
-                        "user_local",
-                        "system_fortianalyzer3",
-                        "system_console",
-                        "system.snmp_sysinfo",
-                        "system_password-policy",
-                        "router_static6",
-                        "router_multicast",
-                        "system_fortiguard-log",
-                        "system_fortimanager",
-                        "system_mac-address-table",
-                        "router_gwdetect",
-                        "log.memory_global-setting",
-                        "router_isis",
-                        "log.syslogd_override-setting",
-                        "router_multicast-flow",
-                        "router_vrf",
-                        "system.certificate_ocsp",
-                        "log.fortianalyzer2_setting",
-                        "router_static",
-                        "alertemail_setting",
-                        "log.fortianalyzer2_filter",
-                        "system_fortianalyzer2",
-                        "gui_console",
-                        "router_community-list",
-                        "log.fortianalyzer_setting",
-                        "switch.acl_egress",
-                        "switch.lldp_profile",
-                        "system.autoupdate_override",
-                        "user_peer",
-                        "system_central-management",
-                        "switch.qos_dot1p-map",
-                        "switch_virtual-wire",
-                        "system.certificate_crl",
-                        "switch.acl_ingress",
-                        "system_flow-export",
-                        "system.certificate_local",
-                        "system_alertemail",
-                        "router_ripng",
-                        "switch_raguard-policy",
-                        "router_policy",
-                        "system_fsw-cloud",
-                        "system_zone",
-                        "system_vdom-dns",
-                        "system_tos-based-priority",
-                        "router_route-map",
-                        "system.schedule_onetime",
-                        "router_ospf",
-                        "log_custom-field",
-                        "system_dns-database",
-                        "switch_storm-control",
-                        "system_admin",
-                        "system_port-pair",
-                        "switch.stp_instance",
-                        "system_sflow",
-                        "router_access-list6",
                         "system_vdom",
-                        "switch.acl_prelookup",
-                        "system_alarm",
+                        "system_global",
+                        "system.alias_command",
+                        "system.alias_group",
+                        "system_accprofile",
+                        "system_object-tag",
+                        "system_interface",
+                        "system_password-policy",
+                        "system_admin",
+                        "system_settings",
+                        "system_resource-limits",
+                        "system_vdom-property",
+                        "system_dns-database",
+                        "system_dns-server",
+                        "system_arp-table",
                         "system_ipv6-neighbor-cache",
-                        "user_group",
-                        "switch.macsec_profile",
-                        "switch_interface",
-                        "switch.qos_ip-dscp-map",
-                        "switch.stp_settings",
-                        "switch.acl_802-1X",
+                        "system_location",
+                        "system_dns",
+                        "system_sflow",
+                        "system_vdom-dns",
+                        "system.snmp_sysinfo",
+                        "system.snmp_community",
+                        "system.snmp_user",
+                        "system.autoupdate_override",
+                        "system.autoupdate_push-update",
+                        "system.autoupdate_schedule",
+                        "system.autoupdate_tunneling",
+                        "system.autoupdate_clientoverride",
+                        "system_session-ttl",
+                        "system.dhcp_server",
+                        "system_port-pair",
+                        "system_management-tunnel",
+                        "system_fortimanager",
+                        "system_fm",
+                        "system_central-management",
+                        "system_zone",
                         "system.certificate_ca",
+                        "system.certificate_local",
+                        "system.certificate_crl",
+                        "system.certificate_remote",
+                        "system.certificate_ocsp",
+                        "system_fortianalyzer",
+                        "system_fortianalyzer2",
+                        "system_fortianalyzer3",
+                        "system_fortiguard",
+                        "system_fortiguard-log",
+                        "system_alertemail",
+                        "system_alarm",
+                        "system_mac-address-table",
+                        "system_proxy-arp",
+                        "system_tos-based-priority",
+                        "system_link-monitor",
+                        "system_console",
+                        "system_bug-report",
+                        "system_ntp",
+                        "system_fsw-cloud",
+                        "system_sniffer-profile",
+                        "system.schedule_onetime",
+                        "system.schedule_recurring",
+                        "system.schedule_group",
+                        "system_flow-export",
+                        "router_access-list6",
+                        "router_prefix-list6",
+                        "router_vrf",
+                        "router_aspath-list",
+                        "router_community-list",
+                        "router_access-list",
+                        "router_prefix-list",
+                        "router_route-map",
+                        "router_key-chain",
+                        "router_static",
+                        "router_policy",
+                        "router_rip",
+                        "router_ripng",
+                        "router_isis",
+                        "router_multicast-flow",
+                        "router_multicast",
+                        "router_static6",
+                        "router_ospf",
+                        "router_ospf6",
+                        "router_bgp",
+                        "router_auth-path",
+                        "router_setting",
+                        "router_gwdetect",
+                        "switch_domain",
+                        "switch_global",
+                        "switch.lldp_settings",
+                        "switch.lldp_profile",
+                        "switch.macsec_profile",
+                        "switch_vlan-tpid",
+                        "switch.qos_dot1p-map",
+                        "switch.qos_ip-dscp-map",
+                        "switch.qos_qos-policy",
+                        "switch.ptp_settings",
+                        "switch.ptp_policy",
+                        "switch_physical-port",
+                        "switch_vlan",
+                        "switch_trunk",
+                        "switch_raguard-policy",
+                        "switch_interface",
+                        "switch.stp_settings",
+                        "switch.stp_instance",
+                        "switch_static-mac",
+                        "switch_mirror",
+                        "switch_storm-control",
+                        "switch.acl_policer",
+                        "switch.acl_settings",
+                        "switch.acl.service_custom",
+                        "switch.acl_ingress",
+                        "switch.acl_egress",
+                        "switch.acl_prelookup",
+                        "switch_ip-mac-binding",
+                        "switch.igmp-snooping_globals",
                         "switch.mld-snooping_globals",
-                        "log.disk_setting",
+                        "switch_virtual-wire",
+                        "switch_security-feature",
                         "switch_phy-mode",
+                        "switch_auto-isl-port-group",
+                        "switch_auto-network",
+                        "switch.network-monitor_settings",
+                        "switch.network-monitor_directed",
+                        "switch_quarantine",
+                        "user_radius",
+                        "user_tacacs+",
+                        "user_ldap",
+                        "user_local",
+                        "user_setting",
+                        "user_peer",
+                        "user_peergrp",
+                        "user_group",
+                        "log_custom-field",
+                        "log.syslogd_setting",
+                        "log.syslogd_override-setting",
+                        "log.syslogd_filter",
+                        "log.syslogd_override-filter",
+                        "log.syslogd2_setting",
+                        "log.syslogd2_filter",
+                        "log.syslogd3_setting",
+                        "log.syslogd3_filter",
+                        "log.memory_global-setting",
+                        "log.memory_setting",
+                        "log.memory_filter",
+                        "log.disk_setting",
+                        "log.disk_filter",
+                        "log_eventfilter",
+                        "log.fortiguard_setting",
+                        "log.remote_setting",
+                        "log_gui",
+                        "log.fortianalyzer_setting",
+                        "log.fortianalyzer_override-setting",
+                        "log.fortianalyzer_filter",
+                        "log.fortianalyzer_override-filter",
+                        "log.fortianalyzer2_setting",
+                        "log.fortianalyzer2_filter",
+                        "log.fortianalyzer3_setting",
+                        "log.fortianalyzer3_filter",
+                        "switch-controller_global",
+                        "alertemail_setting",
+                        "gui_console",
+                        "switch.acl_802-1X",
+                        "system_flan-cloud",
+                        "system_email-server",
+                        "system_vxlan",
+                        "system_web",
+                        "system_automation-trigger",
+                        "system_automation-action",
+                        "system_automation-destination",
+                        "system_automation-stitch",
+                        "system_auto-script",
                     ],
                 },
             }

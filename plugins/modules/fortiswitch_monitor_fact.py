@@ -103,63 +103,63 @@ options:
                 type: str
                 required: true
                 choices:
-                 - system_dhcp-lease-list
                  - switch_port
-                 - switch_dhcp-snooping-client-db
-                 - switch_poe-summary
-                 - switch_acl-stats-egress
-                 - system_performance-status
-                 - system_status
-                 - switch_acl-usage
-                 - switch_modules-detail
+                 - switch_port-speed
                  - switch_port-statistics
+                 - switch_stp-state
+                 - switch_trunk-state
+                 - switch_loop-guard-state
+                 - switch_acl-stats
                  - switch_acl-stats-ingress
-                 - system_sniffer-profile-summary
-                 - switch_modules-summary
-                 - switch_poe-status
+                 - switch_acl-stats-egress
                  - switch_acl-stats-prelookup
+                 - switch_lldp-state
                  - switch_mac-address
                  - switch_mac-address-summary
-                 - system_hardware-status
-                 - switch_trunk-state
-                 - system_interface-physical
-                 - system_flash-list
-                 - switch_loop-guard-state
-                 - switch_network-monitor-l2db
-                 - hardware_cpu
-                 - switch_mclag-list
-                 - switch_network-monitor-l3db
-                 - switch_acl-stats
-                 - system_log
-                 - switch_dhcp-snooping-limit-db-details
-                 - switch_qos-stats
+                 - system_status
+                 - switch_poe-status
+                 - switch_poe-summary
+                 - switch_capabilities
                  - switch_dhcp-snooping-db
-                 - system_flow-export-statistics
+                 - switch_dhcp-snooping-client-db
+                 - switch_dhcp-snooping-server-db
+                 - switch_dhcp-snooping-client6-db
+                 - switch_dhcp-snooping-server6-db
+                 - switch_network-monitor-l3db
+                 - switch_network-monitor-l2db
+                 - switch_faceplate
+                 - system_resource
+                 - switch_802.1x-status
+                 - system_interface-physical
+                 - system_hardware-status
                  - router_routing-table
+                 - switch_mclag-list
+                 - switch_mclag-icl
+                 - switch_flapguard-status
+                 - system_fan-status
                  - system_psu-status
-                 - switch_port-speed
+                 - system_flash-list
+                 - hardware_cpu
+                 - hardware_memory
+                 - switch_qos-stats
+                 - system_link-monitor-status
+                 - system_ntp-status
                  - system_pcb-temp
+                 - switch_modules-detail
+                 - switch_modules-summary
                  - switch_modules-status
                  - switch_modules-limits
-                 - system_ntp-status
-                 - switch_dhcp-snooping-client6-db
+                 - switch_acl-usage
                  - switch_igmp-snooping-group
-                 - switch_capabilities
-                 - switch_802.1x-status
-                 - switch_dhcp-snooping-server6-db
-                 - switch_lldp-state
-                 - system_link-monitor-status
-                 - switch_stp-state
-                 - switch_faceplate
-                 - hardware_memory
-                 - system_fan-status
-                 - system_flow-export-flows
-                 - switch_cable-diag
+                 - system_performance-status
                  - system_upgrade-status
-                 - system_resource
-                 - switch_flapguard-status
-                 - switch_dhcp-snooping-server-db
-                 - switch_mclag-icl
+                 - system_flow-export-statistics
+                 - system_flow-export-flows
+                 - system_log
+                 - system_dhcp-lease-list
+                 - system_sniffer-profile-summary
+                 - switch_dhcp-snooping-limit-db-details
+                 - switch_cable-diag
 
     selector:
         description:
@@ -167,63 +167,63 @@ options:
         type: str
         required: false
         choices:
-         - system_dhcp-lease-list
          - switch_port
-         - switch_dhcp-snooping-client-db
-         - switch_poe-summary
-         - switch_acl-stats-egress
-         - system_performance-status
-         - system_status
-         - switch_acl-usage
-         - switch_modules-detail
+         - switch_port-speed
          - switch_port-statistics
+         - switch_stp-state
+         - switch_trunk-state
+         - switch_loop-guard-state
+         - switch_acl-stats
          - switch_acl-stats-ingress
-         - system_sniffer-profile-summary
-         - switch_modules-summary
-         - switch_poe-status
+         - switch_acl-stats-egress
          - switch_acl-stats-prelookup
+         - switch_lldp-state
          - switch_mac-address
          - switch_mac-address-summary
-         - system_hardware-status
-         - switch_trunk-state
-         - system_interface-physical
-         - system_flash-list
-         - switch_loop-guard-state
-         - switch_network-monitor-l2db
-         - hardware_cpu
-         - switch_mclag-list
-         - switch_network-monitor-l3db
-         - switch_acl-stats
-         - system_log
-         - switch_dhcp-snooping-limit-db-details
-         - switch_qos-stats
+         - system_status
+         - switch_poe-status
+         - switch_poe-summary
+         - switch_capabilities
          - switch_dhcp-snooping-db
-         - system_flow-export-statistics
+         - switch_dhcp-snooping-client-db
+         - switch_dhcp-snooping-server-db
+         - switch_dhcp-snooping-client6-db
+         - switch_dhcp-snooping-server6-db
+         - switch_network-monitor-l3db
+         - switch_network-monitor-l2db
+         - switch_faceplate
+         - system_resource
+         - switch_802.1x-status
+         - system_interface-physical
+         - system_hardware-status
          - router_routing-table
+         - switch_mclag-list
+         - switch_mclag-icl
+         - switch_flapguard-status
+         - system_fan-status
          - system_psu-status
-         - switch_port-speed
+         - system_flash-list
+         - hardware_cpu
+         - hardware_memory
+         - switch_qos-stats
+         - system_link-monitor-status
+         - system_ntp-status
          - system_pcb-temp
+         - switch_modules-detail
+         - switch_modules-summary
          - switch_modules-status
          - switch_modules-limits
-         - system_ntp-status
-         - switch_dhcp-snooping-client6-db
+         - switch_acl-usage
          - switch_igmp-snooping-group
-         - switch_capabilities
-         - switch_802.1x-status
-         - switch_dhcp-snooping-server6-db
-         - switch_lldp-state
-         - system_link-monitor-status
-         - switch_stp-state
-         - switch_faceplate
-         - hardware_memory
-         - system_fan-status
-         - system_flow-export-flows
-         - switch_cable-diag
+         - system_performance-status
          - system_upgrade-status
-         - system_resource
-         - switch_flapguard-status
-         - switch_dhcp-snooping-server-db
-         - switch_mclag-icl
+         - system_flow-export-statistics
+         - system_flow-export-flows
+         - system_log
+         - system_dhcp-lease-list
+         - system_sniffer-profile-summary
+         - switch_dhcp-snooping-limit-db-details
+         - switch_cable-diag
 
     params:
         description:
@@ -301,50 +301,38 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.f
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
 
 module_selectors_defs = {
-    "system_dhcp-lease-list": {
-        "url": "system/dhcp-lease-list"
-    },
     "switch_port": {
         "url": "switch/port"
     },
-    "switch_dhcp-snooping-client-db": {
-        "url": "switch/dhcp-snooping-client-db"
-    },
-    "switch_poe-summary": {
-        "url": "switch/poe-summary"
-    },
-    "switch_acl-stats-egress": {
-        "url": "switch/acl-stats-egress"
-    },
-    "system_performance-status": {
-        "url": "system/performance-status"
-    },
-    "system_status": {
-        "url": "system/status"
-    },
-    "switch_acl-usage": {
-        "url": "switch/acl-usage"
-    },
-    "switch_modules-detail": {
-        "url": "switch/modules-detail"
+    "switch_port-speed": {
+        "url": "switch/port-speed"
     },
     "switch_port-statistics": {
         "url": "switch/port-statistics"
     },
+    "switch_stp-state": {
+        "url": "switch/stp-state"
+    },
+    "switch_trunk-state": {
+        "url": "switch/trunk-state"
+    },
+    "switch_loop-guard-state": {
+        "url": "switch/loop-guard-state"
+    },
+    "switch_acl-stats": {
+        "url": "switch/acl-stats"
+    },
     "switch_acl-stats-ingress": {
         "url": "switch/acl-stats-ingress"
     },
-    "system_sniffer-profile-summary": {
-        "url": "system/sniffer-profile-summary"
-    },
-    "switch_modules-summary": {
-        "url": "switch/modules-summary"
-    },
-    "switch_poe-status": {
-        "url": "switch/poe-status"
+    "switch_acl-stats-egress": {
+        "url": "switch/acl-stats-egress"
     },
     "switch_acl-stats-prelookup": {
         "url": "switch/acl-stats-prelookup"
+    },
+    "switch_lldp-state": {
+        "url": "switch/lldp-state"
     },
     "switch_mac-address": {
         "url": "switch/mac-address"
@@ -352,62 +340,98 @@ module_selectors_defs = {
     "switch_mac-address-summary": {
         "url": "switch/mac-address-summary"
     },
-    "system_hardware-status": {
-        "url": "system/hardware-status"
+    "system_status": {
+        "url": "system/status"
     },
-    "switch_trunk-state": {
-        "url": "switch/trunk-state"
+    "switch_poe-status": {
+        "url": "switch/poe-status"
     },
-    "system_interface-physical": {
-        "url": "system/interface-physical"
+    "switch_poe-summary": {
+        "url": "switch/poe-summary"
     },
-    "system_flash-list": {
-        "url": "system/flash-list"
-    },
-    "switch_loop-guard-state": {
-        "url": "switch/loop-guard-state"
-    },
-    "switch_network-monitor-l2db": {
-        "url": "switch/network-monitor-l2db"
-    },
-    "hardware_cpu": {
-        "url": "hardware/cpu"
-    },
-    "switch_mclag-list": {
-        "url": "switch/mclag-list"
-    },
-    "switch_network-monitor-l3db": {
-        "url": "switch/network-monitor-l3db"
-    },
-    "switch_acl-stats": {
-        "url": "switch/acl-stats"
-    },
-    "system_log": {
-        "url": "system/log"
-    },
-    "switch_dhcp-snooping-limit-db-details": {
-        "url": "switch/dhcp-snooping-limit-db-details"
-    },
-    "switch_qos-stats": {
-        "url": "switch/qos-stats"
+    "switch_capabilities": {
+        "url": "switch/capabilities"
     },
     "switch_dhcp-snooping-db": {
         "url": "switch/dhcp-snooping-db"
     },
-    "system_flow-export-statistics": {
-        "url": "system/flow-export-statistics"
+    "switch_dhcp-snooping-client-db": {
+        "url": "switch/dhcp-snooping-client-db"
+    },
+    "switch_dhcp-snooping-server-db": {
+        "url": "switch/dhcp-snooping-server-db"
+    },
+    "switch_dhcp-snooping-client6-db": {
+        "url": "switch/dhcp-snooping-client6-db"
+    },
+    "switch_dhcp-snooping-server6-db": {
+        "url": "switch/dhcp-snooping-server6-db"
+    },
+    "switch_network-monitor-l3db": {
+        "url": "switch/network-monitor-l3db"
+    },
+    "switch_network-monitor-l2db": {
+        "url": "switch/network-monitor-l2db"
+    },
+    "switch_faceplate": {
+        "url": "switch/faceplate"
+    },
+    "system_resource": {
+        "url": "system/resource"
+    },
+    "switch_802.1x-status": {
+        "url": "switch/802.1x-status"
+    },
+    "system_interface-physical": {
+        "url": "system/interface-physical"
+    },
+    "system_hardware-status": {
+        "url": "system/hardware-status"
     },
     "router_routing-table": {
         "url": "router/routing-table"
     },
+    "switch_mclag-list": {
+        "url": "switch/mclag-list"
+    },
+    "switch_mclag-icl": {
+        "url": "switch/mclag-icl"
+    },
+    "switch_flapguard-status": {
+        "url": "switch/flapguard-status"
+    },
+    "system_fan-status": {
+        "url": "system/fan-status"
+    },
     "system_psu-status": {
         "url": "system/psu-status"
     },
-    "switch_port-speed": {
-        "url": "switch/port-speed"
+    "system_flash-list": {
+        "url": "system/flash-list"
+    },
+    "hardware_cpu": {
+        "url": "hardware/cpu"
+    },
+    "hardware_memory": {
+        "url": "hardware/memory"
+    },
+    "switch_qos-stats": {
+        "url": "switch/qos-stats"
+    },
+    "system_link-monitor-status": {
+        "url": "system/link-monitor-status"
+    },
+    "system_ntp-status": {
+        "url": "system/ntp-status"
     },
     "system_pcb-temp": {
         "url": "system/pcb-temp"
+    },
+    "switch_modules-detail": {
+        "url": "switch/modules-detail"
+    },
+    "switch_modules-summary": {
+        "url": "switch/modules-summary"
     },
     "switch_modules-status": {
         "url": "switch/modules-status"
@@ -415,62 +439,38 @@ module_selectors_defs = {
     "switch_modules-limits": {
         "url": "switch/modules-limits"
     },
-    "system_ntp-status": {
-        "url": "system/ntp-status"
-    },
-    "switch_dhcp-snooping-client6-db": {
-        "url": "switch/dhcp-snooping-client6-db"
+    "switch_acl-usage": {
+        "url": "switch/acl-usage"
     },
     "switch_igmp-snooping-group": {
         "url": "switch/igmp-snooping-group"
     },
-    "switch_capabilities": {
-        "url": "switch/capabilities"
-    },
-    "switch_802.1x-status": {
-        "url": "switch/802.1x-status"
-    },
-    "switch_dhcp-snooping-server6-db": {
-        "url": "switch/dhcp-snooping-server6-db"
-    },
-    "switch_lldp-state": {
-        "url": "switch/lldp-state"
-    },
-    "system_link-monitor-status": {
-        "url": "system/link-monitor-status"
-    },
-    "switch_stp-state": {
-        "url": "switch/stp-state"
-    },
-    "switch_faceplate": {
-        "url": "switch/faceplate"
-    },
-    "hardware_memory": {
-        "url": "hardware/memory"
-    },
-    "system_fan-status": {
-        "url": "system/fan-status"
-    },
-    "system_flow-export-flows": {
-        "url": "system/flow-export-flows"
-    },
-    "switch_cable-diag": {
-        "url": "switch/cable-diag"
+    "system_performance-status": {
+        "url": "system/performance-status"
     },
     "system_upgrade-status": {
         "url": "system/upgrade-status"
     },
-    "system_resource": {
-        "url": "system/resource"
+    "system_flow-export-statistics": {
+        "url": "system/flow-export-statistics"
     },
-    "switch_flapguard-status": {
-        "url": "switch/flapguard-status"
+    "system_flow-export-flows": {
+        "url": "system/flow-export-flows"
     },
-    "switch_dhcp-snooping-server-db": {
-        "url": "switch/dhcp-snooping-server-db"
+    "system_log": {
+        "url": "system/log"
     },
-    "switch_mclag-icl": {
-        "url": "switch/mclag-icl"
+    "system_dhcp-lease-list": {
+        "url": "system/dhcp-lease-list"
+    },
+    "system_sniffer-profile-summary": {
+        "url": "system/sniffer-profile-summary"
+    },
+    "switch_dhcp-snooping-limit-db-details": {
+        "url": "switch/dhcp-snooping-limit-db-details"
+    },
+    "switch_cable-diag": {
+        "url": "switch/cable-diag"
     }
 }
 
@@ -519,63 +519,63 @@ def main():
             "required": False,
             "type": "str",
             "choices": [
-                "system_dhcp-lease-list",
                 "switch_port",
-                "switch_dhcp-snooping-client-db",
-                "switch_poe-summary",
-                "switch_acl-stats-egress",
-                "system_performance-status",
-                "system_status",
-                "switch_acl-usage",
-                "switch_modules-detail",
+                "switch_port-speed",
                 "switch_port-statistics",
+                "switch_stp-state",
+                "switch_trunk-state",
+                "switch_loop-guard-state",
+                "switch_acl-stats",
                 "switch_acl-stats-ingress",
-                "system_sniffer-profile-summary",
-                "switch_modules-summary",
-                "switch_poe-status",
+                "switch_acl-stats-egress",
                 "switch_acl-stats-prelookup",
+                "switch_lldp-state",
                 "switch_mac-address",
                 "switch_mac-address-summary",
-                "system_hardware-status",
-                "switch_trunk-state",
-                "system_interface-physical",
-                "system_flash-list",
-                "switch_loop-guard-state",
-                "switch_network-monitor-l2db",
-                "hardware_cpu",
-                "switch_mclag-list",
-                "switch_network-monitor-l3db",
-                "switch_acl-stats",
-                "system_log",
-                "switch_dhcp-snooping-limit-db-details",
-                "switch_qos-stats",
+                "system_status",
+                "switch_poe-status",
+                "switch_poe-summary",
+                "switch_capabilities",
                 "switch_dhcp-snooping-db",
-                "system_flow-export-statistics",
+                "switch_dhcp-snooping-client-db",
+                "switch_dhcp-snooping-server-db",
+                "switch_dhcp-snooping-client6-db",
+                "switch_dhcp-snooping-server6-db",
+                "switch_network-monitor-l3db",
+                "switch_network-monitor-l2db",
+                "switch_faceplate",
+                "system_resource",
+                "switch_802.1x-status",
+                "system_interface-physical",
+                "system_hardware-status",
                 "router_routing-table",
+                "switch_mclag-list",
+                "switch_mclag-icl",
+                "switch_flapguard-status",
+                "system_fan-status",
                 "system_psu-status",
-                "switch_port-speed",
+                "system_flash-list",
+                "hardware_cpu",
+                "hardware_memory",
+                "switch_qos-stats",
+                "system_link-monitor-status",
+                "system_ntp-status",
                 "system_pcb-temp",
+                "switch_modules-detail",
+                "switch_modules-summary",
                 "switch_modules-status",
                 "switch_modules-limits",
-                "system_ntp-status",
-                "switch_dhcp-snooping-client6-db",
+                "switch_acl-usage",
                 "switch_igmp-snooping-group",
-                "switch_capabilities",
-                "switch_802.1x-status",
-                "switch_dhcp-snooping-server6-db",
-                "switch_lldp-state",
-                "system_link-monitor-status",
-                "switch_stp-state",
-                "switch_faceplate",
-                "hardware_memory",
-                "system_fan-status",
-                "system_flow-export-flows",
-                "switch_cable-diag",
+                "system_performance-status",
                 "system_upgrade-status",
-                "system_resource",
-                "switch_flapguard-status",
-                "switch_dhcp-snooping-server-db",
-                "switch_mclag-icl",
+                "system_flow-export-statistics",
+                "system_flow-export-flows",
+                "system_log",
+                "system_dhcp-lease-list",
+                "system_sniffer-profile-summary",
+                "switch_dhcp-snooping-limit-db-details",
+                "switch_cable-diag",
             ],
         },
         "selectors": {
@@ -591,63 +591,63 @@ def main():
                     "required": True,
                     "type": "str",
                     "choices": [
-                        "system_dhcp-lease-list",
                         "switch_port",
-                        "switch_dhcp-snooping-client-db",
-                        "switch_poe-summary",
-                        "switch_acl-stats-egress",
-                        "system_performance-status",
-                        "system_status",
-                        "switch_acl-usage",
-                        "switch_modules-detail",
+                        "switch_port-speed",
                         "switch_port-statistics",
+                        "switch_stp-state",
+                        "switch_trunk-state",
+                        "switch_loop-guard-state",
+                        "switch_acl-stats",
                         "switch_acl-stats-ingress",
-                        "system_sniffer-profile-summary",
-                        "switch_modules-summary",
-                        "switch_poe-status",
+                        "switch_acl-stats-egress",
                         "switch_acl-stats-prelookup",
+                        "switch_lldp-state",
                         "switch_mac-address",
                         "switch_mac-address-summary",
-                        "system_hardware-status",
-                        "switch_trunk-state",
-                        "system_interface-physical",
-                        "system_flash-list",
-                        "switch_loop-guard-state",
-                        "switch_network-monitor-l2db",
-                        "hardware_cpu",
-                        "switch_mclag-list",
-                        "switch_network-monitor-l3db",
-                        "switch_acl-stats",
-                        "system_log",
-                        "switch_dhcp-snooping-limit-db-details",
-                        "switch_qos-stats",
+                        "system_status",
+                        "switch_poe-status",
+                        "switch_poe-summary",
+                        "switch_capabilities",
                         "switch_dhcp-snooping-db",
-                        "system_flow-export-statistics",
+                        "switch_dhcp-snooping-client-db",
+                        "switch_dhcp-snooping-server-db",
+                        "switch_dhcp-snooping-client6-db",
+                        "switch_dhcp-snooping-server6-db",
+                        "switch_network-monitor-l3db",
+                        "switch_network-monitor-l2db",
+                        "switch_faceplate",
+                        "system_resource",
+                        "switch_802.1x-status",
+                        "system_interface-physical",
+                        "system_hardware-status",
                         "router_routing-table",
+                        "switch_mclag-list",
+                        "switch_mclag-icl",
+                        "switch_flapguard-status",
+                        "system_fan-status",
                         "system_psu-status",
-                        "switch_port-speed",
+                        "system_flash-list",
+                        "hardware_cpu",
+                        "hardware_memory",
+                        "switch_qos-stats",
+                        "system_link-monitor-status",
+                        "system_ntp-status",
                         "system_pcb-temp",
+                        "switch_modules-detail",
+                        "switch_modules-summary",
                         "switch_modules-status",
                         "switch_modules-limits",
-                        "system_ntp-status",
-                        "switch_dhcp-snooping-client6-db",
+                        "switch_acl-usage",
                         "switch_igmp-snooping-group",
-                        "switch_capabilities",
-                        "switch_802.1x-status",
-                        "switch_dhcp-snooping-server6-db",
-                        "switch_lldp-state",
-                        "system_link-monitor-status",
-                        "switch_stp-state",
-                        "switch_faceplate",
-                        "hardware_memory",
-                        "system_fan-status",
-                        "system_flow-export-flows",
-                        "switch_cable-diag",
+                        "system_performance-status",
                         "system_upgrade-status",
-                        "system_resource",
-                        "switch_flapguard-status",
-                        "switch_dhcp-snooping-server-db",
-                        "switch_mclag-icl",
+                        "system_flow-export-statistics",
+                        "system_flow-export-flows",
+                        "system_log",
+                        "system_dhcp-lease-list",
+                        "system_sniffer-profile-summary",
+                        "switch_dhcp-snooping-limit-db-details",
+                        "switch_cable-diag",
                     ],
                 },
             }

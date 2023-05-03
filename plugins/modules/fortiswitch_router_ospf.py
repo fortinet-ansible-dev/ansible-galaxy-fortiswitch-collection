@@ -99,7 +99,7 @@ options:
                                 type: int
                             list:
                                 description:
-                                    - Access-list or prefix-list name. Source router.access-list.name router.prefix-list.name.
+                                    - Access-list or prefix-list name.
                                 type: str
                     id:
                         description:
@@ -158,7 +158,7 @@ options:
                             - Stub summary setting.
                         type: str
                         choices:
-                            - 'no-summary'
+                            - 'no_summary'
                             - 'summary'
                     type:
                         description:
@@ -282,7 +282,7 @@ options:
                 suboptions:
                     access_list:
                         description:
-                            - Access list name. Source router.access-list.name.
+                            - Access list name.
                         type: str
                     id:
                         description:
@@ -366,7 +366,7 @@ options:
                             - 'disable'
                     name:
                         description:
-                            - Interface entry name. Source system.interface.name.
+                            - Interface entry name.
                         type: str
                     priority:
                         description:
@@ -379,6 +379,10 @@ options:
                     transmit_delay:
                         description:
                             - Link state transmit delay.
+                        type: int
+                    ttl:
+                        description:
+                            - TTL.
                         type: int
                     ucast_ttl:
                         description:
@@ -421,7 +425,7 @@ options:
                 suboptions:
                     name:
                         description:
-                            - Passive interface name. Source system.interface.name.
+                            - Passive interface name.
                         type: str
             redistribute:
                 description:
@@ -446,7 +450,7 @@ options:
                         type: str
                     routemap:
                         description:
-                            - Route map name. Source router.route-map.name.
+                            - Route map name.
                         type: str
                     status:
                         description:
@@ -536,7 +540,7 @@ options:
                                         type: int
                                     list:
                                         description:
-                                            - Access-list or prefix-list name. Source router.access-list.name router.prefix-list.name.
+                                            - Access-list or prefix-list name.
                                         type: str
                             id:
                                 description:
@@ -595,7 +599,7 @@ options:
                                     - Stub summary setting.
                                 type: str
                                 choices:
-                                    - 'no-summary'
+                                    - 'no_summary'
                                     - 'summary'
                             type:
                                 description:
@@ -704,7 +708,7 @@ options:
                         suboptions:
                             access_list:
                                 description:
-                                    - Access list name. Source router.access-list.name.
+                                    - Access list name.
                                 type: str
                             id:
                                 description:
@@ -781,7 +785,7 @@ options:
                                     - 'disable'
                             name:
                                 description:
-                                    - Interface entry name. Source system.interface.name.
+                                    - Interface entry name.
                                 type: str
                             priority:
                                 description:
@@ -794,6 +798,10 @@ options:
                             transmit_delay:
                                 description:
                                     - Link state transmit delay.
+                                type: int
+                            ttl:
+                                description:
+                                    - TTL.
                                 type: int
                             ucast_ttl:
                                 description:
@@ -808,7 +816,7 @@ options:
                             - 'disable'
                     name:
                         description:
-                            - Vrf name. Source router.vrf.name.
+                            - Vrf name.
                         type: str
                     network:
                         description:
@@ -836,7 +844,7 @@ options:
                         suboptions:
                             name:
                                 description:
-                                    - Passive interface name. Source system.interface.name.
+                                    - Passive interface name.
                                 type: str
                     redistribute:
                         description:
@@ -861,7 +869,7 @@ options:
                                 type: str
                             routemap:
                                 description:
-                                    - Route map name. Source router.route-map.name.
+                                    - Route map name.
                                 type: str
                             status:
                                 description:
@@ -930,7 +938,7 @@ EXAMPLES = '''
              -
                 direction: "in"
                 id:  "8"
-                list: "<your_own_value> (source router.access-list.name router.prefix-list.name)"
+                list: "<your_own_value> (source router.access_list.name router.prefix_list.name)"
             id:  "10"
             nssa_translator_role: "candidate"
             range:
@@ -969,7 +977,7 @@ EXAMPLES = '''
         distance_intra_area: "42"
         distribute_list:
          -
-            access_list: "<your_own_value> (source router.access-list.name)"
+            access_list: "<your_own_value> (source router.access_list.name)"
             id:  "45"
             protocol: "connected"
         interface:
@@ -991,50 +999,51 @@ EXAMPLES = '''
             priority: "61"
             retransmit_interval: "62"
             transmit_delay: "63"
-            ucast_ttl: "64"
+            ttl: "64"
+            ucast_ttl: "65"
         log_neighbour_changes: "enable"
-        name: "default_name_66"
+        name: "default_name_67"
         network:
          -
             area: "<your_own_value>"
-            id:  "69"
+            id:  "70"
             prefix: "<your_own_value>"
         passive_interface:
          -
-            name: "default_name_72 (source system.interface.name)"
+            name: "default_name_73 (source system.interface.name)"
         redistribute:
          -
-            metric: "74"
+            metric: "75"
             metric_type: "1"
-            name: "default_name_76"
-            routemap: "<your_own_value> (source router.route-map.name)"
+            name: "default_name_77"
+            routemap: "<your_own_value> (source router.route_map.name)"
             status: "enable"
-            tag: "79"
+            tag: "80"
         rfc1583_compatible: "enable"
         router_id: "<your_own_value>"
         spf_timers: "<your_own_value>"
         summary_address:
          -
-            id:  "84"
+            id:  "85"
             prefix: "<your_own_value>"
-            tag: "86"
+            tag: "87"
         vrf:
          -
             abr_type: "cisco"
             area:
              -
-                default_cost: "90"
+                default_cost: "91"
                 filter_list:
                  -
                     direction: "in"
-                    id:  "93"
-                    list: "<your_own_value> (source router.access-list.name router.prefix-list.name)"
-                id:  "95"
+                    id:  "94"
+                    list: "<your_own_value> (source router.access_list.name router.prefix_list.name)"
+                id:  "96"
                 nssa_translator_role: "candidate"
                 range:
                  -
                     advertise: "disable"
-                    id:  "99"
+                    id:  "100"
                     prefix: "<your_own_value>"
                     substitute: "<your_own_value>"
                     substitute_status: "enable"
@@ -1045,72 +1054,73 @@ EXAMPLES = '''
                  -
                     authentication: "none"
                     authentication_key: "<your_own_value>"
-                    dead_interval: "109"
-                    hello_interval: "110"
-                    name: "default_name_111"
+                    dead_interval: "110"
+                    hello_interval: "111"
+                    name: "default_name_112"
                     peer: "<your_own_value>"
-                    retransmit_interval: "113"
-                    transmit_delay: "114"
+                    retransmit_interval: "114"
+                    transmit_delay: "115"
             database_overflow: "enable"
-            database_overflow_max_external_lsa: "116"
-            database_overflow_time_to_recover: "117"
-            default_information_metric: "118"
+            database_overflow_max_external_lsa: "117"
+            database_overflow_time_to_recover: "118"
+            default_information_metric: "119"
             default_information_metric_type: "1"
             default_information_originate: "enable"
-            distance: "121"
-            distance_external: "122"
-            distance_inter_area: "123"
-            distance_intra_area: "124"
+            distance: "122"
+            distance_external: "123"
+            distance_inter_area: "124"
+            distance_intra_area: "125"
             distribute_list:
              -
-                access_list: "<your_own_value> (source router.access-list.name)"
-                id:  "127"
+                access_list: "<your_own_value> (source router.access_list.name)"
+                id:  "128"
                 protocol: "connected"
             interface:
              -
                 authentication: "none"
                 authentication_key: "<your_own_value>"
-                cost: "132"
-                dead_interval: "133"
-                hello_interval: "134"
-                hello_multiplier: "135"
+                cost: "133"
+                dead_interval: "134"
+                hello_interval: "135"
+                hello_multiplier: "136"
                 md5_keys:
                  -
-                    id:  "137"
+                    id:  "138"
                     key: "<your_own_value>"
-                mtu: "139"
+                mtu: "140"
                 mtu_ignore: "enable"
-                name: "default_name_141 (source system.interface.name)"
-                priority: "142"
-                retransmit_interval: "143"
-                transmit_delay: "144"
-                ucast_ttl: "145"
+                name: "default_name_142 (source system.interface.name)"
+                priority: "143"
+                retransmit_interval: "144"
+                transmit_delay: "145"
+                ttl: "146"
+                ucast_ttl: "147"
             log_neighbour_changes: "enable"
-            name: "default_name_147 (source router.vrf.name)"
+            name: "default_name_149 (source router.vrf.name)"
             network:
              -
                 area: "<your_own_value>"
-                id:  "150"
+                id:  "152"
                 prefix: "<your_own_value>"
             passive_interface:
              -
-                name: "default_name_153 (source system.interface.name)"
+                name: "default_name_155 (source system.interface.name)"
             redistribute:
              -
-                metric: "155"
+                metric: "157"
                 metric_type: "1"
-                name: "default_name_157"
-                routemap: "<your_own_value> (source router.route-map.name)"
+                name: "default_name_159"
+                routemap: "<your_own_value> (source router.route_map.name)"
                 status: "enable"
-                tag: "160"
+                tag: "162"
             rfc1583_compatible: "enable"
             router_id: "<your_own_value>"
             spf_timers: "<your_own_value>"
             summary_address:
              -
-                id:  "165"
+                id:  "167"
                 prefix: "<your_own_value>"
-                tag: "167"
+                tag: "169"
 
 '''
 
@@ -1235,3340 +1245,4678 @@ def fortiswitch_router(data, fos):
 
 
 versioned_schema = {
+    "revisions": {
+        "v7.0.0": True,
+        "v7.0.1": True,
+        "v7.0.2": True,
+        "v7.0.3": True,
+        "v7.0.4": True,
+        "v7.0.5": True,
+        "v7.0.6": True,
+        "v7.2.1": True,
+        "v7.2.2": True,
+        "v7.2.3": True
+    },
     "type": "dict",
     "children": {
-        "default_information_metric": {
-            "type": "integer",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "distance_intra_area": {
-            "type": "integer",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "default_information_metric_type": {
-            "type": "string",
-            "options": [
-                {
-                    "value": "1",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                {
-                    "value": "2",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                }
-            ],
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "network": {
-            "elements": "dict",
+        "summary_address": {
             "type": "list",
+            "elements": "dict",
             "children": {
                 "prefix": {
-                    "type": "string",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "prefix",
+                    "help": "Prefix.",
+                    "category": "unitary"
+                },
+                "tag": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "tag",
+                    "help": "Tag value.",
+                    "category": "unitary"
                 },
                 "id": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
                     "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "area": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                    "name": "id",
+                    "help": "Summary address entry ID.",
+                    "category": "unitary"
                 }
             },
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "name": "summary_address",
+            "help": "Aggregate address for redistributed routes.",
+            "mkey": "id",
+            "category": "table"
         },
         "area": {
-            "elements": "dict",
             "type": "list",
+            "elements": "dict",
             "children": {
-                "stub_type": {
-                    "type": "string",
-                    "options": [
-                        {
-                            "value": "no-summary",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        {
-                            "value": "summary",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
-                    ],
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "shortcut": {
-                    "type": "string",
-                    "options": [
-                        {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        {
-                            "value": "default",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
-                    ],
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "default_cost": {
-                    "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "range": {
-                    "elements": "dict",
-                    "type": "list",
-                    "children": {
-                        "substitute_status": {
-                            "type": "string",
-                            "options": [
-                                {
-                                    "value": "enable",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                {
-                                    "value": "disable",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                }
-                            ],
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "advertise": {
-                            "type": "string",
-                            "options": [
-                                {
-                                    "value": "disable",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                {
-                                    "value": "enable",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                }
-                            ],
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "prefix": {
-                            "type": "string",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "substitute": {
-                            "type": "string",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "id": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
-                    },
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
                 "nssa_translator_role": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
                     "type": "string",
                     "options": [
                         {
                             "value": "candidate",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         },
                         {
                             "value": "never",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         },
                         {
                             "value": "always",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         }
                     ],
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                    "name": "nssa_translator_role",
+                    "help": "NSSA translator role type.",
+                    "category": "unitary"
                 },
                 "virtual_link": {
-                    "elements": "dict",
                     "type": "list",
+                    "elements": "dict",
                     "children": {
-                        "retransmit_interval": {
-                            "type": "integer",
+                        "dead_interval": {
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "md5_keys": {
-                            "elements": "dict",
-                            "type": "list",
-                            "children": {
-                                "id": {
-                                    "type": "integer",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                "key": {
-                                    "type": "string",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                }
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             },
+                            "type": "integer",
+                            "name": "dead_interval",
+                            "help": "Dead interval.",
+                            "category": "unitary"
+                        },
+                        "hello_interval": {
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
-                            }
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "hello_interval",
+                            "help": "Hello interval.",
+                            "category": "unitary"
                         },
                         "name": {
-                            "type": "string",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
-                            }
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "name": "name",
+                            "help": "Virtual link entry name.",
+                            "category": "unitary"
+                        },
+                        "transmit_delay": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "transmit_delay",
+                            "help": "Link state transmit delay.",
+                            "category": "unitary"
+                        },
+                        "retransmit_interval": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "retransmit_interval",
+                            "help": "Time between retransmitting lost link state advertisements.",
+                            "category": "unitary"
                         },
                         "authentication": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
                             "type": "string",
                             "options": [
                                 {
                                     "value": "none",
                                     "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
                                         "v7.0.0": True,
-                                        "v7.0.6": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
                                         "v7.0.5": True,
-                                        "v7.0.4": True
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
                                     }
                                 },
                                 {
                                     "value": "text",
                                     "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
                                         "v7.0.0": True,
-                                        "v7.0.6": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
                                         "v7.0.5": True,
-                                        "v7.0.4": True
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
                                     }
                                 },
                                 {
                                     "value": "md5",
                                     "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
                                         "v7.0.0": True,
-                                        "v7.0.6": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
                                         "v7.0.5": True,
-                                        "v7.0.4": True
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
                                     }
                                 }
                             ],
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "dead_interval": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "hello_interval": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
+                            "name": "authentication",
+                            "help": "Authentication type.",
+                            "category": "unitary"
                         },
                         "peer": {
-                            "type": "string",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
-                            }
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "name": "peer",
+                            "help": "Peer IP.",
+                            "category": "unitary"
+                        },
+                        "md5_keys": {
+                            "type": "list",
+                            "elements": "dict",
+                            "children": {
+                                "id": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "integer",
+                                    "name": "id",
+                                    "help": "key-id (1-255).",
+                                    "category": "unitary"
+                                },
+                                "key": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "string",
+                                    "name": "key",
+                                    "help": "md5-key.",
+                                    "category": "unitary"
+                                }
+                            },
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "name": "md5_keys",
+                            "help": "OSPF md5 key configuration. Applicable only when authentication field is set to md5.",
+                            "mkey": "id",
+                            "category": "table"
                         },
                         "authentication_key": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
                             "type": "string",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "transmit_delay": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
+                            "name": "authentication_key",
+                            "help": "Authentication key.",
+                            "category": "unitary"
                         }
                     },
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "name": "virtual_link",
+                    "help": "OSPF virtual link configuration.",
+                    "mkey": "name",
+                    "category": "table"
+                },
+                "shortcut": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "disable",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "enable",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "default",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        }
+                    ],
+                    "name": "shortcut",
+                    "help": "Enable/disable shortcut option.",
+                    "category": "unitary"
+                },
+                "stub_type": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "no_summary",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "summary",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        }
+                    ],
+                    "name": "stub_type",
+                    "help": "Stub summary setting.",
+                    "category": "unitary"
+                },
+                "range": {
+                    "type": "list",
+                    "elements": "dict",
+                    "children": {
+                        "substitute": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "name": "substitute",
+                            "help": "Substitute prefix.",
+                            "category": "unitary"
+                        },
+                        "prefix": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "name": "prefix",
+                            "help": "Prefix.",
+                            "category": "unitary"
+                        },
+                        "substitute_status": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "options": [
+                                {
+                                    "value": "enable",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                },
+                                {
+                                    "value": "disable",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                }
+                            ],
+                            "name": "substitute_status",
+                            "help": "Enable/disable substitute status.",
+                            "category": "unitary"
+                        },
+                        "id": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "id",
+                            "help": "Range entry ID.",
+                            "category": "unitary"
+                        },
+                        "advertise": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "options": [
+                                {
+                                    "value": "disable",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                },
+                                {
+                                    "value": "enable",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                }
+                            ],
+                            "name": "advertise",
+                            "help": "Enable/disable advertise status.",
+                            "category": "unitary"
+                        }
+                    },
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "name": "range",
+                    "help": "OSPF area range configuration.",
+                    "mkey": "id",
+                    "category": "table"
                 },
                 "filter_list": {
-                    "elements": "dict",
                     "type": "list",
+                    "elements": "dict",
                     "children": {
                         "direction": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
                             "type": "string",
                             "options": [
                                 {
                                     "value": "in",
                                     "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
                                         "v7.0.0": True,
-                                        "v7.0.6": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
                                         "v7.0.5": True,
-                                        "v7.0.4": True
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
                                     }
                                 },
                                 {
                                     "value": "out",
                                     "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
                                         "v7.0.0": True,
-                                        "v7.0.6": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
                                         "v7.0.5": True,
-                                        "v7.0.4": True
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
                                     }
                                 }
                             ],
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
+                            "name": "direction",
+                            "help": "Direction.",
+                            "category": "unitary"
                         },
                         "list": {
-                            "type": "string",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
-                            }
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "name": "list",
+                            "help": "Access-list or prefix-list name.",
+                            "category": "unitary"
                         },
                         "id": {
-                            "type": "integer",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
-                            }
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "id",
+                            "help": "Filter list entry ID.",
+                            "category": "unitary"
                         }
                     },
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "name": "filter_list",
+                    "help": "OSPF area filter-list configuration.",
+                    "mkey": "id",
+                    "category": "table"
+                },
+                "default_cost": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "default_cost",
+                    "help": "Summary default cost of stub or NSSA area.",
+                    "category": "unitary"
                 },
                 "type": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
                     "type": "string",
                     "options": [
                         {
                             "value": "regular",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         },
                         {
                             "value": "nssa",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         },
                         {
                             "value": "stub",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         }
                     ],
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                    "name": "type",
+                    "help": "Area type setting.",
+                    "category": "unitary"
                 },
                 "id": {
-                    "type": "string",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "id",
+                    "help": "Area entry IP address.",
+                    "category": "unitary"
                 }
             },
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "name": "area",
+            "help": "OSPF area configuration.",
+            "mkey": "id",
+            "category": "table"
         },
-        "distribute_list": {
-            "elements": "dict",
+        "distance_intra_area": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "integer",
+            "name": "distance_intra_area",
+            "help": "Administrative intra-area route distance.",
+            "category": "unitary"
+        },
+        "distance_external": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "integer",
+            "name": "distance_external",
+            "help": "Administrative external route distance.",
+            "category": "unitary"
+        },
+        "network": {
             "type": "list",
+            "elements": "dict",
             "children": {
-                "protocol": {
-                    "type": "string",
-                    "options": [
-                        {
-                            "value": "connected",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        {
-                            "value": "static",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        {
-                            "value": "rip",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        {
-                            "value": "bgp",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        {
-                            "value": "isis",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
-                    ],
+                "prefix": {
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "prefix",
+                    "help": "Prefix.",
+                    "category": "unitary"
                 },
                 "id": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
                     "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                    "name": "id",
+                    "help": "Network entry ID.",
+                    "category": "unitary"
                 },
-                "access_list": {
-                    "type": "string",
+                "area": {
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "area",
+                    "help": "Attach the network to area.",
+                    "category": "unitary"
                 }
             },
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "name": "network",
+            "help": "Enable OSPF on an IP network.",
+            "mkey": "id",
+            "category": "table"
         },
-        "abr_type": {
+        "router_id": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "router_id",
+            "help": "Router ID.",
+            "category": "unitary"
+        },
+        "default_information_metric_type": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "string",
             "options": [
                 {
-                    "value": "cisco",
+                    "value": "1",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 },
                 {
-                    "value": "ibm",
+                    "value": "2",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                {
-                    "value": "shortcut",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                {
-                    "value": "standard",
-                    "revisions": {
-                        "v7.0.3": True,
                         "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 }
             ],
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+            "name": "default_information_metric_type",
+            "help": "Default information metric type.",
+            "category": "unitary"
         },
-        "default_information_originate": {
+        "database_overflow_time_to_recover": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "integer",
+            "name": "database_overflow_time_to_recover",
+            "help": "Database overflow time to recover (sec).",
+            "category": "unitary"
+        },
+        "log_neighbour_changes": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
             "type": "string",
             "options": [
                 {
                     "value": "enable",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    }
+                },
+                {
+                    "value": "disable",
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    }
+                }
+            ],
+            "name": "log_neighbour_changes",
+            "help": "Enable logging of OSPF neighbour's changes",
+            "category": "unitary"
+        },
+        "rfc1583_compatible": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "options": [
+                {
+                    "value": "enable",
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    }
+                },
+                {
+                    "value": "disable",
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    }
+                }
+            ],
+            "name": "rfc1583_compatible",
+            "help": "Enable/disable RFC1583 compatibility.",
+            "category": "unitary"
+        },
+        "default_information_metric": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "integer",
+            "name": "default_information_metric",
+            "help": "Default information metric.",
+            "category": "unitary"
+        },
+        "default_information_originate": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "options": [
+                {
+                    "value": "enable",
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 },
                 {
                     "value": "always",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 },
                 {
                     "value": "disable",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     }
                 }
             ],
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "database_overflow_max_external_lsa": {
-            "type": "integer",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+            "name": "default_information_originate",
+            "help": "Enable/disable generation of default route.",
+            "category": "unitary"
         },
         "passive_interface": {
-            "elements": "dict",
             "type": "list",
+            "elements": "dict",
             "children": {
                 "name": {
-                    "type": "string",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "name",
+                    "help": "Passive interface name.",
+                    "category": "unitary"
                 }
             },
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "router_id": {
-            "type": "string",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "distance_inter_area": {
-            "type": "integer",
-            "revisions": {
-                "v7.0.3": True,
                 "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "log_neighbour_changes": {
-            "type": "string",
-            "options": [
-                {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                }
-            ],
-            "revisions": {
                 "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "distance_external": {
-            "type": "integer",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
                 "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "name": "passive_interface",
+            "help": "Passive interface configuration.",
+            "mkey": "name",
+            "category": "table"
         },
-        "summary_address": {
-            "elements": "dict",
+        "distribute_list": {
             "type": "list",
+            "elements": "dict",
             "children": {
-                "prefix": {
+                "access_list": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
                     "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                    "name": "access_list",
+                    "help": "Access list name.",
+                    "category": "unitary"
                 },
-                "tag": {
-                    "type": "integer",
+                "protocol": {
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "connected",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "static",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "rip",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "bgp",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "isis",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        }
+                    ],
+                    "name": "protocol",
+                    "help": "Protocol type.",
+                    "category": "unitary"
                 },
                 "id": {
-                    "type": "integer",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "id",
+                    "help": "Distribute list entry ID.",
+                    "category": "unitary"
                 }
             },
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "name": "distribute_list",
+            "help": "Redistribute routes filter.",
+            "mkey": "id",
+            "category": "table"
         },
-        "spf_timers": {
-            "type": "string",
+        "distance": {
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "integer",
+            "name": "distance",
+            "help": "Administrative distance.",
+            "category": "unitary"
         },
-        "vrf": {
-            "elements": "dict",
+        "redistribute": {
             "type": "list",
+            "elements": "dict",
             "children": {
-                "default_information_metric": {
-                    "type": "integer",
+                "status": {
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "disable",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        }
+                    ],
+                    "name": "status",
+                    "help": "status",
+                    "category": "unitary"
                 },
-                "distance_intra_area": {
-                    "type": "integer",
+                "name": {
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "name",
+                    "help": "Redistribute name.",
+                    "category": "unitary"
                 },
-                "default_information_metric_type": {
+                "metric_type": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
                     "type": "string",
                     "options": [
                         {
                             "value": "1",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         },
                         {
                             "value": "2",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         }
                     ],
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                    "name": "metric_type",
+                    "help": "Metric type.",
+                    "category": "unitary"
                 },
-                "network": {
-                    "elements": "dict",
-                    "type": "list",
-                    "children": {
-                        "prefix": {
-                            "type": "string",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "id": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "area": {
-                            "type": "string",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
+                "tag": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     },
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "area": {
-                    "elements": "dict",
-                    "type": "list",
-                    "children": {
-                        "stub_type": {
-                            "type": "string",
-                            "options": [
-                                {
-                                    "value": "no-summary",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                {
-                                    "value": "summary",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                }
-                            ],
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "shortcut": {
-                            "type": "string",
-                            "options": [
-                                {
-                                    "value": "disable",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                {
-                                    "value": "enable",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                {
-                                    "value": "default",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                }
-                            ],
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "default_cost": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "range": {
-                            "elements": "dict",
-                            "type": "list",
-                            "children": {
-                                "substitute_status": {
-                                    "type": "string",
-                                    "options": [
-                                        {
-                                            "value": "enable",
-                                            "revisions": {
-                                                "v7.0.3": True,
-                                                "v7.0.2": True,
-                                                "v7.0.1": True,
-                                                "v7.0.0": True,
-                                                "v7.0.6": True,
-                                                "v7.0.5": True,
-                                                "v7.0.4": True
-                                            }
-                                        },
-                                        {
-                                            "value": "disable",
-                                            "revisions": {
-                                                "v7.0.3": True,
-                                                "v7.0.2": True,
-                                                "v7.0.1": True,
-                                                "v7.0.0": True,
-                                                "v7.0.6": True,
-                                                "v7.0.5": True,
-                                                "v7.0.4": True
-                                            }
-                                        }
-                                    ],
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                "advertise": {
-                                    "type": "string",
-                                    "options": [
-                                        {
-                                            "value": "disable",
-                                            "revisions": {
-                                                "v7.0.3": True,
-                                                "v7.0.2": True,
-                                                "v7.0.1": True,
-                                                "v7.0.0": True,
-                                                "v7.0.6": True,
-                                                "v7.0.5": True,
-                                                "v7.0.4": True
-                                            }
-                                        },
-                                        {
-                                            "value": "enable",
-                                            "revisions": {
-                                                "v7.0.3": True,
-                                                "v7.0.2": True,
-                                                "v7.0.1": True,
-                                                "v7.0.0": True,
-                                                "v7.0.6": True,
-                                                "v7.0.5": True,
-                                                "v7.0.4": True
-                                            }
-                                        }
-                                    ],
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                "prefix": {
-                                    "type": "string",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                "substitute": {
-                                    "type": "string",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                "id": {
-                                    "type": "integer",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                }
-                            },
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "nssa_translator_role": {
-                            "type": "string",
-                            "options": [
-                                {
-                                    "value": "candidate",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                {
-                                    "value": "never",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                {
-                                    "value": "always",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                }
-                            ],
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "virtual_link": {
-                            "elements": "dict",
-                            "type": "list",
-                            "children": {
-                                "retransmit_interval": {
-                                    "type": "integer",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                "name": {
-                                    "type": "string",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                "authentication": {
-                                    "type": "string",
-                                    "options": [
-                                        {
-                                            "value": "none",
-                                            "revisions": {
-                                                "v7.0.3": True,
-                                                "v7.0.2": True,
-                                                "v7.0.1": True,
-                                                "v7.0.0": True,
-                                                "v7.0.6": True,
-                                                "v7.0.5": True,
-                                                "v7.0.4": True
-                                            }
-                                        },
-                                        {
-                                            "value": "text",
-                                            "revisions": {
-                                                "v7.0.3": True,
-                                                "v7.0.2": True,
-                                                "v7.0.1": True,
-                                                "v7.0.0": True,
-                                                "v7.0.6": True,
-                                                "v7.0.5": True,
-                                                "v7.0.4": True
-                                            }
-                                        }
-                                    ],
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                "dead_interval": {
-                                    "type": "integer",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                "hello_interval": {
-                                    "type": "integer",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                "peer": {
-                                    "type": "string",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                "authentication_key": {
-                                    "type": "string",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                "transmit_delay": {
-                                    "type": "integer",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                }
-                            },
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "filter_list": {
-                            "elements": "dict",
-                            "type": "list",
-                            "children": {
-                                "direction": {
-                                    "type": "string",
-                                    "options": [
-                                        {
-                                            "value": "in",
-                                            "revisions": {
-                                                "v7.0.3": True,
-                                                "v7.0.2": True,
-                                                "v7.0.1": True,
-                                                "v7.0.0": True,
-                                                "v7.0.6": True,
-                                                "v7.0.5": True,
-                                                "v7.0.4": True
-                                            }
-                                        },
-                                        {
-                                            "value": "out",
-                                            "revisions": {
-                                                "v7.0.3": True,
-                                                "v7.0.2": True,
-                                                "v7.0.1": True,
-                                                "v7.0.0": True,
-                                                "v7.0.6": True,
-                                                "v7.0.5": True,
-                                                "v7.0.4": True
-                                            }
-                                        }
-                                    ],
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                "list": {
-                                    "type": "string",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                "id": {
-                                    "type": "integer",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                }
-                            },
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "type": {
-                            "type": "string",
-                            "options": [
-                                {
-                                    "value": "regular",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                {
-                                    "value": "nssa",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                {
-                                    "value": "stub",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                }
-                            ],
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "id": {
-                            "type": "string",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
-                    },
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "distribute_list": {
-                    "elements": "dict",
-                    "type": "list",
-                    "children": {
-                        "protocol": {
-                            "type": "string",
-                            "options": [
-                                {
-                                    "value": "connected",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                {
-                                    "value": "static",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                {
-                                    "value": "rip",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                {
-                                    "value": "bgp",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                {
-                                    "value": "isis",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                }
-                            ],
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "id": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "access_list": {
-                            "type": "string",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
-                    },
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "abr_type": {
-                    "type": "string",
-                    "options": [
-                        {
-                            "value": "cisco",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        {
-                            "value": "ibm",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        {
-                            "value": "shortcut",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        {
-                            "value": "standard",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
-                    ],
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "default_information_originate": {
-                    "type": "string",
-                    "options": [
-                        {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        {
-                            "value": "always",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
-                    ],
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "database_overflow_max_external_lsa": {
                     "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                    "name": "tag",
+                    "help": "Tag value.",
+                    "category": "unitary"
                 },
-                "passive_interface": {
-                    "elements": "dict",
-                    "type": "list",
-                    "children": {
-                        "name": {
-                            "type": "string",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
+                "routemap": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     },
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "router_id": {
                     "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                    "name": "routemap",
+                    "help": "Route map name.",
+                    "category": "unitary"
                 },
-                "distance_inter_area": {
-                    "type": "integer",
+                "metric": {
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "log_neighbour_changes": {
-                    "type": "string",
-                    "options": [
-                        {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
-                    ],
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "distance_external": {
-                    "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
                         "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "summary_address": {
-                    "elements": "dict",
-                    "type": "list",
-                    "children": {
-                        "prefix": {
-                            "type": "string",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "tag": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "id": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     },
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "spf_timers": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "interface": {
-                    "elements": "dict",
-                    "type": "list",
-                    "children": {
-                        "retransmit_interval": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "md5_keys": {
-                            "elements": "dict",
-                            "type": "list",
-                            "children": {
-                                "id": {
-                                    "type": "integer",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                "key": {
-                                    "type": "string",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                }
-                            },
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "cost": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "name": {
-                            "type": "string",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "authentication": {
-                            "type": "string",
-                            "options": [
-                                {
-                                    "value": "none",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                {
-                                    "value": "text",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                {
-                                    "value": "md5",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                }
-                            ],
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "mtu_ignore": {
-                            "type": "string",
-                            "options": [
-                                {
-                                    "value": "enable",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                {
-                                    "value": "disable",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                }
-                            ],
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "priority": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "hello_multiplier": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "dead_interval": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "hello_interval": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "ucast_ttl": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "authentication_key": {
-                            "type": "string",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "mtu": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "transmit_delay": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
-                    },
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "distance": {
                     "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "redistribute": {
-                    "elements": "dict",
-                    "type": "list",
-                    "children": {
-                        "status": {
-                            "type": "string",
-                            "options": [
-                                {
-                                    "value": "enable",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                {
-                                    "value": "disable",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                }
-                            ],
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "name": {
-                            "type": "string",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "metric": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "tag": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "metric_type": {
-                            "type": "string",
-                            "options": [
-                                {
-                                    "value": "1",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                },
-                                {
-                                    "value": "2",
-                                    "revisions": {
-                                        "v7.0.3": True,
-                                        "v7.0.2": True,
-                                        "v7.0.1": True,
-                                        "v7.0.0": True,
-                                        "v7.0.6": True,
-                                        "v7.0.5": True,
-                                        "v7.0.4": True
-                                    }
-                                }
-                            ],
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "routemap": {
-                            "type": "string",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
-                    },
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "name": {
-                    "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "database_overflow": {
-                    "type": "string",
-                    "options": [
-                        {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
-                    ],
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "database_overflow_time_to_recover": {
-                    "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "rfc1583_compatible": {
-                    "type": "string",
-                    "options": [
-                        {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
-                    ],
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                    "name": "metric",
+                    "help": "Redistribute metric setting.",
+                    "category": "unitary"
                 }
             },
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "name": "redistribute",
+            "help": "Redistribute configuration.",
+            "mkey": "name",
+            "category": "table"
+        },
+        "database_overflow": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "options": [
+                {
+                    "value": "enable",
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    }
+                },
+                {
+                    "value": "disable",
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    }
+                }
+            ],
+            "name": "database_overflow",
+            "help": "Enable/disable database overflow.",
+            "category": "unitary"
+        },
+        "database_overflow_max_external_lsa": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "integer",
+            "name": "database_overflow_max_external_lsa",
+            "help": "Database overflow maximum External LSAs.",
+            "category": "unitary"
+        },
+        "name": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "name",
+            "help": "Vrf name.",
+            "category": "unitary"
+        },
+        "spf_timers": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "name": "spf_timers",
+            "help": "SPF calculation frequency.",
+            "category": "unitary"
+        },
+        "distance_inter_area": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "integer",
+            "name": "distance_inter_area",
+            "help": "Administrative inter-area route distance.",
+            "category": "unitary"
+        },
+        "abr_type": {
+            "revisions": {
+                "v7.0.0": True,
+                "v7.0.1": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
+                "v7.0.5": True,
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "type": "string",
+            "options": [
+                {
+                    "value": "cisco",
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    }
+                },
+                {
+                    "value": "ibm",
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    }
+                },
+                {
+                    "value": "shortcut",
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    }
+                },
+                {
+                    "value": "standard",
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    }
+                }
+            ],
+            "name": "abr_type",
+            "help": "Area border router type.",
+            "category": "unitary"
         },
         "interface": {
-            "elements": "dict",
             "type": "list",
+            "elements": "dict",
             "children": {
-                "retransmit_interval": {
-                    "type": "integer",
+                "priority": {
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "md5_keys": {
-                    "elements": "dict",
-                    "type": "list",
-                    "children": {
-                        "id": {
-                            "type": "integer",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        },
-                        "key": {
-                            "type": "string",
-                            "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
-                                "v7.0.0": True,
-                                "v7.0.6": True,
-                                "v7.0.5": True,
-                                "v7.0.4": True
-                            }
-                        }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
                     },
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "cost": {
                     "type": "integer",
+                    "name": "priority",
+                    "help": "Router priority.",
+                    "category": "unitary"
+                },
+                "authentication_key": {
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "authentication_key",
+                    "help": "Authentication key.",
+                    "category": "unitary"
                 },
                 "name": {
-                    "type": "string",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "name",
+                    "help": "Interface entry name.",
+                    "category": "unitary"
+                },
+                "dead_interval": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "dead_interval",
+                    "help": "Dead interval. For fast-hello assign value 1.",
+                    "category": "unitary"
+                },
+                "hello_multiplier": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "hello_multiplier",
+                    "help": "Number of hello packets within dead interval.Valid only for fast-hello.",
+                    "category": "unitary"
                 },
                 "bfd": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
                     "type": "string",
                     "options": [
                         {
                             "value": "enable",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         },
                         {
                             "value": "disable",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         }
                     ],
+                    "name": "bfd",
+                    "help": "Bidirectional Forwarding Detection (BFD).",
+                    "category": "unitary"
+                },
+                "transmit_delay": {
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "transmit_delay",
+                    "help": "Link state transmit delay.",
+                    "category": "unitary"
+                },
+                "mtu": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "mtu",
+                    "help": "Interface MTU.",
+                    "category": "unitary"
+                },
+                "retransmit_interval": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "retransmit_interval",
+                    "help": "Time between retransmitting lost link state advertisements.",
+                    "category": "unitary"
                 },
                 "authentication": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
                     "type": "string",
                     "options": [
                         {
                             "value": "none",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         },
                         {
                             "value": "text",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         },
                         {
                             "value": "md5",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         }
                     ],
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                    "name": "authentication",
+                    "help": "Authentication type.",
+                    "category": "unitary"
                 },
-                "mtu": {
-                    "type": "integer",
+                "cost": {
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "priority": {
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
                     "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "hello_multiplier": {
-                    "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "dead_interval": {
-                    "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                    "name": "cost",
+                    "help": "Cost of the interface.",
+                    "category": "unitary"
                 },
                 "hello_interval": {
-                    "type": "integer",
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "ucast_ttl": {
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
                     "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                    "name": "hello_interval",
+                    "help": "Hello interval.",
+                    "category": "unitary"
                 },
-                "authentication_key": {
-                    "type": "string",
+                "md5_keys": {
+                    "type": "list",
+                    "elements": "dict",
+                    "children": {
+                        "id": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "id",
+                            "help": "key-id (1-255).",
+                            "category": "unitary"
+                        },
+                        "key": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "name": "key",
+                            "help": "md5-key.",
+                            "category": "unitary"
+                        }
+                    },
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "name": "md5_keys",
+                    "help": "OSPF md5 key configuration. Applicable only when authentication field is set to md5.",
+                    "mkey": "id",
+                    "category": "table"
                 },
                 "mtu_ignore": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
                     "type": "string",
                     "options": [
                         {
                             "value": "enable",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         },
                         {
                             "value": "disable",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         }
                     ],
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                    "name": "mtu_ignore",
+                    "help": "Disable MTU mismatch detection on this interface.",
+                    "category": "unitary"
                 },
-                "transmit_delay": {
-                    "type": "integer",
+                "ucast_ttl": {
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": False,
+                        "v7.2.3": False
+                    },
+                    "type": "integer",
+                    "name": "ucast_ttl",
+                    "help": "Unicast TTL.",
+                    "category": "unitary"
+                },
+                "ttl": {
+                    "revisions": {
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "ttl",
+                    "help": "TTL.",
+                    "category": "unitary"
                 }
             },
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "distance": {
-            "type": "integer",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.2": True,
+                "v7.0.3": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.0.6": True,
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "name": "interface",
+            "help": "OSPF interface configuration.",
+            "mkey": "name",
+            "category": "table"
         },
-        "redistribute": {
-            "elements": "dict",
+        "vrf": {
             "type": "list",
+            "elements": "dict",
             "children": {
-                "status": {
-                    "type": "string",
-                    "options": [
-                        {
-                            "value": "enable",
+                "summary_address": {
+                    "type": "list",
+                    "elements": "dict",
+                    "children": {
+                        "prefix": {
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
-                            }
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "name": "prefix",
+                            "help": "Prefix.",
+                            "category": "unitary"
                         },
-                        {
-                            "value": "disable",
+                        "tag": {
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
-                            }
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "tag",
+                            "help": "Tag value.",
+                            "category": "unitary"
+                        },
+                        "id": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "id",
+                            "help": "Summary address entry ID.",
+                            "category": "unitary"
                         }
-                    ],
+                    },
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "name": "summary_address",
+                    "help": "Aggregate address for redistributed routes.",
+                    "mkey": "id",
+                    "category": "table"
                 },
-                "name": {
+                "area": {
+                    "type": "list",
+                    "elements": "dict",
+                    "children": {
+                        "nssa_translator_role": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "options": [
+                                {
+                                    "value": "candidate",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                },
+                                {
+                                    "value": "never",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                },
+                                {
+                                    "value": "always",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                }
+                            ],
+                            "name": "nssa_translator_role",
+                            "help": "NSSA translator role type.",
+                            "category": "unitary"
+                        },
+                        "virtual_link": {
+                            "type": "list",
+                            "elements": "dict",
+                            "children": {
+                                "dead_interval": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "integer",
+                                    "name": "dead_interval",
+                                    "help": "Dead interval.",
+                                    "category": "unitary"
+                                },
+                                "hello_interval": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "integer",
+                                    "name": "hello_interval",
+                                    "help": "Hello interval.",
+                                    "category": "unitary"
+                                },
+                                "name": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "string",
+                                    "name": "name",
+                                    "help": "Virtual link entry name.",
+                                    "category": "unitary"
+                                },
+                                "transmit_delay": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "integer",
+                                    "name": "transmit_delay",
+                                    "help": "Link state transmit delay.",
+                                    "category": "unitary"
+                                },
+                                "retransmit_interval": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "integer",
+                                    "name": "retransmit_interval",
+                                    "help": "Time between retransmitting lost link state advertisements.",
+                                    "category": "unitary"
+                                },
+                                "authentication": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "string",
+                                    "options": [
+                                        {
+                                            "value": "none",
+                                            "revisions": {
+                                                "v7.0.0": True,
+                                                "v7.0.1": True,
+                                                "v7.0.2": True,
+                                                "v7.0.3": True,
+                                                "v7.0.4": True,
+                                                "v7.0.5": True,
+                                                "v7.0.6": True,
+                                                "v7.2.1": True,
+                                                "v7.2.2": True,
+                                                "v7.2.3": True
+                                            }
+                                        },
+                                        {
+                                            "value": "text",
+                                            "revisions": {
+                                                "v7.0.0": True,
+                                                "v7.0.1": True,
+                                                "v7.0.2": True,
+                                                "v7.0.3": True,
+                                                "v7.0.4": True,
+                                                "v7.0.5": True,
+                                                "v7.0.6": True,
+                                                "v7.2.1": True,
+                                                "v7.2.2": True,
+                                                "v7.2.3": True
+                                            }
+                                        }
+                                    ],
+                                    "name": "authentication",
+                                    "help": "Authentication type.",
+                                    "category": "unitary"
+                                },
+                                "peer": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "string",
+                                    "name": "peer",
+                                    "help": "Peer IP.",
+                                    "category": "unitary"
+                                },
+                                "authentication_key": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "string",
+                                    "name": "authentication_key",
+                                    "help": "Authentication key.",
+                                    "category": "unitary"
+                                }
+                            },
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "name": "virtual_link",
+                            "help": "OSPF virtual link configuration.",
+                            "mkey": "name",
+                            "category": "table"
+                        },
+                        "shortcut": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "options": [
+                                {
+                                    "value": "disable",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                },
+                                {
+                                    "value": "enable",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                },
+                                {
+                                    "value": "default",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                }
+                            ],
+                            "name": "shortcut",
+                            "help": "Enable/disable shortcut option.",
+                            "category": "unitary"
+                        },
+                        "stub_type": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "options": [
+                                {
+                                    "value": "no_summary",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                },
+                                {
+                                    "value": "summary",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                }
+                            ],
+                            "name": "stub_type",
+                            "help": "Stub summary setting.",
+                            "category": "unitary"
+                        },
+                        "range": {
+                            "type": "list",
+                            "elements": "dict",
+                            "children": {
+                                "substitute": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "string",
+                                    "name": "substitute",
+                                    "help": "Substitute prefix.",
+                                    "category": "unitary"
+                                },
+                                "prefix": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "string",
+                                    "name": "prefix",
+                                    "help": "Prefix.",
+                                    "category": "unitary"
+                                },
+                                "substitute_status": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "string",
+                                    "options": [
+                                        {
+                                            "value": "enable",
+                                            "revisions": {
+                                                "v7.0.0": True,
+                                                "v7.0.1": True,
+                                                "v7.0.2": True,
+                                                "v7.0.3": True,
+                                                "v7.0.4": True,
+                                                "v7.0.5": True,
+                                                "v7.0.6": True,
+                                                "v7.2.1": True,
+                                                "v7.2.2": True,
+                                                "v7.2.3": True
+                                            }
+                                        },
+                                        {
+                                            "value": "disable",
+                                            "revisions": {
+                                                "v7.0.0": True,
+                                                "v7.0.1": True,
+                                                "v7.0.2": True,
+                                                "v7.0.3": True,
+                                                "v7.0.4": True,
+                                                "v7.0.5": True,
+                                                "v7.0.6": True,
+                                                "v7.2.1": True,
+                                                "v7.2.2": True,
+                                                "v7.2.3": True
+                                            }
+                                        }
+                                    ],
+                                    "name": "substitute_status",
+                                    "help": "Enable/disable substitute status.",
+                                    "category": "unitary"
+                                },
+                                "id": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "integer",
+                                    "name": "id",
+                                    "help": "Range entry ID.",
+                                    "category": "unitary"
+                                },
+                                "advertise": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "string",
+                                    "options": [
+                                        {
+                                            "value": "disable",
+                                            "revisions": {
+                                                "v7.0.0": True,
+                                                "v7.0.1": True,
+                                                "v7.0.2": True,
+                                                "v7.0.3": True,
+                                                "v7.0.4": True,
+                                                "v7.0.5": True,
+                                                "v7.0.6": True,
+                                                "v7.2.1": True,
+                                                "v7.2.2": True,
+                                                "v7.2.3": True
+                                            }
+                                        },
+                                        {
+                                            "value": "enable",
+                                            "revisions": {
+                                                "v7.0.0": True,
+                                                "v7.0.1": True,
+                                                "v7.0.2": True,
+                                                "v7.0.3": True,
+                                                "v7.0.4": True,
+                                                "v7.0.5": True,
+                                                "v7.0.6": True,
+                                                "v7.2.1": True,
+                                                "v7.2.2": True,
+                                                "v7.2.3": True
+                                            }
+                                        }
+                                    ],
+                                    "name": "advertise",
+                                    "help": "Enable/disable advertise status.",
+                                    "category": "unitary"
+                                }
+                            },
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "name": "range",
+                            "help": "OSPF area range configuration.",
+                            "mkey": "id",
+                            "category": "table"
+                        },
+                        "filter_list": {
+                            "type": "list",
+                            "elements": "dict",
+                            "children": {
+                                "direction": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "string",
+                                    "options": [
+                                        {
+                                            "value": "in",
+                                            "revisions": {
+                                                "v7.0.0": True,
+                                                "v7.0.1": True,
+                                                "v7.0.2": True,
+                                                "v7.0.3": True,
+                                                "v7.0.4": True,
+                                                "v7.0.5": True,
+                                                "v7.0.6": True,
+                                                "v7.2.1": True,
+                                                "v7.2.2": True,
+                                                "v7.2.3": True
+                                            }
+                                        },
+                                        {
+                                            "value": "out",
+                                            "revisions": {
+                                                "v7.0.0": True,
+                                                "v7.0.1": True,
+                                                "v7.0.2": True,
+                                                "v7.0.3": True,
+                                                "v7.0.4": True,
+                                                "v7.0.5": True,
+                                                "v7.0.6": True,
+                                                "v7.2.1": True,
+                                                "v7.2.2": True,
+                                                "v7.2.3": True
+                                            }
+                                        }
+                                    ],
+                                    "name": "direction",
+                                    "help": "Direction.",
+                                    "category": "unitary"
+                                },
+                                "list": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "string",
+                                    "name": "list",
+                                    "help": "Access-list or prefix-list name.",
+                                    "category": "unitary"
+                                },
+                                "id": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "integer",
+                                    "name": "id",
+                                    "help": "Filter list entry ID.",
+                                    "category": "unitary"
+                                }
+                            },
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "name": "filter_list",
+                            "help": "OSPF area filter-list configuration.",
+                            "mkey": "id",
+                            "category": "table"
+                        },
+                        "default_cost": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "default_cost",
+                            "help": "Summary default cost of stub or NSSA area.",
+                            "category": "unitary"
+                        },
+                        "type": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "options": [
+                                {
+                                    "value": "regular",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                },
+                                {
+                                    "value": "nssa",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                },
+                                {
+                                    "value": "stub",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                }
+                            ],
+                            "name": "type",
+                            "help": "Area type setting.",
+                            "category": "unitary"
+                        },
+                        "id": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "name": "id",
+                            "help": "Area entry IP address.",
+                            "category": "unitary"
+                        }
+                    },
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "name": "area",
+                    "help": "OSPF area configuration.",
+                    "mkey": "id",
+                    "category": "table"
+                },
+                "distance_intra_area": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "distance_intra_area",
+                    "help": "Administrative intra-area route distance.",
+                    "category": "unitary"
+                },
+                "distance_external": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "distance_external",
+                    "help": "Administrative external route distance.",
+                    "category": "unitary"
+                },
+                "network": {
+                    "type": "list",
+                    "elements": "dict",
+                    "children": {
+                        "prefix": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "name": "prefix",
+                            "help": "Prefix.",
+                            "category": "unitary"
+                        },
+                        "id": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "id",
+                            "help": "Network entry ID.",
+                            "category": "unitary"
+                        },
+                        "area": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "name": "area",
+                            "help": "Attach the network to area.",
+                            "category": "unitary"
+                        }
+                    },
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "name": "network",
+                    "help": "Enable OSPF on an IP network.",
+                    "mkey": "id",
+                    "category": "table"
+                },
+                "router_id": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
                     "type": "string",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                    "name": "router_id",
+                    "help": "Router ID.",
+                    "category": "unitary"
                 },
-                "metric": {
-                    "type": "integer",
+                "default_information_metric_type": {
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "tag": {
-                    "type": "integer",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
                         "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                "metric_type": {
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
                     "type": "string",
                     "options": [
                         {
                             "value": "1",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         },
                         {
                             "value": "2",
                             "revisions": {
-                                "v7.0.3": True,
-                                "v7.0.2": True,
-                                "v7.0.1": True,
                                 "v7.0.0": True,
-                                "v7.0.6": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
                                 "v7.0.5": True,
-                                "v7.0.4": True
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
                             }
                         }
                     ],
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                    "name": "default_information_metric_type",
+                    "help": "Default information metric type.",
+                    "category": "unitary"
                 },
-                "routemap": {
-                    "type": "string",
+                "database_overflow_time_to_recover": {
                     "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
                         "v7.0.0": True,
-                        "v7.0.6": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
                         "v7.0.5": True,
-                        "v7.0.4": True
-                    }
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "database_overflow_time_to_recover",
+                    "help": "Database overflow time to recover (sec).",
+                    "category": "unitary"
+                },
+                "log_neighbour_changes": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "disable",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        }
+                    ],
+                    "name": "log_neighbour_changes",
+                    "help": "Enable logging of OSPF neighbour's changes",
+                    "category": "unitary"
+                },
+                "rfc1583_compatible": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "disable",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        }
+                    ],
+                    "name": "rfc1583_compatible",
+                    "help": "Enable/disable RFC1583 compatibility.",
+                    "category": "unitary"
+                },
+                "default_information_metric": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "default_information_metric",
+                    "help": "Default information metric.",
+                    "category": "unitary"
+                },
+                "default_information_originate": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "always",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "disable",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        }
+                    ],
+                    "name": "default_information_originate",
+                    "help": "Enable/disable generation of default route.",
+                    "category": "unitary"
+                },
+                "passive_interface": {
+                    "type": "list",
+                    "elements": "dict",
+                    "children": {
+                        "name": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "name": "name",
+                            "help": "Passive interface name.",
+                            "category": "unitary"
+                        }
+                    },
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "name": "passive_interface",
+                    "help": "Passive interface configuration.",
+                    "mkey": "name",
+                    "category": "table"
+                },
+                "distribute_list": {
+                    "type": "list",
+                    "elements": "dict",
+                    "children": {
+                        "access_list": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "name": "access_list",
+                            "help": "Access list name.",
+                            "category": "unitary"
+                        },
+                        "protocol": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "options": [
+                                {
+                                    "value": "connected",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                },
+                                {
+                                    "value": "static",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                },
+                                {
+                                    "value": "rip",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                },
+                                {
+                                    "value": "bgp",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                },
+                                {
+                                    "value": "isis",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                }
+                            ],
+                            "name": "protocol",
+                            "help": "Protocol type.",
+                            "category": "unitary"
+                        },
+                        "id": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "id",
+                            "help": "Distribute list entry ID.",
+                            "category": "unitary"
+                        }
+                    },
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "name": "distribute_list",
+                    "help": "Redistribute routes filter.",
+                    "mkey": "id",
+                    "category": "table"
+                },
+                "distance": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "distance",
+                    "help": "Administrative distance.",
+                    "category": "unitary"
+                },
+                "redistribute": {
+                    "type": "list",
+                    "elements": "dict",
+                    "children": {
+                        "status": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "options": [
+                                {
+                                    "value": "enable",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                },
+                                {
+                                    "value": "disable",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                }
+                            ],
+                            "name": "status",
+                            "help": "status",
+                            "category": "unitary"
+                        },
+                        "name": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "name": "name",
+                            "help": "Redistribute name.",
+                            "category": "unitary"
+                        },
+                        "metric_type": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "options": [
+                                {
+                                    "value": "1",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                },
+                                {
+                                    "value": "2",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                }
+                            ],
+                            "name": "metric_type",
+                            "help": "Metric type.",
+                            "category": "unitary"
+                        },
+                        "tag": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "tag",
+                            "help": "Tag value.",
+                            "category": "unitary"
+                        },
+                        "routemap": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "name": "routemap",
+                            "help": "Route map name.",
+                            "category": "unitary"
+                        },
+                        "metric": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "metric",
+                            "help": "Redistribute metric setting.",
+                            "category": "unitary"
+                        }
+                    },
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "name": "redistribute",
+                    "help": "Redistribute configuration.",
+                    "mkey": "name",
+                    "category": "table"
+                },
+                "database_overflow": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "disable",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        }
+                    ],
+                    "name": "database_overflow",
+                    "help": "Enable/disable database overflow.",
+                    "category": "unitary"
+                },
+                "database_overflow_max_external_lsa": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "database_overflow_max_external_lsa",
+                    "help": "Database overflow maximum External LSAs.",
+                    "category": "unitary"
+                },
+                "name": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "name",
+                    "help": "Vrf name.",
+                    "category": "unitary"
+                },
+                "spf_timers": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "name": "spf_timers",
+                    "help": "SPF calculation frequency.",
+                    "category": "unitary"
+                },
+                "distance_inter_area": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "integer",
+                    "name": "distance_inter_area",
+                    "help": "Administrative inter-area route distance.",
+                    "category": "unitary"
+                },
+                "abr_type": {
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "cisco",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "ibm",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "shortcut",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        },
+                        {
+                            "value": "standard",
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            }
+                        }
+                    ],
+                    "name": "abr_type",
+                    "help": "Area border router type.",
+                    "category": "unitary"
+                },
+                "interface": {
+                    "type": "list",
+                    "elements": "dict",
+                    "children": {
+                        "priority": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "priority",
+                            "help": "Router priority.",
+                            "category": "unitary"
+                        },
+                        "authentication_key": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "name": "authentication_key",
+                            "help": "Authentication key.",
+                            "category": "unitary"
+                        },
+                        "name": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "name": "name",
+                            "help": "Interface entry name.",
+                            "category": "unitary"
+                        },
+                        "dead_interval": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "dead_interval",
+                            "help": "Dead interval. For fast-hello assign value 1.",
+                            "category": "unitary"
+                        },
+                        "hello_multiplier": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "hello_multiplier",
+                            "help": "Number of hello packets within dead interval.Valid only for fast-hello.",
+                            "category": "unitary"
+                        },
+                        "transmit_delay": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "transmit_delay",
+                            "help": "Link state transmit delay.",
+                            "category": "unitary"
+                        },
+                        "mtu": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "mtu",
+                            "help": "Interface MTU.",
+                            "category": "unitary"
+                        },
+                        "retransmit_interval": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "retransmit_interval",
+                            "help": "Time between retransmitting lost link state advertisements.",
+                            "category": "unitary"
+                        },
+                        "authentication": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "options": [
+                                {
+                                    "value": "none",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                },
+                                {
+                                    "value": "text",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                },
+                                {
+                                    "value": "md5",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                }
+                            ],
+                            "name": "authentication",
+                            "help": "Authentication type.",
+                            "category": "unitary"
+                        },
+                        "cost": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "cost",
+                            "help": "Cost of the interface.",
+                            "category": "unitary"
+                        },
+                        "hello_interval": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "hello_interval",
+                            "help": "Hello interval.",
+                            "category": "unitary"
+                        },
+                        "md5_keys": {
+                            "type": "list",
+                            "elements": "dict",
+                            "children": {
+                                "id": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "integer",
+                                    "name": "id",
+                                    "help": "key-id (1-255).",
+                                    "category": "unitary"
+                                },
+                                "key": {
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    },
+                                    "type": "string",
+                                    "name": "key",
+                                    "help": "md5-key.",
+                                    "category": "unitary"
+                                }
+                            },
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "name": "md5_keys",
+                            "help": "OSPF md5 key configuration. Applicable only when authentication field is set to md5.",
+                            "mkey": "id",
+                            "category": "table"
+                        },
+                        "mtu_ignore": {
+                            "revisions": {
+                                "v7.0.0": True,
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "string",
+                            "options": [
+                                {
+                                    "value": "enable",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                },
+                                {
+                                    "value": "disable",
+                                    "revisions": {
+                                        "v7.0.0": True,
+                                        "v7.0.1": True,
+                                        "v7.0.2": True,
+                                        "v7.0.3": True,
+                                        "v7.0.4": True,
+                                        "v7.0.5": True,
+                                        "v7.0.6": True,
+                                        "v7.2.1": True,
+                                        "v7.2.2": True,
+                                        "v7.2.3": True
+                                    }
+                                }
+                            ],
+                            "name": "mtu_ignore",
+                            "help": "Disable MTU mismatch detection on this interface.",
+                            "category": "unitary"
+                        },
+                        "ucast_ttl": {
+                            "revisions": {
+                                "v7.0.1": True,
+                                "v7.0.2": True,
+                                "v7.0.3": True,
+                                "v7.0.4": True,
+                                "v7.0.5": True,
+                                "v7.0.6": True,
+                                "v7.2.1": True,
+                                "v7.2.2": False,
+                                "v7.2.3": False
+                            },
+                            "type": "integer",
+                            "name": "ucast_ttl",
+                            "help": "Unicast TTL.",
+                            "category": "unitary"
+                        },
+                        "ttl": {
+                            "revisions": {
+                                "v7.2.2": True,
+                                "v7.2.3": True
+                            },
+                            "type": "integer",
+                            "name": "ttl",
+                            "help": "TTL.",
+                            "category": "unitary"
+                        }
+                    },
+                    "revisions": {
+                        "v7.0.0": True,
+                        "v7.0.1": True,
+                        "v7.0.2": True,
+                        "v7.0.3": True,
+                        "v7.0.4": True,
+                        "v7.0.5": True,
+                        "v7.0.6": True,
+                        "v7.2.1": True,
+                        "v7.2.2": True,
+                        "v7.2.3": True
+                    },
+                    "name": "interface",
+                    "help": "OSPF interface configuration.",
+                    "mkey": "name",
+                    "category": "table"
                 }
             },
             "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
                 "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "name": {
-            "type": "string",
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
                 "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "database_overflow": {
-            "type": "string",
-            "options": [
-                {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                }
-            ],
-            "revisions": {
-                "v7.0.3": True,
                 "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "database_overflow_time_to_recover": {
-            "type": "integer",
-            "revisions": {
                 "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
-                "v7.0.6": True,
+                "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.4": True
-            }
-        },
-        "rfc1583_compatible": {
-            "type": "string",
-            "options": [
-                {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                },
-                {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.2": True,
-                        "v7.0.1": True,
-                        "v7.0.0": True,
-                        "v7.0.6": True,
-                        "v7.0.5": True,
-                        "v7.0.4": True
-                    }
-                }
-            ],
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.2": True,
-                "v7.0.1": True,
-                "v7.0.0": True,
                 "v7.0.6": True,
-                "v7.0.5": True,
-                "v7.0.4": True
-            }
+                "v7.2.1": True,
+                "v7.2.2": True,
+                "v7.2.3": True
+            },
+            "name": "vrf",
+            "help": "Enable OSPF on VRF.",
+            "mkey": "name",
+            "category": "table"
         }
     },
-    "revisions": {
-        "v7.0.3": True,
-        "v7.0.2": True,
-        "v7.0.1": True,
-        "v7.0.0": True,
-        "v7.0.6": True,
-        "v7.0.5": True,
-        "v7.0.4": True
-    }
+    "name": "ospf",
+    "help": "OSPF configuration.",
+    "category": "complex"
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = None
+    # mkeyname = None
+    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},

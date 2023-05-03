@@ -78,8 +78,6 @@ def schema_to_module_spec(schema):
             raise AssertionError()
         rdata['required'] = False
         if 'options' in schema:
-            # see mantis #0690570, if the semantic meaning changes, remove choices as well
-            # also see accept_auth_by_cert of module fortios_system_csf.
             # ansible-test now requires choices are present in spec
             rdata['choices'] = [option['value'] for option in schema['options']]
     else:
