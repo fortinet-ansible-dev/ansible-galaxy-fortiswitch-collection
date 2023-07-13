@@ -330,7 +330,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "dict",
                     "children": {
@@ -343,7 +346,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             },
                             "type": "string",
                             "options": [
@@ -357,7 +363,10 @@ versioned_schema = {
                                         "v7.0.6": True,
                                         "v7.2.1": True,
                                         "v7.2.2": True,
-                                        "v7.2.3": True
+                                        "v7.2.3": True,
+                                        "v7.2.4": True,
+                                        "v7.2.5": True,
+                                        "v7.4.0": True
                                     }
                                 },
                                 {
@@ -370,7 +379,10 @@ versioned_schema = {
                                         "v7.0.6": True,
                                         "v7.2.1": True,
                                         "v7.2.2": True,
-                                        "v7.2.3": True
+                                        "v7.2.3": True,
+                                        "v7.2.4": True,
+                                        "v7.2.5": True,
+                                        "v7.4.0": True
                                     }
                                 }
                             ],
@@ -387,7 +399,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             },
                             "type": "string",
                             "options": [
@@ -401,7 +416,10 @@ versioned_schema = {
                                         "v7.0.6": True,
                                         "v7.2.1": True,
                                         "v7.2.2": True,
-                                        "v7.2.3": True
+                                        "v7.2.3": True,
+                                        "v7.2.4": True,
+                                        "v7.2.5": True,
+                                        "v7.4.0": True
                                     }
                                 },
                                 {
@@ -414,7 +432,10 @@ versioned_schema = {
                                         "v7.0.6": True,
                                         "v7.2.1": True,
                                         "v7.2.2": True,
-                                        "v7.2.3": True
+                                        "v7.2.3": True,
+                                        "v7.2.4": True,
+                                        "v7.2.5": True,
+                                        "v7.4.0": True
                                     }
                                 }
                             ],
@@ -436,7 +457,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "integer",
                     "name": "group",
@@ -452,7 +476,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "integer",
                     "name": "id",
@@ -468,7 +495,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "dict",
                     "children": {
@@ -481,7 +511,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             },
                             "type": "string",
                             "name": "dst_mac",
@@ -497,7 +530,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             },
                             "type": "string",
                             "name": "service",
@@ -513,7 +549,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             },
                             "type": "string",
                             "name": "dst_ip_prefix",
@@ -529,7 +568,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             },
                             "type": "string",
                             "name": "src_mac",
@@ -545,7 +587,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             },
                             "type": "integer",
                             "name": "ether_type",
@@ -561,7 +606,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             },
                             "type": "integer",
                             "name": "vlan_id",
@@ -577,7 +625,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             },
                             "type": "string",
                             "name": "src_ip_prefix",
@@ -598,7 +649,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "string",
                     "name": "description",
@@ -614,7 +668,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "name": "access_list_entry",
             "help": "Access Control List Entry configuration.",
@@ -630,7 +687,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "filter_id",
@@ -646,7 +706,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "integer",
             "name": "id",
@@ -662,7 +725,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "description",
@@ -678,7 +744,10 @@ versioned_schema = {
         "v7.0.6": True,
         "v7.2.1": True,
         "v7.2.2": True,
-        "v7.2.3": True
+        "v7.2.3": True,
+        "v7.2.4": True,
+        "v7.2.5": True,
+        "v7.4.0": True
     },
     "name": "802_1X",
     "help": "802-1X Radius Dynamic Ingress Policy configuration.",

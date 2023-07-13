@@ -333,7 +333,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "options": [
@@ -349,7 +352,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     }
                 },
                 {
@@ -364,7 +370,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     }
                 }
             ],
@@ -383,7 +392,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "integer",
             "name": "distance",
@@ -401,7 +413,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "options": [
@@ -417,7 +432,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     }
                 },
                 {
@@ -432,7 +450,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     }
                 }
             ],
@@ -451,7 +472,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "dst",
@@ -469,7 +493,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "integer",
             "name": "devindex",
@@ -487,7 +514,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "integer",
             "name": "seq_num",
@@ -505,7 +535,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "options": [
@@ -521,7 +554,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     }
                 },
                 {
@@ -536,7 +572,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     }
                 }
             ],
@@ -555,7 +594,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "vrf",
@@ -573,7 +615,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "device",
@@ -591,7 +636,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "gateway",
@@ -609,7 +657,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "comment",
@@ -627,7 +678,10 @@ versioned_schema = {
         "v7.0.6": True,
         "v7.2.1": True,
         "v7.2.2": True,
-        "v7.2.3": True
+        "v7.2.3": True,
+        "v7.2.4": True,
+        "v7.2.5": True,
+        "v7.4.0": True
     },
     "name": "static6",
     "help": "Ipv6 static routes configuration.",

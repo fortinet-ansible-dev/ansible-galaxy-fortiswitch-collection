@@ -411,7 +411,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "options": [
@@ -427,7 +430,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     }
                 },
                 {
@@ -442,7 +448,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     }
                 }
             ],
@@ -461,7 +470,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "domain",
@@ -479,7 +491,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "name",
@@ -497,7 +512,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "options": [
@@ -513,7 +531,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     }
                 },
                 {
@@ -528,7 +549,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     }
                 }
             ],
@@ -547,7 +571,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "primary_name",
@@ -565,7 +592,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "ip_master",
@@ -587,7 +617,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "string",
                     "options": [
@@ -603,7 +636,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             }
                         },
                         {
@@ -618,7 +654,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             }
                         }
                     ],
@@ -637,7 +676,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "string",
                     "name": "hostname",
@@ -655,7 +697,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "string",
                     "name": "ip",
@@ -673,7 +718,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "string",
                     "name": "ipv6",
@@ -691,7 +739,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "string",
                     "name": "canonical_name",
@@ -709,7 +760,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "integer",
                     "name": "preference",
@@ -727,7 +781,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "integer",
                     "name": "ttl",
@@ -745,7 +802,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "string",
                     "options": [
@@ -761,7 +821,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             }
                         },
                         {
@@ -776,7 +839,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             }
                         },
                         {
@@ -791,7 +857,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             }
                         },
                         {
@@ -806,7 +875,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             }
                         },
                         {
@@ -821,7 +893,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             }
                         },
                         {
@@ -836,7 +911,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             }
                         },
                         {
@@ -851,7 +929,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             }
                         }
                     ],
@@ -870,7 +951,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "integer",
                     "name": "id",
@@ -888,7 +972,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "name": "dns_entry",
             "help": "Dns entry.",
@@ -906,7 +993,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "contact",
@@ -924,7 +1014,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "integer",
             "name": "ttl",
@@ -942,7 +1035,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "forwarder",
@@ -960,7 +1056,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "allow_transfer",
@@ -978,7 +1077,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "options": [
@@ -994,7 +1096,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     }
                 },
                 {
@@ -1009,7 +1114,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     }
                 }
             ],
@@ -1028,7 +1136,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "source_ip",
@@ -1046,7 +1157,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "options": [
@@ -1062,7 +1176,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     }
                 },
                 {
@@ -1077,7 +1194,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     }
                 }
             ],
@@ -1096,7 +1216,10 @@ versioned_schema = {
         "v7.0.6": True,
         "v7.2.1": True,
         "v7.2.2": True,
-        "v7.2.3": True
+        "v7.2.3": True,
+        "v7.2.4": True,
+        "v7.2.5": True,
+        "v7.4.0": True
     },
     "name": "dns_database",
     "help": "Dns-database.",

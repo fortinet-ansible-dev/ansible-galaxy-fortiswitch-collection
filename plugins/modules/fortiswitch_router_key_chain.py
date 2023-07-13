@@ -299,7 +299,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "name",
@@ -321,7 +324,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "string",
                     "name": "accept_lifetime",
@@ -339,7 +345,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "string",
                     "name": "key_string",
@@ -357,7 +366,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "integer",
                     "name": "id",
@@ -375,7 +387,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "string",
                     "name": "send_lifetime",
@@ -393,7 +408,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "name": "key",
             "help": "Key.",
@@ -411,7 +429,10 @@ versioned_schema = {
         "v7.0.6": True,
         "v7.2.1": True,
         "v7.2.2": True,
-        "v7.2.3": True
+        "v7.2.3": True,
+        "v7.2.4": True,
+        "v7.2.5": True,
+        "v7.4.0": True
     },
     "name": "key_chain",
     "help": "Key-chain configuration.",

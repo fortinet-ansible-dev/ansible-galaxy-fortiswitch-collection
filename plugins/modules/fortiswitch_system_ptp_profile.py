@@ -16,11 +16,11 @@ ANSIBLE_METADATA = {'status': ['preview'],
 
 DOCUMENTATION = '''
 ---
-module: fortiswitch_log_syslogd_override_filter
-short_description: Override filters for remote system server in Fortinet's FortiSwitch
+module: fortiswitch_system_ptp_profile
+short_description: PTP policy configuration in Fortinet's FortiSwitch
 description:
     - This module is able to configure a FortiSwitch device by allowing the
-      user to set and modify log_syslogd feature and override_filter category.
+      user to set and modify system_ptp feature and profile category.
       Examples include all parameters and values need to be adjusted to datasources before usage.
       Tested with FOS v7.0.0
 version_added: "1.0.0"
@@ -55,32 +55,61 @@ options:
             - present
             - absent
 
-    log_syslogd_override_filter:
+    state:
         description:
-            - Override filters for remote system server.
+            - Indicates whether to create or remove the object.
+        type: str
+        required: true
+        choices:
+            - present
+            - absent
+    system_ptp_profile:
+        description:
+            - PTP policy configuration.
         default: null
         type: dict
         suboptions:
-            override:
+            description:
                 description:
-                    - Override FortiAnalyzer setting or use the global setting.
+                    - Description.
+                type: str
+            domain:
+                description:
+                    - PTP domain (0-255)
+                type: int
+            mode:
+                description:
+                    - Select PTP mode.
                 type: str
                 choices:
-                    - 'enable'
-                    - 'disable'
-            severity:
+                    - 'transparent_e2e'
+            name:
                 description:
-                    - The least severity level to log.
+                    - Profile name.
+                required: true
+                type: str
+            pdelay_req_interval:
+                description:
+                    - PDelay Request interval.
                 type: str
                 choices:
-                    - 'emergency'
-                    - 'alert'
-                    - 'critical'
-                    - 'error'
-                    - 'warning'
-                    - 'notification'
-                    - 'information'
-                    - 'debug'
+                    - '0.25sec'
+                    - '0.5sec'
+                    - '1sec'
+                    - '2sec'
+                    - '4sec'
+            ptp_profile:
+                description:
+                    - Select PTP profile.
+                type: str
+                choices:
+                    - 'C37.238_2017'
+            transport:
+                description:
+                    - Select PTP transport.
+                type: str
+                choices:
+                    - 'l2_mcast'
 '''
 
 EXAMPLES = '''
@@ -93,11 +122,17 @@ EXAMPLES = '''
    ansible_httpapi_validate_certs: no
    ansible_httpapi_port: 443
   tasks:
-  - name: Override filters for remote system server.
-    fortiswitch_log_syslogd_override_filter:
-      log_syslogd_override_filter:
-        override: "enable"
-        severity: "emergency"
+  - name: PTP policy configuration.
+    fortiswitch_system_ptp_profile:
+      state: "present"
+      system_ptp_profile:
+        description: "<your_own_value>"
+        domain: "4"
+        mode: "transparent-e2e"
+        name: "default_name_6"
+        pdelay_req_interval: "0.25sec"
+        ptp_profile: "C37.238-2017"
+        transport: "l2-mcast"
 
 '''
 
@@ -158,8 +193,10 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
 
 
-def filter_log_syslogd_override_filter_data(json):
-    option_list = ['override', 'severity']
+def filter_system_ptp_profile_data(json):
+    option_list = ['description', 'domain', 'mode',
+                   'name', 'pdelay_req_interval', 'ptp_profile',
+                   'transport']
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -184,14 +221,23 @@ def underscore_to_hyphen(data):
     return data
 
 
-def log_syslogd_override_filter(data, fos):
-    log_syslogd_override_filter_data = data['log_syslogd_override_filter']
-    filtered_data = underscore_to_hyphen(filter_log_syslogd_override_filter_data(log_syslogd_override_filter_data))
+def system_ptp_profile(data, fos):
+    state = data['state']
+    system_ptp_profile_data = data['system_ptp_profile']
+    filtered_data = underscore_to_hyphen(filter_system_ptp_profile_data(system_ptp_profile_data))
 
-    return fos.set('log.syslogd',
-                   'override-filter',
-                   data=filtered_data,
-                   )
+    if state == "present" or state is True:
+        return fos.set('system.ptp',
+                       'profile',
+                       data=filtered_data,
+                       )
+
+    elif state == "absent":
+        return fos.delete('system.ptp',
+                          'profile',
+                          mkey=filtered_data['name'])
+    else:
+        fos._module.fail_json(msg='state must be present or absent!')
 
 
 def is_successful_status(resp):
@@ -200,13 +246,13 @@ def is_successful_status(resp):
         'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
 
 
-def fortiswitch_log_syslogd(data, fos):
-    fos.do_member_operation('log.syslogd', 'override-filter')
+def fortiswitch_system_ptp(data, fos):
+    fos.do_member_operation('system.ptp', 'profile')
     current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
-    if data['log_syslogd_override_filter']:
-        resp = log_syslogd_override_filter(data, fos)
+    if data['system_ptp_profile']:
+        resp = system_ptp_profile(data, fos)
     else:
-        fos._module.fail_json(msg='missing task body: %s' % ('log_syslogd_override_filter'))
+        fos._module.fail_json(msg='missing task body: %s' % ('system_ptp_profile'))
 
     return not is_successful_status(resp), \
         is_successful_status(resp) and \
@@ -215,253 +261,152 @@ def fortiswitch_log_syslogd(data, fos):
 
 
 versioned_schema = {
-    "revisions": {
-        "v7.0.0": True,
-        "v7.0.1": True,
-        "v7.0.2": True,
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True,
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True
-    },
-    "type": "dict",
+    "type": "list",
+    "elements": "dict",
     "children": {
-        "override": {
+        "domain": {
             "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
                 "v7.2.5": True,
                 "v7.4.0": True
             },
-            "type": "string",
-            "options": [
-                {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True
-                    }
-                },
-                {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True
-                    }
-                }
-            ],
-            "name": "override",
-            "help": "Override FortiAnalyzer setting or use the global setting.",
+            "type": "integer",
+            "name": "domain",
+            "help": "PTP domain (0-255)",
             "category": "unitary"
         },
-        "severity": {
+        "name": {
             "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
+            },
+            "type": "string",
+            "name": "name",
+            "help": "Profile name.",
+            "category": "unitary"
+        },
+        "pdelay_req_interval": {
+            "revisions": {
                 "v7.2.5": True,
                 "v7.4.0": True
             },
             "type": "string",
             "options": [
                 {
-                    "value": "emergency",
+                    "value": "0.25sec",
                     "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
                         "v7.2.5": True,
                         "v7.4.0": True
                     }
                 },
                 {
-                    "value": "alert",
+                    "value": "0.5sec",
                     "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
                         "v7.2.5": True,
                         "v7.4.0": True
                     }
                 },
                 {
-                    "value": "critical",
+                    "value": "1sec",
                     "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
                         "v7.2.5": True,
                         "v7.4.0": True
                     }
                 },
                 {
-                    "value": "error",
+                    "value": "2sec",
                     "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
                         "v7.2.5": True,
                         "v7.4.0": True
                     }
                 },
                 {
-                    "value": "warning",
+                    "value": "4sec",
                     "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True
-                    }
-                },
-                {
-                    "value": "notification",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True
-                    }
-                },
-                {
-                    "value": "information",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True
-                    }
-                },
-                {
-                    "value": "debug",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
                         "v7.2.5": True,
                         "v7.4.0": True
                     }
                 }
             ],
-            "name": "severity",
-            "help": "The least severity level to log.",
+            "name": "pdelay_req_interval",
+            "help": "PDelay Request interval.",
+            "category": "unitary"
+        },
+        "mode": {
+            "revisions": {
+                "v7.2.5": True,
+                "v7.4.0": True
+            },
+            "type": "string",
+            "options": [
+                {
+                    "value": "transparent_e2e",
+                    "revisions": {
+                        "v7.2.5": True,
+                        "v7.4.0": True
+                    }
+                }
+            ],
+            "name": "mode",
+            "help": "Select PTP mode.",
+            "category": "unitary"
+        },
+        "ptp_profile": {
+            "revisions": {
+                "v7.2.5": True,
+                "v7.4.0": True
+            },
+            "type": "string",
+            "options": [
+                {
+                    "value": "C37.238_2017",
+                    "revisions": {
+                        "v7.2.5": True,
+                        "v7.4.0": True
+                    }
+                }
+            ],
+            "name": "ptp_profile",
+            "help": "Select PTP profile.",
+            "category": "unitary"
+        },
+        "transport": {
+            "revisions": {
+                "v7.2.5": True,
+                "v7.4.0": True
+            },
+            "type": "string",
+            "options": [
+                {
+                    "value": "l2_mcast",
+                    "revisions": {
+                        "v7.2.5": True,
+                        "v7.4.0": True
+                    }
+                }
+            ],
+            "name": "transport",
+            "help": "Select PTP transport.",
+            "category": "unitary"
+        },
+        "description": {
+            "revisions": {
+                "v7.2.5": True,
+                "v7.4.0": True
+            },
+            "type": "string",
+            "name": "description",
+            "help": "Description.",
             "category": "unitary"
         }
     },
-    "name": "override_filter",
-    "help": "Override filters for remote system server.",
-    "category": "complex"
+    "revisions": {
+        "v7.2.5": True,
+        "v7.4.0": True
+    },
+    "name": "profile",
+    "help": "PTP policy configuration.",
+    "mkey": "name",
+    "category": "table"
 }
 
 
@@ -477,15 +422,17 @@ def main():
             "required": False,
             "choices": ["present", "absent"]
         },
-        "log_syslogd_override_filter": {
+        "state": {"required": True, "type": "str",
+                  "choices": ["present", "absent"]},
+        "system_ptp_profile": {
             "required": False, "type": "dict", "default": None,
             "options": {}
         }
     }
     for attribute_name in module_spec['options']:
-        fields["log_syslogd_override_filter"]['options'][attribute_name] = module_spec['options'][attribute_name]
+        fields["system_ptp_profile"]['options'][attribute_name] = module_spec['options'][attribute_name]
         if mkeyname and mkeyname == attribute_name:
-            fields["log_syslogd_override_filter"]['options'][attribute_name]['required'] = True
+            fields["system_ptp_profile"]['options'][attribute_name]['required'] = True
 
     module = AnsibleModule(argument_spec=fields,
                            supports_check_mode=False)
@@ -499,8 +446,8 @@ def main():
         else:
             connection.set_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
-        versions_check_result = check_schema_versioning(fos, versioned_schema, "log_syslogd_override_filter")
-        is_error, has_changed, result, diff = fortiswitch_log_syslogd(module.params, fos)
+        versions_check_result = check_schema_versioning(fos, versioned_schema, "system_ptp_profile")
+        is_error, has_changed, result, diff = fortiswitch_system_ptp(module.params, fos)
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 

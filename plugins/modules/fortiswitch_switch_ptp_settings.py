@@ -69,6 +69,17 @@ options:
                     - 'disable'
                     - 'transparent_e2e'
                     - 'transparent_p2p'
+            profile:
+                description:
+                    - Selected PTP Profile
+                type: str
+            status:
+                description:
+                    - Select PTP status.
+                type: str
+                choices:
+                    - 'disable'
+                    - 'enable'
 '''
 
 EXAMPLES = '''
@@ -85,6 +96,8 @@ EXAMPLES = '''
     fortiswitch_switch_ptp_settings:
       switch_ptp_settings:
         mode: "disable"
+        profile: "<your_own_value> (source system.ptp.profile.name)"
+        status: "disable"
 
 '''
 
@@ -146,7 +159,7 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.d
 
 
 def filter_switch_ptp_settings_data(json):
-    option_list = ['mode']
+    option_list = ['mode', 'profile', 'status']
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -212,7 +225,10 @@ versioned_schema = {
         "v7.0.6": True,
         "v7.2.1": True,
         "v7.2.2": True,
-        "v7.2.3": True
+        "v7.2.3": True,
+        "v7.2.4": True,
+        "v7.2.5": True,
+        "v7.4.0": True
     },
     "type": "dict",
     "children": {
@@ -227,7 +243,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": False,
+                "v7.4.0": False
             },
             "type": "string",
             "options": [
@@ -243,7 +262,8 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True
                     }
                 },
                 {
@@ -258,7 +278,8 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True
                     }
                 },
                 {
@@ -273,12 +294,49 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True
                     }
                 }
             ],
             "name": "mode",
             "help": "Disable/enable PTP mode.",
+            "category": "unitary"
+        },
+        "status": {
+            "revisions": {
+                "v7.2.5": True,
+                "v7.4.0": True
+            },
+            "type": "string",
+            "options": [
+                {
+                    "value": "disable",
+                    "revisions": {
+                        "v7.2.5": True,
+                        "v7.4.0": True
+                    }
+                },
+                {
+                    "value": "enable",
+                    "revisions": {
+                        "v7.2.5": True,
+                        "v7.4.0": True
+                    }
+                }
+            ],
+            "name": "status",
+            "help": "Select PTP status.",
+            "category": "unitary"
+        },
+        "profile": {
+            "revisions": {
+                "v7.2.5": True,
+                "v7.4.0": True
+            },
+            "type": "string",
+            "name": "profile",
+            "help": "Selected PTP Profile",
             "category": "unitary"
         }
     },

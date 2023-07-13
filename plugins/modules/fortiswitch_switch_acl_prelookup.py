@@ -158,6 +158,13 @@ options:
                 description:
                     - Interface to which policy is bound in the pre-lookup.
                 type: str
+            interface_all:
+                description:
+                    - Select all interface.
+                type: str
+                choices:
+                    - 'enable'
+                    - 'disable'
             schedule:
                 description:
                     - schedule list.
@@ -211,6 +218,7 @@ EXAMPLES = '''
         group: "20"
         id:  "21"
         interface: "<your_own_value> (source switch.physical_port.name)"
+        interface_all: "enable"
         schedule:
          -
             schedule_name: "<your_own_value> (source system.schedule.onetime.name system.schedule.recurring.name system.schedule.group.name)"
@@ -280,7 +288,7 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.c
 def filter_switch_acl_prelookup_data(json):
     option_list = ['action', 'classifier', 'description',
                    'group', 'id', 'interface',
-                   'schedule', 'status']
+                   'interface_all', 'schedule', 'status']
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -397,7 +405,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "options": [
@@ -413,7 +424,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     }
                 },
                 {
@@ -428,7 +442,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     }
                 }
             ],
@@ -447,7 +464,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "integer",
             "name": "group",
@@ -465,7 +485,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "description",
@@ -487,7 +510,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "string",
                     "name": "schedule_name",
@@ -505,7 +531,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "name": "schedule",
             "help": "schedule list.",
@@ -523,7 +552,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "dict",
             "children": {
@@ -538,7 +570,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "string",
                     "name": "dst_mac",
@@ -556,7 +591,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "integer",
                     "name": "cos",
@@ -574,7 +612,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "string",
                     "name": "service",
@@ -592,7 +633,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "string",
                     "name": "dst_ip_prefix",
@@ -610,7 +654,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "string",
                     "name": "src_mac",
@@ -628,7 +675,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "integer",
                     "name": "dscp",
@@ -646,7 +696,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "integer",
                     "name": "ether_type",
@@ -664,7 +717,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "integer",
                     "name": "vlan_id",
@@ -682,7 +738,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "string",
                     "name": "src_ip_prefix",
@@ -705,7 +764,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "dict",
             "children": {
@@ -720,7 +782,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "string",
                     "options": [
@@ -736,7 +801,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             }
                         },
                         {
@@ -751,7 +819,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             }
                         }
                     ],
@@ -770,7 +841,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "integer",
                     "name": "remark_cos",
@@ -788,7 +862,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "string",
                     "options": [
@@ -804,7 +881,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             }
                         },
                         {
@@ -819,7 +899,10 @@ versioned_schema = {
                                 "v7.0.6": True,
                                 "v7.2.1": True,
                                 "v7.2.2": True,
-                                "v7.2.3": True
+                                "v7.2.3": True,
+                                "v7.2.4": True,
+                                "v7.2.5": True,
+                                "v7.4.0": True
                             }
                         }
                     ],
@@ -838,7 +921,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "integer",
                     "name": "outer_vlan_tag",
@@ -856,7 +942,10 @@ versioned_schema = {
                         "v7.0.6": True,
                         "v7.2.1": True,
                         "v7.2.2": True,
-                        "v7.2.3": True
+                        "v7.2.3": True,
+                        "v7.2.4": True,
+                        "v7.2.5": True,
+                        "v7.4.0": True
                     },
                     "type": "integer",
                     "name": "cos_queue",
@@ -879,7 +968,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "interface",
@@ -897,11 +989,40 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "integer",
             "name": "id",
             "help": "Prelookup policy ID.",
+            "category": "unitary"
+        },
+        "interface_all": {
+            "revisions": {
+                "v7.2.5": True,
+                "v7.4.0": True
+            },
+            "type": "string",
+            "options": [
+                {
+                    "value": "enable",
+                    "revisions": {
+                        "v7.2.5": True,
+                        "v7.4.0": True
+                    }
+                },
+                {
+                    "value": "disable",
+                    "revisions": {
+                        "v7.2.5": True,
+                        "v7.4.0": True
+                    }
+                }
+            ],
+            "name": "interface_all",
+            "help": "Select all interface.",
             "category": "unitary"
         }
     },
@@ -915,7 +1036,10 @@ versioned_schema = {
         "v7.0.6": True,
         "v7.2.1": True,
         "v7.2.2": True,
-        "v7.2.3": True
+        "v7.2.3": True,
+        "v7.2.4": True,
+        "v7.2.5": True,
+        "v7.4.0": True
     },
     "name": "prelookup",
     "help": "Prelookup Policy configuration.",

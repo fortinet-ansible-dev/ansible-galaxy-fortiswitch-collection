@@ -274,6 +274,8 @@ options:
                  - system_automation-destination
                  - system_automation-stitch
                  - system_auto-script
+                 - system.ptp_profile
+                 - system.ptp_interface-policy
 
     selector:
         description:
@@ -450,6 +452,8 @@ options:
          - system_automation-destination
          - system_automation-stitch
          - system_auto-script
+         - system.ptp_profile
+         - system.ptp_interface-policy
 
     params:
         description:
@@ -1214,6 +1218,14 @@ MODULE_MKEY_DEFINITONS = {
         "mkey": "name",
         "mkey_type": str,
     },
+    "system.ptp_profile": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
+    "system.ptp_interface-policy": {
+        "mkey": "name",
+        "mkey_type": str,
+    },
 }
 
 
@@ -1469,6 +1481,8 @@ def main():
                 "system_automation-destination",
                 "system_automation-stitch",
                 "system_auto-script",
+                "system.ptp_profile",
+                "system.ptp_interface-policy",
             ],
         },
         "selectors": {
@@ -1653,6 +1667,8 @@ def main():
                         "system_automation-destination",
                         "system_automation-stitch",
                         "system_auto-script",
+                        "system.ptp_profile",
+                        "system.ptp_interface-policy",
                     ],
                 },
             }

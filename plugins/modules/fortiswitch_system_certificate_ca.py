@@ -81,6 +81,10 @@ options:
                 description:
                     - CA certificate.
                 type: str
+            Info:
+                description:
+                    - Info about name.
+                type: str
             name:
                 description:
                     - Name.
@@ -109,7 +113,8 @@ EXAMPLES = '''
         auto_update_days: "3"
         auto_update_days_warning: "4"
         ca: "<your_own_value>"
-        name: "default_name_6"
+        Info: "<your_own_value>"
+        name: "default_name_7"
         scep_url: "<your_own_value>"
 
 '''
@@ -175,7 +180,7 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.c
 
 def filter_system_certificate_ca_data(json):
     option_list = ['auto_update_days', 'auto_update_days_warning', 'ca',
-                   'name', 'scep_url']
+                   'Info', 'name', 'scep_url']
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -292,7 +297,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "scep_url",
@@ -310,7 +318,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "ca",
@@ -328,7 +339,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "integer",
             "name": "auto_update_days_warning",
@@ -346,7 +360,10 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "string",
             "name": "name",
@@ -364,11 +381,23 @@ versioned_schema = {
                 "v7.0.6": True,
                 "v7.2.1": True,
                 "v7.2.2": True,
-                "v7.2.3": True
+                "v7.2.3": True,
+                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
             },
             "type": "integer",
             "name": "auto_update_days",
             "help": "Days to auto-update before expired,0=disabled.",
+            "category": "unitary"
+        },
+        "Info": {
+            "revisions": {
+                "v7.4.0": True
+            },
+            "type": "string",
+            "name": "Info",
+            "help": "Info about name.",
             "category": "unitary"
         }
     },
@@ -382,7 +411,10 @@ versioned_schema = {
         "v7.0.6": True,
         "v7.2.1": True,
         "v7.2.2": True,
-        "v7.2.3": True
+        "v7.2.3": True,
+        "v7.2.4": True,
+        "v7.2.5": True,
+        "v7.4.0": True
     },
     "name": "ca",
     "help": "CA certificate.",

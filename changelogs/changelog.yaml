@@ -82,3 +82,12 @@ releases:
     fragments:
     - 1.2.0_release.yml
     release_date: '2023-04-26'
+  1.2.1:
+    changes:
+      major_changes:
+      - Add a readthedocs configuration file
+      - Support new FortiSwitch versions 7.2.4, 7.2.5 and 7.4.0.
+      release_summary: patch release of 1.2.1
+    fragments:
+    - 1.2.1_release.yml
+    release_date: '2023-07-13'

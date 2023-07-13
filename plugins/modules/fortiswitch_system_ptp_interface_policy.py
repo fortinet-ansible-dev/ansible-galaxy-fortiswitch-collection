@@ -16,11 +16,11 @@ ANSIBLE_METADATA = {'status': ['preview'],
 
 DOCUMENTATION = '''
 ---
-module: fortiswitch_log_remote_setting
-short_description: Settings for remote logging in Fortinet's FortiSwitch
+module: fortiswitch_system_ptp_interface_policy
+short_description: PTP policy configuration in Fortinet's FortiSwitch
 description:
     - This module is able to configure a FortiSwitch device by allowing the
-      user to set and modify log_remote feature and setting category.
+      user to set and modify system_ptp feature and interface_policy category.
       Examples include all parameters and values need to be adjusted to datasources before usage.
       Tested with FOS v7.0.0
 version_added: "1.0.0"
@@ -55,26 +55,37 @@ options:
             - present
             - absent
 
-    log_remote_setting:
+    state:
         description:
-            - Settings for remote logging.
+            - Indicates whether to create or remove the object.
+        type: str
+        required: true
+        choices:
+            - present
+            - absent
+    system_ptp_interface_policy:
+        description:
+            - PTP policy configuration.
         default: null
         type: dict
         suboptions:
-            destination:
+            description:
                 description:
-                    - Remote log type.
+                    - Description.
                 type: str
-                choices:
-                    - 'FAZ'
-                    - 'FAS'
-            status:
+            name:
                 description:
-                    - Enable/disable remote log upload.
+                    - Policy name.
+                required: true
                 type: str
-                choices:
-                    - 'enable'
-                    - 'disable'
+            vlan:
+                description:
+                    - PTP Vlan (0-4094)
+                type: int
+            vlan_pri:
+                description:
+                    - PTP Vlan Priority (0-7)
+                type: int
 '''
 
 EXAMPLES = '''
@@ -87,11 +98,14 @@ EXAMPLES = '''
    ansible_httpapi_validate_certs: no
    ansible_httpapi_port: 443
   tasks:
-  - name: Settings for remote logging.
-    fortiswitch_log_remote_setting:
-      log_remote_setting:
-        destination: "FAZ"
-        status: "enable"
+  - name: PTP policy configuration.
+    fortiswitch_system_ptp_interface_policy:
+      state: "present"
+      system_ptp_interface_policy:
+        description: "<your_own_value>"
+        name: "default_name_4"
+        vlan: "5"
+        vlan_pri: "6"
 
 '''
 
@@ -152,8 +166,9 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
 
 
-def filter_log_remote_setting_data(json):
-    option_list = ['destination', 'status']
+def filter_system_ptp_interface_policy_data(json):
+    option_list = ['description', 'name', 'vlan',
+                   'vlan_pri']
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -178,14 +193,23 @@ def underscore_to_hyphen(data):
     return data
 
 
-def log_remote_setting(data, fos):
-    log_remote_setting_data = data['log_remote_setting']
-    filtered_data = underscore_to_hyphen(filter_log_remote_setting_data(log_remote_setting_data))
+def system_ptp_interface_policy(data, fos):
+    state = data['state']
+    system_ptp_interface_policy_data = data['system_ptp_interface_policy']
+    filtered_data = underscore_to_hyphen(filter_system_ptp_interface_policy_data(system_ptp_interface_policy_data))
 
-    return fos.set('log.remote',
-                   'setting',
-                   data=filtered_data,
-                   )
+    if state == "present" or state is True:
+        return fos.set('system.ptp',
+                       'interface-policy',
+                       data=filtered_data,
+                       )
+
+    elif state == "absent":
+        return fos.delete('system.ptp',
+                          'interface-policy',
+                          mkey=filtered_data['name'])
+    else:
+        fos._module.fail_json(msg='state must be present or absent!')
 
 
 def is_successful_status(resp):
@@ -194,13 +218,13 @@ def is_successful_status(resp):
         'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
 
 
-def fortiswitch_log_remote(data, fos):
-    fos.do_member_operation('log.remote', 'setting')
+def fortiswitch_system_ptp(data, fos):
+    fos.do_member_operation('system.ptp', 'interface-policy')
     current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
-    if data['log_remote_setting']:
-        resp = log_remote_setting(data, fos)
+    if data['system_ptp_interface_policy']:
+        resp = system_ptp_interface_policy(data, fos)
     else:
-        fos._module.fail_json(msg='missing task body: %s' % ('log_remote_setting'))
+        fos._module.fail_json(msg='missing task body: %s' % ('system_ptp_interface_policy'))
 
     return not is_successful_status(resp), \
         is_successful_status(resp) and \
@@ -209,145 +233,58 @@ def fortiswitch_log_remote(data, fos):
 
 
 versioned_schema = {
-    "revisions": {
-        "v7.0.0": True,
-        "v7.0.1": True,
-        "v7.0.2": True,
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True,
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True
-    },
-    "type": "dict",
+    "type": "list",
+    "elements": "dict",
     "children": {
-        "status": {
+        "vlan": {
             "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
                 "v7.2.5": True,
                 "v7.4.0": True
             },
-            "type": "string",
-            "options": [
-                {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True
-                    }
-                },
-                {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True
-                    }
-                }
-            ],
-            "name": "status",
-            "help": "Enable/disable remote log upload.",
+            "type": "integer",
+            "name": "vlan",
+            "help": "PTP Vlan (0-4094)",
             "category": "unitary"
         },
-        "destination": {
+        "vlan_pri": {
             "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
+                "v7.2.5": True,
+                "v7.4.0": True
+            },
+            "type": "integer",
+            "name": "vlan_pri",
+            "help": "PTP Vlan Priority (0-7)",
+            "category": "unitary"
+        },
+        "name": {
+            "revisions": {
                 "v7.2.5": True,
                 "v7.4.0": True
             },
             "type": "string",
-            "options": [
-                {
-                    "value": "FAZ",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True
-                    }
-                },
-                {
-                    "value": "FAS",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True
-                    }
-                }
-            ],
-            "name": "destination",
-            "help": "Remote log type.",
+            "name": "name",
+            "help": "Policy name.",
+            "category": "unitary"
+        },
+        "description": {
+            "revisions": {
+                "v7.2.5": True,
+                "v7.4.0": True
+            },
+            "type": "string",
+            "name": "description",
+            "help": "Description.",
             "category": "unitary"
         }
     },
-    "name": "setting",
-    "help": "Settings for remote logging.",
-    "category": "complex"
+    "revisions": {
+        "v7.2.5": True,
+        "v7.4.0": True
+    },
+    "name": "interface_policy",
+    "help": "PTP policy configuration.",
+    "mkey": "name",
+    "category": "table"
 }
 
 
@@ -363,15 +300,17 @@ def main():
             "required": False,
             "choices": ["present", "absent"]
         },
-        "log_remote_setting": {
+        "state": {"required": True, "type": "str",
+                  "choices": ["present", "absent"]},
+        "system_ptp_interface_policy": {
             "required": False, "type": "dict", "default": None,
             "options": {}
         }
     }
     for attribute_name in module_spec['options']:
-        fields["log_remote_setting"]['options'][attribute_name] = module_spec['options'][attribute_name]
+        fields["system_ptp_interface_policy"]['options'][attribute_name] = module_spec['options'][attribute_name]
         if mkeyname and mkeyname == attribute_name:
-            fields["log_remote_setting"]['options'][attribute_name]['required'] = True
+            fields["system_ptp_interface_policy"]['options'][attribute_name]['required'] = True
 
     module = AnsibleModule(argument_spec=fields,
                            supports_check_mode=False)
@@ -385,8 +324,8 @@ def main():
         else:
             connection.set_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
-        versions_check_result = check_schema_versioning(fos, versioned_schema, "log_remote_setting")
-        is_error, has_changed, result, diff = fortiswitch_log_remote(module.params, fos)
+        versions_check_result = check_schema_versioning(fos, versioned_schema, "system_ptp_interface_policy")
+        is_error, has_changed, result, diff = fortiswitch_system_ptp(module.params, fos)
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 

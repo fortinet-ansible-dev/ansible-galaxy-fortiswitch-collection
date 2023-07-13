@@ -9,7 +9,7 @@ The collection is the FortiSwitch Ansible Automation project. It includes the mo
 This collection is distributed via [ansible-galaxy](https://galaxy.ansible.com/), the installation steps are as follows:
 
 1. Install or upgrade to Ansible 2.11
-2. Download this collection from galaxy: `ansible-galaxy collection install fortinet.fortiswitch:1.2.0`
+2. Download this collection from galaxy: `ansible-galaxy collection install fortinet.fortiswitch:1.2.1`
 
 ## Requirements
 * Ansible 2.11 is required to support the newer Ansible Collections format
@@ -178,6 +178,8 @@ The collection provides the following modules:
 * `fortiswitch_system_password_policy` Config password policy in Fortinet's FortiSwitch
 * `fortiswitch_system_port_pair` Port-pair in Fortinet's FortiSwitch
 * `fortiswitch_system_proxy_arp` Configure proxy-arp in Fortinet's FortiSwitch
+* `fortiswitch_system_ptp_interface_policy` PTP policy configuration in Fortinet's FortiSwitch
+* `fortiswitch_system_ptp_profile` PTP policy configuration in Fortinet's FortiSwitch
 * `fortiswitch_system_resource_limits` Resource limits configuration in Fortinet's FortiSwitch
 * `fortiswitch_system_schedule_group` Schedule group configuration in Fortinet's FortiSwitch
 * `fortiswitch_system_schedule_onetime` onetime schedule configuratio in Fortinet's FortiSwitch
