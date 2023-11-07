@@ -32,7 +32,7 @@ author:
     - Miguel Angel Munoz (@mamunozgonzalez)
 
 requirements:
-    - ansible>=2.11
+    - ansible>=2.14
 options:
     enable_log:
         description:
@@ -425,7 +425,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -444,7 +445,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -462,7 +464,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -484,7 +487,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -503,7 +507,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -521,7 +526,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -543,7 +549,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "timeout",
@@ -564,7 +571,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "list",
             "options": [
@@ -583,7 +591,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -601,7 +610,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -619,7 +629,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -642,7 +653,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "name",
@@ -663,7 +675,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "http_match",
@@ -684,7 +697,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "source_ip",
@@ -705,7 +719,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "interval",
@@ -726,7 +741,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "gateway_ip6",
@@ -747,7 +763,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "failtime",
@@ -768,7 +785,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -787,7 +805,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -805,7 +824,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -827,7 +847,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -846,7 +867,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -864,7 +886,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -886,7 +909,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "http_get",
@@ -907,7 +931,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "source_ip6",
@@ -928,7 +953,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "srcintf",
@@ -949,7 +975,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -968,7 +995,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -986,7 +1014,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -1008,7 +1037,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "packet_size",
@@ -1029,7 +1059,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "gateway_ip",
@@ -1050,7 +1081,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "password",
@@ -1071,7 +1103,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "port",
@@ -1092,7 +1125,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "recoverytime",
@@ -1113,7 +1147,8 @@ versioned_schema = {
         "v7.2.3": True,
         "v7.2.4": True,
         "v7.2.5": True,
-        "v7.4.0": True
+        "v7.4.0": True,
+        "v7.4.1": True
     },
     "name": "link_monitor",
     "help": "Configure Link Health Monitor.",
@@ -1148,6 +1183,11 @@ def main():
 
     module = AnsibleModule(argument_spec=fields,
                            supports_check_mode=True)
+
+    is_error = False
+    has_changed = False
+    result = None
+    diff = None
 
     versions_check_result = None
     if module._socket_path:

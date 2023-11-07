@@ -32,7 +32,7 @@ author:
     - Miguel Angel Munoz (@mamunozgonzalez)
 
 requirements:
-    - ansible>=2.11
+    - ansible>=2.14
 options:
     enable_log:
         description:
@@ -416,7 +416,8 @@ versioned_schema = {
         "v7.2.3": True,
         "v7.2.4": True,
         "v7.2.5": True,
-        "v7.4.0": True
+        "v7.4.0": True,
+        "v7.4.1": True
     },
     "type": "dict",
     "children": {
@@ -434,7 +435,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "webfilter_license",
@@ -455,7 +457,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -474,7 +477,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -492,7 +496,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -514,7 +519,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "avquery_license",
@@ -535,7 +541,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "antispam_cache_mpercent",
@@ -556,7 +563,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "webfilter_timeout",
@@ -577,7 +585,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -596,7 +605,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -614,7 +624,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -636,7 +647,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "webfilter_expiration",
@@ -657,7 +669,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "load_balance_servers",
@@ -678,7 +691,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -697,7 +711,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -715,7 +730,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -737,7 +753,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -756,7 +773,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -774,7 +792,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -796,7 +815,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -815,7 +835,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -833,7 +854,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -855,7 +877,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "avquery_timeout",
@@ -876,7 +899,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -895,7 +919,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -913,7 +938,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -935,7 +961,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "antispam_score_threshold",
@@ -956,7 +983,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -975,7 +1003,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -993,7 +1022,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -1015,7 +1045,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "avquery_cache_mpercent",
@@ -1036,7 +1067,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "avquery_cache_ttl",
@@ -1057,7 +1089,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "avquery_expiration",
@@ -1078,7 +1111,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "hostname",
@@ -1099,7 +1133,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "antispam_license",
@@ -1120,7 +1155,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -1139,7 +1175,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -1157,7 +1194,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -1179,7 +1217,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "antispam_cache_ttl",
@@ -1200,7 +1239,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -1219,7 +1259,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -1237,7 +1278,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -1259,7 +1301,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "client_override_ip",
@@ -1280,7 +1323,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -1299,7 +1343,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -1317,7 +1362,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -1339,7 +1385,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "webfilter_cache_ttl",
@@ -1360,7 +1407,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "service_account_id",
@@ -1381,7 +1429,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "antispam_expiration",
@@ -1402,7 +1451,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "antispam_timeout",
@@ -1427,7 +1477,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "name": "ip",
@@ -1448,7 +1499,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "name": "ip6",
@@ -1469,7 +1521,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "options": [
@@ -1488,7 +1541,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             }
                         },
                         {
@@ -1506,7 +1560,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             }
                         }
                     ],
@@ -1528,7 +1583,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "name": "srv_ovrd_list",
             "help": "Configure the server override list.",
@@ -1565,6 +1621,11 @@ def main():
 
     module = AnsibleModule(argument_spec=fields,
                            supports_check_mode=False)
+
+    is_error = False
+    has_changed = False
+    result = None
+    diff = None
 
     versions_check_result = None
     if module._socket_path:

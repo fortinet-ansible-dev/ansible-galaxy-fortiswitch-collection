@@ -32,7 +32,7 @@ author:
     - Miguel Angel Munoz (@mamunozgonzalez)
 
 requirements:
-    - ansible>=2.11
+    - ansible>=2.14
 options:
     enable_log:
         description:
@@ -291,7 +291,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "name": "name",
@@ -312,7 +313,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "name": "member",
             "help": "Schedule group member.",
@@ -333,7 +335,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "name",
@@ -354,7 +357,8 @@ versioned_schema = {
         "v7.2.3": True,
         "v7.2.4": True,
         "v7.2.5": True,
-        "v7.4.0": True
+        "v7.4.0": True,
+        "v7.4.1": True
     },
     "name": "group",
     "help": "Schedule group configuration.",
@@ -389,6 +393,11 @@ def main():
 
     module = AnsibleModule(argument_spec=fields,
                            supports_check_mode=True)
+
+    is_error = False
+    has_changed = False
+    result = None
+    diff = None
 
     versions_check_result = None
     if module._socket_path:

@@ -32,7 +32,7 @@ author:
     - Miguel Angel Munoz (@mamunozgonzalez)
 
 requirements:
-    - ansible>=2.11
+    - ansible>=2.14
 options:
     enable_log:
         description:
@@ -408,7 +408,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -427,7 +428,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -445,7 +447,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -467,7 +470,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "group",
@@ -488,7 +492,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "description",
@@ -513,7 +518,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "name": "schedule_name",
@@ -534,7 +540,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "name": "schedule",
             "help": "schedule list.",
@@ -555,7 +562,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "dict",
             "children": {
@@ -573,7 +581,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "name": "dst_mac",
@@ -594,7 +603,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "integer",
                     "name": "cos",
@@ -615,7 +625,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "name": "service",
@@ -636,7 +647,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "name": "dst_ip_prefix",
@@ -657,7 +669,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "name": "src_mac",
@@ -678,7 +691,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "integer",
                     "name": "dscp",
@@ -699,7 +713,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "integer",
                     "name": "ether_type",
@@ -720,7 +735,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "integer",
                     "name": "vlan_id",
@@ -741,7 +757,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "name": "src_ip_prefix",
@@ -767,7 +784,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "dict",
             "children": {
@@ -785,7 +803,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "options": [
@@ -804,7 +823,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             }
                         },
                         {
@@ -822,7 +842,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             }
                         }
                     ],
@@ -844,7 +865,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "integer",
                     "name": "remark_cos",
@@ -865,7 +887,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "options": [
@@ -884,7 +907,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             }
                         },
                         {
@@ -902,7 +926,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             }
                         }
                     ],
@@ -924,7 +949,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "integer",
                     "name": "outer_vlan_tag",
@@ -945,7 +971,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "integer",
                     "name": "cos_queue",
@@ -971,7 +998,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "interface",
@@ -992,7 +1020,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "id",
@@ -1002,7 +1031,8 @@ versioned_schema = {
         "interface_all": {
             "revisions": {
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -1010,14 +1040,16 @@ versioned_schema = {
                     "value": "enable",
                     "revisions": {
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
                     "value": "disable",
                     "revisions": {
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -1039,7 +1071,8 @@ versioned_schema = {
         "v7.2.3": True,
         "v7.2.4": True,
         "v7.2.5": True,
-        "v7.4.0": True
+        "v7.4.0": True,
+        "v7.4.1": True
     },
     "name": "prelookup",
     "help": "Prelookup Policy configuration.",
@@ -1074,6 +1107,11 @@ def main():
 
     module = AnsibleModule(argument_spec=fields,
                            supports_check_mode=True)
+
+    is_error = False
+    has_changed = False
+    result = None
+    diff = None
 
     versions_check_result = None
     if module._socket_path:

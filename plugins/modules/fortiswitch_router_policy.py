@@ -32,7 +32,7 @@ author:
     - Miguel Angel Munoz (@mamunozgonzalez)
 
 requirements:
-    - ansible>=2.11
+    - ansible>=2.14
 options:
     enable_log:
         description:
@@ -443,7 +443,8 @@ versioned_schema = {
                 "v7.2.3": False,
                 "v7.2.4": False,
                 "v7.2.5": False,
-                "v7.4.0": False
+                "v7.4.0": False,
+                "v7.4.1": False
             },
             "type": "string",
             "name": "src",
@@ -464,7 +465,8 @@ versioned_schema = {
                 "v7.2.3": False,
                 "v7.2.4": False,
                 "v7.2.5": False,
-                "v7.4.0": False
+                "v7.4.0": False,
+                "v7.4.1": False
             },
             "type": "string",
             "name": "output_device",
@@ -485,7 +487,8 @@ versioned_schema = {
                 "v7.2.3": False,
                 "v7.2.4": False,
                 "v7.2.5": False,
-                "v7.4.0": False
+                "v7.4.0": False,
+                "v7.4.1": False
             },
             "type": "integer",
             "name": "protocol",
@@ -506,7 +509,8 @@ versioned_schema = {
                 "v7.2.3": False,
                 "v7.2.4": False,
                 "v7.2.5": False,
-                "v7.4.0": False
+                "v7.4.0": False,
+                "v7.4.1": False
             },
             "type": "integer",
             "name": "end_port",
@@ -527,7 +531,8 @@ versioned_schema = {
                 "v7.2.3": False,
                 "v7.2.4": False,
                 "v7.2.5": False,
-                "v7.4.0": False
+                "v7.4.0": False,
+                "v7.4.1": False
             },
             "type": "string",
             "name": "dst",
@@ -548,7 +553,8 @@ versioned_schema = {
                 "v7.2.3": False,
                 "v7.2.4": False,
                 "v7.2.5": False,
-                "v7.4.0": False
+                "v7.4.0": False,
+                "v7.4.1": False
             },
             "type": "integer",
             "name": "seq_num",
@@ -569,7 +575,8 @@ versioned_schema = {
                 "v7.2.3": False,
                 "v7.2.4": False,
                 "v7.2.5": False,
-                "v7.4.0": False
+                "v7.4.0": False,
+                "v7.4.1": False
             },
             "type": "string",
             "name": "tos_mask",
@@ -590,7 +597,8 @@ versioned_schema = {
                 "v7.2.3": False,
                 "v7.2.4": False,
                 "v7.2.5": False,
-                "v7.4.0": False
+                "v7.4.0": False,
+                "v7.4.1": False
             },
             "type": "string",
             "name": "input_device",
@@ -611,7 +619,8 @@ versioned_schema = {
                 "v7.2.3": False,
                 "v7.2.4": False,
                 "v7.2.5": False,
-                "v7.4.0": False
+                "v7.4.0": False,
+                "v7.4.1": False
             },
             "type": "string",
             "name": "tos",
@@ -632,7 +641,8 @@ versioned_schema = {
                 "v7.2.3": False,
                 "v7.2.4": False,
                 "v7.2.5": False,
-                "v7.4.0": False
+                "v7.4.0": False,
+                "v7.4.1": False
             },
             "type": "string",
             "name": "gateway",
@@ -653,7 +663,8 @@ versioned_schema = {
                 "v7.2.3": False,
                 "v7.2.4": False,
                 "v7.2.5": False,
-                "v7.4.0": False
+                "v7.4.0": False,
+                "v7.4.1": False
             },
             "type": "integer",
             "name": "start_port",
@@ -677,7 +688,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "name": "name",
@@ -697,7 +709,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "name": "pbr_map_name",
@@ -717,7 +730,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "name": "interface",
             "help": "Interface configuration.",
@@ -745,7 +759,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             },
                             "type": "string",
                             "name": "nexthop_vrf_name",
@@ -765,7 +780,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             },
                             "type": "string",
                             "name": "nexthop_ip",
@@ -785,7 +801,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             },
                             "type": "integer",
                             "name": "id",
@@ -805,7 +822,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "name": "nexthop",
                     "help": "Nexthop configuration.",
@@ -825,7 +843,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "name": "name",
@@ -845,7 +864,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "name": "nexthop_group",
             "help": "Nexthop group (ECMP) configuration.",
@@ -873,7 +893,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             },
                             "type": "string",
                             "name": "src",
@@ -893,7 +914,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             },
                             "type": "string",
                             "name": "nexthop_vrf_name",
@@ -913,7 +935,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             },
                             "type": "string",
                             "name": "nexthop_group_name",
@@ -933,7 +956,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             },
                             "type": "string",
                             "name": "dst",
@@ -953,7 +977,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             },
                             "type": "string",
                             "name": "nexthop_ip",
@@ -973,7 +998,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             },
                             "type": "integer",
                             "name": "seq_num",
@@ -993,7 +1019,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "name": "rule",
                     "help": "Rule.",
@@ -1013,7 +1040,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "name": "name",
@@ -1033,7 +1061,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "name": "comments",
@@ -1053,7 +1082,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "name": "pbr_map",
             "help": "PBR map configuration.",
@@ -1073,7 +1103,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "comments",
@@ -1094,7 +1125,8 @@ versioned_schema = {
         "v7.2.3": True,
         "v7.2.4": True,
         "v7.2.5": True,
-        "v7.4.0": True
+        "v7.4.0": True,
+        "v7.4.1": True
     },
     "name": "policy",
     "help": "Policy routing configuration.",
@@ -1129,6 +1161,11 @@ def main():
 
     module = AnsibleModule(argument_spec=fields,
                            supports_check_mode=True)
+
+    is_error = False
+    has_changed = False
+    result = None
+    diff = None
 
     versions_check_result = None
     if module._socket_path:

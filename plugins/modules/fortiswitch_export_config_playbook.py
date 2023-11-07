@@ -1278,6 +1278,7 @@ EXCLUDED_LIST = ['q_origin_key']
 import copy
 import traceback
 
+YAML_IMPORT_ERROR = None
 try:
     import yaml
 except ImportError:

@@ -32,7 +32,7 @@ author:
     - Miguel Angel Munoz (@mamunozgonzalez)
 
 requirements:
-    - ansible>=2.11
+    - ansible>=2.14
 options:
     enable_log:
         description:
@@ -239,7 +239,8 @@ versioned_schema = {
         "vlan": {
             "revisions": {
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "vlan",
@@ -249,7 +250,8 @@ versioned_schema = {
         "vlan_pri": {
             "revisions": {
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "vlan_pri",
@@ -259,7 +261,8 @@ versioned_schema = {
         "name": {
             "revisions": {
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "name",
@@ -269,7 +272,8 @@ versioned_schema = {
         "description": {
             "revisions": {
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "description",
@@ -279,7 +283,8 @@ versioned_schema = {
     },
     "revisions": {
         "v7.2.5": True,
-        "v7.4.0": True
+        "v7.4.0": True,
+        "v7.4.1": True
     },
     "name": "interface_policy",
     "help": "PTP policy configuration.",
@@ -314,6 +319,11 @@ def main():
 
     module = AnsibleModule(argument_spec=fields,
                            supports_check_mode=False)
+
+    is_error = False
+    has_changed = False
+    result = None
+    diff = None
 
     versions_check_result = None
     if module._socket_path:

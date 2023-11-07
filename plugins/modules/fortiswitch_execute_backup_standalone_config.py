@@ -30,7 +30,7 @@ author:
     - Frank Shen (@frankshen01)
     - Miguel Angel Munoz (@mamunozgonzalez)
 requirements:
-    - ansible>=2.11
+    - ansible>=2.14
 options:
     enable_log:
         description:
@@ -215,6 +215,10 @@ def main():
     module = AnsibleModule(
         argument_spec=fields
     )
+
+    is_error = False
+    has_changed = False
+    result = None
 
     if module._socket_path:
         connection = Connection(module._socket_path)

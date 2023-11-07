@@ -32,7 +32,7 @@ author:
     - Miguel Angel Munoz (@mamunozgonzalez)
 
 requirements:
-    - ansible>=2.11
+    - ansible>=2.14
 options:
     enable_log:
         description:
@@ -61,6 +61,14 @@ options:
         default: null
         type: dict
         suboptions:
+            access_vlan_mode:
+                description:
+                    - Intra VLAN traffic behavior with loss of connection to the FortiGate.
+                type: str
+                choices:
+                    - 'legacy'
+                    - 'fail_open'
+                    - 'fail_close'
             auto_fortilink_discovery:
                 description:
                     - Enable/disable automatic FortiLink discovery.
@@ -289,6 +297,13 @@ options:
                         choices:
                             - 'set_unauth'
                             - 'no_action'
+                    mab_entry_as:
+                        description:
+                            - Confgure MAB MAC entry as static or dynamic.
+                        type: str
+                        choices:
+                            - 'static'
+                            - 'dynamic'
                     mab_reauth:
                         description:
                             - Enable or disable MAB reauthentication settings.
@@ -296,6 +311,49 @@ options:
                         choices:
                             - 'disable'
                             - 'enable'
+                    mac_called_station_delimiter:
+                        description:
+                            - MAC called station delimiter .
+                        type: str
+                        choices:
+                            - 'hyphen'
+                            - 'single_hyphen'
+                            - 'colon'
+                            - 'none'
+                    mac_calling_station_delimiter:
+                        description:
+                            - MAC calling station delimiter .
+                        type: str
+                        choices:
+                            - 'hyphen'
+                            - 'single_hyphen'
+                            - 'colon'
+                            - 'none'
+                    mac_case:
+                        description:
+                            - MAC case .
+                        type: str
+                        choices:
+                            - 'uppercase'
+                            - 'lowercase'
+                    mac_password_delimiter:
+                        description:
+                            - MAC authentication password delimiter .
+                        type: str
+                        choices:
+                            - 'hyphen'
+                            - 'single_hyphen'
+                            - 'colon'
+                            - 'none'
+                    mac_username_delimiter:
+                        description:
+                            - MAC authentication username delimiter .
+                        type: str
+                        choices:
+                            - 'hyphen'
+                            - 'single_hyphen'
+                            - 'colon'
+                            - 'none'
                     max_reauth_attempt:
                         description:
                             - 802.1X/MAB maximum reauthorization attempt.
@@ -340,9 +398,17 @@ options:
                 description:
                     - TPID value used by virtual-wires.
                 type: int
+            vxlan_dport:
+                description:
+                    - VXLAN destination UDP port.
+                type: int
             vxlan_port:
                 description:
                     - VXLAN destination UDP port.
+                type: int
+            vxlan_sport:
+                description:
+                    - VXLAN source UDP port (0 - 65535).
                 type: int
             vxlan_stp_virtual_mac:
                 description:
@@ -370,9 +436,10 @@ EXAMPLES = '''
   - name: Configure global settings.
     fortiswitch_switch_global:
       switch_global:
+        access_vlan_mode: "legacy"
         auto_fortilink_discovery: "enable"
         auto_isl: "enable"
-        auto_isl_port_group: "5"
+        auto_isl_port_group: "6"
         auto_stp_priority: "enable"
         bpdu_learn: "enable"
         dhcp_snooping_database_export: "enable"
@@ -381,46 +448,54 @@ EXAMPLES = '''
         flood_unknown_multicast: "enable"
         flood_vtp: "enable"
         forti_trunk_dmac: "<your_own_value>"
-        fortilink_heartbeat_timeout: "14"
-        fortilink_p2p_native_vlan: "15"
-        fortilink_p2p_tpid: "16"
+        fortilink_heartbeat_timeout: "15"
+        fortilink_p2p_native_vlan: "16"
+        fortilink_p2p_tpid: "17"
         fortilink_vlan_optimization: "enable"
         ip_mac_binding: "enable"
         l2_memory_check: "enable"
-        l2_memory_check_interval: "20"
+        l2_memory_check_interval: "21"
         log_mac_limit_violations: "enable"
-        loop_guard_tx_interval: "22"
-        mac_address: "23"
+        loop_guard_tx_interval: "23"
+        mac_address: "24"
         mac_address_algorithm: "auto"
-        mac_aging_interval: "25"
-        mac_violation_timer: "26"
-        max_path_in_ecmp_group: "27"
+        mac_aging_interval: "26"
+        mac_violation_timer: "27"
+        max_path_in_ecmp_group: "28"
         mclag_igmpsnooping_aware: "enable"
-        mclag_peer_info_timeout: "29"
-        mclag_port_base: "30"
+        mclag_peer_info_timeout: "30"
+        mclag_port_base: "31"
         mclag_split_brain_all_ports_down: "disable"
         mclag_split_brain_detect: "enable"
-        mclag_split_brain_priority: "33"
+        mclag_split_brain_priority: "34"
         mclag_stp_aware: "enable"
-        mirror_qos: "35"
-        name: "default_name_36"
-        poe_alarm_threshold: "37"
-        poe_guard_band: "38"
-        poe_power_budget: "39"
+        mirror_qos: "36"
+        name: "default_name_37"
+        poe_alarm_threshold: "38"
+        poe_guard_band: "39"
+        poe_power_budget: "40"
         poe_power_mode: "priority"
         poe_pre_standard_detect: "enable"
         port_security:
             link_down_auth: "set-unauth"
+            mab_entry_as: "static"
             mab_reauth: "disable"
-            max_reauth_attempt: "45"
+            mac_called_station_delimiter: "hyphen"
+            mac_calling_station_delimiter: "hyphen"
+            mac_case: "uppercase"
+            mac_password_delimiter: "hyphen"
+            mac_username_delimiter: "hyphen"
+            max_reauth_attempt: "52"
             quarantine_vlan: "disable"
-            reauth_period: "47"
-            tx_period: "48"
+            reauth_period: "54"
+            tx_period: "55"
         trunk_hash_mode: "default"
         trunk_hash_unicast_src_port: "enable"
         trunk_hash_unkunicast_src_dst: "enable"
-        virtual_wire_tpid: "52"
-        vxlan_port: "53"
+        virtual_wire_tpid: "59"
+        vxlan_dport: "60"
+        vxlan_port: "61"
+        vxlan_sport: "62"
         vxlan_stp_virtual_mac: "<your_own_value>"
         vxlan_stp_virtual_root: "enable"
 
@@ -484,21 +559,22 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.d
 
 
 def filter_switch_global_data(json):
-    option_list = ['auto_fortilink_discovery', 'auto_isl', 'auto_isl_port_group',
-                   'auto_stp_priority', 'bpdu_learn', 'dhcp_snooping_database_export',
-                   'dmi_global_all', 'flapguard_retain_trigger', 'flood_unknown_multicast',
-                   'flood_vtp', 'forti_trunk_dmac', 'fortilink_heartbeat_timeout',
-                   'fortilink_p2p_native_vlan', 'fortilink_p2p_tpid', 'fortilink_vlan_optimization',
-                   'ip_mac_binding', 'l2_memory_check', 'l2_memory_check_interval',
-                   'log_mac_limit_violations', 'loop_guard_tx_interval', 'mac_address',
-                   'mac_address_algorithm', 'mac_aging_interval', 'mac_violation_timer',
-                   'max_path_in_ecmp_group', 'mclag_igmpsnooping_aware', 'mclag_peer_info_timeout',
-                   'mclag_port_base', 'mclag_split_brain_all_ports_down', 'mclag_split_brain_detect',
-                   'mclag_split_brain_priority', 'mclag_stp_aware', 'mirror_qos',
-                   'name', 'poe_alarm_threshold', 'poe_guard_band',
-                   'poe_power_budget', 'poe_power_mode', 'poe_pre_standard_detect',
-                   'port_security', 'trunk_hash_mode', 'trunk_hash_unicast_src_port',
-                   'trunk_hash_unkunicast_src_dst', 'virtual_wire_tpid', 'vxlan_port',
+    option_list = ['access_vlan_mode', 'auto_fortilink_discovery', 'auto_isl',
+                   'auto_isl_port_group', 'auto_stp_priority', 'bpdu_learn',
+                   'dhcp_snooping_database_export', 'dmi_global_all', 'flapguard_retain_trigger',
+                   'flood_unknown_multicast', 'flood_vtp', 'forti_trunk_dmac',
+                   'fortilink_heartbeat_timeout', 'fortilink_p2p_native_vlan', 'fortilink_p2p_tpid',
+                   'fortilink_vlan_optimization', 'ip_mac_binding', 'l2_memory_check',
+                   'l2_memory_check_interval', 'log_mac_limit_violations', 'loop_guard_tx_interval',
+                   'mac_address', 'mac_address_algorithm', 'mac_aging_interval',
+                   'mac_violation_timer', 'max_path_in_ecmp_group', 'mclag_igmpsnooping_aware',
+                   'mclag_peer_info_timeout', 'mclag_port_base', 'mclag_split_brain_all_ports_down',
+                   'mclag_split_brain_detect', 'mclag_split_brain_priority', 'mclag_stp_aware',
+                   'mirror_qos', 'name', 'poe_alarm_threshold',
+                   'poe_guard_band', 'poe_power_budget', 'poe_power_mode',
+                   'poe_pre_standard_detect', 'port_security', 'trunk_hash_mode',
+                   'trunk_hash_unicast_src_port', 'trunk_hash_unkunicast_src_dst', 'virtual_wire_tpid',
+                   'vxlan_dport', 'vxlan_port', 'vxlan_sport',
                    'vxlan_stp_virtual_mac', 'vxlan_stp_virtual_root']
 
     json = remove_invalid_fields(json)
@@ -568,7 +644,8 @@ versioned_schema = {
         "v7.2.3": True,
         "v7.2.4": True,
         "v7.2.5": True,
-        "v7.4.0": True
+        "v7.4.0": True,
+        "v7.4.1": True
     },
     "type": "dict",
     "children": {
@@ -586,7 +663,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "fortilink_heartbeat_timeout",
@@ -607,7 +685,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -626,7 +705,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -644,7 +724,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -666,7 +747,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -685,7 +767,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -703,7 +786,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -725,7 +809,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -744,7 +829,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -762,7 +848,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -784,7 +871,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -803,7 +891,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -821,7 +910,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -843,7 +933,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -862,7 +953,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -880,7 +972,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -902,7 +995,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "virtual_wire_tpid",
@@ -923,7 +1017,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -942,7 +1037,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -960,7 +1056,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -982,7 +1079,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": False
+                "v7.4.0": False,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -1000,7 +1098,8 @@ versioned_schema = {
                         "v7.2.2": True,
                         "v7.2.3": True,
                         "v7.2.4": True,
-                        "v7.2.5": True
+                        "v7.2.5": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -1017,7 +1116,8 @@ versioned_schema = {
                         "v7.2.2": True,
                         "v7.2.3": True,
                         "v7.2.4": True,
-                        "v7.2.5": True
+                        "v7.2.5": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -1039,7 +1139,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "max_path_in_ecmp_group",
@@ -1060,7 +1161,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -1079,7 +1181,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -1097,7 +1200,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -1119,7 +1223,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "fortilink_p2p_tpid",
@@ -1140,7 +1245,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "mac_violation_timer",
@@ -1161,7 +1267,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "mirror_qos",
@@ -1182,7 +1289,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "mclag_port_base",
@@ -1203,7 +1311,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -1222,7 +1331,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -1240,7 +1350,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -1262,7 +1373,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "mac_address",
@@ -1283,7 +1395,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -1302,7 +1415,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -1320,7 +1434,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -1342,7 +1457,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "fortilink_p2p_native_vlan",
@@ -1363,7 +1479,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -1382,7 +1499,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -1400,7 +1518,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -1422,7 +1541,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "loop_guard_tx_interval",
@@ -1443,7 +1563,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "auto_isl_port_group",
@@ -1464,7 +1585,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "poe_alarm_threshold",
@@ -1485,7 +1607,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "poe_guard_band",
@@ -1506,7 +1629,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -1525,7 +1649,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -1543,7 +1668,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -1565,7 +1691,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "poe_power_budget",
@@ -1586,7 +1713,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "mclag_peer_info_timeout",
@@ -1607,7 +1735,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -1626,7 +1755,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -1644,7 +1774,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -1666,7 +1797,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -1685,7 +1817,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -1703,7 +1836,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -1725,7 +1859,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -1744,7 +1879,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -1762,7 +1898,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -1784,7 +1921,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "name",
@@ -1805,7 +1943,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -1824,7 +1963,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -1842,7 +1982,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -1864,7 +2005,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -1883,7 +2025,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -1901,7 +2044,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -1923,7 +2067,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -1942,7 +2087,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -1960,7 +2106,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -1982,7 +2129,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -2001,7 +2149,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -2019,7 +2168,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -2041,7 +2191,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "forti_trunk_dmac",
@@ -2062,7 +2213,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "mac_aging_interval",
@@ -2083,7 +2235,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "dict",
             "children": {
@@ -2101,7 +2254,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "options": [
@@ -2120,7 +2274,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             }
                         },
                         {
@@ -2138,7 +2293,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             }
                         }
                     ],
@@ -2160,7 +2316,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "integer",
                     "name": "max_reauth_attempt",
@@ -2181,7 +2338,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "options": [
@@ -2200,7 +2358,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             }
                         },
                         {
@@ -2218,7 +2377,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             }
                         }
                     ],
@@ -2240,7 +2400,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "integer",
                     "name": "reauth_period",
@@ -2261,7 +2422,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "string",
                     "options": [
@@ -2280,7 +2442,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             }
                         },
                         {
@@ -2298,7 +2461,8 @@ versioned_schema = {
                                 "v7.2.3": True,
                                 "v7.2.4": True,
                                 "v7.2.5": True,
-                                "v7.4.0": True
+                                "v7.4.0": True,
+                                "v7.4.1": True
                             }
                         }
                     ],
@@ -2320,11 +2484,198 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     },
                     "type": "integer",
                     "name": "tx_period",
                     "help": "802.1X tx period ( second ).",
+                    "category": "unitary"
+                },
+                "mac_called_station_delimiter": {
+                    "revisions": {
+                        "v7.4.1": True
+                    },
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "hyphen",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        },
+                        {
+                            "value": "single_hyphen",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        },
+                        {
+                            "value": "colon",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        },
+                        {
+                            "value": "none",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        }
+                    ],
+                    "name": "mac_called_station_delimiter",
+                    "help": "MAC called station delimiter (default = hyphen).",
+                    "category": "unitary"
+                },
+                "mac_case": {
+                    "revisions": {
+                        "v7.4.1": True
+                    },
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "uppercase",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        },
+                        {
+                            "value": "lowercase",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        }
+                    ],
+                    "name": "mac_case",
+                    "help": "MAC case (default = lowercase).",
+                    "category": "unitary"
+                },
+                "mac_password_delimiter": {
+                    "revisions": {
+                        "v7.4.1": True
+                    },
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "hyphen",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        },
+                        {
+                            "value": "single_hyphen",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        },
+                        {
+                            "value": "colon",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        },
+                        {
+                            "value": "none",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        }
+                    ],
+                    "name": "mac_password_delimiter",
+                    "help": "MAC authentication password delimiter (default = hyphen).",
+                    "category": "unitary"
+                },
+                "mab_entry_as": {
+                    "revisions": {
+                        "v7.4.1": True
+                    },
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "static",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        },
+                        {
+                            "value": "dynamic",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        }
+                    ],
+                    "name": "mab_entry_as",
+                    "help": "Confgure MAB MAC entry as static or dynamic.",
+                    "category": "unitary"
+                },
+                "mac_username_delimiter": {
+                    "revisions": {
+                        "v7.4.1": True
+                    },
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "hyphen",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        },
+                        {
+                            "value": "single_hyphen",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        },
+                        {
+                            "value": "colon",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        },
+                        {
+                            "value": "none",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        }
+                    ],
+                    "name": "mac_username_delimiter",
+                    "help": "MAC authentication username delimiter (default = hyphen).",
+                    "category": "unitary"
+                },
+                "mac_calling_station_delimiter": {
+                    "revisions": {
+                        "v7.4.1": True
+                    },
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "hyphen",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        },
+                        {
+                            "value": "single_hyphen",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        },
+                        {
+                            "value": "colon",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        },
+                        {
+                            "value": "none",
+                            "revisions": {
+                                "v7.4.1": True
+                            }
+                        }
+                    ],
+                    "name": "mac_calling_station_delimiter",
+                    "help": "MAC calling station delimiter (default = hyphen).",
                     "category": "unitary"
                 }
             },
@@ -2346,7 +2697,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -2365,7 +2717,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -2383,7 +2736,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -2405,7 +2759,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "l2_memory_check_interval",
@@ -2425,7 +2780,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "integer",
             "name": "mclag_split_brain_priority",
@@ -2445,7 +2801,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -2463,7 +2820,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -2480,7 +2838,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -2497,7 +2856,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -2510,7 +2870,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -2522,7 +2883,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -2539,7 +2901,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -2553,7 +2916,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -2566,7 +2930,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -2581,7 +2946,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "options": [
@@ -2593,7 +2959,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 },
                 {
@@ -2604,7 +2971,8 @@ versioned_schema = {
                         "v7.2.3": True,
                         "v7.2.4": True,
                         "v7.2.5": True,
-                        "v7.4.0": True
+                        "v7.4.0": True,
+                        "v7.4.1": True
                     }
                 }
             ],
@@ -2619,7 +2987,8 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": True
             },
             "type": "string",
             "name": "vxlan_stp_virtual_mac",
@@ -2633,10 +3002,58 @@ versioned_schema = {
                 "v7.2.3": True,
                 "v7.2.4": True,
                 "v7.2.5": True,
-                "v7.4.0": True
+                "v7.4.0": True,
+                "v7.4.1": False
             },
             "type": "integer",
             "name": "vxlan_port",
+            "help": "VXLAN destination UDP port.",
+            "category": "unitary"
+        },
+        "vxlan_sport": {
+            "revisions": {
+                "v7.4.1": True
+            },
+            "type": "integer",
+            "name": "vxlan_sport",
+            "help": "VXLAN source UDP port (0 - 65535).",
+            "category": "unitary"
+        },
+        "access_vlan_mode": {
+            "revisions": {
+                "v7.4.1": True
+            },
+            "type": "string",
+            "options": [
+                {
+                    "value": "legacy",
+                    "revisions": {
+                        "v7.4.1": True
+                    }
+                },
+                {
+                    "value": "fail_open",
+                    "revisions": {
+                        "v7.4.1": True
+                    }
+                },
+                {
+                    "value": "fail_close",
+                    "revisions": {
+                        "v7.4.1": True
+                    }
+                }
+            ],
+            "name": "access_vlan_mode",
+            "help": "Intra VLAN traffic behavior with loss of connection to the FortiGate.",
+            "category": "unitary"
+        },
+        "vxlan_dport": {
+            "revisions": {
+                "v7.4.1": True
+            },
+            "type": "integer",
+            "name": "vxlan_dport",
             "help": "VXLAN destination UDP port.",
             "category": "unitary"
         }
@@ -2671,6 +3088,11 @@ def main():
 
     module = AnsibleModule(argument_spec=fields,
                            supports_check_mode=False)
+
+    is_error = False
+    has_changed = False
+    result = None
+    diff = None
 
     versions_check_result = None
     if module._socket_path:

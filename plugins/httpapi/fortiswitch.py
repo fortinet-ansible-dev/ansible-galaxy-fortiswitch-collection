@@ -37,7 +37,7 @@ class HttpApi(HttpApiBase):
         self._ccsrftoken = ''
         self._system_version = None
         self._ansible_fos_version = '{{__fortios_version__}}'
-        self._ansible_galaxy_version = '1.2.1'
+        self._ansible_galaxy_version = '1.2.2'
         self._log = None
 
     def log(self, msg):
