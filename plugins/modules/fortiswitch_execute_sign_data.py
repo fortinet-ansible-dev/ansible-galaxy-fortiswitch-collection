@@ -100,22 +100,12 @@ results:
   returned: only for successful calls
   type: str
 '''
-
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Sign data with a local certificate.
-    execute_sign_data:
+- name: Sign data with a local certificate.
+  fortinet.fortiswitch.execute_sign_data:
       sign_data:
-        certificate: "<your_own_value>"
-        signature: "<your_own_value>"
+          certificate: "<your_own_value>"
+          signature: "<your_own_value>"
 '''
 
 

@@ -134,29 +134,19 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Log event filter configuration.
-    fortiswitch_log_eventfilter:
+- name: Log event filter configuration.
+  fortinet.fortiswitch.fortiswitch_log_eventfilter:
       log_eventfilter:
-        event: "enable"
-        fos_legacy: "enable"
-        link: "enable"
-        poe: "enable"
-        router: "enable"
-        spanning_tree: "enable"
-        switch: "enable"
-        switch_controller: "enable"
-        system: "enable"
-        user: "enable"
-
+          event: "enable"
+          fos_legacy: "enable"
+          link: "enable"
+          poe: "enable"
+          router: "enable"
+          spanning_tree: "enable"
+          switch: "enable"
+          switch_controller: "enable"
+          system: "enable"
+          user: "enable"
 '''
 
 RETURN = '''
@@ -276,80 +266,28 @@ def fortiswitch_log(data, fos):
 
 
 versioned_schema = {
-    "revisions": {
-        "v7.0.0": True,
-        "v7.0.1": True,
-        "v7.0.2": True,
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True,
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
+    "v_range": [
+        [
+            "v7.0.0",
+            ""
+        ]
+    ],
     "type": "dict",
     "children": {
         "spanning_tree": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "spanning_tree",
@@ -357,61 +295,19 @@ versioned_schema = {
             "category": "unitary"
         },
         "system": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "system",
@@ -419,61 +315,19 @@ versioned_schema = {
             "category": "unitary"
         },
         "switch_controller": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "switch_controller",
@@ -481,61 +335,19 @@ versioned_schema = {
             "category": "unitary"
         },
         "switch": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "switch",
@@ -543,61 +355,19 @@ versioned_schema = {
             "category": "unitary"
         },
         "link": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "link",
@@ -605,61 +375,19 @@ versioned_schema = {
             "category": "unitary"
         },
         "user": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "user",
@@ -667,61 +395,19 @@ versioned_schema = {
             "category": "unitary"
         },
         "router": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "router",
@@ -729,61 +415,19 @@ versioned_schema = {
             "category": "unitary"
         },
         "fos_legacy": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "fos_legacy",
@@ -791,61 +435,19 @@ versioned_schema = {
             "category": "unitary"
         },
         "poe": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "poe",
@@ -853,61 +455,19 @@ versioned_schema = {
             "category": "unitary"
         },
         "event": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "event",

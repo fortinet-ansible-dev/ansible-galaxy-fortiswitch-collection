@@ -71,20 +71,10 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Logging device to display in GUI.
-    fortiswitch_log_gui:
+- name: Logging device to display in GUI.
+  fortinet.fortiswitch.fortiswitch_log_gui:
       log_gui:
-        log_device: "memory"
-
+          log_device: "memory"
 '''
 
 RETURN = '''
@@ -201,76 +191,37 @@ def fortiswitch_log(data, fos):
 
 
 versioned_schema = {
-    "revisions": {
-        "v7.0.0": True,
-        "v7.0.1": True,
-        "v7.0.2": True,
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True,
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
+    "v_range": [
+        [
+            "v7.0.0",
+            ""
+        ]
+    ],
     "type": "dict",
     "children": {
         "log_device": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "memory",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "memory"
                 },
                 {
                     "value": "disk",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "v_range": [
+                        [
+                            "v7.2.1",
+                            ""
+                        ]
+                    ]
                 }
             ],
-            "name": "log_device",
+            "name": "log-device",
             "help": "Log device.",
             "category": "unitary"
         }

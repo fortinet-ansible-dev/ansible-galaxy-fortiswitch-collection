@@ -37,7 +37,7 @@ class HttpApi(HttpApiBase):
         self._ccsrftoken = ''
         self._system_version = None
         self._ansible_fos_version = '{{__fortios_version__}}'
-        self._ansible_galaxy_version = '1.2.2'
+        self._ansible_galaxy_version = '1.2.3'
         self._log = None
 
     def log(self, msg):
@@ -169,7 +169,7 @@ class HttpApi(HttpApiBase):
 
     def update_system_version(self):
         """
-        retrieve the system status of fortigate device
+        retrieve the system status of fortiSwitch device
         """
         check_system_status = self._conn.get_option('check_system_status') if 'check_system_status' in self._conn._options else True
         if not check_system_status or self._system_version:

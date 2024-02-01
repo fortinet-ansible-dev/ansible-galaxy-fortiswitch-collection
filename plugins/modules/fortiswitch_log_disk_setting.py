@@ -149,7 +149,7 @@ options:
                     - Server type.
                 type: str
                 choices:
-                    - 'ftp_server'
+                    - 'ftp-server'
             upload_format:
                 description:
                     - Upload compact/text logs.
@@ -204,9 +204,9 @@ options:
                     - 'webfilter'
                     - 'attack'
                     - 'spamfilter'
-                    - 'dlp_archive'
+                    - 'dlp-archive'
                     - 'dlp'
-                    - 'app_ctrl'
+                    - 'app-ctrl'
             uploaduser:
                 description:
                     - User account in the uploading server.
@@ -221,46 +221,36 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Settings for local disk logging.
-    fortiswitch_log_disk_setting:
+- name: Settings for local disk logging.
+  fortinet.fortiswitch.fortiswitch_log_disk_setting:
       log_disk_setting:
-        diskfull: "overwrite"
-        drive_standby_time: "4"
-        full_final_warning_threshold: "5"
-        full_first_warning_threshold: "6"
-        full_second_warning_threshold: "7"
-        log_quota: "8"
-        max_log_file_size: "9"
-        report_quota: "10"
-        roll_day: "sunday"
-        roll_schedule: "daily"
-        roll_time: "<your_own_value>"
-        source_ip: "84.230.14.43"
-        status: "enable"
-        upload: "enable"
-        upload_delete_files: "enable"
-        upload_destination: "ftp-server"
-        upload_format: "compact"
-        upload_ssl_conn: "default"
-        uploaddir: "<your_own_value>"
-        uploadip: "<your_own_value>"
-        uploadpass: "<your_own_value>"
-        uploadport: "24"
-        uploadsched: "disable"
-        uploadtime: "26"
-        uploadtype: "traffic"
-        uploaduser: "<your_own_value>"
-        uploadzip: "disable"
-
+          diskfull: "overwrite"
+          drive_standby_time: "4"
+          full_final_warning_threshold: "5"
+          full_first_warning_threshold: "6"
+          full_second_warning_threshold: "7"
+          log_quota: "8"
+          max_log_file_size: "9"
+          report_quota: "10"
+          roll_day: "sunday"
+          roll_schedule: "daily"
+          roll_time: "<your_own_value>"
+          source_ip: "<your_own_value>"
+          status: "enable"
+          upload: "enable"
+          upload_delete_files: "enable"
+          upload_destination: "ftp-server"
+          upload_format: "compact"
+          upload_ssl_conn: "default"
+          uploaddir: "<your_own_value>"
+          uploadip: "<your_own_value>"
+          uploadpass: "<your_own_value>"
+          uploadport: "24"
+          uploadsched: "disable"
+          uploadtime: "26"
+          uploadtype: "traffic"
+          uploaduser: "<your_own_value>"
+          uploadzip: "disable"
 '''
 
 RETURN = '''
@@ -385,146 +375,64 @@ def fortiswitch_log_disk(data, fos):
 
 
 versioned_schema = {
-    "revisions": {
-        "v7.0.0": True,
-        "v7.0.1": True,
-        "v7.0.2": True,
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True,
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
+    "v_range": [
+        [
+            "v7.0.0",
+            ""
+        ]
+    ],
     "type": "dict",
     "children": {
         "uploaduser": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "uploaduser",
             "help": "User account in the uploading server.",
             "category": "unitary"
         },
         "uploadip": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "uploadip",
             "help": "IP address of the log uploading server.",
             "category": "unitary"
         },
         "uploadtime": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "uploadtime",
             "help": "Time of scheduled upload.",
             "category": "unitary"
         },
         "diskfull": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "overwrite",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "overwrite"
                 },
                 {
-                    "value": "nolog",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "nolog"
                 }
             ],
             "name": "diskfull",
@@ -532,322 +440,96 @@ versioned_schema = {
             "category": "unitary"
         },
         "roll_schedule": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "daily",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "daily"
                 },
                 {
-                    "value": "weekly",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "weekly"
                 }
             ],
-            "name": "roll_schedule",
+            "name": "roll-schedule",
             "help": "Frequency to check log file for rolling.",
             "category": "unitary"
         },
         "report_quota": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": False,
-                "v7.2.2": False,
-                "v7.2.3": False,
-                "v7.2.4": False,
-                "v7.2.5": False,
-                "v7.4.0": False,
-                "v7.4.1": False
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.6"
+                ]
+            ],
             "type": "integer",
-            "name": "report_quota",
+            "name": "report-quota",
             "help": "Report quota.",
             "category": "unitary"
         },
         "roll_time": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "roll_time",
+            "name": "roll-time",
             "help": "Time to roll logs [hh:mm].",
             "category": "unitary"
         },
         "max_log_file_size": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "max_log_file_size",
+            "name": "max-log-file-size",
             "help": "Max log file size in MB before rolling (may not be accurate all the time).",
             "category": "unitary"
         },
         "uploadtype": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "traffic",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "traffic"
                 },
                 {
-                    "value": "event",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "event"
                 },
                 {
-                    "value": "virus",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "virus"
                 },
                 {
-                    "value": "webfilter",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "webfilter"
                 },
                 {
-                    "value": "attack",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "attack"
                 },
                 {
-                    "value": "spamfilter",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "spamfilter"
                 },
                 {
-                    "value": "dlp_archive",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "dlp-archive"
                 },
                 {
-                    "value": "dlp",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "dlp"
                 },
                 {
-                    "value": "app_ctrl",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "app-ctrl"
                 }
             ],
             "name": "uploadtype",
@@ -855,83 +537,31 @@ versioned_schema = {
             "category": "unitary"
         },
         "source_ip": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "source_ip",
+            "name": "source-ip",
             "help": "Source IP address of the disk log uploading.",
             "category": "unitary"
         },
         "status": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "status",
@@ -939,439 +569,169 @@ versioned_schema = {
             "category": "unitary"
         },
         "drive_standby_time": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "drive_standby_time",
+            "name": "drive-standby-time",
             "help": "Power management timeout(0-19800 sec)(0 disable).",
             "category": "unitary"
         },
         "upload_format": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "compact",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "compact"
                 },
                 {
-                    "value": "text",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "text"
                 }
             ],
-            "name": "upload_format",
+            "name": "upload-format",
             "help": "Upload compact/text logs.",
             "category": "unitary"
         },
         "full_final_warning_threshold": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "full_final_warning_threshold",
+            "name": "full-final-warning-threshold",
             "help": "Log full final warning threshold(3-100),the default is 95.",
             "category": "unitary"
         },
         "uploadpass": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "uploadpass",
             "help": "Password of the user account in the uploading server.",
             "category": "unitary"
         },
         "upload_ssl_conn": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "default",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "default"
                 },
                 {
-                    "value": "high",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "high"
                 },
                 {
-                    "value": "low",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "low"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "upload_ssl_conn",
+            "name": "upload-ssl-conn",
             "help": "Enable/disable SSL communication when uploading.",
             "category": "unitary"
         },
         "upload_delete_files": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "upload_delete_files",
+            "name": "upload-delete-files",
             "help": "Delete log files after uploading (default=enable).",
             "category": "unitary"
         },
         "log_quota": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "log_quota",
+            "name": "log-quota",
             "help": "Disk log quota.",
             "category": "unitary"
         },
         "uploaddir": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "uploaddir",
             "help": "Log file uploading remote directory.",
             "category": "unitary"
         },
         "full_first_warning_threshold": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "full_first_warning_threshold",
+            "name": "full-first-warning-threshold",
             "help": "Log full first warning threshold(1-98),the default is 75.",
             "category": "unitary"
         },
         "uploadport": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "uploadport",
             "help": "Port of the log uploading server.",
             "category": "unitary"
         },
         "upload": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "upload",
@@ -1379,104 +739,36 @@ versioned_schema = {
             "category": "unitary"
         },
         "upload_destination": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "ftp_server",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "ftp-server"
                 }
             ],
-            "name": "upload_destination",
+            "name": "upload-destination",
             "help": "Server type.",
             "category": "unitary"
         },
         "uploadsched": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 },
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 }
             ],
             "name": "uploadsched",
@@ -1484,61 +776,19 @@ versioned_schema = {
             "category": "unitary"
         },
         "uploadzip": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 },
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 }
             ],
             "name": "uploadzip",
@@ -1546,181 +796,49 @@ versioned_schema = {
             "category": "unitary"
         },
         "roll_day": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "sunday",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "sunday"
                 },
                 {
-                    "value": "monday",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "monday"
                 },
                 {
-                    "value": "tuesday",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "tuesday"
                 },
                 {
-                    "value": "wednesday",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "wednesday"
                 },
                 {
-                    "value": "thursday",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "thursday"
                 },
                 {
-                    "value": "friday",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "friday"
                 },
                 {
-                    "value": "saturday",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "saturday"
                 }
             ],
-            "name": "roll_day",
+            "name": "roll-day",
             "help": "Days of week to roll logs.",
             "category": "unitary"
         },
         "full_second_warning_threshold": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "full_second_warning_threshold",
+            "name": "full-second-warning-threshold",
             "help": "Log full second warning threshold(2-99),the default is 90.",
             "category": "unitary"
         }

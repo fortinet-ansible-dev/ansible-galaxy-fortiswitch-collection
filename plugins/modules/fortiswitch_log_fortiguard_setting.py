@@ -96,24 +96,14 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Settings for FortiGuard Analysis Service.
-    fortiswitch_log_fortiguard_setting:
+- name: Settings for FortiGuard Analysis Service.
+  fortinet.fortiswitch.fortiswitch_log_fortiguard_setting:
       log_fortiguard_setting:
-        enc_algorithm: "default"
-        status: "enable"
-        upload_day: "<your_own_value>"
-        upload_interval: "daily"
-        upload_time: "<your_own_value>"
-
+          enc_algorithm: "default"
+          status: "enable"
+          upload_day: "<your_own_value>"
+          upload_interval: "daily"
+          upload_time: "<your_own_value>"
 '''
 
 RETURN = '''
@@ -231,80 +221,28 @@ def fortiswitch_log_fortiguard(data, fos):
 
 
 versioned_schema = {
-    "revisions": {
-        "v7.0.0": True,
-        "v7.0.1": True,
-        "v7.0.2": True,
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True,
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
+    "v_range": [
+        [
+            "v7.0.0",
+            ""
+        ]
+    ],
     "type": "dict",
     "children": {
         "status": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "status",
@@ -312,227 +250,75 @@ versioned_schema = {
             "category": "unitary"
         },
         "upload_interval": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "daily",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "daily"
                 },
                 {
-                    "value": "weekly",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "weekly"
                 },
                 {
-                    "value": "monthly",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "monthly"
                 }
             ],
-            "name": "upload_interval",
+            "name": "upload-interval",
             "help": "Frequency to check log file for upload.",
             "category": "unitary"
         },
         "upload_time": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "upload_time",
+            "name": "upload-time",
             "help": "Time to roll logs [hh:mm].",
             "category": "unitary"
         },
         "upload_day": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "upload_day",
+            "name": "upload-day",
             "help": "Days of week to roll logs.",
             "category": "unitary"
         },
         "enc_algorithm": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "default",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "default"
                 },
                 {
-                    "value": "high",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "high"
                 },
                 {
-                    "value": "low",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "low"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "enc_algorithm",
+            "name": "enc-algorithm",
             "help": "Whether to send FortiAnalyzer log data with SSL encryption.",
             "category": "unitary"
         }

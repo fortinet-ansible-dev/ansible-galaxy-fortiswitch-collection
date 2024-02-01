@@ -91,25 +91,15 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Alert e-mail mail server configuration.
-    fortiswitch_system_alertemail:
+- name: Alert e-mail mail server configuration.
+  fortinet.fortiswitch.fortiswitch_system_alertemail:
       system_alertemail:
-        authenticate: "enable"
-        password: "<your_own_value>"
-        port: "5"
-        server: "192.168.100.40"
-        source_ip: "84.230.14.43"
-        username: "<your_own_value>"
-
+          authenticate: "enable"
+          password: "<your_own_value>"
+          port: "5"
+          server: "192.168.100.40"
+          source_ip: "<your_own_value>"
+          username: "<your_own_value>"
 '''
 
 RETURN = '''
@@ -227,67 +217,40 @@ def fortiswitch_system(data, fos):
 
 
 versioned_schema = {
-    "revisions": {
-        "v7.0.0": True,
-        "v7.0.1": True,
-        "v7.0.2": True,
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True
-    },
+    "v_range": [
+        [
+            "v7.0.0",
+            "v7.0.6"
+        ]
+    ],
     "type": "dict",
     "children": {
         "username": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.6"
+                ]
+            ],
             "type": "string",
             "name": "username",
             "help": "Set SMTP server user name for authentication.",
             "category": "unitary"
         },
         "authenticate": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.6"
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "authenticate",
@@ -295,60 +258,48 @@ versioned_schema = {
             "category": "unitary"
         },
         "source_ip": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.6"
+                ]
+            ],
             "type": "string",
-            "name": "source_ip",
+            "name": "source-ip",
             "help": "Set SMTP server source ip.",
             "category": "unitary"
         },
         "server": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.6"
+                ]
+            ],
             "type": "string",
             "name": "server",
             "help": "Set SMTP server IP address or hostname.",
             "category": "unitary"
         },
         "password": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.6"
+                ]
+            ],
             "type": "string",
             "name": "password",
             "help": "Set SMTP server user password for authentication.",
             "category": "unitary"
         },
         "port": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.6"
+                ]
+            ],
             "type": "integer",
             "name": "port",
             "help": "Set SMTP server port.",

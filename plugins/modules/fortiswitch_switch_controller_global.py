@@ -122,6 +122,13 @@ options:
                 description:
                     - The maximum # of retransmissions for tunnel packet.
                 type: int
+            mgmt_mode:
+                description:
+                    - FortiLink management mode.
+                type: str
+                choices:
+                    - 'capwap'
+                    - 'https'
             name:
                 description:
                     - Name.
@@ -136,35 +143,26 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Switch-controller global configuration.
-    fortiswitch_switch_controller_global:
+- name: Switch-controller global configuration.
+  fortinet.fortiswitch.fortiswitch_switch_controller_global:
       switch_controller_global:
-        ac_data_port: "3"
-        ac_dhcp_option_code: "4"
-        ac_discovery_mc_addr: "<your_own_value>"
-        ac_discovery_type: "static"
-        ac_list:
-         -
-            id:  "8"
-            ipv4_address: "<your_own_value>"
-            ipv6_address: "<your_own_value>"
-        ac_port: "11"
-        echo_interval: "12"
-        location: "<your_own_value>"
-        max_discoveries: "14"
-        max_retransmit: "15"
-        name: "default_name_16"
-        tunnel_mode: "compatible"
-
+          ac_data_port: "3"
+          ac_dhcp_option_code: "4"
+          ac_discovery_mc_addr: "<your_own_value>"
+          ac_discovery_type: "static"
+          ac_list:
+              -
+                  id: "8"
+                  ipv4_address: "<your_own_value>"
+                  ipv6_address: "<your_own_value>"
+          ac_port: "11"
+          echo_interval: "12"
+          location: "<your_own_value>"
+          max_discoveries: "14"
+          max_retransmit: "15"
+          mgmt_mode: "capwap"
+          name: "default_name_17"
+          tunnel_mode: "compatible"
 '''
 
 RETURN = '''
@@ -228,7 +226,8 @@ def filter_switch_controller_global_data(json):
     option_list = ['ac_data_port', 'ac_dhcp_option_code', 'ac_discovery_mc_addr',
                    'ac_discovery_type', 'ac_list', 'ac_port',
                    'echo_interval', 'location', 'max_discoveries',
-                   'max_retransmit', 'name', 'tunnel_mode']
+                   'max_retransmit', 'mgmt_mode', 'name',
+                   'tunnel_mode']
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -284,131 +283,71 @@ def fortiswitch_switch_controller(data, fos):
 
 
 versioned_schema = {
-    "revisions": {
-        "v7.0.0": True,
-        "v7.0.1": True,
-        "v7.0.2": True,
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True,
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
+    "v_range": [
+        [
+            "v7.0.0",
+            ""
+        ]
+    ],
     "type": "dict",
     "children": {
         "name": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "name",
             "help": "Name.",
             "category": "unitary"
         },
         "ac_data_port": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "ac_data_port",
+            "name": "ac-data-port",
             "help": "Switch controller data port [1024,49150].",
             "category": "unitary"
         },
         "echo_interval": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "echo_interval",
+            "name": "echo-interval",
             "help": "Interval before SWTP sends Echo Request after joining AC. [1,600] default = 30s.",
             "category": "unitary"
         },
         "ac_dhcp_option_code": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "ac_dhcp_option_code",
+            "name": "ac-dhcp-option-code",
             "help": "DHCP option code for CAPUTP AC.",
             "category": "unitary"
         },
         "max_discoveries": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "max_discoveries",
+            "name": "max-discoveries",
             "help": "The maximum # of Discovery Request messages every round.",
             "category": "unitary"
         },
@@ -417,351 +356,183 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "ipv4_address": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
-                    "name": "ipv4_address",
+                    "name": "ipv4-address",
                     "help": "IP addr.",
                     "category": "unitary"
                 },
                 "id": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "id",
                     "help": "Id.",
                     "category": "unitary"
                 },
                 "ipv6_address": {
-                    "revisions": {
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.2.3",
+                            ""
+                        ]
+                    ],
                     "type": "string",
-                    "name": "ipv6_address",
+                    "name": "ipv6-address",
                     "help": "IPv6 address.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
-            "name": "ac_list",
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
+            "name": "ac-list",
             "help": "AC list.",
             "mkey": "id",
             "category": "table"
         },
         "location": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "location",
             "help": "Location.",
             "category": "unitary"
         },
         "ac_discovery_mc_addr": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "ac_discovery_mc_addr",
+            "name": "ac-discovery-mc-addr",
             "help": "Discovery multicast address",
             "category": "unitary"
         },
         "ac_port": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "ac_port",
+            "name": "ac-port",
             "help": "Switch controller ctl port [1024,49150].",
             "category": "unitary"
         },
         "max_retransmit": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "max_retransmit",
+            "name": "max-retransmit",
             "help": "The maximum # of retransmissions for tunnel packet.",
             "category": "unitary"
         },
         "ac_discovery_type": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "static",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "static"
                 },
                 {
-                    "value": "dhcp",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "dhcp"
                 },
                 {
-                    "value": "broadcast",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "broadcast"
                 },
                 {
-                    "value": "multicast",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "multicast"
                 },
                 {
                     "value": "auto",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "v_range": [
+                        [
+                            "v7.2.1",
+                            ""
+                        ]
+                    ]
                 },
                 {
                     "value": "disable",
-                    "revisions": {
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "v_range": [
+                        [
+                            "v7.2.3",
+                            ""
+                        ]
+                    ]
                 }
             ],
-            "name": "ac_discovery_type",
+            "name": "ac-discovery-type",
             "help": "AC discovery type.",
             "category": "unitary"
         },
         "tunnel_mode": {
-            "revisions": {
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "compatible",
-                    "revisions": {
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "compatible"
                 },
                 {
-                    "value": "strict",
-                    "revisions": {
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "strict"
                 }
             ],
-            "name": "tunnel_mode",
+            "name": "tunnel-mode",
             "help": "Compatible/strict tunnel mode.",
+            "category": "unitary"
+        },
+        "mgmt_mode": {
+            "v_range": [
+                [
+                    "v7.4.2",
+                    ""
+                ]
+            ],
+            "type": "string",
+            "options": [
+                {
+                    "value": "capwap"
+                },
+                {
+                    "value": "https"
+                }
+            ],
+            "name": "mgmt-mode",
+            "help": "FortiLink management mode.",
             "category": "unitary"
         }
     },

@@ -86,25 +86,15 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Configure sFlow.
-    fortiswitch_system_sflow:
+- name: Configure sFlow.
+  fortinet.fortiswitch.fortiswitch_system_sflow:
       system_sflow:
-        collectors:
-         -
-            ip: "<your_own_value>"
-            name: "default_name_5"
-            port: "6"
-        dummy: "7"
-
+          collectors:
+              -
+                  ip: "<your_own_value>"
+                  name: "default_name_5"
+                  port: "6"
+          dummy: "7"
 '''
 
 RETURN = '''
@@ -221,41 +211,21 @@ def fortiswitch_system(data, fos):
 
 
 versioned_schema = {
-    "revisions": {
-        "v7.0.0": True,
-        "v7.0.1": True,
-        "v7.0.2": True,
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True,
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
+    "v_range": [
+        [
+            "v7.0.0",
+            ""
+        ]
+    ],
     "type": "dict",
     "children": {
         "dummy": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "dummy",
             "help": "SFlow dummy.",
@@ -266,88 +236,48 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "ip": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "ip",
                     "help": "Collector IP.",
                     "category": "unitary"
                 },
                 "name": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "name",
                     "help": "Collector name.",
                     "category": "unitary"
                 },
                 "port": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "port",
                     "help": "SFlow collector port (0 - 65535).",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "name": "collectors",
             "help": "Collectors.",
             "mkey": "name",

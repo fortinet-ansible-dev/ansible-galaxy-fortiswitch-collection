@@ -82,7 +82,7 @@ options:
                     - Select PTP mode.
                 type: str
                 choices:
-                    - 'transparent_e2e'
+                    - 'transparent-e2e'
             name:
                 description:
                     - Profile name.
@@ -103,37 +103,27 @@ options:
                     - Select PTP profile.
                 type: str
                 choices:
-                    - 'C37.238_2017'
+                    - 'C37.238-2017'
             transport:
                 description:
                     - Select PTP transport.
                 type: str
                 choices:
-                    - 'l2_mcast'
+                    - 'l2-mcast'
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: PTP policy configuration.
-    fortiswitch_system_ptp_profile:
+- name: PTP policy configuration.
+  fortinet.fortiswitch.fortiswitch_system_ptp_profile:
       state: "present"
       system_ptp_profile:
-        description: "<your_own_value>"
-        domain: "4"
-        mode: "transparent-e2e"
-        name: "default_name_6"
-        pdelay_req_interval: "0.25sec"
-        ptp_profile: "C37.238-2017"
-        transport: "l2-mcast"
-
+          description: "<your_own_value>"
+          domain: "4"
+          mode: "transparent-e2e"
+          name: "default_name_6"
+          pdelay_req_interval: "0.25sec"
+          ptp_profile: "C37.238-2017"
+          transport: "l2-mcast"
 '''
 
 RETURN = '''
@@ -265,95 +255,69 @@ versioned_schema = {
     "elements": "dict",
     "children": {
         "domain": {
-            "revisions": {
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.4.0",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "domain",
             "help": "PTP domain (0-255)",
             "category": "unitary"
         },
         "name": {
-            "revisions": {
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.4.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "name",
             "help": "Profile name.",
             "category": "unitary"
         },
         "pdelay_req_interval": {
-            "revisions": {
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.4.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "0.25sec",
-                    "revisions": {
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "0.25sec"
                 },
                 {
-                    "value": "0.5sec",
-                    "revisions": {
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "0.5sec"
                 },
                 {
-                    "value": "1sec",
-                    "revisions": {
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "1sec"
                 },
                 {
-                    "value": "2sec",
-                    "revisions": {
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "2sec"
                 },
                 {
-                    "value": "4sec",
-                    "revisions": {
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "4sec"
                 }
             ],
-            "name": "pdelay_req_interval",
+            "name": "pdelay-req-interval",
             "help": "PDelay Request interval.",
             "category": "unitary"
         },
         "mode": {
-            "revisions": {
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.4.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "transparent_e2e",
-                    "revisions": {
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "transparent-e2e"
                 }
             ],
             "name": "mode",
@@ -361,41 +325,33 @@ versioned_schema = {
             "category": "unitary"
         },
         "ptp_profile": {
-            "revisions": {
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.4.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "C37.238_2017",
-                    "revisions": {
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "C37.238-2017"
                 }
             ],
-            "name": "ptp_profile",
+            "name": "ptp-profile",
             "help": "Select PTP profile.",
             "category": "unitary"
         },
         "transport": {
-            "revisions": {
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.4.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "l2_mcast",
-                    "revisions": {
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "l2-mcast"
                 }
             ],
             "name": "transport",
@@ -403,22 +359,24 @@ versioned_schema = {
             "category": "unitary"
         },
         "description": {
-            "revisions": {
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.4.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "description",
             "help": "Description.",
             "category": "unitary"
         }
     },
-    "revisions": {
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
+    "v_range": [
+        [
+            "v7.4.0",
+            ""
+        ]
+    ],
     "name": "profile",
     "help": "PTP policy configuration.",
     "mkey": "name",

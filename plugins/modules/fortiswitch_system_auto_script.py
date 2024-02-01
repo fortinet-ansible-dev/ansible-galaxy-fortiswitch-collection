@@ -100,26 +100,16 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Configure auto script.
-    fortiswitch_system_auto_script:
+- name: Configure auto script.
+  fortinet.fortiswitch.fortiswitch_system_auto_script:
       state: "present"
       system_auto_script:
-        interval: "3"
-        name: "default_name_4"
-        output_size: "5"
-        repeat: "6"
-        script: "<your_own_value>"
-        start: "manual"
-
+          interval: "3"
+          name: "default_name_4"
+          output_size: "5"
+          repeat: "6"
+          script: "<your_own_value>"
+          start: "manual"
 '''
 
 RETURN = '''
@@ -250,115 +240,79 @@ versioned_schema = {
     "elements": "dict",
     "children": {
         "output_size": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "output_size",
+            "name": "output-size",
             "help": "Number of megabytes to limit script output to (10 - 1024,default = 10).",
             "category": "unitary"
         },
         "repeat": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "repeat",
             "help": "Number of times to repeat this script (0 = infinite).",
             "category": "unitary"
         },
         "name": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "name",
             "help": "Auto script name.",
             "category": "unitary"
         },
         "script": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "script",
             "help": "List of CLI commands to repeat.",
             "category": "unitary"
         },
         "interval": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "interval",
             "help": "Repeat interval in seconds.",
             "category": "unitary"
         },
         "start": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "manual",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "manual"
                 },
                 {
-                    "value": "auto",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "auto"
                 }
             ],
             "name": "start",
@@ -366,16 +320,13 @@ versioned_schema = {
             "category": "unitary"
         }
     },
-    "revisions": {
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
-    "name": "auto_script",
+    "v_range": [
+        [
+            "v7.2.1",
+            ""
+        ]
+    ],
+    "name": "auto-script",
     "help": "Configure auto script.",
     "mkey": "name",
     "category": "table"

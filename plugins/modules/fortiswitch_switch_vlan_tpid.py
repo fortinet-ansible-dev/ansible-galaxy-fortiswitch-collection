@@ -81,22 +81,12 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Configure switch global ether-types.
-    fortiswitch_switch_vlan_tpid:
+- name: Configure switch global ether-types.
+  fortinet.fortiswitch.fortiswitch_switch_vlan_tpid:
       state: "present"
       switch_vlan_tpid:
-        ether_type: "3"
-        name: "default_name_4"
-
+          ether_type: "3"
+          name: "default_name_4"
 '''
 
 RETURN = '''
@@ -266,67 +256,37 @@ versioned_schema = {
     "elements": "dict",
     "children": {
         "name": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "name",
             "help": "User given name for ether-type.",
             "category": "unitary"
         },
         "ether_type": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "ether_type",
+            "name": "ether-type",
             "help": "Set switch ether-type.",
             "category": "unitary"
         }
     },
-    "revisions": {
-        "v7.0.0": True,
-        "v7.0.1": True,
-        "v7.0.2": True,
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True,
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
-    "name": "vlan_tpid",
+    "v_range": [
+        [
+            "v7.0.0",
+            ""
+        ]
+    ],
+    "name": "vlan-tpid",
     "help": "Configure switch global ether-types.",
     "mkey": "name",
     "category": "table"

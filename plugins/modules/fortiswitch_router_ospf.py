@@ -158,7 +158,7 @@ options:
                             - Stub summary setting.
                         type: str
                         choices:
-                            - 'no_summary'
+                            - 'no-summary'
                             - 'summary'
                     type:
                         description:
@@ -599,7 +599,7 @@ options:
                                     - Stub summary setting.
                                 type: str
                                 choices:
-                                    - 'no_summary'
+                                    - 'no-summary'
                                     - 'summary'
                             type:
                                 description:
@@ -918,210 +918,200 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: OSPF configuration.
-    fortiswitch_router_ospf:
+- name: OSPF configuration.
+  fortinet.fortiswitch.fortiswitch_router_ospf:
       router_ospf:
-        abr_type: "cisco"
-        area:
-         -
-            default_cost: "5"
-            filter_list:
-             -
-                direction: "in"
-                id:  "8"
-                list: "<your_own_value> (source router.access_list.name router.prefix_list.name)"
-            id:  "10"
-            nssa_translator_role: "candidate"
-            range:
-             -
-                advertise: "disable"
-                id:  "14"
-                prefix: "<your_own_value>"
-                substitute: "<your_own_value>"
-                substitute_status: "enable"
-            shortcut: "disable"
-            stub_type: "no-summary"
-            type: "regular"
-            virtual_link:
-             -
-                authentication: "none"
-                authentication_key: "<your_own_value>"
-                dead_interval: "24"
-                hello_interval: "25"
-                md5_keys:
-                 -
-                    id:  "27"
-                    key: "<your_own_value>"
-                name: "default_name_29"
-                peer: "<your_own_value>"
-                retransmit_interval: "31"
-                transmit_delay: "32"
-        database_overflow: "enable"
-        database_overflow_max_external_lsa: "34"
-        database_overflow_time_to_recover: "35"
-        default_information_metric: "36"
-        default_information_metric_type: "1"
-        default_information_originate: "enable"
-        distance: "39"
-        distance_external: "40"
-        distance_inter_area: "41"
-        distance_intra_area: "42"
-        distribute_list:
-         -
-            access_list: "<your_own_value> (source router.access_list.name)"
-            id:  "45"
-            protocol: "connected"
-        interface:
-         -
-            authentication: "none"
-            authentication_key: "<your_own_value>"
-            bfd: "enable"
-            cost: "51"
-            dead_interval: "52"
-            hello_interval: "53"
-            hello_multiplier: "54"
-            md5_keys:
-             -
-                id:  "56"
-                key: "<your_own_value>"
-            mtu: "58"
-            mtu_ignore: "enable"
-            name: "default_name_60 (source system.interface.name)"
-            priority: "61"
-            retransmit_interval: "62"
-            transmit_delay: "63"
-            ttl: "64"
-            ucast_ttl: "65"
-        log_neighbour_changes: "enable"
-        name: "default_name_67"
-        network:
-         -
-            area: "<your_own_value>"
-            id:  "70"
-            prefix: "<your_own_value>"
-        passive_interface:
-         -
-            name: "default_name_73 (source system.interface.name)"
-        redistribute:
-         -
-            metric: "75"
-            metric_type: "1"
-            name: "default_name_77"
-            routemap: "<your_own_value> (source router.route_map.name)"
-            status: "enable"
-            tag: "80"
-        rfc1583_compatible: "enable"
-        router_id: "<your_own_value>"
-        spf_timers: "<your_own_value>"
-        summary_address:
-         -
-            id:  "85"
-            prefix: "<your_own_value>"
-            tag: "87"
-        vrf:
-         -
-            abr_type: "cisco"
-            area:
-             -
-                default_cost: "91"
-                filter_list:
-                 -
-                    direction: "in"
-                    id:  "94"
-                    list: "<your_own_value> (source router.access_list.name router.prefix_list.name)"
-                id:  "96"
-                nssa_translator_role: "candidate"
-                range:
-                 -
-                    advertise: "disable"
-                    id:  "100"
-                    prefix: "<your_own_value>"
-                    substitute: "<your_own_value>"
-                    substitute_status: "enable"
-                shortcut: "disable"
-                stub_type: "no-summary"
-                type: "regular"
-                virtual_link:
-                 -
-                    authentication: "none"
-                    authentication_key: "<your_own_value>"
-                    dead_interval: "110"
-                    hello_interval: "111"
-                    name: "default_name_112"
-                    peer: "<your_own_value>"
-                    retransmit_interval: "114"
-                    transmit_delay: "115"
-            database_overflow: "enable"
-            database_overflow_max_external_lsa: "117"
-            database_overflow_time_to_recover: "118"
-            default_information_metric: "119"
-            default_information_metric_type: "1"
-            default_information_originate: "enable"
-            distance: "122"
-            distance_external: "123"
-            distance_inter_area: "124"
-            distance_intra_area: "125"
-            distribute_list:
-             -
-                access_list: "<your_own_value> (source router.access_list.name)"
-                id:  "128"
-                protocol: "connected"
-            interface:
-             -
-                authentication: "none"
-                authentication_key: "<your_own_value>"
-                cost: "133"
-                dead_interval: "134"
-                hello_interval: "135"
-                hello_multiplier: "136"
-                md5_keys:
-                 -
-                    id:  "138"
-                    key: "<your_own_value>"
-                mtu: "140"
-                mtu_ignore: "enable"
-                name: "default_name_142 (source system.interface.name)"
-                priority: "143"
-                retransmit_interval: "144"
-                transmit_delay: "145"
-                ttl: "146"
-                ucast_ttl: "147"
-            log_neighbour_changes: "enable"
-            name: "default_name_149 (source router.vrf.name)"
-            network:
-             -
-                area: "<your_own_value>"
-                id:  "152"
-                prefix: "<your_own_value>"
-            passive_interface:
-             -
-                name: "default_name_155 (source system.interface.name)"
-            redistribute:
-             -
-                metric: "157"
-                metric_type: "1"
-                name: "default_name_159"
-                routemap: "<your_own_value> (source router.route_map.name)"
-                status: "enable"
-                tag: "162"
-            rfc1583_compatible: "enable"
-            router_id: "<your_own_value>"
-            spf_timers: "<your_own_value>"
-            summary_address:
-             -
-                id:  "167"
-                prefix: "<your_own_value>"
-                tag: "169"
-
+          abr_type: "cisco"
+          area:
+              -
+                  default_cost: "5"
+                  filter_list:
+                      -
+                          direction: "in"
+                          id: "8"
+                          list: "<your_own_value> (source router.access-list.name router.prefix-list.name)"
+                  id: "10"
+                  nssa_translator_role: "candidate"
+                  range:
+                      -
+                          advertise: "disable"
+                          id: "14"
+                          prefix: "<your_own_value>"
+                          substitute: "<your_own_value>"
+                          substitute_status: "enable"
+                  shortcut: "disable"
+                  stub_type: "no-summary"
+                  type: "regular"
+                  virtual_link:
+                      -
+                          authentication: "none"
+                          authentication_key: "<your_own_value>"
+                          dead_interval: "24"
+                          hello_interval: "25"
+                          md5_keys:
+                              -
+                                  id: "27"
+                                  key: "<your_own_value>"
+                          name: "default_name_29"
+                          peer: "<your_own_value>"
+                          retransmit_interval: "31"
+                          transmit_delay: "32"
+          database_overflow: "enable"
+          database_overflow_max_external_lsa: "34"
+          database_overflow_time_to_recover: "35"
+          default_information_metric: "36"
+          default_information_metric_type: "1"
+          default_information_originate: "enable"
+          distance: "39"
+          distance_external: "40"
+          distance_inter_area: "41"
+          distance_intra_area: "42"
+          distribute_list:
+              -
+                  access_list: "<your_own_value> (source router.access-list.name)"
+                  id: "45"
+                  protocol: "connected"
+          interface:
+              -
+                  authentication: "none"
+                  authentication_key: "<your_own_value>"
+                  bfd: "enable"
+                  cost: "51"
+                  dead_interval: "52"
+                  hello_interval: "53"
+                  hello_multiplier: "54"
+                  md5_keys:
+                      -
+                          id: "56"
+                          key: "<your_own_value>"
+                  mtu: "58"
+                  mtu_ignore: "enable"
+                  name: "default_name_60 (source system.interface.name)"
+                  priority: "61"
+                  retransmit_interval: "62"
+                  transmit_delay: "63"
+                  ttl: "64"
+                  ucast_ttl: "65"
+          log_neighbour_changes: "enable"
+          name: "default_name_67"
+          network:
+              -
+                  area: "<your_own_value>"
+                  id: "70"
+                  prefix: "<your_own_value>"
+          passive_interface:
+              -
+                  name: "default_name_73 (source system.interface.name)"
+          redistribute:
+              -
+                  metric: "75"
+                  metric_type: "1"
+                  name: "default_name_77"
+                  routemap: "<your_own_value> (source router.route-map.name)"
+                  status: "enable"
+                  tag: "80"
+          rfc1583_compatible: "enable"
+          router_id: "<your_own_value>"
+          spf_timers: "<your_own_value>"
+          summary_address:
+              -
+                  id: "85"
+                  prefix: "<your_own_value>"
+                  tag: "87"
+          vrf:
+              -
+                  abr_type: "cisco"
+                  area:
+                      -
+                          default_cost: "91"
+                          filter_list:
+                              -
+                                  direction: "in"
+                                  id: "94"
+                                  list: "<your_own_value> (source router.access-list.name router.prefix-list.name)"
+                          id: "96"
+                          nssa_translator_role: "candidate"
+                          range:
+                              -
+                                  advertise: "disable"
+                                  id: "100"
+                                  prefix: "<your_own_value>"
+                                  substitute: "<your_own_value>"
+                                  substitute_status: "enable"
+                          shortcut: "disable"
+                          stub_type: "no-summary"
+                          type: "regular"
+                          virtual_link:
+                              -
+                                  authentication: "none"
+                                  authentication_key: "<your_own_value>"
+                                  dead_interval: "110"
+                                  hello_interval: "111"
+                                  name: "default_name_112"
+                                  peer: "<your_own_value>"
+                                  retransmit_interval: "114"
+                                  transmit_delay: "115"
+                  database_overflow: "enable"
+                  database_overflow_max_external_lsa: "117"
+                  database_overflow_time_to_recover: "118"
+                  default_information_metric: "119"
+                  default_information_metric_type: "1"
+                  default_information_originate: "enable"
+                  distance: "122"
+                  distance_external: "123"
+                  distance_inter_area: "124"
+                  distance_intra_area: "125"
+                  distribute_list:
+                      -
+                          access_list: "<your_own_value> (source router.access-list.name)"
+                          id: "128"
+                          protocol: "connected"
+                  interface:
+                      -
+                          authentication: "none"
+                          authentication_key: "<your_own_value>"
+                          cost: "133"
+                          dead_interval: "134"
+                          hello_interval: "135"
+                          hello_multiplier: "136"
+                          md5_keys:
+                              -
+                                  id: "138"
+                                  key: "<your_own_value>"
+                          mtu: "140"
+                          mtu_ignore: "enable"
+                          name: "default_name_142 (source system.interface.name)"
+                          priority: "143"
+                          retransmit_interval: "144"
+                          transmit_delay: "145"
+                          ttl: "146"
+                          ucast_ttl: "147"
+                  log_neighbour_changes: "enable"
+                  name: "default_name_149 (source router.vrf.name)"
+                  network:
+                      -
+                          area: "<your_own_value>"
+                          id: "152"
+                          prefix: "<your_own_value>"
+                  passive_interface:
+                      -
+                          name: "default_name_155 (source system.interface.name)"
+                  redistribute:
+                      -
+                          metric: "157"
+                          metric_type: "1"
+                          name: "default_name_159"
+                          routemap: "<your_own_value> (source router.route-map.name)"
+                          status: "enable"
+                          tag: "162"
+                  rfc1583_compatible: "enable"
+                  router_id: "<your_own_value>"
+                  spf_timers: "<your_own_value>"
+                  summary_address:
+                      -
+                          id: "167"
+                          prefix: "<your_own_value>"
+                          tag: "169"
 '''
 
 RETURN = '''
@@ -1245,22 +1235,12 @@ def fortiswitch_router(data, fos):
 
 
 versioned_schema = {
-    "revisions": {
-        "v7.0.0": True,
-        "v7.0.1": True,
-        "v7.0.2": True,
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True,
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
+    "v_range": [
+        [
+            "v7.0.0",
+            ""
+        ]
+    ],
     "type": "dict",
     "children": {
         "summary_address": {
@@ -1268,89 +1248,49 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "prefix": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "prefix",
                     "help": "Prefix.",
                     "category": "unitary"
                 },
                 "tag": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "tag",
                     "help": "Tag value.",
                     "category": "unitary"
                 },
                 "id": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "id",
                     "help": "Summary address entry ID.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
-            "name": "summary_address",
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
+            "name": "summary-address",
             "help": "Aggregate address for redistributed routes.",
             "mkey": "id",
             "category": "table"
@@ -1360,83 +1300,25 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "nssa_translator_role": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "candidate",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "candidate"
                         },
                         {
-                            "value": "never",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "never"
                         },
                         {
-                            "value": "always",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "always"
                         }
                     ],
-                    "name": "nssa_translator_role",
+                    "name": "nssa-translator-role",
                     "help": "NSSA translator role type.",
                     "category": "unitary"
                 },
@@ -1445,190 +1327,82 @@ versioned_schema = {
                     "elements": "dict",
                     "children": {
                         "dead_interval": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
-                            "name": "dead_interval",
+                            "name": "dead-interval",
                             "help": "Dead interval.",
                             "category": "unitary"
                         },
                         "hello_interval": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
-                            "name": "hello_interval",
+                            "name": "hello-interval",
                             "help": "Hello interval.",
                             "category": "unitary"
                         },
                         "name": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "name",
                             "help": "Virtual link entry name.",
                             "category": "unitary"
                         },
                         "transmit_delay": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
-                            "name": "transmit_delay",
+                            "name": "transmit-delay",
                             "help": "Link state transmit delay.",
                             "category": "unitary"
                         },
                         "retransmit_interval": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
-                            "name": "retransmit_interval",
+                            "name": "retransmit-interval",
                             "help": "Time between retransmitting lost link state advertisements.",
                             "category": "unitary"
                         },
                         "authentication": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "none",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "none"
                                 },
                                 {
-                                    "value": "text",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "text"
                                 },
                                 {
-                                    "value": "md5",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "md5"
                                 }
                             ],
                             "name": "authentication",
@@ -1636,22 +1410,12 @@ versioned_schema = {
                             "category": "unitary"
                         },
                         "peer": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "peer",
                             "help": "Peer IP.",
@@ -1662,190 +1426,82 @@ versioned_schema = {
                             "elements": "dict",
                             "children": {
                                 "id": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "integer",
                                     "name": "id",
                                     "help": "key-id (1-255).",
                                     "category": "unitary"
                                 },
                                 "key": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "string",
                                     "name": "key",
                                     "help": "md5-key.",
                                     "category": "unitary"
                                 }
                             },
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
-                            "name": "md5_keys",
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
+                            "name": "md5-keys",
                             "help": "OSPF md5 key configuration. Applicable only when authentication field is set to md5.",
                             "mkey": "id",
                             "category": "table"
                         },
                         "authentication_key": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
-                            "name": "authentication_key",
+                            "name": "authentication-key",
                             "help": "Authentication key.",
                             "category": "unitary"
                         }
                     },
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
-                    "name": "virtual_link",
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
+                    "name": "virtual-link",
                     "help": "OSPF virtual link configuration.",
                     "mkey": "name",
                     "category": "table"
                 },
                 "shortcut": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         },
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "default",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "default"
                         }
                     ],
                     "name": "shortcut",
@@ -1853,64 +1509,22 @@ versioned_schema = {
                     "category": "unitary"
                 },
                 "stub_type": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "no_summary",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "no-summary"
                         },
                         {
-                            "value": "summary",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "summary"
                         }
                     ],
-                    "name": "stub_type",
+                    "name": "stub-type",
                     "help": "Stub summary setting.",
                     "category": "unitary"
                 },
@@ -1919,189 +1533,75 @@ versioned_schema = {
                     "elements": "dict",
                     "children": {
                         "substitute": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "substitute",
                             "help": "Substitute prefix.",
                             "category": "unitary"
                         },
                         "prefix": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "prefix",
                             "help": "Prefix.",
                             "category": "unitary"
                         },
                         "substitute_status": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "enable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "enable"
                                 },
                                 {
-                                    "value": "disable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "disable"
                                 }
                             ],
-                            "name": "substitute_status",
+                            "name": "substitute-status",
                             "help": "Enable/disable substitute status.",
                             "category": "unitary"
                         },
                         "id": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
                             "name": "id",
                             "help": "Range entry ID.",
                             "category": "unitary"
                         },
                         "advertise": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "disable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "disable"
                                 },
                                 {
-                                    "value": "enable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "enable"
                                 }
                             ],
                             "name": "advertise",
@@ -2109,22 +1609,12 @@ versioned_schema = {
                             "category": "unitary"
                         }
                     },
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "name": "range",
                     "help": "OSPF area range configuration.",
                     "mkey": "id",
@@ -2135,61 +1625,19 @@ versioned_schema = {
                     "elements": "dict",
                     "children": {
                         "direction": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "in",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "in"
                                 },
                                 {
-                                    "value": "out",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "out"
                                 }
                             ],
                             "name": "direction",
@@ -2197,168 +1645,70 @@ versioned_schema = {
                             "category": "unitary"
                         },
                         "list": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "list",
                             "help": "Access-list or prefix-list name.",
                             "category": "unitary"
                         },
                         "id": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
                             "name": "id",
                             "help": "Filter list entry ID.",
                             "category": "unitary"
                         }
                     },
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
-                    "name": "filter_list",
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
+                    "name": "filter-list",
                     "help": "OSPF area filter-list configuration.",
                     "mkey": "id",
                     "category": "table"
                 },
                 "default_cost": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "default_cost",
+                    "name": "default-cost",
                     "help": "Summary default cost of stub or NSSA area.",
                     "category": "unitary"
                 },
                 "type": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "regular",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "regular"
                         },
                         {
-                            "value": "nssa",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "nssa"
                         },
                         {
-                            "value": "stub",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "stub"
                         }
                     ],
                     "name": "type",
@@ -2366,90 +1716,50 @@ versioned_schema = {
                     "category": "unitary"
                 },
                 "id": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "id",
                     "help": "Area entry IP address.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "name": "area",
             "help": "OSPF area configuration.",
             "mkey": "id",
             "category": "table"
         },
         "distance_intra_area": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "distance_intra_area",
+            "name": "distance-intra-area",
             "help": "Administrative intra-area route distance.",
             "category": "unitary"
         },
         "distance_external": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "distance_external",
+            "name": "distance-external",
             "help": "Administrative external route distance.",
             "category": "unitary"
         },
@@ -2458,423 +1768,169 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "prefix": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "prefix",
                     "help": "Prefix.",
                     "category": "unitary"
                 },
                 "id": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "id",
                     "help": "Network entry ID.",
                     "category": "unitary"
                 },
                 "area": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "area",
                     "help": "Attach the network to area.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "name": "network",
             "help": "Enable OSPF on an IP network.",
             "mkey": "id",
             "category": "table"
         },
         "router_id": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "router_id",
+            "name": "router-id",
             "help": "Router ID.",
             "category": "unitary"
         },
         "default_information_metric_type": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "1",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "1"
                 },
                 {
-                    "value": "2",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "2"
                 }
             ],
-            "name": "default_information_metric_type",
+            "name": "default-information-metric-type",
             "help": "Default information metric type.",
             "category": "unitary"
         },
         "database_overflow_time_to_recover": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "database_overflow_time_to_recover",
+            "name": "database-overflow-time-to-recover",
             "help": "Database overflow time to recover (sec).",
             "category": "unitary"
         },
         "log_neighbour_changes": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "log_neighbour_changes",
+            "name": "log-neighbour-changes",
             "help": "Enable logging of OSPF neighbour's changes",
             "category": "unitary"
         },
         "rfc1583_compatible": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "rfc1583_compatible",
+            "name": "rfc1583-compatible",
             "help": "Enable/disable RFC1583 compatibility.",
             "category": "unitary"
         },
         "default_information_metric": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "default_information_metric",
+            "name": "default-information-metric",
             "help": "Default information metric.",
             "category": "unitary"
         },
         "default_information_originate": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "always",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "always"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "default_information_originate",
+            "name": "default-information-originate",
             "help": "Enable/disable generation of default route.",
             "category": "unitary"
         },
@@ -2883,45 +1939,25 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "name": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "name",
                     "help": "Passive interface name.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
-            "name": "passive_interface",
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
+            "name": "passive-interface",
             "help": "Passive interface configuration.",
             "mkey": "name",
             "category": "table"
@@ -2931,140 +1967,40 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "access_list": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
-                    "name": "access_list",
+                    "name": "access-list",
                     "help": "Access list name.",
                     "category": "unitary"
                 },
                 "protocol": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "connected",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "connected"
                         },
                         {
-                            "value": "static",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "static"
                         },
                         {
-                            "value": "rip",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "rip"
                         },
                         {
-                            "value": "bgp",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "bgp"
                         },
                         {
-                            "value": "isis",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "isis"
                         }
                     ],
                     "name": "protocol",
@@ -3072,66 +2008,36 @@ versioned_schema = {
                     "category": "unitary"
                 },
                 "id": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "id",
                     "help": "Distribute list entry ID.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
-            "name": "distribute_list",
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
+            "name": "distribute-list",
             "help": "Redistribute routes filter.",
             "mkey": "id",
             "category": "table"
         },
         "distance": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "distance",
             "help": "Administrative distance.",
@@ -3142,61 +2048,19 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "status": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         }
                     ],
                     "name": "status",
@@ -3204,424 +2068,176 @@ versioned_schema = {
                     "category": "unitary"
                 },
                 "name": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "name",
                     "help": "Redistribute name.",
                     "category": "unitary"
                 },
                 "metric_type": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "1",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "1"
                         },
                         {
-                            "value": "2",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "2"
                         }
                     ],
-                    "name": "metric_type",
+                    "name": "metric-type",
                     "help": "Metric type.",
                     "category": "unitary"
                 },
                 "tag": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "tag",
                     "help": "Tag value.",
                     "category": "unitary"
                 },
                 "routemap": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "routemap",
                     "help": "Route map name.",
                     "category": "unitary"
                 },
                 "metric": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "metric",
                     "help": "Redistribute metric setting.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "name": "redistribute",
             "help": "Redistribute configuration.",
             "mkey": "name",
             "category": "table"
         },
         "database_overflow": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "database_overflow",
+            "name": "database-overflow",
             "help": "Enable/disable database overflow.",
             "category": "unitary"
         },
         "database_overflow_max_external_lsa": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "database_overflow_max_external_lsa",
+            "name": "database-overflow-max-external-lsa",
             "help": "Database overflow maximum External LSAs.",
             "category": "unitary"
         },
         "name": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "name",
             "help": "Vrf name.",
             "category": "unitary"
         },
         "spf_timers": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "spf_timers",
+            "name": "spf-timers",
             "help": "SPF calculation frequency.",
             "category": "unitary"
         },
         "distance_inter_area": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "distance_inter_area",
+            "name": "distance-inter-area",
             "help": "Administrative inter-area route distance.",
             "category": "unitary"
         },
         "abr_type": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "cisco",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "cisco"
                 },
                 {
-                    "value": "ibm",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "ibm"
                 },
                 {
-                    "value": "shortcut",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "shortcut"
                 },
                 {
-                    "value": "standard",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "standard"
                 }
             ],
-            "name": "abr_type",
+            "name": "abr-type",
             "help": "Area border router type.",
             "category": "unitary"
         },
@@ -3630,171 +2246,79 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "priority": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "priority",
                     "help": "Router priority.",
                     "category": "unitary"
                 },
                 "authentication_key": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
-                    "name": "authentication_key",
+                    "name": "authentication-key",
                     "help": "Authentication key.",
                     "category": "unitary"
                 },
                 "name": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "name",
                     "help": "Interface entry name.",
                     "category": "unitary"
                 },
                 "dead_interval": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "dead_interval",
+                    "name": "dead-interval",
                     "help": "Dead interval. For fast-hello assign value 1.",
                     "category": "unitary"
                 },
                 "hello_multiplier": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "hello_multiplier",
+                    "name": "hello-multiplier",
                     "help": "Number of hello packets within dead interval.Valid only for fast-hello.",
                     "category": "unitary"
                 },
                 "bfd": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         }
                     ],
                     "name": "bfd",
@@ -3802,146 +2326,58 @@ versioned_schema = {
                     "category": "unitary"
                 },
                 "transmit_delay": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "transmit_delay",
+                    "name": "transmit-delay",
                     "help": "Link state transmit delay.",
                     "category": "unitary"
                 },
                 "mtu": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "mtu",
                     "help": "Interface MTU.",
                     "category": "unitary"
                 },
                 "retransmit_interval": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "retransmit_interval",
+                    "name": "retransmit-interval",
                     "help": "Time between retransmitting lost link state advertisements.",
                     "category": "unitary"
                 },
                 "authentication": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "none",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "none"
                         },
                         {
-                            "value": "text",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "text"
                         },
                         {
-                            "value": "md5",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "md5"
                         }
                     ],
                     "name": "authentication",
@@ -3949,46 +2385,26 @@ versioned_schema = {
                     "category": "unitary"
                 },
                 "cost": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "cost",
                     "help": "Cost of the interface.",
                     "category": "unitary"
                 },
                 "hello_interval": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "hello_interval",
+                    "name": "hello-interval",
                     "help": "Hello interval.",
                     "category": "unitary"
                 },
@@ -3997,185 +2413,92 @@ versioned_schema = {
                     "elements": "dict",
                     "children": {
                         "id": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
                             "name": "id",
                             "help": "key-id (1-255).",
                             "category": "unitary"
                         },
                         "key": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "key",
                             "help": "md5-key.",
                             "category": "unitary"
                         }
                     },
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
-                    "name": "md5_keys",
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
+                    "name": "md5-keys",
                     "help": "OSPF md5 key configuration. Applicable only when authentication field is set to md5.",
                     "mkey": "id",
                     "category": "table"
                 },
                 "mtu_ignore": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         }
                     ],
-                    "name": "mtu_ignore",
+                    "name": "mtu-ignore",
                     "help": "Disable MTU mismatch detection on this interface.",
                     "category": "unitary"
                 },
                 "ucast_ttl": {
-                    "revisions": {
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": False,
-                        "v7.2.3": False,
-                        "v7.2.4": False,
-                        "v7.2.5": False,
-                        "v7.4.0": False,
-                        "v7.4.1": False
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.1",
+                            "v7.2.1"
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "ucast_ttl",
+                    "name": "ucast-ttl",
                     "help": "Unicast TTL.",
                     "category": "unitary"
                 },
                 "ttl": {
-                    "revisions": {
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.2.2",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "ttl",
                     "help": "TTL.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "name": "interface",
             "help": "OSPF interface configuration.",
             "mkey": "name",
@@ -4190,89 +2513,49 @@ versioned_schema = {
                     "elements": "dict",
                     "children": {
                         "prefix": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "prefix",
                             "help": "Prefix.",
                             "category": "unitary"
                         },
                         "tag": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
                             "name": "tag",
                             "help": "Tag value.",
                             "category": "unitary"
                         },
                         "id": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
                             "name": "id",
                             "help": "Summary address entry ID.",
                             "category": "unitary"
                         }
                     },
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
-                    "name": "summary_address",
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
+                    "name": "summary-address",
                     "help": "Aggregate address for redistributed routes.",
                     "mkey": "id",
                     "category": "table"
@@ -4282,83 +2565,25 @@ versioned_schema = {
                     "elements": "dict",
                     "children": {
                         "nssa_translator_role": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "candidate",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "candidate"
                                 },
                                 {
-                                    "value": "never",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "never"
                                 },
                                 {
-                                    "value": "always",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "always"
                                 }
                             ],
-                            "name": "nssa_translator_role",
+                            "name": "nssa-translator-role",
                             "help": "NSSA translator role type.",
                             "category": "unitary"
                         },
@@ -4367,171 +2592,79 @@ versioned_schema = {
                             "elements": "dict",
                             "children": {
                                 "dead_interval": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "integer",
-                                    "name": "dead_interval",
+                                    "name": "dead-interval",
                                     "help": "Dead interval.",
                                     "category": "unitary"
                                 },
                                 "hello_interval": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "integer",
-                                    "name": "hello_interval",
+                                    "name": "hello-interval",
                                     "help": "Hello interval.",
                                     "category": "unitary"
                                 },
                                 "name": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "string",
                                     "name": "name",
                                     "help": "Virtual link entry name.",
                                     "category": "unitary"
                                 },
                                 "transmit_delay": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "integer",
-                                    "name": "transmit_delay",
+                                    "name": "transmit-delay",
                                     "help": "Link state transmit delay.",
                                     "category": "unitary"
                                 },
                                 "retransmit_interval": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "integer",
-                                    "name": "retransmit_interval",
+                                    "name": "retransmit-interval",
                                     "help": "Time between retransmitting lost link state advertisements.",
                                     "category": "unitary"
                                 },
                                 "authentication": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "string",
                                     "options": [
                                         {
-                                            "value": "none",
-                                            "revisions": {
-                                                "v7.0.0": True,
-                                                "v7.0.1": True,
-                                                "v7.0.2": True,
-                                                "v7.0.3": True,
-                                                "v7.0.4": True,
-                                                "v7.0.5": True,
-                                                "v7.0.6": True,
-                                                "v7.2.1": True,
-                                                "v7.2.2": True,
-                                                "v7.2.3": True,
-                                                "v7.2.4": True,
-                                                "v7.2.5": True,
-                                                "v7.4.0": True,
-                                                "v7.4.1": True
-                                            }
+                                            "value": "none"
                                         },
                                         {
-                                            "value": "text",
-                                            "revisions": {
-                                                "v7.0.0": True,
-                                                "v7.0.1": True,
-                                                "v7.0.2": True,
-                                                "v7.0.3": True,
-                                                "v7.0.4": True,
-                                                "v7.0.5": True,
-                                                "v7.0.6": True,
-                                                "v7.2.1": True,
-                                                "v7.2.2": True,
-                                                "v7.2.3": True,
-                                                "v7.2.4": True,
-                                                "v7.2.5": True,
-                                                "v7.4.0": True,
-                                                "v7.4.1": True
-                                            }
+                                            "value": "text"
                                         }
                                     ],
                                     "name": "authentication",
@@ -4539,146 +2672,58 @@ versioned_schema = {
                                     "category": "unitary"
                                 },
                                 "peer": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "string",
                                     "name": "peer",
                                     "help": "Peer IP.",
                                     "category": "unitary"
                                 },
                                 "authentication_key": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "string",
-                                    "name": "authentication_key",
+                                    "name": "authentication-key",
                                     "help": "Authentication key.",
                                     "category": "unitary"
                                 }
                             },
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
-                            "name": "virtual_link",
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
+                            "name": "virtual-link",
                             "help": "OSPF virtual link configuration.",
                             "mkey": "name",
                             "category": "table"
                         },
                         "shortcut": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "disable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "disable"
                                 },
                                 {
-                                    "value": "enable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "enable"
                                 },
                                 {
-                                    "value": "default",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "default"
                                 }
                             ],
                             "name": "shortcut",
@@ -4686,64 +2731,22 @@ versioned_schema = {
                             "category": "unitary"
                         },
                         "stub_type": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "no_summary",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "no-summary"
                                 },
                                 {
-                                    "value": "summary",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "summary"
                                 }
                             ],
-                            "name": "stub_type",
+                            "name": "stub-type",
                             "help": "Stub summary setting.",
                             "category": "unitary"
                         },
@@ -4752,189 +2755,75 @@ versioned_schema = {
                             "elements": "dict",
                             "children": {
                                 "substitute": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "string",
                                     "name": "substitute",
                                     "help": "Substitute prefix.",
                                     "category": "unitary"
                                 },
                                 "prefix": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "string",
                                     "name": "prefix",
                                     "help": "Prefix.",
                                     "category": "unitary"
                                 },
                                 "substitute_status": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "string",
                                     "options": [
                                         {
-                                            "value": "enable",
-                                            "revisions": {
-                                                "v7.0.0": True,
-                                                "v7.0.1": True,
-                                                "v7.0.2": True,
-                                                "v7.0.3": True,
-                                                "v7.0.4": True,
-                                                "v7.0.5": True,
-                                                "v7.0.6": True,
-                                                "v7.2.1": True,
-                                                "v7.2.2": True,
-                                                "v7.2.3": True,
-                                                "v7.2.4": True,
-                                                "v7.2.5": True,
-                                                "v7.4.0": True,
-                                                "v7.4.1": True
-                                            }
+                                            "value": "enable"
                                         },
                                         {
-                                            "value": "disable",
-                                            "revisions": {
-                                                "v7.0.0": True,
-                                                "v7.0.1": True,
-                                                "v7.0.2": True,
-                                                "v7.0.3": True,
-                                                "v7.0.4": True,
-                                                "v7.0.5": True,
-                                                "v7.0.6": True,
-                                                "v7.2.1": True,
-                                                "v7.2.2": True,
-                                                "v7.2.3": True,
-                                                "v7.2.4": True,
-                                                "v7.2.5": True,
-                                                "v7.4.0": True,
-                                                "v7.4.1": True
-                                            }
+                                            "value": "disable"
                                         }
                                     ],
-                                    "name": "substitute_status",
+                                    "name": "substitute-status",
                                     "help": "Enable/disable substitute status.",
                                     "category": "unitary"
                                 },
                                 "id": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "integer",
                                     "name": "id",
                                     "help": "Range entry ID.",
                                     "category": "unitary"
                                 },
                                 "advertise": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "string",
                                     "options": [
                                         {
-                                            "value": "disable",
-                                            "revisions": {
-                                                "v7.0.0": True,
-                                                "v7.0.1": True,
-                                                "v7.0.2": True,
-                                                "v7.0.3": True,
-                                                "v7.0.4": True,
-                                                "v7.0.5": True,
-                                                "v7.0.6": True,
-                                                "v7.2.1": True,
-                                                "v7.2.2": True,
-                                                "v7.2.3": True,
-                                                "v7.2.4": True,
-                                                "v7.2.5": True,
-                                                "v7.4.0": True,
-                                                "v7.4.1": True
-                                            }
+                                            "value": "disable"
                                         },
                                         {
-                                            "value": "enable",
-                                            "revisions": {
-                                                "v7.0.0": True,
-                                                "v7.0.1": True,
-                                                "v7.0.2": True,
-                                                "v7.0.3": True,
-                                                "v7.0.4": True,
-                                                "v7.0.5": True,
-                                                "v7.0.6": True,
-                                                "v7.2.1": True,
-                                                "v7.2.2": True,
-                                                "v7.2.3": True,
-                                                "v7.2.4": True,
-                                                "v7.2.5": True,
-                                                "v7.4.0": True,
-                                                "v7.4.1": True
-                                            }
+                                            "value": "enable"
                                         }
                                     ],
                                     "name": "advertise",
@@ -4942,22 +2831,12 @@ versioned_schema = {
                                     "category": "unitary"
                                 }
                             },
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "name": "range",
                             "help": "OSPF area range configuration.",
                             "mkey": "id",
@@ -4968,61 +2847,19 @@ versioned_schema = {
                             "elements": "dict",
                             "children": {
                                 "direction": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "string",
                                     "options": [
                                         {
-                                            "value": "in",
-                                            "revisions": {
-                                                "v7.0.0": True,
-                                                "v7.0.1": True,
-                                                "v7.0.2": True,
-                                                "v7.0.3": True,
-                                                "v7.0.4": True,
-                                                "v7.0.5": True,
-                                                "v7.0.6": True,
-                                                "v7.2.1": True,
-                                                "v7.2.2": True,
-                                                "v7.2.3": True,
-                                                "v7.2.4": True,
-                                                "v7.2.5": True,
-                                                "v7.4.0": True,
-                                                "v7.4.1": True
-                                            }
+                                            "value": "in"
                                         },
                                         {
-                                            "value": "out",
-                                            "revisions": {
-                                                "v7.0.0": True,
-                                                "v7.0.1": True,
-                                                "v7.0.2": True,
-                                                "v7.0.3": True,
-                                                "v7.0.4": True,
-                                                "v7.0.5": True,
-                                                "v7.0.6": True,
-                                                "v7.2.1": True,
-                                                "v7.2.2": True,
-                                                "v7.2.3": True,
-                                                "v7.2.4": True,
-                                                "v7.2.5": True,
-                                                "v7.4.0": True,
-                                                "v7.4.1": True
-                                            }
+                                            "value": "out"
                                         }
                                     ],
                                     "name": "direction",
@@ -5030,168 +2867,70 @@ versioned_schema = {
                                     "category": "unitary"
                                 },
                                 "list": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "string",
                                     "name": "list",
                                     "help": "Access-list or prefix-list name.",
                                     "category": "unitary"
                                 },
                                 "id": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "integer",
                                     "name": "id",
                                     "help": "Filter list entry ID.",
                                     "category": "unitary"
                                 }
                             },
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
-                            "name": "filter_list",
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
+                            "name": "filter-list",
                             "help": "OSPF area filter-list configuration.",
                             "mkey": "id",
                             "category": "table"
                         },
                         "default_cost": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
-                            "name": "default_cost",
+                            "name": "default-cost",
                             "help": "Summary default cost of stub or NSSA area.",
                             "category": "unitary"
                         },
                         "type": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "regular",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "regular"
                                 },
                                 {
-                                    "value": "nssa",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "nssa"
                                 },
                                 {
-                                    "value": "stub",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "stub"
                                 }
                             ],
                             "name": "type",
@@ -5199,90 +2938,50 @@ versioned_schema = {
                             "category": "unitary"
                         },
                         "id": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "id",
                             "help": "Area entry IP address.",
                             "category": "unitary"
                         }
                     },
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "name": "area",
                     "help": "OSPF area configuration.",
                     "mkey": "id",
                     "category": "table"
                 },
                 "distance_intra_area": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "distance_intra_area",
+                    "name": "distance-intra-area",
                     "help": "Administrative intra-area route distance.",
                     "category": "unitary"
                 },
                 "distance_external": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "distance_external",
+                    "name": "distance-external",
                     "help": "Administrative external route distance.",
                     "category": "unitary"
                 },
@@ -5291,423 +2990,169 @@ versioned_schema = {
                     "elements": "dict",
                     "children": {
                         "prefix": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "prefix",
                             "help": "Prefix.",
                             "category": "unitary"
                         },
                         "id": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
                             "name": "id",
                             "help": "Network entry ID.",
                             "category": "unitary"
                         },
                         "area": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "area",
                             "help": "Attach the network to area.",
                             "category": "unitary"
                         }
                     },
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "name": "network",
                     "help": "Enable OSPF on an IP network.",
                     "mkey": "id",
                     "category": "table"
                 },
                 "router_id": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
-                    "name": "router_id",
+                    "name": "router-id",
                     "help": "Router ID.",
                     "category": "unitary"
                 },
                 "default_information_metric_type": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "1",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "1"
                         },
                         {
-                            "value": "2",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "2"
                         }
                     ],
-                    "name": "default_information_metric_type",
+                    "name": "default-information-metric-type",
                     "help": "Default information metric type.",
                     "category": "unitary"
                 },
                 "database_overflow_time_to_recover": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "database_overflow_time_to_recover",
+                    "name": "database-overflow-time-to-recover",
                     "help": "Database overflow time to recover (sec).",
                     "category": "unitary"
                 },
                 "log_neighbour_changes": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         }
                     ],
-                    "name": "log_neighbour_changes",
+                    "name": "log-neighbour-changes",
                     "help": "Enable logging of OSPF neighbour's changes",
                     "category": "unitary"
                 },
                 "rfc1583_compatible": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         }
                     ],
-                    "name": "rfc1583_compatible",
+                    "name": "rfc1583-compatible",
                     "help": "Enable/disable RFC1583 compatibility.",
                     "category": "unitary"
                 },
                 "default_information_metric": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "default_information_metric",
+                    "name": "default-information-metric",
                     "help": "Default information metric.",
                     "category": "unitary"
                 },
                 "default_information_originate": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "always",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "always"
                         },
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         }
                     ],
-                    "name": "default_information_originate",
+                    "name": "default-information-originate",
                     "help": "Enable/disable generation of default route.",
                     "category": "unitary"
                 },
@@ -5716,45 +3161,25 @@ versioned_schema = {
                     "elements": "dict",
                     "children": {
                         "name": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "name",
                             "help": "Passive interface name.",
                             "category": "unitary"
                         }
                     },
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
-                    "name": "passive_interface",
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
+                    "name": "passive-interface",
                     "help": "Passive interface configuration.",
                     "mkey": "name",
                     "category": "table"
@@ -5764,140 +3189,40 @@ versioned_schema = {
                     "elements": "dict",
                     "children": {
                         "access_list": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
-                            "name": "access_list",
+                            "name": "access-list",
                             "help": "Access list name.",
                             "category": "unitary"
                         },
                         "protocol": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "connected",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "connected"
                                 },
                                 {
-                                    "value": "static",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "static"
                                 },
                                 {
-                                    "value": "rip",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "rip"
                                 },
                                 {
-                                    "value": "bgp",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "bgp"
                                 },
                                 {
-                                    "value": "isis",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "isis"
                                 }
                             ],
                             "name": "protocol",
@@ -5905,66 +3230,36 @@ versioned_schema = {
                             "category": "unitary"
                         },
                         "id": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
                             "name": "id",
                             "help": "Distribute list entry ID.",
                             "category": "unitary"
                         }
                     },
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
-                    "name": "distribute_list",
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
+                    "name": "distribute-list",
                     "help": "Redistribute routes filter.",
                     "mkey": "id",
                     "category": "table"
                 },
                 "distance": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "distance",
                     "help": "Administrative distance.",
@@ -5975,61 +3270,19 @@ versioned_schema = {
                     "elements": "dict",
                     "children": {
                         "status": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "enable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "enable"
                                 },
                                 {
-                                    "value": "disable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "disable"
                                 }
                             ],
                             "name": "status",
@@ -6037,424 +3290,176 @@ versioned_schema = {
                             "category": "unitary"
                         },
                         "name": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "name",
                             "help": "Redistribute name.",
                             "category": "unitary"
                         },
                         "metric_type": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "1",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "1"
                                 },
                                 {
-                                    "value": "2",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "2"
                                 }
                             ],
-                            "name": "metric_type",
+                            "name": "metric-type",
                             "help": "Metric type.",
                             "category": "unitary"
                         },
                         "tag": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
                             "name": "tag",
                             "help": "Tag value.",
                             "category": "unitary"
                         },
                         "routemap": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "routemap",
                             "help": "Route map name.",
                             "category": "unitary"
                         },
                         "metric": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
                             "name": "metric",
                             "help": "Redistribute metric setting.",
                             "category": "unitary"
                         }
                     },
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "name": "redistribute",
                     "help": "Redistribute configuration.",
                     "mkey": "name",
                     "category": "table"
                 },
                 "database_overflow": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         }
                     ],
-                    "name": "database_overflow",
+                    "name": "database-overflow",
                     "help": "Enable/disable database overflow.",
                     "category": "unitary"
                 },
                 "database_overflow_max_external_lsa": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "database_overflow_max_external_lsa",
+                    "name": "database-overflow-max-external-lsa",
                     "help": "Database overflow maximum External LSAs.",
                     "category": "unitary"
                 },
                 "name": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "name",
                     "help": "Vrf name.",
                     "category": "unitary"
                 },
                 "spf_timers": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
-                    "name": "spf_timers",
+                    "name": "spf-timers",
                     "help": "SPF calculation frequency.",
                     "category": "unitary"
                 },
                 "distance_inter_area": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "distance_inter_area",
+                    "name": "distance-inter-area",
                     "help": "Administrative inter-area route distance.",
                     "category": "unitary"
                 },
                 "abr_type": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "cisco",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "cisco"
                         },
                         {
-                            "value": "ibm",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "ibm"
                         },
                         {
-                            "value": "shortcut",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "shortcut"
                         },
                         {
-                            "value": "standard",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "standard"
                         }
                     ],
-                    "name": "abr_type",
+                    "name": "abr-type",
                     "help": "Area border router type.",
                     "category": "unitary"
                 },
@@ -6463,256 +3468,118 @@ versioned_schema = {
                     "elements": "dict",
                     "children": {
                         "priority": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
                             "name": "priority",
                             "help": "Router priority.",
                             "category": "unitary"
                         },
                         "authentication_key": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
-                            "name": "authentication_key",
+                            "name": "authentication-key",
                             "help": "Authentication key.",
                             "category": "unitary"
                         },
                         "name": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "name",
                             "help": "Interface entry name.",
                             "category": "unitary"
                         },
                         "dead_interval": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
-                            "name": "dead_interval",
+                            "name": "dead-interval",
                             "help": "Dead interval. For fast-hello assign value 1.",
                             "category": "unitary"
                         },
                         "hello_multiplier": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
-                            "name": "hello_multiplier",
+                            "name": "hello-multiplier",
                             "help": "Number of hello packets within dead interval.Valid only for fast-hello.",
                             "category": "unitary"
                         },
                         "transmit_delay": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
-                            "name": "transmit_delay",
+                            "name": "transmit-delay",
                             "help": "Link state transmit delay.",
                             "category": "unitary"
                         },
                         "mtu": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
                             "name": "mtu",
                             "help": "Interface MTU.",
                             "category": "unitary"
                         },
                         "retransmit_interval": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
-                            "name": "retransmit_interval",
+                            "name": "retransmit-interval",
                             "help": "Time between retransmitting lost link state advertisements.",
                             "category": "unitary"
                         },
                         "authentication": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "none",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "none"
                                 },
                                 {
-                                    "value": "text",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "text"
                                 },
                                 {
-                                    "value": "md5",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "md5"
                                 }
                             ],
                             "name": "authentication",
@@ -6720,46 +3587,26 @@ versioned_schema = {
                             "category": "unitary"
                         },
                         "cost": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
                             "name": "cost",
                             "help": "Cost of the interface.",
                             "category": "unitary"
                         },
                         "hello_interval": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
-                            "name": "hello_interval",
+                            "name": "hello-interval",
                             "help": "Hello interval.",
                             "category": "unitary"
                         },
@@ -6768,207 +3615,104 @@ versioned_schema = {
                             "elements": "dict",
                             "children": {
                                 "id": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "integer",
                                     "name": "id",
                                     "help": "key-id (1-255).",
                                     "category": "unitary"
                                 },
                                 "key": {
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    },
+                                    "v_range": [
+                                        [
+                                            "v7.0.0",
+                                            ""
+                                        ]
+                                    ],
                                     "type": "string",
                                     "name": "key",
                                     "help": "md5-key.",
                                     "category": "unitary"
                                 }
                             },
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
-                            "name": "md5_keys",
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
+                            "name": "md5-keys",
                             "help": "OSPF md5 key configuration. Applicable only when authentication field is set to md5.",
                             "mkey": "id",
                             "category": "table"
                         },
                         "mtu_ignore": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "enable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "enable"
                                 },
                                 {
-                                    "value": "disable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "disable"
                                 }
                             ],
-                            "name": "mtu_ignore",
+                            "name": "mtu-ignore",
                             "help": "Disable MTU mismatch detection on this interface.",
                             "category": "unitary"
                         },
                         "ucast_ttl": {
-                            "revisions": {
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": False,
-                                "v7.2.3": False,
-                                "v7.2.4": False,
-                                "v7.2.5": False,
-                                "v7.4.0": False,
-                                "v7.4.1": False
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.1",
+                                    "v7.2.1"
+                                ]
+                            ],
                             "type": "integer",
-                            "name": "ucast_ttl",
+                            "name": "ucast-ttl",
                             "help": "Unicast TTL.",
                             "category": "unitary"
                         },
                         "ttl": {
-                            "revisions": {
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.2.2",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
                             "name": "ttl",
                             "help": "TTL.",
                             "category": "unitary"
                         }
                     },
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "name": "interface",
                     "help": "OSPF interface configuration.",
                     "mkey": "name",
                     "category": "table"
                 }
             },
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "name": "vrf",
             "help": "Enable OSPF on VRF.",
             "mkey": "name",

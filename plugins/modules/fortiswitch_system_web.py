@@ -100,32 +100,22 @@ options:
                     - Allowed SSL/TLS versions for web administration.
                 type: str
                 choices:
-                    - 'tlsv1_0'
-                    - 'tlsv1_1'
-                    - 'tlsv1_2'
-                    - 'tlsv1_3'
+                    - 'tlsv1-0'
+                    - 'tlsv1-1'
+                    - 'tlsv1-2'
+                    - 'tlsv1-3'
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Configure web attributes.
-    fortiswitch_system_web:
+- name: Configure web attributes.
+  fortinet.fortiswitch.fortiswitch_system_web:
       system_web:
-        gui_language: "browser"
-        http_port: "4"
-        https_pki_required: "enable"
-        https_port: "6"
-        https_server_cert: "<your_own_value>"
-        https_ssl_versions: "tlsv1-0"
-
+          gui_language: "browser"
+          http_port: "4"
+          https_pki_required: "enable"
+          https_port: "6"
+          https_server_cert: "<your_own_value>"
+          https_ssl_versions: "tlsv1-0"
 '''
 
 RETURN = '''
@@ -243,302 +233,137 @@ def fortiswitch_system(data, fos):
 
 
 versioned_schema = {
-    "revisions": {
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
+    "v_range": [
+        [
+            "v7.2.1",
+            ""
+        ]
+    ],
     "type": "dict",
     "children": {
         "https_server_cert": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "https_server_cert",
+            "name": "https-server-cert",
             "help": "Administrative HTTPS server certificate.",
             "category": "unitary"
         },
         "https_port": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "https_port",
+            "name": "https-port",
             "help": "Administrative access HTTPS port (1 - 65535).",
             "category": "unitary"
         },
         "https_pki_required": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "https_pki_required",
+            "name": "https-pki-required",
             "help": "Enable/disable HTTPS login page when PKI is enabled.",
             "category": "unitary"
         },
         "http_port": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "http_port",
+            "name": "http-port",
             "help": "Administrative access HTTP port (1 - 65535).",
             "category": "unitary"
         },
         "gui_language": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "browser",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "browser"
                 },
                 {
-                    "value": "english",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "english"
                 },
                 {
-                    "value": "simch",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "simch"
                 },
                 {
-                    "value": "japanese",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "japanese"
                 },
                 {
-                    "value": "korean",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "korean"
                 },
                 {
-                    "value": "spanish",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "spanish"
                 },
                 {
-                    "value": "trach",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "trach"
                 },
                 {
-                    "value": "french",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "french"
                 },
                 {
-                    "value": "portuguese",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "portuguese"
                 },
                 {
-                    "value": "german",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "german"
                 }
             ],
-            "name": "gui_language",
+            "name": "gui-language",
             "help": "Web display language.",
             "category": "unitary"
         },
         "https_ssl_versions": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "tlsv1_0",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "tlsv1-0"
                 },
                 {
-                    "value": "tlsv1_1",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "tlsv1-1"
                 },
                 {
-                    "value": "tlsv1_2",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "tlsv1-2"
                 },
                 {
-                    "value": "tlsv1_3",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "tlsv1-3"
                 }
             ],
-            "name": "https_ssl_versions",
+            "name": "https-ssl-versions",
             "help": "Allowed SSL/TLS versions for web administration.",
             "category": "unitary"
         }

@@ -85,7 +85,7 @@ options:
                         type: str
                         choices:
                             - 'taildrop'
-                            - 'weighted_random_early_detection'
+                            - 'weighted-random-early-detection'
                     ecn:
                         description:
                             - Update frame IP ECN field in lieu of packet drop.
@@ -139,40 +139,30 @@ options:
                 type: str
                 choices:
                     - 'strict'
-                    - 'round_robin'
+                    - 'round-robin'
                     - 'weighted'
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: QOS egress policy.
-    fortiswitch_switch_qos_qos_policy:
+- name: QOS egress policy.
+  fortinet.fortiswitch.fortiswitch_switch_qos_qos_policy:
       state: "present"
       switch_qos_qos_policy:
-        cos_queue:
-         -
-            description: "<your_own_value>"
-            drop_policy: "taildrop"
-            ecn: "disable"
-            max_rate: "7"
-            max_rate_percent: "8"
-            min_rate: "9"
-            min_rate_percent: "10"
-            name: "default_name_11"
-            weight: "12"
-            wred_slope: "13"
-        name: "default_name_14"
-        rate_by: "kbps"
-        schedule: "strict"
-
+          cos_queue:
+              -
+                  description: "<your_own_value>"
+                  drop_policy: "taildrop"
+                  ecn: "disable"
+                  max_rate: "7"
+                  max_rate_percent: "8"
+                  min_rate: "9"
+                  min_rate_percent: "10"
+                  name: "default_name_11"
+                  weight: "12"
+                  wred_slope: "13"
+          name: "default_name_14"
+          rate_by: "kbps"
+          schedule: "strict"
 '''
 
 RETURN = '''
@@ -343,84 +333,32 @@ versioned_schema = {
     "elements": "dict",
     "children": {
         "rate_by": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "kbps",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "kbps"
                 },
                 {
-                    "value": "percent",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "percent"
                 }
             ],
-            "name": "rate_by",
+            "name": "rate-by",
             "help": "COS queue rate by kbps or percent.",
             "category": "unitary"
         },
         "name": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "name",
             "help": "QOS policy name.",
@@ -431,149 +369,67 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "max_rate_percent": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "max_rate_percent",
+                    "name": "max-rate-percent",
                     "help": "Maximum rate (% of link speed).",
                     "category": "unitary"
                 },
                 "name": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "name",
                     "help": "COS queue ID.",
                     "category": "unitary"
                 },
                 "weight": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "weight",
                     "help": "Weight of weighted round robin scheduling.",
                     "category": "unitary"
                 },
                 "min_rate_percent": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "min_rate_percent",
+                    "name": "min-rate-percent",
                     "help": "Minimum rate (% of link speed).",
                     "category": "unitary"
                 },
                 "ecn": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         },
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         }
                     ],
                     "name": "ecn",
@@ -581,252 +437,102 @@ versioned_schema = {
                     "category": "unitary"
                 },
                 "min_rate": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "min_rate",
+                    "name": "min-rate",
                     "help": "Minimum rate (kbps). 0 to disable.",
                     "category": "unitary"
                 },
                 "wred_slope": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "wred_slope",
+                    "name": "wred-slope",
                     "help": "Slope of WRED drop probability.",
                     "category": "unitary"
                 },
                 "max_rate": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "max_rate",
+                    "name": "max-rate",
                     "help": "Maximum rate (kbps). 0 to disable.",
                     "category": "unitary"
                 },
                 "drop_policy": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "taildrop",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "taildrop"
                         },
                         {
-                            "value": "weighted_random_early_detection",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "weighted-random-early-detection"
                         }
                     ],
-                    "name": "drop_policy",
+                    "name": "drop-policy",
                     "help": "COS queue drop policy.",
                     "category": "unitary"
                 },
                 "description": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "description",
                     "help": "Description of the COS queue.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
-            "name": "cos_queue",
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
+            "name": "cos-queue",
             "help": "COS queue configuration.",
             "mkey": "name",
             "category": "table"
         },
         "schedule": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "strict",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "strict"
                 },
                 {
-                    "value": "round_robin",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "round-robin"
                 },
                 {
-                    "value": "weighted",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "weighted"
                 }
             ],
             "name": "schedule",
@@ -834,23 +540,13 @@ versioned_schema = {
             "category": "unitary"
         }
     },
-    "revisions": {
-        "v7.0.0": True,
-        "v7.0.1": True,
-        "v7.0.2": True,
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True,
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
-    "name": "qos_policy",
+    "v_range": [
+        [
+            "v7.0.0",
+            ""
+        ]
+    ],
+    "name": "qos-policy",
     "help": "QOS egress policy.",
     "mkey": "name",
     "category": "table"

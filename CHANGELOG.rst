@@ -5,6 +5,26 @@ Fortinet.Fortiswitch Release Notes
 .. contents:: Topics
 
 
+v1.2.3
+======
+
+Release Summary
+---------------
+
+patch release of 1.2.3
+
+Major Changes
+-------------
+
+- Support new FortiSwitch versions 7.4.2
+- Update supported fortiswitch versions and parameters with version ranges instead of fixed versions
+
+Bugfixes
+--------
+
+- Fix Github issues
+- Fix errors in sanity-test and ansible-lint
+
 v1.2.2
 ======
 
@@ -16,6 +36,7 @@ patch release of 1.2.2
 Major Changes
 -------------
 
+- Format the contents in the changelog.yaml.
 - Support new FortiSwitch version 7.4.1.
 - Update Ansible version from 2.9 to 2.14.
 - Update the requirement.txt file to specify the sphinx_rtd_theme==1.3.0.

@@ -85,7 +85,7 @@ options:
                     - 'ssh'
                     - 'snmp'
                     - 'telnet'
-                    - 'radius_acct'
+                    - 'radius-acct'
             auth_type:
                 description:
                     - PPP authentication type.
@@ -142,8 +142,8 @@ options:
                 type: str
                 choices:
                     - 'ping'
-                    - 'tcp_echo'
-                    - 'udp_echo'
+                    - 'tcp-echo'
+                    - 'udp-echo'
             detectserver:
                 description:
                     - IP address to PING for gateway detection.
@@ -271,8 +271,7 @@ options:
                     ip6_allowaccess:
                         description:
                             - Allow management access to the interface.
-                        type: list
-                        elements: str
+                        type: str
                         choices:
                             - 'any'
                             - 'ping'
@@ -281,7 +280,7 @@ options:
                             - 'ssh'
                             - 'snmp'
                             - 'telnet'
-                            - 'radius_acct'
+                            - 'radius-acct'
                     ip6_default_life:
                         description:
                             - IPv6 default life (sec).
@@ -528,15 +527,15 @@ options:
                             - 'ssh'
                             - 'snmp'
                             - 'telnet'
-                            - 'radius_acct'
+                            - 'radius-acct'
                     detectprotocol:
                         description:
                             - Protocol to use for gateway detection.
                         type: str
                         choices:
                             - 'ping'
-                            - 'tcp_echo'
-                            - 'udp_echo'
+                            - 'tcp-echo'
+                            - 'udp-echo'
                     detectserver:
                         description:
                             - IP address to PING for gateway detection.
@@ -627,8 +626,8 @@ options:
                     - 'tunnel'
                     - 'loopback'
                     - 'switch'
-                    - 'hard_switch'
-                    - 'vap_switch'
+                    - 'hard-switch'
+                    - 'vap-switch'
                     - 'hdlc'
                     - 'vxlan'
             vdom:
@@ -726,141 +725,131 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Configure interfaces.
-    fortiswitch_system_interface:
+- name: Configure interfaces.
+  fortinet.fortiswitch.fortiswitch_system_interface:
       state: "present"
       system_interface:
-        alias: "<your_own_value>"
-        allowaccess: "ping"
-        auth_type: "auto"
-        bfd: "global"
-        bfd_desired_min_tx: "7"
-        bfd_detect_mult: "8"
-        bfd_required_min_rx: "9"
-        cli_conn_status: "initial"
-        defaultgw: "enable"
-        description: "<your_own_value>"
-        detectprotocol: "ping"
-        detectserver: "<your_own_value>"
-        dhcp_client_identifier:  "myId_15"
-        dhcp_client_status: "initial"
-        dhcp_relay_ip: "<your_own_value>"
-        dhcp_relay_option82: "disable"
-        dhcp_relay_service: "disable"
-        dhcp_vendor_specific_option: "<your_own_value>"
-        dhcp_expire: "21"
-        distance: "22"
-        dns_server_override: "enable"
-        dynamic_dns1: "<your_own_value>"
-        dynamic_dns2: "<your_own_value>"
-        dynamicgw: "<your_own_value>"
-        forward_domain: "27"
-        gwdetect: "enable"
-        ha_priority: "29"
-        icmp_redirect: "enable"
-        interface: "<your_own_value> (source system.interface.name)"
-        ip: "<your_own_value>"
-        ipv6:
-            autoconf: "enable"
-            dhcp6_information_request: "enable"
-            ip6_address: "<your_own_value>"
-            ip6_allowaccess: "any"
-            ip6_default_life: "38"
-            ip6_dns_server_override: "enable"
-            ip6_extra_addr:
-             -
-                prefix: "<your_own_value>"
-            ip6_hop_limit: "42"
-            ip6_link_mtu: "43"
-            ip6_manage_flag: "enable"
-            ip6_max_interval: "45"
-            ip6_min_interval: "46"
-            ip6_mode: "static"
-            ip6_other_flag: "enable"
-            ip6_prefix_list:
-             -
-                autonomous_flag: "enable"
-                onlink_flag: "enable"
-                preferred_life_time: "52"
-                prefix: "<your_own_value>"
-                valid_life_time: "54"
-            ip6_reachable_time: "55"
-            ip6_retrans_time: "56"
-            ip6_send_adv: "enable"
-            ip6_unknown_mcast_to_cpu: "enable"
-            vrip6_link_local: "<your_own_value>"
-            vrrp_virtual_mac6: "enable"
-            vrrp6:
-             -
-                accept_mode: "enable"
-                adv_interval: "63"
-                preempt: "enable"
-                priority: "65"
-                start_time: "66"
-                status: "enable"
-                vrdst6: "<your_own_value>"
-                vrgrp: "69"
-                vrid: "70"
-                vrip6: "<your_own_value>"
-        l2_interface: "<your_own_value> (source switch.interface.name)"
-        macaddr: "<your_own_value>"
-        mode: "static"
-        mtu: "75"
-        mtu_override: "enable"
-        name: "default_name_77"
-        ping_serv_status: "78"
-        priority: "79"
-        remote_ip: "<your_own_value>"
-        secondary_IP: "enable"
-        secondaryip:
-         -
-            allowaccess: "ping"
-            detectprotocol: "ping"
-            detectserver: "<your_own_value>"
-            gwdetect: "enable"
-            ha_priority: "87"
-            id:  "88"
-            ip: "<your_own_value>"
-            ping_serv_status: "90"
-        snmp_index: "91"
-        speed: "auto"
-        src_check: "disable"
-        src_check_allow_default: "enable"
-        status: "up"
-        switch: "<your_own_value>"
-        switch_members:
-         -
-            member_name: "<your_own_value> (source switch.interface.name)"
-        type: "physical"
-        vdom: "<your_own_value> (source system.vdom.name)"
-        vlanforward: "enable"
-        vlanid: "102"
-        vrf: "<your_own_value> (source router.vrf.name)"
-        vrrp:
-         -
-            adv_interval: "105"
-            backup_vmac_fwd: "enable"
-            preempt: "enable"
-            priority: "108"
-            start_time: "109"
-            status: "enable"
-            version: "2"
-            vrdst: "<your_own_value>"
-            vrgrp: "113"
-            vrid: "114"
-            vrip: "<your_own_value>"
-        vrrp_virtual_mac: "enable"
-        weight: "117"
-
+          alias: "<your_own_value>"
+          allowaccess: "ping"
+          auth_type: "auto"
+          bfd: "global"
+          bfd_desired_min_tx: "7"
+          bfd_detect_mult: "8"
+          bfd_required_min_rx: "9"
+          cli_conn_status: "initial"
+          defaultgw: "enable"
+          description: "<your_own_value>"
+          detectprotocol: "ping"
+          detectserver: "<your_own_value>"
+          dhcp_client_identifier: "myId_15"
+          dhcp_client_status: "initial"
+          dhcp_expire: "17"
+          dhcp_relay_ip: "<your_own_value>"
+          dhcp_relay_option82: "disable"
+          dhcp_relay_service: "disable"
+          dhcp_vendor_specific_option: "<your_own_value>"
+          distance: "22"
+          dns_server_override: "enable"
+          dynamic_dns1: "<your_own_value>"
+          dynamic_dns2: "<your_own_value>"
+          dynamicgw: "<your_own_value>"
+          forward_domain: "27"
+          gwdetect: "enable"
+          ha_priority: "29"
+          icmp_redirect: "enable"
+          interface: "<your_own_value> (source system.interface.name)"
+          ip: "<your_own_value>"
+          ipv6:
+              autoconf: "enable"
+              dhcp6_information_request: "enable"
+              ip6_address: "<your_own_value>"
+              ip6_allowaccess: "any"
+              ip6_default_life: "38"
+              ip6_dns_server_override: "enable"
+              ip6_extra_addr:
+                  -
+                      prefix: "<your_own_value>"
+              ip6_hop_limit: "42"
+              ip6_link_mtu: "43"
+              ip6_manage_flag: "enable"
+              ip6_max_interval: "45"
+              ip6_min_interval: "46"
+              ip6_mode: "static"
+              ip6_other_flag: "enable"
+              ip6_prefix_list:
+                  -
+                      autonomous_flag: "enable"
+                      onlink_flag: "enable"
+                      preferred_life_time: "52"
+                      prefix: "<your_own_value>"
+                      valid_life_time: "54"
+              ip6_reachable_time: "55"
+              ip6_retrans_time: "56"
+              ip6_send_adv: "enable"
+              ip6_unknown_mcast_to_cpu: "enable"
+              vrip6_link_local: "<your_own_value>"
+              vrrp6:
+                  -
+                      accept_mode: "enable"
+                      adv_interval: "62"
+                      preempt: "enable"
+                      priority: "64"
+                      start_time: "65"
+                      status: "enable"
+                      vrdst6: "<your_own_value>"
+                      vrgrp: "68"
+                      vrid: "69"
+                      vrip6: "<your_own_value>"
+              vrrp_virtual_mac6: "enable"
+          l2_interface: "<your_own_value> (source switch.interface.name)"
+          macaddr: "<your_own_value>"
+          mode: "static"
+          mtu: "75"
+          mtu_override: "enable"
+          name: "default_name_77"
+          ping_serv_status: "78"
+          priority: "79"
+          remote_ip: "<your_own_value>"
+          secondary_IP: "enable"
+          secondaryip:
+              -
+                  allowaccess: "ping"
+                  detectprotocol: "ping"
+                  detectserver: "<your_own_value>"
+                  gwdetect: "enable"
+                  ha_priority: "87"
+                  id: "88"
+                  ip: "<your_own_value>"
+                  ping_serv_status: "90"
+          snmp_index: "91"
+          speed: "auto"
+          src_check: "disable"
+          src_check_allow_default: "enable"
+          status: "up"
+          switch: "<your_own_value>"
+          switch_members:
+              -
+                  member_name: "<your_own_value> (source switch.interface.name)"
+          type: "physical"
+          vdom: "<your_own_value> (source system.vdom.name)"
+          vlanforward: "enable"
+          vlanid: "102"
+          vrf: "<your_own_value> (source router.vrf.name)"
+          vrrp:
+              -
+                  adv_interval: "105"
+                  backup_vmac_fwd: "enable"
+                  preempt: "enable"
+                  priority: "108"
+                  start_time: "109"
+                  status: "enable"
+                  version: "2"
+                  vrdst: "<your_own_value>"
+                  vrgrp: "113"
+                  vrid: "114"
+                  vrip: "<your_own_value>"
+          vrrp_virtual_mac: "enable"
+          weight: "117"
 '''
 
 RETURN = '''
@@ -927,9 +916,9 @@ def filter_system_interface_data(json):
                    'bfd', 'bfd_desired_min_tx', 'bfd_detect_mult',
                    'bfd_required_min_rx', 'cli_conn_status', 'defaultgw',
                    'description', 'detectprotocol', 'detectserver',
-                   'dhcp_client_identifier', 'dhcp_client_status', 'dhcp_relay_ip',
-                   'dhcp_relay_option82', 'dhcp_relay_service', 'dhcp_vendor_specific_option',
-                   'dhcp_expire', 'distance', 'dns_server_override',
+                   'dhcp_client_identifier', 'dhcp_client_status', 'dhcp_expire',
+                   'dhcp_relay_ip', 'dhcp_relay_option82', 'dhcp_relay_service',
+                   'dhcp_vendor_specific_option', 'distance', 'dns_server_override',
                    'dynamic_dns1', 'dynamic_dns2', 'dynamicgw',
                    'forward_domain', 'gwdetect', 'ha_priority',
                    'icmp_redirect', 'interface', 'ip',
@@ -1075,61 +1064,19 @@ versioned_schema = {
     "elements": "dict",
     "children": {
         "defaultgw": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "defaultgw",
@@ -1137,61 +1084,19 @@ versioned_schema = {
             "category": "unitary"
         },
         "gwdetect": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "gwdetect",
@@ -1199,431 +1104,149 @@ versioned_schema = {
             "category": "unitary"
         },
         "weight": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "weight",
             "help": "Default weight for static routes if route has no weight configured (0 - 255).",
             "category": "unitary"
         },
         "ip": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "ip",
             "help": "Interface IPv4 address.",
             "category": "unitary"
         },
         "vrrp_virtual_mac": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "vrrp_virtual_mac",
+            "name": "vrrp-virtual-mac",
             "help": "enable to use virtual MAC for VRRP",
             "category": "unitary"
         },
         "bfd_detect_mult": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "bfd_detect_mult",
+            "name": "bfd-detect-mult",
             "help": "BFD detection multiplier.",
             "category": "unitary"
         },
         "bfd_required_min_rx": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "bfd_required_min_rx",
+            "name": "bfd-required-min-rx",
             "help": "BFD required minimal receive interval.",
             "category": "unitary"
         },
         "src_check_allow_default": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "src_check_allow_default",
+            "name": "src-check-allow-default",
             "help": "Enable/disable.When src ip lookup hits default route,enable means allow pkt else drop.",
             "category": "unitary"
         },
         "dhcp_relay_ip": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "dhcp_relay_ip",
+            "name": "dhcp-relay-ip",
             "help": "DHCP relay IP address.",
             "category": "unitary"
         },
         "forward_domain": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "forward_domain",
+            "name": "forward-domain",
             "help": "TP mode forward domain.",
             "category": "unitary"
         },
         "speed": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "auto",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "auto"
                 },
                 {
-                    "value": "10full",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "10full"
                 },
                 {
-                    "value": "10half",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "10half"
                 },
                 {
-                    "value": "100full",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "100full"
                 },
                 {
-                    "value": "100half",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "100half"
                 },
                 {
-                    "value": "1000full",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "1000full"
                 },
                 {
-                    "value": "1000half",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "1000half"
                 },
                 {
-                    "value": "1000auto",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "1000auto"
                 }
             ],
             "name": "speed",
@@ -1631,61 +1254,19 @@ versioned_schema = {
             "category": "unitary"
         },
         "vlanforward": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "vlanforward",
@@ -1693,102 +1274,34 @@ versioned_schema = {
             "category": "unitary"
         },
         "priority": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "priority",
             "help": "Priority of learned routes.",
             "category": "unitary"
         },
         "bfd": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "global",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "global"
                 },
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "bfd",
@@ -1796,206 +1309,86 @@ versioned_schema = {
             "category": "unitary"
         },
         "macaddr": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "macaddr",
             "help": "MAC address.",
             "category": "unitary"
         },
         "bfd_desired_min_tx": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "bfd_desired_min_tx",
+            "name": "bfd-desired-min-tx",
             "help": "BFD desired minimal transmit interval.",
             "category": "unitary"
         },
         "switch": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "switch",
             "help": "Contained in switch.",
             "category": "unitary"
         },
         "vlanid": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "vlanid",
             "help": "VLAN ID.",
             "category": "unitary"
         },
         "cli_conn_status": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": False
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.4.0"
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "initial",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True
-                    }
+                    "value": "initial"
                 },
                 {
-                    "value": "connecting",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True
-                    }
+                    "value": "connecting"
                 },
                 {
-                    "value": "connected",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True
-                    }
+                    "value": "connected"
                 },
                 {
-                    "value": "failed",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True
-                    }
+                    "value": "failed"
                 }
             ],
-            "name": "cli_conn_status",
+            "name": "cli-conn-status",
             "help": "CLI connection status.",
             "category": "unitary"
         },
         "detectserver": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "detectserver",
             "help": "IP address to PING for gateway detection.",
@@ -2006,61 +1399,19 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "status": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         }
                     ],
                     "name": "status",
@@ -2068,171 +1419,79 @@ versioned_schema = {
                     "category": "unitary"
                 },
                 "priority": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "priority",
                     "help": "Priority of the virtual router (1 - 255).",
                     "category": "unitary"
                 },
                 "adv_interval": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "adv_interval",
+                    "name": "adv-interval",
                     "help": "Advertisement interval (1 - 255 seconds).",
                     "category": "unitary"
                 },
                 "start_time": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "start_time",
+                    "name": "start-time",
                     "help": "Startup time (1 - 255 seconds).",
                     "category": "unitary"
                 },
                 "vrid": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "vrid",
                     "help": "Virtual router identifier (1 - 255).",
                     "category": "unitary"
                 },
                 "vrgrp": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "vrgrp",
                     "help": "VRRP group ID (1 - 65535).",
                     "category": "unitary"
                 },
                 "preempt": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         }
                     ],
                     "name": "preempt",
@@ -2240,61 +1499,19 @@ versioned_schema = {
                     "category": "unitary"
                 },
                 "version": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "2",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "2"
                         },
                         {
-                            "value": "3",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "3"
                         }
                     ],
                     "name": "version",
@@ -2302,281 +1519,90 @@ versioned_schema = {
                     "category": "unitary"
                 },
                 "vrdst": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "vrdst",
                     "help": "Monitor the route to this destination.",
                     "category": "unitary"
                 },
                 "vrip": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "vrip",
                     "help": "IP address of the virtual router.",
                     "category": "unitary"
                 },
                 "backup_vmac_fwd": {
-                    "revisions": {
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.1",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         }
                     ],
-                    "name": "backup_vmac_fwd",
+                    "name": "backup-vmac-fwd",
                     "help": "Enable/disable backup-vmac-fwd.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "name": "vrrp",
             "help": "VRRP configuration",
             "mkey": "vrid",
             "category": "table"
         },
         "allowaccess": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "list",
             "options": [
                 {
-                    "value": "ping",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "ping"
                 },
                 {
-                    "value": "https",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "https"
                 },
                 {
-                    "value": "http",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "http"
                 },
                 {
-                    "value": "ssh",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "ssh"
                 },
                 {
-                    "value": "snmp",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "snmp"
                 },
                 {
-                    "value": "telnet",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "telnet"
                 },
                 {
-                    "value": "radius_acct",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "radius-acct"
                 }
             ],
             "name": "allowaccess",
@@ -2585,231 +1611,70 @@ versioned_schema = {
             "elements": "str"
         },
         "dhcp_client_identifier": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "dhcp_client_identifier",
+            "name": "dhcp-client-identifier",
             "help": "DHCP client identifier.",
             "category": "unitary"
         },
         "ping_serv_status": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "ping_serv_status",
+            "name": "ping-serv-status",
             "help": "PING server status.",
             "category": "unitary"
         },
         "type": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "physical",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "physical"
                 },
                 {
-                    "value": "vlan",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "vlan"
                 },
                 {
-                    "value": "tunnel",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "tunnel"
                 },
                 {
-                    "value": "loopback",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "loopback"
                 },
                 {
-                    "value": "switch",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "switch"
                 },
                 {
-                    "value": "hard_switch",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "hard-switch"
                 },
                 {
-                    "value": "vap_switch",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "vap-switch"
                 },
                 {
-                    "value": "hdlc",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "hdlc"
                 },
                 {
                     "value": "vxlan",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "v_range": [
+                        [
+                            "v7.2.1",
+                            ""
+                        ]
+                    ]
                 }
             ],
             "name": "type",
@@ -2817,610 +1682,242 @@ versioned_schema = {
             "category": "unitary"
         },
         "snmp_index": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "snmp_index",
+            "name": "snmp-index",
             "help": "SNMP index.",
             "category": "unitary"
         },
         "icmp_redirect": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "icmp_redirect",
+            "name": "icmp-redirect",
             "help": "Enable/disable ICMP rediect.",
             "category": "unitary"
         },
         "dhcp_relay_option82": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 },
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 }
             ],
-            "name": "dhcp_relay_option82",
+            "name": "dhcp-relay-option82",
             "help": "Enable / Disable DHCP relay option-82 insertion.",
             "category": "unitary"
         },
         "description": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "description",
             "help": "Description.",
             "category": "unitary"
         },
         "remote_ip": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "remote_ip",
+            "name": "remote-ip",
             "help": "Remote IP address of tunnel.",
             "category": "unitary"
         },
         "dns_server_override": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "dns_server_override",
+            "name": "dns-server-override",
             "help": "Enable/disable use of DNS server aquired by DHCP or PPPoE.",
             "category": "unitary"
         },
         "secondary_IP": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "secondary_IP",
+            "name": "secondary-IP",
             "help": "Enable/disable use of secondary IP address.",
             "category": "unitary"
         },
         "vrf": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "vrf",
             "help": "VRF.",
             "category": "unitary"
         },
         "dhcp_expire": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "dhcp_expire",
             "help": "DHCP client expiration.",
             "category": "unitary"
         },
         "interface": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "interface",
             "help": "Interface name.",
             "category": "unitary"
         },
         "dhcp_vendor_specific_option": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "dhcp_vendor_specific_option",
+            "name": "dhcp-vendor-specific-option",
             "help": "DHCP Vendor specific option 43.",
             "category": "unitary"
         },
         "vdom": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "vdom",
             "help": "Virtual domain name.",
             "category": "unitary"
         },
         "dhcp_relay_service": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 },
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 }
             ],
-            "name": "dhcp_relay_service",
+            "name": "dhcp-relay-service",
             "help": "Enable/disable use DHCP relay service.",
             "category": "unitary"
         },
         "distance": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "distance",
             "help": "Distance of learned routes.",
             "category": "unitary"
         },
         "name": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "name",
             "help": "Name.",
             "category": "unitary"
         },
         "detectprotocol": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "ping",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "ping"
                 },
                 {
-                    "value": "tcp_echo",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "tcp-echo"
                 },
                 {
-                    "value": "udp_echo",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "udp-echo"
                 }
             ],
             "name": "detectprotocol",
@@ -3428,301 +1925,84 @@ versioned_schema = {
             "category": "unitary"
         },
         "src_check": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 },
                 {
-                    "value": "loose",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "loose"
                 },
                 {
-                    "value": "strict",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "strict"
                 }
             ],
-            "name": "src_check",
+            "name": "src-check",
             "help": "Enable/disable source IP check.",
             "category": "unitary"
         },
         "ipv6": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "dict",
             "children": {
                 "ip6_allowaccess": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
-                    "type": "list",
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
+                    "type": "string",
                     "options": [
                         {
-                            "value": "any",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "any"
                         },
                         {
-                            "value": "ping",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "ping"
                         },
                         {
-                            "value": "https",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "https"
                         },
                         {
-                            "value": "http",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "http"
                         },
                         {
-                            "value": "ssh",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "ssh"
                         },
                         {
-                            "value": "snmp",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "snmp"
                         },
                         {
-                            "value": "telnet",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "telnet"
                         },
                         {
-                            "value": "radius_acct",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "radius-acct"
                         }
                     ],
-                    "name": "ip6_allowaccess",
+                    "name": "ip6-allowaccess",
                     "help": "Allow management access to the interface.",
-                    "category": "unitary",
-                    "elements": "str"
+                    "category": "unitary"
                 },
                 "ip6_retrans_time": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "ip6_retrans_time",
+                    "name": "ip6-retrans-time",
                     "help": "IPv6 retransmit time (milliseconds).",
                     "category": "unitary"
                 },
@@ -3731,61 +2011,19 @@ versioned_schema = {
                     "elements": "dict",
                     "children": {
                         "status": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "enable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "enable"
                                 },
                                 {
-                                    "value": "disable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "disable"
                                 }
                             ],
                             "name": "status",
@@ -3793,193 +2031,91 @@ versioned_schema = {
                             "category": "unitary"
                         },
                         "priority": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
                             "name": "priority",
                             "help": "Priority of the virtual router (1 - 255).",
                             "category": "unitary"
                         },
                         "vrip6": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "vrip6",
                             "help": "IPv6 address of the virtual router.",
                             "category": "unitary"
                         },
                         "adv_interval": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
-                            "name": "adv_interval",
+                            "name": "adv-interval",
                             "help": "Advertisement interval (1 - 255 seconds).",
                             "category": "unitary"
                         },
                         "start_time": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
-                            "name": "start_time",
+                            "name": "start-time",
                             "help": "Startup time (1 - 255 seconds).",
                             "category": "unitary"
                         },
                         "vrid": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
                             "name": "vrid",
                             "help": "Virtual router identifier (1 - 255).",
                             "category": "unitary"
                         },
                         "vrgrp": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
                             "name": "vrgrp",
                             "help": "VRRP group ID (1 - 65535).",
                             "category": "unitary"
                         },
                         "preempt": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "enable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "enable"
                                 },
                                 {
-                                    "value": "disable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "disable"
                                 }
                             ],
                             "name": "preempt",
@@ -3987,276 +2123,110 @@ versioned_schema = {
                             "category": "unitary"
                         },
                         "accept_mode": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "enable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "enable"
                                 },
                                 {
-                                    "value": "disable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "disable"
                                 }
                             ],
-                            "name": "accept_mode",
+                            "name": "accept-mode",
                             "help": "Enable/disable accept mode.",
                             "category": "unitary"
                         },
                         "vrdst6": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "vrdst6",
                             "help": "Monitor the route to this destination.",
                             "category": "unitary"
                         }
                     },
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "name": "vrrp6",
                     "help": "IPv6 VRRP configuration.",
                     "mkey": "vrid",
                     "category": "table"
                 },
                 "ip6_other_flag": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         }
                     ],
-                    "name": "ip6_other_flag",
+                    "name": "ip6-other-flag",
                     "help": "Enable/disable sending of IPv6 other flag.",
                     "category": "unitary"
                 },
                 "ip6_dns_server_override": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         }
                     ],
-                    "name": "ip6_dns_server_override",
+                    "name": "ip6-dns-server-override",
                     "help": "Enable/disable using the DNS server acquired by DHCP.",
                     "category": "unitary"
                 },
                 "vrip6_link_local": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "vrip6_link_local",
                     "help": "Link-local IPv6 address of virtual router.",
                     "category": "unitary"
                 },
                 "ip6_address": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
-                    "name": "ip6_address",
+                    "name": "ip6-address",
                     "help": "Primary IPv6 address prefix of interface.",
                     "category": "unitary"
                 },
@@ -4265,426 +2235,178 @@ versioned_schema = {
                     "elements": "dict",
                     "children": {
                         "valid_life_time": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
-                            "name": "valid_life_time",
+                            "name": "valid-life-time",
                             "help": "Valid life time (sec).",
                             "category": "unitary"
                         },
                         "prefix": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "prefix",
                             "help": "IPv6 prefix.",
                             "category": "unitary"
                         },
                         "autonomous_flag": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "enable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "enable"
                                 },
                                 {
-                                    "value": "disable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "disable"
                                 }
                             ],
-                            "name": "autonomous_flag",
+                            "name": "autonomous-flag",
                             "help": "Enable/disable autonomous flag.",
                             "category": "unitary"
                         },
                         "onlink_flag": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "enable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "enable"
                                 },
                                 {
-                                    "value": "disable",
-                                    "revisions": {
-                                        "v7.0.0": True,
-                                        "v7.0.1": True,
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "disable"
                                 }
                             ],
-                            "name": "onlink_flag",
+                            "name": "onlink-flag",
                             "help": "Enable/disable onlink flag.",
                             "category": "unitary"
                         },
                         "preferred_life_time": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
-                            "name": "preferred_life_time",
+                            "name": "preferred-life-time",
                             "help": "Preferred life time (sec).",
                             "category": "unitary"
                         }
                     },
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
-                    "name": "ip6_prefix_list",
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
+                    "name": "ip6-prefix-list",
                     "help": "IPv6 advertised prefix list.",
                     "mkey": "prefix",
                     "category": "table"
                 },
                 "ip6_link_mtu": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "ip6_link_mtu",
+                    "name": "ip6-link-mtu",
                     "help": "IPv6 link MTU.",
                     "category": "unitary"
                 },
                 "ip6_manage_flag": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         }
                     ],
-                    "name": "ip6_manage_flag",
+                    "name": "ip6-manage-flag",
                     "help": "Enable/disable sending of IPv6 managed flag.",
                     "category": "unitary"
                 },
                 "ip6_min_interval": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "ip6_min_interval",
+                    "name": "ip6-min-interval",
                     "help": "IPv6 minimum interval (sec) after which RA will be sent.",
                     "category": "unitary"
                 },
                 "ip6_mode": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "static",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "static"
                         },
                         {
-                            "value": "dhcp",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "dhcp"
                         }
                     ],
-                    "name": "ip6_mode",
+                    "name": "ip6-mode",
                     "help": "Addressing mode (static,DHCP).",
                     "category": "unitary"
                 },
                 "ip6_hop_limit": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "ip6_hop_limit",
+                    "name": "ip6-hop-limit",
                     "help": "IPv6 hop limit.",
                     "category": "unitary"
                 },
                 "ip6_reachable_time": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "ip6_reachable_time",
+                    "name": "ip6-reachable-time",
                     "help": "IPv6 reachable time (milliseconds).",
                     "category": "unitary"
                 },
@@ -4693,335 +2415,127 @@ versioned_schema = {
                     "elements": "dict",
                     "children": {
                         "prefix": {
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.0",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "prefix",
                             "help": "IPv6 address prefix.",
                             "category": "unitary"
                         }
                     },
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
-                    "name": "ip6_extra_addr",
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
+                    "name": "ip6-extra-addr",
                     "help": "Extra IPv6 address prefixes of interface.",
                     "mkey": "prefix",
                     "category": "table"
                 },
                 "ip6_default_life": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "ip6_default_life",
+                    "name": "ip6-default-life",
                     "help": "IPv6 default life (sec).",
                     "category": "unitary"
                 },
                 "ip6_max_interval": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "ip6_max_interval",
+                    "name": "ip6-max-interval",
                     "help": "IPv6 maximum interval (sec) after which RA will be sent.",
                     "category": "unitary"
                 },
                 "vrrp_virtual_mac6": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         }
                     ],
-                    "name": "vrrp_virtual_mac6",
+                    "name": "vrrp-virtual-mac6",
                     "help": "Enable/disable virtual MAC for VRRP.",
                     "category": "unitary"
                 },
                 "ip6_unknown_mcast_to_cpu": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         }
                     ],
-                    "name": "ip6_unknown_mcast_to_cpu",
+                    "name": "ip6-unknown-mcast-to-cpu",
                     "help": "Enable/disable unknown mcast to cpu.",
                     "category": "unitary"
                 },
                 "ip6_send_adv": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         }
                     ],
-                    "name": "ip6_send_adv",
+                    "name": "ip6-send-adv",
                     "help": "Enable/disable sending of IPv6 Router advertisement.",
                     "category": "unitary"
                 },
                 "autoconf": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         }
                     ],
                     "name": "autoconf",
@@ -5029,64 +2543,22 @@ versioned_schema = {
                     "category": "unitary"
                 },
                 "dhcp6_information_request": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         }
                     ],
-                    "name": "dhcp6_information_request",
+                    "name": "dhcp6-information-request",
                     "help": "Enable/disable DHCPv6 information request.",
                     "category": "unitary"
                 }
@@ -5096,352 +2568,128 @@ versioned_schema = {
             "category": "complex"
         },
         "dynamicgw": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "dynamicgw",
             "help": "Dynamic gateway.",
             "category": "unitary"
         },
         "mtu_override": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "mtu_override",
+            "name": "mtu-override",
             "help": "Enable/disable override of default MTU.",
             "category": "unitary"
         },
         "mtu": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "mtu",
             "help": "Maximum transportation unit (MTU).",
             "category": "unitary"
         },
         "dynamic_dns1": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "dynamic_dns1",
             "help": "Primary dynamic DNS server.",
             "category": "unitary"
         },
         "alias": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "alias",
             "help": "Alias.",
             "category": "unitary"
         },
         "auth_type": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "auto",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "auto"
                 },
                 {
-                    "value": "pap",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "pap"
                 },
                 {
-                    "value": "chap",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "chap"
                 },
                 {
-                    "value": "mschapv1",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "mschapv1"
                 },
                 {
-                    "value": "mschapv2",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "mschapv2"
                 }
             ],
-            "name": "auth_type",
+            "name": "auth-type",
             "help": "PPP authentication type.",
             "category": "unitary"
         },
         "dynamic_dns2": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "dynamic_dns2",
             "help": "Secondary dynamic DNS server.",
             "category": "unitary"
         },
         "status": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "up",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "up"
                 },
                 {
-                    "value": "down",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "down"
                 }
             ],
             "name": "status",
@@ -5449,61 +2697,19 @@ versioned_schema = {
             "category": "unitary"
         },
         "mode": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "static",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "static"
                 },
                 {
-                    "value": "dhcp",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "dhcp"
                 }
             ],
             "name": "mode",
@@ -5511,24 +2717,14 @@ versioned_schema = {
             "category": "unitary"
         },
         "ha_priority": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "ha_priority",
+            "name": "ha-priority",
             "help": "PING server HA election priority (1 - 50).",
             "category": "unitary"
         },
@@ -5537,61 +2733,19 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "gwdetect": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         },
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         }
                     ],
                     "name": "gwdetect",
@@ -5599,80 +2753,22 @@ versioned_schema = {
                     "category": "unitary"
                 },
                 "detectprotocol": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "ping",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "ping"
                         },
                         {
-                            "value": "tcp_echo",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "tcp-echo"
                         },
                         {
-                            "value": "udp_echo",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "udp-echo"
                         }
                     ],
                     "name": "detectprotocol",
@@ -5680,200 +2776,58 @@ versioned_schema = {
                     "category": "unitary"
                 },
                 "ip": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "ip",
                     "help": "Interface IPv4 address.",
                     "category": "unitary"
                 },
                 "detectserver": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "detectserver",
                     "help": "IP address to PING for gateway detection.",
                     "category": "unitary"
                 },
                 "allowaccess": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "list",
                     "options": [
                         {
-                            "value": "ping",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "ping"
                         },
                         {
-                            "value": "https",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "https"
                         },
                         {
-                            "value": "http",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "http"
                         },
                         {
-                            "value": "ssh",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "ssh"
                         },
                         {
-                            "value": "snmp",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "snmp"
                         },
                         {
-                            "value": "telnet",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "telnet"
                         },
                         {
-                            "value": "radius_acct",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "radius-acct"
                         }
                     ],
                     "name": "allowaccess",
@@ -5882,88 +2836,48 @@ versioned_schema = {
                     "elements": "str"
                 },
                 "ping_serv_status": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "ping_serv_status",
+                    "name": "ping-serv-status",
                     "help": "PING server status.",
                     "category": "unitary"
                 },
                 "ha_priority": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "ha_priority",
+                    "name": "ha-priority",
                     "help": "PING server HA election priority (1 - 50).",
                     "category": "unitary"
                 },
                 "id": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "id",
                     "help": "Id.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "name": "secondaryip",
             "help": "Second IP address of interface.",
             "mkey": "id",
@@ -5974,139 +2888,89 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "member_name": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            "v7.0.6"
+                        ]
+                    ],
                     "type": "string",
-                    "name": "member_name",
+                    "name": "member-name",
                     "help": "Interface name.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": False,
-                "v7.2.2": False,
-                "v7.2.3": False,
-                "v7.2.4": False,
-                "v7.2.5": False,
-                "v7.4.0": False,
-                "v7.4.1": False
-            },
-            "name": "switch_members",
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.6"
+                ]
+            ],
+            "name": "switch-members",
             "help": "Switch interfaces.",
-            "mkey": "member_name",
+            "mkey": "member-name",
             "category": "table"
         },
         "l2_interface": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "l2_interface",
+            "name": "l2-interface",
             "help": "L2 interface name.",
             "category": "unitary"
         },
         "dhcp_client_status": {
-            "revisions": {
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.4.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "initial",
-                    "revisions": {
-                        "v7.4.1": True
-                    }
+                    "value": "initial"
                 },
                 {
-                    "value": "stopped",
-                    "revisions": {
-                        "v7.4.1": True
-                    }
+                    "value": "stopped"
                 },
                 {
-                    "value": "connected",
-                    "revisions": {
-                        "v7.4.1": True
-                    }
+                    "value": "connected"
                 },
                 {
-                    "value": "rebooting",
-                    "revisions": {
-                        "v7.4.1": True
-                    }
+                    "value": "rebooting"
                 },
                 {
-                    "value": "selecting",
-                    "revisions": {
-                        "v7.4.1": True
-                    }
+                    "value": "selecting"
                 },
                 {
-                    "value": "requesting",
-                    "revisions": {
-                        "v7.4.1": True
-                    }
+                    "value": "requesting"
                 },
                 {
-                    "value": "binding",
-                    "revisions": {
-                        "v7.4.1": True
-                    }
+                    "value": "binding"
                 },
                 {
-                    "value": "renewing",
-                    "revisions": {
-                        "v7.4.1": True
-                    }
+                    "value": "renewing"
                 },
                 {
-                    "value": "rebinding",
-                    "revisions": {
-                        "v7.4.1": True
-                    }
+                    "value": "rebinding"
                 }
             ],
-            "name": "dhcp_client_status",
+            "name": "dhcp-client-status",
             "help": "DHCP client connection status.",
             "category": "unitary"
         }
     },
-    "revisions": {
-        "v7.0.0": True,
-        "v7.0.1": True,
-        "v7.0.2": True,
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True,
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
+    "v_range": [
+        [
+            "v7.0.0",
+            ""
+        ]
+    ],
     "name": "interface",
     "help": "Configure interfaces.",
     "mkey": "name",

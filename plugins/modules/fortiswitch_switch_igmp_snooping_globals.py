@@ -84,24 +84,14 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Configure igmp-snooping on Switch.
-    fortiswitch_switch_igmp_snooping_globals:
+- name: Configure igmp-snooping on Switch.
+  fortinet.fortiswitch.fortiswitch_switch_igmp_snooping_globals:
       switch_igmp_snooping_globals:
-        aging_time: "3"
-        leave_response_timeout: "4"
-        proxy_report_interval: "5"
-        query_interval: "6"
-        query_max_response_timeout: "7"
-
+          aging_time: "3"
+          leave_response_timeout: "4"
+          proxy_report_interval: "5"
+          query_interval: "6"
+          query_max_response_timeout: "7"
 '''
 
 RETURN = '''
@@ -219,128 +209,71 @@ def fortiswitch_switch_igmp_snooping(data, fos):
 
 
 versioned_schema = {
-    "revisions": {
-        "v7.0.0": True,
-        "v7.0.1": True,
-        "v7.0.2": True,
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True,
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
+    "v_range": [
+        [
+            "v7.0.0",
+            ""
+        ]
+    ],
     "type": "dict",
     "children": {
         "query_interval": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "query_interval",
+            "name": "query-interval",
             "help": "Max number of seconds after which IGMP query will be sent.",
             "category": "unitary"
         },
         "proxy_report_interval": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "proxy_report_interval",
+            "name": "proxy-report-interval",
             "help": "Unsolicited report interval in seconds.",
             "category": "unitary"
         },
         "leave_response_timeout": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "leave_response_timeout",
+            "name": "leave-response-timeout",
             "help": "Switch waits after sending group specific query in response to leave message.",
             "category": "unitary"
         },
         "aging_time": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "aging_time",
+            "name": "aging-time",
             "help": "Max number of seconds to retain a multicast snooping entry for which no packets have been seen.",
             "category": "unitary"
         },
         "query_max_response_timeout": {
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.3",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "query_max_response_timeout",
+            "name": "query-max-response-timeout",
             "help": "Max time a host waits before responses to general query message (in millisecond).",
             "category": "unitary"
         }

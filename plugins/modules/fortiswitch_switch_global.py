@@ -67,8 +67,8 @@ options:
                 type: str
                 choices:
                     - 'legacy'
-                    - 'fail_open'
-                    - 'fail_close'
+                    - 'fail-open'
+                    - 'fail-close'
             auto_fortilink_discovery:
                 description:
                     - Enable/disable automatic FortiLink discovery.
@@ -277,7 +277,7 @@ options:
                 type: str
                 choices:
                     - 'priority'
-                    - 'first_come_first_served'
+                    - 'first-come-first-served'
             poe_pre_standard_detect:
                 description:
                     - set poe-pre-standard-detect
@@ -295,8 +295,8 @@ options:
                             - If link down detected, "set-unauth" reverts to un-authorized state.
                         type: str
                         choices:
-                            - 'set_unauth'
-                            - 'no_action'
+                            - 'set-unauth'
+                            - 'no-action'
                     mab_entry_as:
                         description:
                             - Confgure MAB MAC entry as static or dynamic.
@@ -317,7 +317,7 @@ options:
                         type: str
                         choices:
                             - 'hyphen'
-                            - 'single_hyphen'
+                            - 'single-hyphen'
                             - 'colon'
                             - 'none'
                     mac_calling_station_delimiter:
@@ -326,7 +326,7 @@ options:
                         type: str
                         choices:
                             - 'hyphen'
-                            - 'single_hyphen'
+                            - 'single-hyphen'
                             - 'colon'
                             - 'none'
                     mac_case:
@@ -342,7 +342,7 @@ options:
                         type: str
                         choices:
                             - 'hyphen'
-                            - 'single_hyphen'
+                            - 'single-hyphen'
                             - 'colon'
                             - 'none'
                     mac_username_delimiter:
@@ -351,7 +351,7 @@ options:
                         type: str
                         choices:
                             - 'hyphen'
-                            - 'single_hyphen'
+                            - 'single-hyphen'
                             - 'colon'
                             - 'none'
                     max_reauth_attempt:
@@ -424,81 +424,71 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Configure global settings.
-    fortiswitch_switch_global:
+- name: Configure global settings.
+  fortinet.fortiswitch.fortiswitch_switch_global:
       switch_global:
-        access_vlan_mode: "legacy"
-        auto_fortilink_discovery: "enable"
-        auto_isl: "enable"
-        auto_isl_port_group: "6"
-        auto_stp_priority: "enable"
-        bpdu_learn: "enable"
-        dhcp_snooping_database_export: "enable"
-        dmi_global_all: "enable"
-        flapguard_retain_trigger: "enable"
-        flood_unknown_multicast: "enable"
-        flood_vtp: "enable"
-        forti_trunk_dmac: "<your_own_value>"
-        fortilink_heartbeat_timeout: "15"
-        fortilink_p2p_native_vlan: "16"
-        fortilink_p2p_tpid: "17"
-        fortilink_vlan_optimization: "enable"
-        ip_mac_binding: "enable"
-        l2_memory_check: "enable"
-        l2_memory_check_interval: "21"
-        log_mac_limit_violations: "enable"
-        loop_guard_tx_interval: "23"
-        mac_address: "24"
-        mac_address_algorithm: "auto"
-        mac_aging_interval: "26"
-        mac_violation_timer: "27"
-        max_path_in_ecmp_group: "28"
-        mclag_igmpsnooping_aware: "enable"
-        mclag_peer_info_timeout: "30"
-        mclag_port_base: "31"
-        mclag_split_brain_all_ports_down: "disable"
-        mclag_split_brain_detect: "enable"
-        mclag_split_brain_priority: "34"
-        mclag_stp_aware: "enable"
-        mirror_qos: "36"
-        name: "default_name_37"
-        poe_alarm_threshold: "38"
-        poe_guard_band: "39"
-        poe_power_budget: "40"
-        poe_power_mode: "priority"
-        poe_pre_standard_detect: "enable"
-        port_security:
-            link_down_auth: "set-unauth"
-            mab_entry_as: "static"
-            mab_reauth: "disable"
-            mac_called_station_delimiter: "hyphen"
-            mac_calling_station_delimiter: "hyphen"
-            mac_case: "uppercase"
-            mac_password_delimiter: "hyphen"
-            mac_username_delimiter: "hyphen"
-            max_reauth_attempt: "52"
-            quarantine_vlan: "disable"
-            reauth_period: "54"
-            tx_period: "55"
-        trunk_hash_mode: "default"
-        trunk_hash_unicast_src_port: "enable"
-        trunk_hash_unkunicast_src_dst: "enable"
-        virtual_wire_tpid: "59"
-        vxlan_dport: "60"
-        vxlan_port: "61"
-        vxlan_sport: "62"
-        vxlan_stp_virtual_mac: "<your_own_value>"
-        vxlan_stp_virtual_root: "enable"
-
+          access_vlan_mode: "legacy"
+          auto_fortilink_discovery: "enable"
+          auto_isl: "enable"
+          auto_isl_port_group: "6"
+          auto_stp_priority: "enable"
+          bpdu_learn: "enable"
+          dhcp_snooping_database_export: "enable"
+          dmi_global_all: "enable"
+          flapguard_retain_trigger: "enable"
+          flood_unknown_multicast: "enable"
+          flood_vtp: "enable"
+          forti_trunk_dmac: "<your_own_value>"
+          fortilink_heartbeat_timeout: "15"
+          fortilink_p2p_native_vlan: "16"
+          fortilink_p2p_tpid: "17"
+          fortilink_vlan_optimization: "enable"
+          ip_mac_binding: "enable"
+          l2_memory_check: "enable"
+          l2_memory_check_interval: "21"
+          log_mac_limit_violations: "enable"
+          loop_guard_tx_interval: "23"
+          mac_address: "24"
+          mac_address_algorithm: "auto"
+          mac_aging_interval: "26"
+          mac_violation_timer: "27"
+          max_path_in_ecmp_group: "28"
+          mclag_igmpsnooping_aware: "enable"
+          mclag_peer_info_timeout: "30"
+          mclag_port_base: "31"
+          mclag_split_brain_all_ports_down: "disable"
+          mclag_split_brain_detect: "enable"
+          mclag_split_brain_priority: "34"
+          mclag_stp_aware: "enable"
+          mirror_qos: "36"
+          name: "default_name_37"
+          poe_alarm_threshold: "38"
+          poe_guard_band: "39"
+          poe_power_budget: "40"
+          poe_power_mode: "priority"
+          poe_pre_standard_detect: "enable"
+          port_security:
+              link_down_auth: "set-unauth"
+              mab_entry_as: "static"
+              mab_reauth: "disable"
+              mac_called_station_delimiter: "hyphen"
+              mac_calling_station_delimiter: "hyphen"
+              mac_case: "uppercase"
+              mac_password_delimiter: "hyphen"
+              mac_username_delimiter: "hyphen"
+              max_reauth_attempt: "52"
+              quarantine_vlan: "disable"
+              reauth_period: "54"
+              tx_period: "55"
+          trunk_hash_mode: "default"
+          trunk_hash_unicast_src_port: "enable"
+          trunk_hash_unkunicast_src_dst: "enable"
+          virtual_wire_tpid: "59"
+          vxlan_dport: "60"
+          vxlan_port: "61"
+          vxlan_sport: "62"
+          vxlan_stp_virtual_mac: "<your_own_value>"
+          vxlan_stp_virtual_root: "enable"
 '''
 
 RETURN = '''
@@ -631,2429 +621,1064 @@ def fortiswitch_switch(data, fos):
 
 
 versioned_schema = {
-    "revisions": {
-        "v7.0.0": True,
-        "v7.0.1": True,
-        "v7.0.2": True,
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True,
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
+    "v_range": [
+        [
+            "v7.0.0",
+            ""
+        ]
+    ],
     "type": "dict",
     "children": {
         "fortilink_heartbeat_timeout": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "fortilink_heartbeat_timeout",
+            "name": "fortilink-heartbeat-timeout",
             "help": "Max fortilinkd echo replies that can be missed before fortilink is considered down.",
             "category": "unitary"
         },
         "log_mac_limit_violations": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "log_mac_limit_violations",
+            "name": "log-mac-limit-violations",
             "help": "Enable/disable logs for Learning Limit Violations globally.",
             "category": "unitary"
         },
         "trunk_hash_unkunicast_src_dst": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "trunk_hash_unkunicast_src_dst",
+            "name": "trunk-hash-unkunicast-src-dst",
             "help": "Enable/disable trunk hash for unknown unicast src-dst.",
             "category": "unitary"
         },
         "poe_power_mode": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "priority",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "priority"
                 },
                 {
-                    "value": "first_come_first_served",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "first-come-first-served"
                 }
             ],
-            "name": "poe_power_mode",
+            "name": "poe-power-mode",
             "help": "Set poe power mode to priority based or first come first served.",
             "category": "unitary"
         },
         "ip_mac_binding": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "ip_mac_binding",
+            "name": "ip-mac-binding",
             "help": "Configure ip-mac-binding status.",
             "category": "unitary"
         },
         "mac_address_algorithm": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "auto",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "auto"
                 },
                 {
-                    "value": "manual",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "manual"
                 }
             ],
-            "name": "mac_address_algorithm",
+            "name": "mac-address-algorithm",
             "help": "Method to configure the fifth byte of the MAC address ",
             "category": "unitary"
         },
         "virtual_wire_tpid": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "virtual_wire_tpid",
+            "name": "virtual-wire-tpid",
             "help": "TPID value used by virtual-wires.",
             "category": "unitary"
         },
         "trunk_hash_unicast_src_port": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "trunk_hash_unicast_src_port",
+            "name": "trunk-hash-unicast-src-port",
             "help": "Enable/disable source port in Unicast trunk hashing.",
             "category": "unitary"
         },
         "auto_fortilink_discovery": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": False,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.2.4"
+                ],
+                [
+                    "v7.4.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "auto_fortilink_discovery",
+            "name": "auto-fortilink-discovery",
             "help": "Enable/disable automatic FortiLink discovery.",
             "category": "unitary"
         },
         "max_path_in_ecmp_group": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "max_path_in_ecmp_group",
+            "name": "max-path-in-ecmp-group",
             "help": "Set max path in one ecmp group.",
             "category": "unitary"
         },
         "trunk_hash_mode": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "default",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "default"
                 },
                 {
-                    "value": "enhanced",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enhanced"
                 }
             ],
-            "name": "trunk_hash_mode",
+            "name": "trunk-hash-mode",
             "help": "Trunk hash mode.",
             "category": "unitary"
         },
         "fortilink_p2p_tpid": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "fortilink_p2p_tpid",
+            "name": "fortilink-p2p-tpid",
             "help": "FortiLink point-to-point TPID.",
             "category": "unitary"
         },
         "mac_violation_timer": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "mac_violation_timer",
+            "name": "mac-violation-timer",
             "help": "Set a global timeout for Learning Limit Violations (0 = disabled).",
             "category": "unitary"
         },
         "mirror_qos": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "mirror_qos",
+            "name": "mirror-qos",
             "help": "QOS value for locally mirrored traffic.",
             "category": "unitary"
         },
         "mclag_port_base": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "mclag_port_base",
+            "name": "mclag-port-base",
             "help": "MCLAG port base.",
             "category": "unitary"
         },
         "flapguard_retain_trigger": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "flapguard_retain_trigger",
+            "name": "flapguard-retain-trigger",
             "help": "Enable/disable retention of triggered state upon reboot.",
             "category": "unitary"
         },
         "mac_address": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "mac_address",
+            "name": "mac-address",
             "help": "Manually configured MAC address when mac-address-algorithm is set to manual.",
             "category": "unitary"
         },
         "mclag_stp_aware": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "mclag_stp_aware",
+            "name": "mclag-stp-aware",
             "help": "MCLAG STP aware.",
             "category": "unitary"
         },
         "fortilink_p2p_native_vlan": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "fortilink_p2p_native_vlan",
+            "name": "fortilink-p2p-native-vlan",
             "help": "FortiLink point to point native VLAN.",
             "category": "unitary"
         },
         "fortilink_vlan_optimization": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "fortilink_vlan_optimization",
+            "name": "fortilink-vlan-optimization",
             "help": "Controls VLAN assignment on ISL ports (assigns all 4k vlans when disabled).",
             "category": "unitary"
         },
         "loop_guard_tx_interval": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "loop_guard_tx_interval",
+            "name": "loop-guard-tx-interval",
             "help": "Loop guard packet Tx interval (sec).",
             "category": "unitary"
         },
         "auto_isl_port_group": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "auto_isl_port_group",
+            "name": "auto-isl-port-group",
             "help": "Configure global automatic inter-switch link port groups (overrides port level port groups).",
             "category": "unitary"
         },
         "poe_alarm_threshold": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "poe_alarm_threshold",
+            "name": "poe-alarm-threshold",
             "help": "Threshold (% of total power budget) above which an alarm event is generated.",
             "category": "unitary"
         },
         "poe_guard_band": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "poe_guard_band",
+            "name": "poe-guard-band",
             "help": "Reserves power (W) in case of a spike in PoE consumption.",
             "category": "unitary"
         },
         "auto_stp_priority": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "auto_stp_priority",
+            "name": "auto-stp-priority",
             "help": "Automatic assignment of STP priority for tier1 and tier2 switches.",
             "category": "unitary"
         },
         "poe_power_budget": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "poe_power_budget",
+            "name": "poe-power-budget",
             "help": "Set/override maximum power budget.",
             "category": "unitary"
         },
         "mclag_peer_info_timeout": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "mclag_peer_info_timeout",
+            "name": "mclag-peer-info-timeout",
             "help": "MCLAG peer info timeout.",
             "category": "unitary"
         },
         "mclag_igmpsnooping_aware": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "mclag_igmpsnooping_aware",
+            "name": "mclag-igmpsnooping-aware",
             "help": "MCLAG IGMP-snooping aware.",
             "category": "unitary"
         },
         "poe_pre_standard_detect": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "poe_pre_standard_detect",
+            "name": "poe-pre-standard-detect",
             "help": "set poe-pre-standard-detect",
             "category": "unitary"
         },
         "dhcp_snooping_database_export": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "dhcp_snooping_database_export",
+            "name": "dhcp-snooping-database-export",
             "help": "Enable/disable DHCP snoop database export to file.",
             "category": "unitary"
         },
         "name": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "name",
             "help": "Name.",
             "category": "unitary"
         },
         "auto_isl": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "auto_isl",
+            "name": "auto-isl",
             "help": "Enable/Disable automatic inter switch LAG.",
             "category": "unitary"
         },
         "dmi_global_all": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "dmi_global_all",
+            "name": "dmi-global-all",
             "help": "Enable/disable DMI global status.",
             "category": "unitary"
         },
         "l2_memory_check": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "l2_memory_check",
+            "name": "l2-memory-check",
             "help": "Enable/disable L2 memory check,default interval is 120 seconds.",
             "category": "unitary"
         },
         "mclag_split_brain_detect": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "mclag_split_brain_detect",
+            "name": "mclag-split-brain-detect",
             "help": "Enable/disable MCLAG split brain detect.",
             "category": "unitary"
         },
         "forti_trunk_dmac": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "forti_trunk_dmac",
+            "name": "forti-trunk-dmac",
             "help": "Destination MAC address to be used for FortiTrunk heartbeat packets.",
             "category": "unitary"
         },
         "mac_aging_interval": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "mac_aging_interval",
+            "name": "mac-aging-interval",
             "help": "MAC address aging interval (sec; remove any MAC addresses unused since the the last check.",
             "category": "unitary"
         },
         "port_security": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "dict",
             "children": {
                 "mab_reauth": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         },
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         }
                     ],
-                    "name": "mab_reauth",
+                    "name": "mab-reauth",
                     "help": "Enable or disable MAB reauthentication settings.",
                     "category": "unitary"
                 },
                 "max_reauth_attempt": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "max_reauth_attempt",
+                    "name": "max-reauth-attempt",
                     "help": "802.1X/MAB maximum reauthorization attempt.",
                     "category": "unitary"
                 },
                 "link_down_auth": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "set_unauth",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "set-unauth"
                         },
                         {
-                            "value": "no_action",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "no-action"
                         }
                     ],
-                    "name": "link_down_auth",
+                    "name": "link-down-auth",
                     "help": "If link down detected,'set-unauth' reverts to un-authorized state.",
                     "category": "unitary"
                 },
                 "reauth_period": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "reauth_period",
+                    "name": "reauth-period",
                     "help": "802.1X/MAB reauthentication period ( minute ).",
                     "category": "unitary"
                 },
                 "quarantine_vlan": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "disable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "disable"
                         },
                         {
-                            "value": "enable",
-                            "revisions": {
-                                "v7.0.0": True,
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            }
+                            "value": "enable"
                         }
                     ],
-                    "name": "quarantine_vlan",
+                    "name": "quarantine-vlan",
                     "help": "Enable or disable Quarantine VLAN detection.",
                     "category": "unitary"
                 },
                 "tx_period": {
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.0",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
-                    "name": "tx_period",
+                    "name": "tx-period",
                     "help": "802.1X tx period ( second ).",
                     "category": "unitary"
                 },
                 "mac_called_station_delimiter": {
-                    "revisions": {
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.4.1",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "hyphen",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "hyphen"
                         },
                         {
-                            "value": "single_hyphen",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "single-hyphen"
                         },
                         {
-                            "value": "colon",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "colon"
                         },
                         {
-                            "value": "none",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "none"
                         }
                     ],
-                    "name": "mac_called_station_delimiter",
+                    "name": "mac-called-station-delimiter",
                     "help": "MAC called station delimiter (default = hyphen).",
                     "category": "unitary"
                 },
                 "mac_case": {
-                    "revisions": {
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.4.1",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "uppercase",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "uppercase"
                         },
                         {
-                            "value": "lowercase",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "lowercase"
                         }
                     ],
-                    "name": "mac_case",
+                    "name": "mac-case",
                     "help": "MAC case (default = lowercase).",
                     "category": "unitary"
                 },
                 "mac_password_delimiter": {
-                    "revisions": {
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.4.1",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "hyphen",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "hyphen"
                         },
                         {
-                            "value": "single_hyphen",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "single-hyphen"
                         },
                         {
-                            "value": "colon",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "colon"
                         },
                         {
-                            "value": "none",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "none"
                         }
                     ],
-                    "name": "mac_password_delimiter",
+                    "name": "mac-password-delimiter",
                     "help": "MAC authentication password delimiter (default = hyphen).",
                     "category": "unitary"
                 },
                 "mab_entry_as": {
-                    "revisions": {
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.4.1",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "static",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "static"
                         },
                         {
-                            "value": "dynamic",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "dynamic"
                         }
                     ],
-                    "name": "mab_entry_as",
+                    "name": "mab-entry-as",
                     "help": "Confgure MAB MAC entry as static or dynamic.",
                     "category": "unitary"
                 },
                 "mac_username_delimiter": {
-                    "revisions": {
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.4.1",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "hyphen",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "hyphen"
                         },
                         {
-                            "value": "single_hyphen",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "single-hyphen"
                         },
                         {
-                            "value": "colon",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "colon"
                         },
                         {
-                            "value": "none",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "none"
                         }
                     ],
-                    "name": "mac_username_delimiter",
+                    "name": "mac-username-delimiter",
                     "help": "MAC authentication username delimiter (default = hyphen).",
                     "category": "unitary"
                 },
                 "mac_calling_station_delimiter": {
-                    "revisions": {
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.4.1",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "options": [
                         {
-                            "value": "hyphen",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "hyphen"
                         },
                         {
-                            "value": "single_hyphen",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "single-hyphen"
                         },
                         {
-                            "value": "colon",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "colon"
                         },
                         {
-                            "value": "none",
-                            "revisions": {
-                                "v7.4.1": True
-                            }
+                            "value": "none"
                         }
                     ],
-                    "name": "mac_calling_station_delimiter",
+                    "name": "mac-calling-station-delimiter",
                     "help": "MAC calling station delimiter (default = hyphen).",
                     "category": "unitary"
                 }
             },
-            "name": "port_security",
+            "name": "port-security",
             "help": "Global parameters for port-security.",
             "category": "complex"
         },
         "flood_unknown_multicast": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "flood_unknown_multicast",
+            "name": "flood-unknown-multicast",
             "help": "Enable/disable unknown mcast flood in the vlan.",
             "category": "unitary"
         },
         "l2_memory_check_interval": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "l2_memory_check_interval",
+            "name": "l2-memory-check-interval",
             "help": "User defined interval to check L2 memory(second). ",
             "category": "unitary"
         },
         "mclag_split_brain_priority": {
-            "revisions": {
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.1",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "mclag_split_brain_priority",
+            "name": "mclag-split-brain-priority",
             "help": "Set MCLAG split brain priority",
             "category": "unitary"
         },
         "mclag_split_brain_all_ports_down": {
-            "revisions": {
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 },
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 }
             ],
-            "name": "mclag_split_brain_all_ports_down",
+            "name": "mclag-split-brain-all-ports-down",
             "help": "Enable/disable MCLAG split brain all ports down",
             "category": "unitary"
         },
         "bpdu_learn": {
-            "revisions": {
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": False,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.5",
+                    "v7.0.6"
+                ],
+                [
+                    "v7.2.2",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "bpdu_learn",
+            "name": "bpdu-learn",
             "help": "Enable/disable BPDU learn.",
             "category": "unitary"
         },
         "flood_vtp": {
-            "revisions": {
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.5",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "flood_vtp",
+            "name": "flood-vtp",
             "help": "Enable/disable Cisco VTP flood in the vlan.",
             "category": "unitary"
         },
         "vxlan_stp_virtual_root": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "vxlan_stp_virtual_root",
+            "name": "vxlan-stp-virtual-root",
             "help": "Enable/disable automatically making local switch the STP root for STP instances containing configured VXLAN's access vlan.",
             "category": "unitary"
         },
         "vxlan_stp_virtual_mac": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "vxlan_stp_virtual_mac",
+            "name": "vxlan-stp-virtual-mac",
             "help": "Virtual STP root MAC address",
             "category": "unitary"
         },
         "vxlan_port": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": False
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    "v7.4.0"
+                ]
+            ],
             "type": "integer",
-            "name": "vxlan_port",
+            "name": "vxlan-port",
             "help": "VXLAN destination UDP port.",
             "category": "unitary"
         },
         "vxlan_sport": {
-            "revisions": {
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.4.1",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "vxlan_sport",
+            "name": "vxlan-sport",
             "help": "VXLAN source UDP port (0 - 65535).",
             "category": "unitary"
         },
         "access_vlan_mode": {
-            "revisions": {
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.4.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "legacy",
-                    "revisions": {
-                        "v7.4.1": True
-                    }
+                    "value": "legacy"
                 },
                 {
-                    "value": "fail_open",
-                    "revisions": {
-                        "v7.4.1": True
-                    }
+                    "value": "fail-open"
                 },
                 {
-                    "value": "fail_close",
-                    "revisions": {
-                        "v7.4.1": True
-                    }
+                    "value": "fail-close"
                 }
             ],
-            "name": "access_vlan_mode",
+            "name": "access-vlan-mode",
             "help": "Intra VLAN traffic behavior with loss of connection to the FortiGate.",
             "category": "unitary"
         },
         "vxlan_dport": {
-            "revisions": {
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.4.1",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "vxlan_dport",
+            "name": "vxlan-dport",
             "help": "VXLAN destination UDP port.",
             "category": "unitary"
         }

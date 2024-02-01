@@ -83,23 +83,13 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: FortiSwitch cloud manager configuration.
-    fortiswitch_system_fsw_cloud:
+- name: FortiSwitch cloud manager configuration.
+  fortinet.fortiswitch.fortiswitch_system_fsw_cloud:
       system_fsw_cloud:
-        interval: "3"
-        name: "default_name_4"
-        port: "5"
-        status: "enable"
-
+          interval: "3"
+          name: "default_name_4"
+          port: "5"
+          status: "enable"
 '''
 
 RETURN = '''
@@ -217,36 +207,28 @@ def fortiswitch_system(data, fos):
 
 
 versioned_schema = {
-    "revisions": {
-        "v7.0.0": True,
-        "v7.0.1": True,
-        "v7.0.2": True
-    },
+    "v_range": [
+        [
+            "v7.0.0",
+            "v7.0.2"
+        ]
+    ],
     "type": "dict",
     "children": {
         "status": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.2"
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.0": True,
-                        "v7.0.1": True,
-                        "v7.0.2": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "status",
@@ -254,40 +236,43 @@ versioned_schema = {
             "category": "unitary"
         },
         "interval": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.2"
+                ]
+            ],
             "type": "integer",
             "name": "interval",
             "help": "Service name resolution time interval (3-300sec,default=45).",
             "category": "unitary"
         },
         "port": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.2"
+                ]
+            ],
             "type": "integer",
             "name": "port",
             "help": "Port Number.",
             "category": "unitary"
         },
         "name": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.2"
+                ]
+            ],
             "type": "string",
             "name": "name",
             "help": "Fully qualified domain name or IP address of fsw-cloud service.",
             "category": "unitary"
         }
     },
-    "name": "fsw_cloud",
+    "name": "fsw-cloud",
     "help": "FortiSwitch cloud manager configuration.",
     "category": "complex"
 }

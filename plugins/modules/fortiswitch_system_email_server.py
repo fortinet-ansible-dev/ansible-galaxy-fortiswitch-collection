@@ -107,9 +107,9 @@ options:
                 choices:
                     - 'SSLv3'
                     - 'TLSv1'
-                    - 'TLSv1_1'
-                    - 'TLSv1_2'
-                    - 'TLSv1_3'
+                    - 'TLSv1-1'
+                    - 'TLSv1-2'
+                    - 'TLSv1-3'
             username:
                 description:
                     - Set SMTP server user name for authentication.
@@ -124,30 +124,20 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Email server configuration.
-    fortiswitch_system_email_server:
+- name: Email server configuration.
+  fortinet.fortiswitch.fortiswitch_system_email_server:
       system_email_server:
-        authenticate: "enable"
-        password: "<your_own_value>"
-        port: "5"
-        reply_to: "<your_own_value>"
-        security: "none"
-        server: "192.168.100.40"
-        source_ip: "84.230.14.43"
-        source_ip6: "<your_own_value>"
-        ssl_min_proto_version: "SSLv3"
-        username: "<your_own_value>"
-        validate_server: "enable"
-
+          authenticate: "enable"
+          password: "<your_own_value>"
+          port: "5"
+          reply_to: "<your_own_value>"
+          security: "none"
+          server: "192.168.100.40"
+          source_ip: "<your_own_value>"
+          source_ip6: "<your_own_value>"
+          ssl_min_proto_version: "SSLv3"
+          username: "<your_own_value>"
+          validate_server: "enable"
 '''
 
 RETURN = '''
@@ -267,67 +257,40 @@ def fortiswitch_system(data, fos):
 
 
 versioned_schema = {
-    "revisions": {
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
+    "v_range": [
+        [
+            "v7.2.1",
+            ""
+        ]
+    ],
     "type": "dict",
     "children": {
         "username": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "username",
             "help": "Set SMTP server user name for authentication.",
             "category": "unitary"
         },
         "authenticate": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "authenticate",
@@ -335,52 +298,22 @@ versioned_schema = {
             "category": "unitary"
         },
         "security": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "none",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "none"
                 },
                 {
-                    "value": "starttls",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "starttls"
                 },
                 {
-                    "value": "smtps",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "smtps"
                 }
             ],
             "name": "security",
@@ -388,215 +321,128 @@ versioned_schema = {
             "category": "unitary"
         },
         "source_ip": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "source_ip",
+            "name": "source-ip",
             "help": "Set SMTP server IPv4 source IP.",
             "category": "unitary"
         },
         "validate_server": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
-            "name": "validate_server",
+            "name": "validate-server",
             "help": "Enable/disable validation of server certificate.",
             "category": "unitary"
         },
         "server": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "server",
             "help": "Set SMTP server IP address or hostname.",
             "category": "unitary"
         },
         "source_ip6": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "source_ip6",
+            "name": "source-ip6",
             "help": "Set SMTP server IPv6 source IP.",
             "category": "unitary"
         },
         "reply_to": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "reply_to",
+            "name": "reply-to",
             "help": "Set Reply-To email address.",
             "category": "unitary"
         },
         "password": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "password",
             "help": "Set SMTP server user password for authentication.",
             "category": "unitary"
         },
         "port": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "port",
             "help": "Set SMTP server port.",
             "category": "unitary"
         },
         "ssl_min_proto_version": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "SSLv3",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "SSLv3"
                 },
                 {
-                    "value": "TLSv1",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "TLSv1"
                 },
                 {
-                    "value": "TLSv1_1",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "TLSv1-1"
                 },
                 {
-                    "value": "TLSv1_2",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "TLSv1-2"
                 },
                 {
-                    "value": "TLSv1_3",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "TLSv1-3"
                 }
             ],
-            "name": "ssl_min_proto_version",
+            "name": "ssl-min-proto-version",
             "help": "Set minimum supported protocol version for SSL/TLS connections (default is to follow system global setting).",
             "category": "unitary"
         }
     },
-    "name": "email_server",
+    "name": "email-server",
     "help": "Email server configuration.",
     "category": "complex"
 }

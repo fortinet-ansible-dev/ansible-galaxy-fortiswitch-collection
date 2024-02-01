@@ -80,8 +80,8 @@ options:
                 choices:
                     - 'email'
                     - 'alert'
-                    - 'cli_script'
-                    - 'snmp_trap'
+                    - 'cli-script'
+                    - 'snmp-trap'
                     - 'webhook'
             alicloud_access_key_id:
                 description:
@@ -261,10 +261,10 @@ options:
                     - SNMP trap.
                 type: str
                 choices:
-                    - 'cpu_high'
-                    - 'mem_low'
-                    - 'syslog_full'
-                    - 'test_trap'
+                    - 'cpu-high'
+                    - 'mem-low'
+                    - 'syslog-full'
+                    - 'test-trap'
             uri:
                 description:
                     - Request API URI.
@@ -272,64 +272,54 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Action for automation stitches.
-    fortiswitch_system_automation_action:
+- name: Action for automation stitches.
+  fortinet.fortiswitch.fortiswitch_system_automation_action:
       state: "present"
       system_automation_action:
-        accprofile: "<your_own_value> (source system.accprofile.name)"
-        action_type: "email"
-        alicloud_access_key_id: "<your_own_value>"
-        alicloud_access_key_secret: "<your_own_value>"
-        alicloud_account_id: "<your_own_value>"
-        alicloud_function: "<your_own_value>"
-        alicloud_function_authorization: "anonymous"
-        alicloud_function_domain: "<your_own_value>"
-        alicloud_region: "<your_own_value>"
-        alicloud_service: "<your_own_value>"
-        alicloud_version: "<your_own_value>"
-        aws_api_id: "<your_own_value>"
-        aws_api_key: "<your_own_value>"
-        aws_api_path: "<your_own_value>"
-        aws_api_stage: "<your_own_value>"
-        aws_domain: "<your_own_value>"
-        aws_region: "<your_own_value>"
-        azure_api_key: "<your_own_value>"
-        azure_app: "<your_own_value>"
-        azure_domain: "<your_own_value>"
-        azure_function: "<your_own_value>"
-        azure_function_authorization: "anonymous"
-        email_body: "<your_own_value>"
-        email_from: "<your_own_value>"
-        email_subject: "<your_own_value>"
-        email_to:
-         -
-            name: "default_name_29"
-        gcp_function: "<your_own_value>"
-        gcp_function_domain: "<your_own_value>"
-        gcp_function_region: "<your_own_value>"
-        gcp_project: "<your_own_value>"
-        headers:
-         -
-            header: "<your_own_value>"
-        http_body: "<your_own_value>"
-        method: "post"
-        minimum_interval: "38"
-        name: "default_name_39"
-        port: "40"
-        protocol: "http"
-        script: "<your_own_value>"
-        snmp_trap: "cpu-high"
-        uri: "<your_own_value>"
-
+          accprofile: "<your_own_value> (source system.accprofile.name)"
+          action_type: "email"
+          alicloud_access_key_id: "<your_own_value>"
+          alicloud_access_key_secret: "<your_own_value>"
+          alicloud_account_id: "<your_own_value>"
+          alicloud_function: "<your_own_value>"
+          alicloud_function_authorization: "anonymous"
+          alicloud_function_domain: "<your_own_value>"
+          alicloud_region: "<your_own_value>"
+          alicloud_service: "<your_own_value>"
+          alicloud_version: "<your_own_value>"
+          aws_api_id: "<your_own_value>"
+          aws_api_key: "<your_own_value>"
+          aws_api_path: "<your_own_value>"
+          aws_api_stage: "<your_own_value>"
+          aws_domain: "<your_own_value>"
+          aws_region: "<your_own_value>"
+          azure_api_key: "<your_own_value>"
+          azure_app: "<your_own_value>"
+          azure_domain: "<your_own_value>"
+          azure_function: "<your_own_value>"
+          azure_function_authorization: "anonymous"
+          email_body: "<your_own_value>"
+          email_from: "<your_own_value>"
+          email_subject: "<your_own_value>"
+          email_to:
+              -
+                  name: "default_name_29"
+          gcp_function: "<your_own_value>"
+          gcp_function_domain: "<your_own_value>"
+          gcp_function_region: "<your_own_value>"
+          gcp_project: "<your_own_value>"
+          headers:
+              -
+                  header: "<your_own_value>"
+          http_body: "<your_own_value>"
+          method: "post"
+          minimum_interval: "38"
+          name: "default_name_39"
+          port: "40"
+          protocol: "http"
+          script: "<your_own_value>"
+          snmp_trap: "cpu-high"
+          uri: "<your_own_value>"
 '''
 
 RETURN = '''
@@ -472,70 +462,43 @@ versioned_schema = {
     "elements": "dict",
     "children": {
         "aws_api_key": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "aws_api_key",
+            "name": "aws-api-key",
             "help": "AWS API Gateway API key.",
             "category": "unitary"
         },
         "alicloud_account_id": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "alicloud_account_id",
+            "name": "alicloud-account-id",
             "help": "AliCloud account ID.",
             "category": "unitary"
         },
         "protocol": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "http",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "http"
                 },
                 {
-                    "value": "https",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "https"
                 }
             ],
             "name": "protocol",
@@ -543,47 +506,38 @@ versioned_schema = {
             "category": "unitary"
         },
         "alicloud_function": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "alicloud_function",
+            "name": "alicloud-function",
             "help": "AliCloud function name.",
             "category": "unitary"
         },
         "aws_domain": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "aws_domain",
+            "name": "aws-domain",
             "help": "AWS domain.",
             "category": "unitary"
         },
         "aws_api_id": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "aws_api_id",
+            "name": "aws-api-id",
             "help": "AWS API Gateway ID.",
             "category": "unitary"
         },
@@ -592,165 +546,132 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "name": {
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.2.1",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "name",
                     "help": "Email address.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
-            "name": "email_to",
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
+            "name": "email-to",
             "help": "Email addresses.",
             "mkey": "name",
             "category": "table"
         },
         "azure_api_key": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "azure_api_key",
+            "name": "azure-api-key",
             "help": "Azure function API key.",
             "category": "unitary"
         },
         "port": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "port",
             "help": "Protocol port.",
             "category": "unitary"
         },
         "minimum_interval": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "minimum_interval",
+            "name": "minimum-interval",
             "help": "Limit execution to no more than once in this interval (in seconds).",
             "category": "unitary"
         },
         "gcp_function_domain": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "gcp_function_domain",
+            "name": "gcp-function-domain",
             "help": "Google Cloud function domain.",
             "category": "unitary"
         },
         "email_body": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "email_body",
+            "name": "email-body",
             "help": "Email body.",
             "category": "unitary"
         },
         "http_body": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "http_body",
+            "name": "http-body",
             "help": "Request body (if necessary). Should be serialized json string.",
             "category": "unitary"
         },
         "azure_domain": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "azure_domain",
+            "name": "azure-domain",
             "help": "Azure function domain.",
             "category": "unitary"
         },
         "alicloud_version": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "alicloud_version",
+            "name": "alicloud-version",
             "help": "AliCloud version.",
             "category": "unitary"
         },
         "accprofile": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "accprofile",
             "help": "Access profile for CLI script action to access FortiSwitch features.",
@@ -761,166 +682,100 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "header": {
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.2.1",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "header",
                     "help": "Request header.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "name": "headers",
             "help": "Request headers.",
             "mkey": "header",
             "category": "table"
         },
         "script": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "script",
             "help": "CLI script.",
             "category": "unitary"
         },
         "email_subject": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "email_subject",
+            "name": "email-subject",
             "help": "Email subject.",
             "category": "unitary"
         },
         "email_from": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "email_from",
+            "name": "email-from",
             "help": "Email sender name.",
             "category": "unitary"
         },
         "aws_api_path": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "aws_api_path",
+            "name": "aws-api-path",
             "help": "AWS API Gateway path.",
             "category": "unitary"
         },
         "method": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "post",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "post"
                 },
                 {
-                    "value": "put",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "put"
                 },
                 {
-                    "value": "get",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "get"
                 },
                 {
-                    "value": "patch",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "patch"
                 },
                 {
-                    "value": "delete",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "delete"
                 }
             ],
             "name": "method",
@@ -928,462 +783,279 @@ versioned_schema = {
             "category": "unitary"
         },
         "action_type": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "email",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "email"
                 },
                 {
-                    "value": "alert",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "alert"
                 },
                 {
-                    "value": "cli_script",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "cli-script"
                 },
                 {
-                    "value": "snmp_trap",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "snmp-trap"
                 },
                 {
-                    "value": "webhook",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "webhook"
                 }
             ],
-            "name": "action_type",
+            "name": "action-type",
             "help": "Action type.",
             "category": "unitary"
         },
         "alicloud_function_domain": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "alicloud_function_domain",
+            "name": "alicloud-function-domain",
             "help": "AliCloud function domain.",
             "category": "unitary"
         },
         "azure_app": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "azure_app",
+            "name": "azure-app",
             "help": "Azure function application name.",
             "category": "unitary"
         },
         "gcp_function": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "gcp_function",
+            "name": "gcp-function",
             "help": "Google Cloud function name.",
             "category": "unitary"
         },
         "alicloud_access_key_id": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "alicloud_access_key_id",
+            "name": "alicloud-access-key-id",
             "help": "AliCloud AccessKey ID.",
             "category": "unitary"
         },
         "gcp_project": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "gcp_project",
+            "name": "gcp-project",
             "help": "Google Cloud Platform project name.",
             "category": "unitary"
         },
         "alicloud_access_key_secret": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "alicloud_access_key_secret",
+            "name": "alicloud-access-key-secret",
             "help": "AliCloud AccessKey secret.",
             "category": "unitary"
         },
         "name": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "name",
             "help": "Name.",
             "category": "unitary"
         },
         "aws_region": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "aws_region",
+            "name": "aws-region",
             "help": "AWS region.",
             "category": "unitary"
         },
         "azure_function": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "azure_function",
+            "name": "azure-function",
             "help": "Azure function name.",
             "category": "unitary"
         },
         "aws_api_stage": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "aws_api_stage",
+            "name": "aws-api-stage",
             "help": "AWS API Gateway deployment stage name.",
             "category": "unitary"
         },
         "alicloud_region": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "alicloud_region",
+            "name": "alicloud-region",
             "help": "AliCloud region.",
             "category": "unitary"
         },
         "uri": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "uri",
             "help": "Request API URI.",
             "category": "unitary"
         },
         "azure_function_authorization": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "anonymous",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "anonymous"
                 },
                 {
-                    "value": "function",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "function"
                 },
                 {
-                    "value": "admin",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "admin"
                 }
             ],
-            "name": "azure_function_authorization",
+            "name": "azure-function-authorization",
             "help": "Azure function authorization level.",
             "category": "unitary"
         },
         "snmp_trap": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "cpu_high",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "cpu-high"
                 },
                 {
-                    "value": "mem_low",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "mem-low"
                 },
                 {
-                    "value": "syslog_full",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "syslog-full"
                 },
                 {
-                    "value": "test_trap",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "test-trap"
                 }
             ],
-            "name": "snmp_trap",
+            "name": "snmp-trap",
             "help": "SNMP trap.",
             "category": "unitary"
         },
         "gcp_function_region": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "gcp_function_region",
+            "name": "gcp-function-region",
             "help": "Google Cloud function region.",
             "category": "unitary"
         },
         "alicloud_service": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "alicloud_service",
+            "name": "alicloud-service",
             "help": "AliCloud service name.",
             "category": "unitary"
         },
         "alicloud_function_authorization": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "anonymous",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "anonymous"
                 },
                 {
-                    "value": "function",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "function"
                 }
             ],
-            "name": "alicloud_function_authorization",
+            "name": "alicloud-function-authorization",
             "help": "AliCloud function authorization type.",
             "category": "unitary"
         }
     },
-    "revisions": {
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
-    "name": "automation_action",
+    "v_range": [
+        [
+            "v7.2.1",
+            ""
+        ]
+    ],
+    "name": "automation-action",
     "help": "Action for automation stitches.",
     "mkey": "name",
     "category": "table"

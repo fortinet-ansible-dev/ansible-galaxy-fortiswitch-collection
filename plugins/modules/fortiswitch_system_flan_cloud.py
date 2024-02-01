@@ -73,6 +73,13 @@ options:
                 description:
                     - Port Number.
                 type: int
+            service_type:
+                description:
+                    - Configure the flan manager service type.
+                type: str
+                choices:
+                    - 'flan-cloud'
+                    - 'fortilink-https'
             status:
                 description:
                     - Enable/disable FortiLAN-cloud service.
@@ -83,23 +90,14 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: FortiLAN cloud manager configuration.
-    fortiswitch_system_flan_cloud:
+- name: FortiLAN cloud manager configuration.
+  fortinet.fortiswitch.fortiswitch_system_flan_cloud:
       system_flan_cloud:
-        interval: "3"
-        name: "default_name_4"
-        port: "5"
-        status: "enable"
-
+          interval: "3"
+          name: "default_name_4"
+          port: "5"
+          service_type: "flan-cloud"
+          status: "enable"
 '''
 
 RETURN = '''
@@ -161,7 +159,7 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.d
 
 def filter_system_flan_cloud_data(json):
     option_list = ['interval', 'name', 'port',
-                   'status']
+                   'service_type', 'status']
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -217,68 +215,28 @@ def fortiswitch_system(data, fos):
 
 
 versioned_schema = {
-    "revisions": {
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True,
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
+    "v_range": [
+        [
+            "v7.0.3",
+            ""
+        ]
+    ],
     "type": "dict",
     "children": {
         "status": {
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.3",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "enable",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "enable"
                 },
                 {
-                    "value": "disable",
-                    "revisions": {
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "disable"
                 }
             ],
             "name": "status",
@@ -286,64 +244,63 @@ versioned_schema = {
             "category": "unitary"
         },
         "interval": {
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.3",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "interval",
             "help": "Service name resolution time interval (3-300sec,default=3).",
             "category": "unitary"
         },
         "port": {
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.3",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "port",
             "help": "Port Number.",
             "category": "unitary"
         },
         "name": {
-            "revisions": {
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.3",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "name",
             "help": "Fully qualified domain name or IP address of FortiLAN-cloud service.",
             "category": "unitary"
+        },
+        "service_type": {
+            "v_range": [
+                [
+                    "v7.4.2",
+                    ""
+                ]
+            ],
+            "type": "string",
+            "options": [
+                {
+                    "value": "flan-cloud"
+                },
+                {
+                    "value": "fortilink-https"
+                }
+            ],
+            "name": "service-type",
+            "help": "Configure the flan manager service type.",
+            "category": "unitary"
         }
     },
-    "name": "flan_cloud",
+    "name": "flan-cloud",
     "help": "FortiLAN cloud manager configuration.",
     "category": "complex"
 }

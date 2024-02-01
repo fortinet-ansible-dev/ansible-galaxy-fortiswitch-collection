@@ -96,21 +96,11 @@ results:
   returned: only for successful calls
   type: str
 '''
-
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Backup Switch's Default Configuration.
-    execute_backup_default_config:
+- name: Backup Switch's Default Configuration.
+  fortinet.fortiswitch.execute_backup_default_config:
       backup_default_config:
-        config: "<your_own_value>"
+          config: "<your_own_value>"
 '''
 
 

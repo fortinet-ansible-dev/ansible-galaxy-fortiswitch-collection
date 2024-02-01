@@ -78,8 +78,8 @@ options:
                     - IP version to use for the VXLAN interface.
                 type: str
                 choices:
-                    - 'ipv4_unicast'
-                    - 'ipv4_multicast'
+                    - 'ipv4-unicast'
+                    - 'ipv4-multicast'
             multicast_ttl:
                 description:
                     - VXLAN multicast TTL (1-255).
@@ -114,30 +114,20 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Configure VXLAN devices.
-    fortiswitch_system_vxlan:
+- name: Configure VXLAN devices.
+  fortinet.fortiswitch.fortiswitch_system_vxlan:
       state: "present"
       system_vxlan:
-        interface: "<your_own_value> (source system.interface.name)"
-        ip_version: "ipv4-unicast"
-        multicast_ttl: "5"
-        name: "default_name_6"
-        remote_ip:
-         -
-            ip: "<your_own_value>"
-        tagged_vlans: "<your_own_value>"
-        vlanid: "10"
-        vni: "11"
-
+          interface: "<your_own_value> (source system.interface.name)"
+          ip_version: "ipv4-unicast"
+          multicast_ttl: "5"
+          name: "default_name_6"
+          remote_ip:
+              -
+                  ip: "<your_own_value>"
+          tagged_vlans: "<your_own_value>"
+          vlanid: "10"
+          vni: "11"
 '''
 
 RETURN = '''
@@ -273,176 +263,128 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "ip": {
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.2.1",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "ip",
                     "help": "IPv4 address.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
-            "name": "remote_ip",
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
+            "name": "remote-ip",
             "help": "IPv4 address of the VXLAN interface.",
             "mkey": "ip",
             "category": "table"
         },
         "name": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "name",
             "help": "VXLAN interface name.",
             "category": "unitary"
         },
         "multicast_ttl": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "multicast_ttl",
+            "name": "multicast-ttl",
             "help": "VXLAN multicast TTL (1-255,default = 0).",
             "category": "unitary"
         },
         "tagged_vlans": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "tagged_vlans",
+            "name": "tagged-vlans",
             "help": "Tagged VLANs.",
             "category": "unitary"
         },
         "vni": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "vni",
             "help": "VXLAN network ID.",
             "category": "unitary"
         },
         "ip_version": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "ipv4_unicast",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "ipv4-unicast"
                 },
                 {
-                    "value": "ipv4_multicast",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "ipv4-multicast"
                 }
             ],
-            "name": "ip_version",
+            "name": "ip-version",
             "help": "IP version to use for the VXLAN interface.",
             "category": "unitary"
         },
         "vlanid": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "vlanid",
             "help": "VXLAN VNI mapped VLAN ID.",
             "category": "unitary"
         },
         "interface": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "interface",
             "help": "Interface binding for tunnel initiator (source IP) / termination.",
             "category": "unitary"
         }
     },
-    "revisions": {
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
+    "v_range": [
+        [
+            "v7.2.1",
+            ""
+        ]
+    ],
     "name": "vxlan",
     "help": "Configure VXLAN devices.",
     "mkey": "name",

@@ -186,7 +186,6 @@ options:
             seq_num:
                 description:
                     - Sequence number.
-                required: true
                 type: int
             src:
                 description:
@@ -207,56 +206,46 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Policy routing configuration.
-    fortiswitch_router_policy:
+- name: Policy routing configuration.
+  fortinet.fortiswitch.fortiswitch_router_policy:
       state: "present"
       router_policy:
-        comments: "<your_own_value>"
-        dst: "<your_own_value>"
-        end_port: "5"
-        gateway: "<your_own_value>"
-        input_device: "<your_own_value> (source system.interface.name)"
-        interface:
-         -
-            name: "default_name_9 (source system.interface.name)"
-            pbr_map_name: "<your_own_value>"
-        nexthop_group:
-         -
-            name: "default_name_12"
-            nexthop:
-             -
-                id:  "14"
-                nexthop_ip: "<your_own_value>"
-                nexthop_vrf_name: "<your_own_value> (source router.vrf.name)"
-        output_device: "<your_own_value> (source system.interface.name)"
-        pbr_map:
-         -
-            comments: "<your_own_value>"
-            name: "default_name_20"
-            rule:
-             -
-                dst: "<your_own_value>"
-                nexthop_group_name: "<your_own_value>"
-                nexthop_ip: "<your_own_value>"
-                nexthop_vrf_name: "<your_own_value> (source router.vrf.name)"
-                seq_num: "26"
-                src: "<your_own_value>"
-        protocol: "28"
-        seq_num: "29"
-        src: "<your_own_value>"
-        start_port: "31"
-        tos: "<your_own_value>"
-        tos_mask: "<your_own_value>"
-
+          comments: "<your_own_value>"
+          dst: "<your_own_value>"
+          end_port: "5"
+          gateway: "<your_own_value>"
+          input_device: "<your_own_value> (source system.interface.name)"
+          interface:
+              -
+                  name: "default_name_9 (source system.interface.name)"
+                  pbr_map_name: "<your_own_value>"
+          nexthop_group:
+              -
+                  name: "default_name_12"
+                  nexthop:
+                      -
+                          id: "14"
+                          nexthop_ip: "<your_own_value>"
+                          nexthop_vrf_name: "<your_own_value> (source router.vrf.name)"
+          output_device: "<your_own_value> (source system.interface.name)"
+          pbr_map:
+              -
+                  comments: "<your_own_value>"
+                  name: "default_name_20"
+                  rule:
+                      -
+                          dst: "<your_own_value>"
+                          nexthop_group_name: "<your_own_value>"
+                          nexthop_ip: "<your_own_value>"
+                          nexthop_vrf_name: "<your_own_value> (source router.vrf.name)"
+                          seq_num: "26"
+                          src: "<your_own_value>"
+          protocol: "28"
+          seq_num: "29"
+          src: "<your_own_value>"
+          start_port: "31"
+          tos: "<your_own_value>"
+          tos_mask: "<your_own_value>"
 '''
 
 RETURN = '''
@@ -430,244 +419,134 @@ versioned_schema = {
     "elements": "dict",
     "children": {
         "src": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": False,
-                "v7.0.2": False,
-                "v7.0.3": False,
-                "v7.0.4": False,
-                "v7.0.5": False,
-                "v7.0.6": False,
-                "v7.2.1": False,
-                "v7.2.2": False,
-                "v7.2.3": False,
-                "v7.2.4": False,
-                "v7.2.5": False,
-                "v7.4.0": False,
-                "v7.4.1": False
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.0"
+                ]
+            ],
             "type": "string",
             "name": "src",
             "help": "Source ip and mask.",
             "category": "unitary"
         },
         "output_device": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": False,
-                "v7.0.2": False,
-                "v7.0.3": False,
-                "v7.0.4": False,
-                "v7.0.5": False,
-                "v7.0.6": False,
-                "v7.2.1": False,
-                "v7.2.2": False,
-                "v7.2.3": False,
-                "v7.2.4": False,
-                "v7.2.5": False,
-                "v7.4.0": False,
-                "v7.4.1": False
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.0"
+                ]
+            ],
             "type": "string",
-            "name": "output_device",
+            "name": "output-device",
             "help": "Outgoing interface name.",
             "category": "unitary"
         },
         "protocol": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": False,
-                "v7.0.2": False,
-                "v7.0.3": False,
-                "v7.0.4": False,
-                "v7.0.5": False,
-                "v7.0.6": False,
-                "v7.2.1": False,
-                "v7.2.2": False,
-                "v7.2.3": False,
-                "v7.2.4": False,
-                "v7.2.5": False,
-                "v7.4.0": False,
-                "v7.4.1": False
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.0"
+                ]
+            ],
             "type": "integer",
             "name": "protocol",
             "help": "Protocol number.",
             "category": "unitary"
         },
         "end_port": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": False,
-                "v7.0.2": False,
-                "v7.0.3": False,
-                "v7.0.4": False,
-                "v7.0.5": False,
-                "v7.0.6": False,
-                "v7.2.1": False,
-                "v7.2.2": False,
-                "v7.2.3": False,
-                "v7.2.4": False,
-                "v7.2.5": False,
-                "v7.4.0": False,
-                "v7.4.1": False
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.0"
+                ]
+            ],
             "type": "integer",
-            "name": "end_port",
+            "name": "end-port",
             "help": "End port number.",
             "category": "unitary"
         },
         "dst": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": False,
-                "v7.0.2": False,
-                "v7.0.3": False,
-                "v7.0.4": False,
-                "v7.0.5": False,
-                "v7.0.6": False,
-                "v7.2.1": False,
-                "v7.2.2": False,
-                "v7.2.3": False,
-                "v7.2.4": False,
-                "v7.2.5": False,
-                "v7.4.0": False,
-                "v7.4.1": False
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.0"
+                ]
+            ],
             "type": "string",
             "name": "dst",
             "help": "Destination ip and mask.",
             "category": "unitary"
         },
         "seq_num": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": False,
-                "v7.0.2": False,
-                "v7.0.3": False,
-                "v7.0.4": False,
-                "v7.0.5": False,
-                "v7.0.6": False,
-                "v7.2.1": False,
-                "v7.2.2": False,
-                "v7.2.3": False,
-                "v7.2.4": False,
-                "v7.2.5": False,
-                "v7.4.0": False,
-                "v7.4.1": False
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.0"
+                ]
+            ],
             "type": "integer",
-            "name": "seq_num",
+            "name": "seq-num",
             "help": "Sequence number.",
             "category": "unitary"
         },
         "tos_mask": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": False,
-                "v7.0.2": False,
-                "v7.0.3": False,
-                "v7.0.4": False,
-                "v7.0.5": False,
-                "v7.0.6": False,
-                "v7.2.1": False,
-                "v7.2.2": False,
-                "v7.2.3": False,
-                "v7.2.4": False,
-                "v7.2.5": False,
-                "v7.4.0": False,
-                "v7.4.1": False
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.0"
+                ]
+            ],
             "type": "string",
-            "name": "tos_mask",
+            "name": "tos-mask",
             "help": "Terms of service evaluated bits.",
             "category": "unitary"
         },
         "input_device": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": False,
-                "v7.0.2": False,
-                "v7.0.3": False,
-                "v7.0.4": False,
-                "v7.0.5": False,
-                "v7.0.6": False,
-                "v7.2.1": False,
-                "v7.2.2": False,
-                "v7.2.3": False,
-                "v7.2.4": False,
-                "v7.2.5": False,
-                "v7.4.0": False,
-                "v7.4.1": False
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.0"
+                ]
+            ],
             "type": "string",
-            "name": "input_device",
+            "name": "input-device",
             "help": "Incoming interface name.",
             "category": "unitary"
         },
         "tos": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": False,
-                "v7.0.2": False,
-                "v7.0.3": False,
-                "v7.0.4": False,
-                "v7.0.5": False,
-                "v7.0.6": False,
-                "v7.2.1": False,
-                "v7.2.2": False,
-                "v7.2.3": False,
-                "v7.2.4": False,
-                "v7.2.5": False,
-                "v7.4.0": False,
-                "v7.4.1": False
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.0"
+                ]
+            ],
             "type": "string",
             "name": "tos",
             "help": "Terms of service bit pattern.",
             "category": "unitary"
         },
         "gateway": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": False,
-                "v7.0.2": False,
-                "v7.0.3": False,
-                "v7.0.4": False,
-                "v7.0.5": False,
-                "v7.0.6": False,
-                "v7.2.1": False,
-                "v7.2.2": False,
-                "v7.2.3": False,
-                "v7.2.4": False,
-                "v7.2.5": False,
-                "v7.4.0": False,
-                "v7.4.1": False
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.0"
+                ]
+            ],
             "type": "string",
             "name": "gateway",
             "help": "IP address of gateway.",
             "category": "unitary"
         },
         "start_port": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": False,
-                "v7.0.2": False,
-                "v7.0.3": False,
-                "v7.0.4": False,
-                "v7.0.5": False,
-                "v7.0.6": False,
-                "v7.2.1": False,
-                "v7.2.2": False,
-                "v7.2.3": False,
-                "v7.2.4": False,
-                "v7.2.5": False,
-                "v7.4.0": False,
-                "v7.4.1": False
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    "v7.0.0"
+                ]
+            ],
             "type": "integer",
-            "name": "start_port",
+            "name": "start-port",
             "help": "Start port number.",
             "category": "unitary"
         },
@@ -676,63 +555,36 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "name": {
-                    "revisions": {
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.1",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "name",
                     "help": "Interface name",
                     "category": "unitary"
                 },
                 "pbr_map_name": {
-                    "revisions": {
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.1",
+                            ""
+                        ]
+                    ],
                     "type": "string",
-                    "name": "pbr_map_name",
+                    "name": "pbr-map-name",
                     "help": "PBR policy map name.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.1",
+                    ""
+                ]
+            ],
             "name": "interface",
             "help": "Interface configuration.",
             "mkey": "name",
@@ -747,127 +599,73 @@ versioned_schema = {
                     "elements": "dict",
                     "children": {
                         "nexthop_vrf_name": {
-                            "revisions": {
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.1",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
-                            "name": "nexthop_vrf_name",
+                            "name": "nexthop-vrf-name",
                             "help": "VRF name.",
                             "category": "unitary"
                         },
                         "nexthop_ip": {
-                            "revisions": {
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.1",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
-                            "name": "nexthop_ip",
+                            "name": "nexthop-ip",
                             "help": "IP address of nexthop.",
                             "category": "unitary"
                         },
                         "id": {
-                            "revisions": {
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.1",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
                             "name": "id",
                             "help": "Id (1-64).",
                             "category": "unitary"
                         }
                     },
-                    "revisions": {
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.1",
+                            ""
+                        ]
+                    ],
                     "name": "nexthop",
                     "help": "Nexthop configuration.",
                     "mkey": "id",
                     "category": "table"
                 },
                 "name": {
-                    "revisions": {
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.1",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "name",
                     "help": "Name.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
-            "name": "nexthop_group",
+            "v_range": [
+                [
+                    "v7.0.1",
+                    ""
+                ]
+            ],
+            "name": "nexthop-group",
             "help": "Nexthop group (ECMP) configuration.",
             "mkey": "name",
             "category": "table"
@@ -881,256 +679,147 @@ versioned_schema = {
                     "elements": "dict",
                     "children": {
                         "src": {
-                            "revisions": {
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.1",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "src",
                             "help": "Source ip and mask.",
                             "category": "unitary"
                         },
                         "nexthop_vrf_name": {
-                            "revisions": {
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.1",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
-                            "name": "nexthop_vrf_name",
+                            "name": "nexthop-vrf-name",
                             "help": "Nexthop vrf name.",
                             "category": "unitary"
                         },
                         "nexthop_group_name": {
-                            "revisions": {
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.1",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
-                            "name": "nexthop_group_name",
+                            "name": "nexthop-group-name",
                             "help": "Nexthop group name. Used for ECMP.",
                             "category": "unitary"
                         },
                         "dst": {
-                            "revisions": {
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.1",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "dst",
                             "help": "Destination ip and mask.",
                             "category": "unitary"
                         },
                         "nexthop_ip": {
-                            "revisions": {
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.1",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
-                            "name": "nexthop_ip",
+                            "name": "nexthop-ip",
                             "help": "IP address of nexthop.",
                             "category": "unitary"
                         },
                         "seq_num": {
-                            "revisions": {
-                                "v7.0.1": True,
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.1",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
-                            "name": "seq_num",
+                            "name": "seq-num",
                             "help": "Rule seq-num (1-10000).",
                             "category": "unitary"
                         }
                     },
-                    "revisions": {
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.1",
+                            ""
+                        ]
+                    ],
                     "name": "rule",
                     "help": "Rule.",
-                    "mkey": "seq_num",
+                    "mkey": "seq-num",
                     "category": "table"
                 },
                 "name": {
-                    "revisions": {
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.1",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "name",
                     "help": "Name.",
                     "category": "unitary"
                 },
                 "comments": {
-                    "revisions": {
-                        "v7.0.1": True,
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.1",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "comments",
                     "help": "Description/comments.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
-            "name": "pbr_map",
+            "v_range": [
+                [
+                    "v7.0.1",
+                    ""
+                ]
+            ],
+            "name": "pbr-map",
             "help": "PBR map configuration.",
             "mkey": "name",
             "category": "table"
         },
         "comments": {
-            "revisions": {
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "comments",
             "help": "Description/comments.",
             "category": "unitary"
         }
     },
-    "revisions": {
-        "v7.0.0": True,
-        "v7.0.1": True,
-        "v7.0.2": True,
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True,
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
+    "v_range": [
+        [
+            "v7.0.0",
+            ""
+        ]
+    ],
     "name": "policy",
     "help": "Policy routing configuration.",
-    "mkey": "seq_num",
+    "mkey": "seq-num",
     "category": "table"
 }
 

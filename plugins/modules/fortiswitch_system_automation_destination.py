@@ -94,30 +94,20 @@ options:
                 type: str
                 choices:
                     - 'fortigate'
-                    - 'ha_cluster'
+                    - 'ha-cluster'
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Automation destinations.
-    fortiswitch_system_automation_destination:
+- name: Automation destinations.
+  fortinet.fortiswitch.fortiswitch_system_automation_destination:
       state: "present"
       system_automation_destination:
-        destination:
-         -
-            name: "default_name_4"
-        ha_group_id: "5"
-        name: "default_name_6"
-        type: "fortigate"
-
+          destination:
+              -
+                  name: "default_name_4"
+          ha_group_id: "5"
+          name: "default_name_6"
+          type: "fortigate"
 '''
 
 RETURN = '''
@@ -248,17 +238,14 @@ versioned_schema = {
     "elements": "dict",
     "children": {
         "ha_group_id": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "ha_group_id",
+            "name": "ha-group-id",
             "help": "Cluster group ID set for this destination (default = 0).",
             "category": "unitary"
         },
@@ -267,70 +254,43 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "name": {
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.2.1",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "name",
                     "help": "Destination.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "name": "destination",
             "help": "Destinations.",
             "mkey": "name",
             "category": "table"
         },
         "type": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "options": [
                 {
-                    "value": "fortigate",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "fortigate"
                 },
                 {
-                    "value": "ha_cluster",
-                    "revisions": {
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    }
+                    "value": "ha-cluster"
                 }
             ],
             "name": "type",
@@ -338,31 +298,25 @@ versioned_schema = {
             "category": "unitary"
         },
         "name": {
-            "revisions": {
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.2.1",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "name",
             "help": "Name.",
             "category": "unitary"
         }
     },
-    "revisions": {
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
-    "name": "automation_destination",
+    "v_range": [
+        [
+            "v7.2.1",
+            ""
+        ]
+    ],
+    "name": "automation-destination",
     "help": "Automation destinations.",
     "mkey": "name",
     "category": "table"

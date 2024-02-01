@@ -84,7 +84,6 @@ options:
             profile_name:
                 description:
                     - Give name to the sniffer profile.
-                required: true
                 type: str
             switch_interface:
                 description:
@@ -97,26 +96,16 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Show packet sniffer configuration.
-    fortiswitch_system_sniffer_profile:
+- name: Show packet sniffer configuration.
+  fortinet.fortiswitch.fortiswitch_system_sniffer_profile:
       state: "present"
       system_sniffer_profile:
-        filter: "<your_own_value>"
-        max_pkt_count: "4"
-        max_pkt_len: "5"
-        profile_name: "<your_own_value>"
-        switch_interface: "<your_own_value> (source switch.interface.name)"
-        system_interface: "<your_own_value> (source system.interface.name)"
-
+          filter: "<your_own_value>"
+          max_pkt_count: "4"
+          max_pkt_len: "5"
+          profile_name: "<your_own_value>"
+          switch_interface: "<your_own_value> (source switch.interface.name)"
+          system_interface: "<your_own_value> (source system.interface.name)"
 '''
 
 RETURN = '''
@@ -287,157 +276,87 @@ versioned_schema = {
     "elements": "dict",
     "children": {
         "switch_interface": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "switch_interface",
+            "name": "switch-interface",
             "help": "Select switch-interface name on which packets are to be captured.",
             "category": "unitary"
         },
         "max_pkt_count": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "max_pkt_count",
+            "name": "max-pkt-count",
             "help": "Maximum number of packet to be captured on the interface  (1-INT_MAX,default=4000).",
             "category": "unitary"
         },
         "system_interface": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "system_interface",
+            "name": "system-interface",
             "help": "Select system-interface name on which packets are to be captured.",
             "category": "unitary"
         },
         "filter": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "filter",
             "help": "Flexible logical filters for sniffer (or \"none\")",
             "category": "unitary"
         },
         "profile_name": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "profile_name",
+            "name": "profile-name",
             "help": "Give name to the sniffer profile.",
             "category": "unitary"
         },
         "max_pkt_len": {
-            "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "max_pkt_len",
+            "name": "max-pkt-len",
             "help": "Maximum packet length to be captured on the interface  (64-1534,default=128).",
             "category": "unitary"
         }
     },
-    "revisions": {
-        "v7.0.0": True,
-        "v7.0.1": True,
-        "v7.0.2": True,
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True,
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
-    "name": "sniffer_profile",
+    "v_range": [
+        [
+            "v7.0.0",
+            ""
+        ]
+    ],
+    "name": "sniffer-profile",
     "help": "Show packet sniffer configuration.",
-    "mkey": "profile_name",
+    "mkey": "profile-name",
     "category": "table"
 }
 

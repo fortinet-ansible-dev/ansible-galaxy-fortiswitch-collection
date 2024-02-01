@@ -10,12 +10,12 @@ from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
 """
-The arg spec for the fortios monitor module.
+The arg spec for the fortiSwitch monitor module.
 """
 
 
 class FactsArgs(object):
-    """ The arg spec for the fortios monitor module
+    """ The arg spec for the fortiSwitch monitor module
     """
 
     def __init__(self, **kwargs):

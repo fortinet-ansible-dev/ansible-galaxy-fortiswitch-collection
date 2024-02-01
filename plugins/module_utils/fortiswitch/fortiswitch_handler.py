@@ -85,6 +85,52 @@ def schema_to_module_spec(schema):
     return rdata
 
 
+def __convert_version_to_number(version):
+    version = version[1:] if version.startswith('v') else version
+    seg = version.split('.')
+    if len(seg) != 3:
+        raise "Invalid fortiSwitch system version number: " + version + ". Should be of format [major].[minor].[patch]"
+    return int(seg[0]) * 10000 + int(seg[1]) * 100 + int(seg[2])
+
+
+def __format_single_range_desc(one_range):
+    if len(one_range) != 2:
+        raise BaseException("Incorrect version range, expecting [start, end]: " + str(one_range))
+
+    if one_range[0] == one_range[1]:
+        return one_range[0]
+    elif one_range[1] == '':
+        return one_range[0] + ' -> latest'
+    else:
+        return one_range[0] + ' -> ' + one_range[1]
+
+
+def __check_if_system_version_is_supported(v_range, version):
+    '''check the current system version is supported in v_range'''
+
+    if not v_range:
+        return {"supported": True}
+    system_version_number = __convert_version_to_number(version)
+
+    v_range_desc = ", ".join(list(map(__format_single_range_desc, v_range)))
+    for [single_range_start, single_range_end] in v_range:
+        single_range_start_number = __convert_version_to_number(single_range_start)
+        if system_version_number < single_range_start_number:
+
+            return {
+                "supported": False,
+                "reason": "Supported version ranges are " + v_range_desc
+            }
+
+        if single_range_end == '' or system_version_number <= __convert_version_to_number(single_range_end):
+            return {"supported": True}
+
+    return {
+        "supported": False,
+        "reason": "Supported version ranges are " + v_range_desc
+    }
+
+
 def __check_version(revisions, version):
     result = dict()
     resolved_versions = list(revisions.keys())
@@ -135,10 +181,11 @@ def __concat_attribute_sequence(trace_path):
 def check_schema_versioning_internal(results, trace, schema, params, version):
     if not schema or not params:
         return
-    if 'revisions' not in schema:
-        raise AssertionError()
-    revision = schema['revisions']
-    matched = __check_version(revision, version)
+    # if 'revisions' not in schema:
+    #     raise AssertionError()
+    # revision = schema['revisions']
+    # matched = __check_version(revision, version)
+    matched = __check_if_system_version_is_supported(schema['v_range'] if 'v_range' in schema else {}, version)
     if matched['supported'] is False:
         results['mismatches'].append('option %s %s' % (__concat_attribute_sequence(trace), matched['reason']))
 
@@ -206,11 +253,14 @@ def check_schema_versioning(fos, versioned_schema, top_level_param):
         # in case no top level parameters are given.
         # see module: fortios_firewall_policy
         return results
-    module_revisions = versioned_schema['revisions']
-    module_matched = __check_version(module_revisions, system_version)
-    if module_matched['supported'] is False:
+    # module_revisions = versioned_schema['revisions']
+    # module_matched = __check_version(module_revisions, system_version)
+    # if module_matched['supported'] is False:
+    v_range = versioned_schema['v_range']
+    module_matched = __check_if_system_version_is_supported(v_range, system_version)
+    if not module_matched['supported']:
         results['matched'] = False
-        results['mismatches'].append('module fortios_%s %s' % (top_level_param, module_matched['reason']))
+        results['mismatches'].append('module fortiswitch_%s %s' % (top_level_param, module_matched['reason']))
         return results
 
     for param_name in params:

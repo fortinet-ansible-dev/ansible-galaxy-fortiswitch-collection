@@ -155,39 +155,29 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: 802-1X Radius Dynamic Ingress Policy configuration.
-    fortiswitch_switch_acl_802_1x:
+- name: 802-1X Radius Dynamic Ingress Policy configuration.
+  fortinet.fortiswitch.fortiswitch_switch_acl_802_1x:
       state: "present"
       switch_acl_802_1x:
-        access_list_entry:
-         -
-            action:
-                count: "enable"
-                drop: "enable"
-            classifier:
-                dst_ip_prefix: "<your_own_value>"
-                dst_mac: "<your_own_value>"
-                ether_type: "10"
-                service: "<your_own_value> (source switch.acl.service.custom.name)"
-                src_ip_prefix: "<your_own_value>"
-                src_mac: "<your_own_value>"
-                vlan_id: "14"
-            description: "<your_own_value>"
-            group: "16"
-            id:  "17"
-        description: "<your_own_value>"
-        filter_id: "<your_own_value>"
-        id:  "20"
-
+          access_list_entry:
+              -
+                  action:
+                      count: "enable"
+                      drop: "enable"
+                  classifier:
+                      dst_ip_prefix: "<your_own_value>"
+                      dst_mac: "<your_own_value>"
+                      ether_type: "10"
+                      service: "<your_own_value> (source switch.acl.service.custom.name)"
+                      src_ip_prefix: "<your_own_value>"
+                      src_mac: "<your_own_value>"
+                      vlan_id: "14"
+                  description: "<your_own_value>"
+                  group: "16"
+                  id: "17"
+          description: "<your_own_value>"
+          filter_id: "<your_own_value>"
+          id: "20"
 '''
 
 RETURN = '''
@@ -322,72 +312,28 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "action": {
-                    "revisions": {
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.2",
+                            ""
+                        ]
+                    ],
                     "type": "dict",
                     "children": {
                         "count": {
-                            "revisions": {
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.2",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "enable",
-                                    "revisions": {
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "enable"
                                 },
                                 {
-                                    "value": "disable",
-                                    "revisions": {
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "disable"
                                 }
                             ],
                             "name": "count",
@@ -395,55 +341,19 @@ versioned_schema = {
                             "category": "unitary"
                         },
                         "drop": {
-                            "revisions": {
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.2",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "options": [
                                 {
-                                    "value": "enable",
-                                    "revisions": {
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "enable"
                                 },
                                 {
-                                    "value": "disable",
-                                    "revisions": {
-                                        "v7.0.2": True,
-                                        "v7.0.3": True,
-                                        "v7.0.4": True,
-                                        "v7.0.5": True,
-                                        "v7.0.6": True,
-                                        "v7.2.1": True,
-                                        "v7.2.2": True,
-                                        "v7.2.3": True,
-                                        "v7.2.4": True,
-                                        "v7.2.5": True,
-                                        "v7.4.0": True,
-                                        "v7.4.1": True
-                                    }
+                                    "value": "disable"
                                 }
                             ],
                             "name": "drop",
@@ -456,199 +366,119 @@ versioned_schema = {
                     "category": "complex"
                 },
                 "group": {
-                    "revisions": {
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.2",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "group",
                     "help": "Group ID of the policy.",
                     "category": "unitary"
                 },
                 "id": {
-                    "revisions": {
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.2",
+                            ""
+                        ]
+                    ],
                     "type": "integer",
                     "name": "id",
                     "help": "Ingress policy ID.",
                     "category": "unitary"
                 },
                 "classifier": {
-                    "revisions": {
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.2",
+                            ""
+                        ]
+                    ],
                     "type": "dict",
                     "children": {
                         "dst_mac": {
-                            "revisions": {
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.2",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
-                            "name": "dst_mac",
+                            "name": "dst-mac",
                             "help": "Destination mac address to be matched.",
                             "category": "unitary"
                         },
                         "service": {
-                            "revisions": {
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.2",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
                             "name": "service",
                             "help": "Service name.",
                             "category": "unitary"
                         },
                         "dst_ip_prefix": {
-                            "revisions": {
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.2",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
-                            "name": "dst_ip_prefix",
+                            "name": "dst-ip-prefix",
                             "help": "Destination-ip address to be matched.",
                             "category": "unitary"
                         },
                         "src_mac": {
-                            "revisions": {
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.2",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
-                            "name": "src_mac",
+                            "name": "src-mac",
                             "help": "Source mac address to be matched.",
                             "category": "unitary"
                         },
                         "ether_type": {
-                            "revisions": {
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.2",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
-                            "name": "ether_type",
+                            "name": "ether-type",
                             "help": "Ether type to be matched.",
                             "category": "unitary"
                         },
                         "vlan_id": {
-                            "revisions": {
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.2",
+                                    ""
+                                ]
+                            ],
                             "type": "integer",
-                            "name": "vlan_id",
+                            "name": "vlan-id",
                             "help": "Vlan id to be matched.",
                             "category": "unitary"
                         },
                         "src_ip_prefix": {
-                            "revisions": {
-                                "v7.0.2": True,
-                                "v7.0.3": True,
-                                "v7.0.4": True,
-                                "v7.0.5": True,
-                                "v7.0.6": True,
-                                "v7.2.1": True,
-                                "v7.2.2": True,
-                                "v7.2.3": True,
-                                "v7.2.4": True,
-                                "v7.2.5": True,
-                                "v7.4.0": True,
-                                "v7.4.1": True
-                            },
+                            "v_range": [
+                                [
+                                    "v7.0.2",
+                                    ""
+                                ]
+                            ],
                             "type": "string",
-                            "name": "src_ip_prefix",
+                            "name": "src-ip-prefix",
                             "help": "Source-ip address to be matched.",
                             "category": "unitary"
                         }
@@ -658,121 +488,73 @@ versioned_schema = {
                     "category": "complex"
                 },
                 "description": {
-                    "revisions": {
-                        "v7.0.2": True,
-                        "v7.0.3": True,
-                        "v7.0.4": True,
-                        "v7.0.5": True,
-                        "v7.0.6": True,
-                        "v7.2.1": True,
-                        "v7.2.2": True,
-                        "v7.2.3": True,
-                        "v7.2.4": True,
-                        "v7.2.5": True,
-                        "v7.4.0": True,
-                        "v7.4.1": True
-                    },
+                    "v_range": [
+                        [
+                            "v7.0.2",
+                            ""
+                        ]
+                    ],
                     "type": "string",
                     "name": "description",
                     "help": "Description of the policy.",
                     "category": "unitary"
                 }
             },
-            "revisions": {
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
-            "name": "access_list_entry",
+            "v_range": [
+                [
+                    "v7.0.2",
+                    ""
+                ]
+            ],
+            "name": "access-list-entry",
             "help": "Access Control List Entry configuration.",
             "mkey": "id",
             "category": "table"
         },
         "filter_id": {
-            "revisions": {
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.2",
+                    ""
+                ]
+            ],
             "type": "string",
-            "name": "filter_id",
+            "name": "filter-id",
             "help": "filter-id of the policy.",
             "category": "unitary"
         },
         "id": {
-            "revisions": {
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.2",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "id",
             "help": "802-1X Dynamic Ingress policy ID.",
             "category": "unitary"
         },
         "description": {
-            "revisions": {
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
-                "v7.2.1": True,
-                "v7.2.2": True,
-                "v7.2.3": True,
-                "v7.2.4": True,
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.0.2",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "description",
             "help": "Description of the policy.",
             "category": "unitary"
         }
     },
-    "revisions": {
-        "v7.0.2": True,
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True,
-        "v7.2.1": True,
-        "v7.2.2": True,
-        "v7.2.3": True,
-        "v7.2.4": True,
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
-    "name": "802_1X",
+    "v_range": [
+        [
+            "v7.0.2",
+            ""
+        ]
+    ],
+    "name": "802-1X",
     "help": "802-1X Radius Dynamic Ingress Policy configuration.",
     "mkey": "id",
     "category": "table"

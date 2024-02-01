@@ -101,7 +101,7 @@ options:
                 required: false
             selector:
                 description:
-                    - selector for retrieving the fortigate facts
+                    - selector for retrieving the fortiSwitch facts
                 type: str
                 required: true
                 choices:
@@ -279,7 +279,7 @@ options:
 
     selector:
         description:
-            - selector for retrieving the fortigate facts
+            - selector for retrieving the fortiSwitch facts
         type: str
         required: false
         choices:
@@ -463,37 +463,28 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  connection: httpapi
-  collections:
-    - fortinet.fortiswitch
-  vars:
-    ansible_httpapi_use_ssl: yes
-    ansible_httpapi_validate_certs: no
-    ansible_httpapi_port: 443
-  tasks:
-  - name: Get multiple selectors info concurrently
-    fortiswitch_configuration_fact:
+- name: Get multiple selectors info concurrently
+  fortiswitch_configuration_fact:
       selectors:
-        - selector: system_interface
-          params:
-            name: "port1"
+          - selector: system_interface
+            params:
+                name: "port1"
 
-  - name: fact gathering
-    fortiswitch_configuration_fact:
-        filters:
-            - name==port1
-            - vlanid==0
-        sorters:
-            - name,vlanid
-            - management-ip
-        formatters:
-         - name
-         - management-ip
-         - vlanid
-        selector: 'system_interface'
-
+- name: fact gathering
+  fortiswitch_configuration_fact:
+      filters:
+          - name==port1
+          - vlanid==0
+      sorters:
+          - name,vlanid
+          - management-ip
+      formatters:
+          - name
+          - management-ip
+          - vlanid
+      selector: 'system_interface'
 '''
+
 RETURN = '''
 build:
   description: Build number of the fortiswitch image
@@ -501,7 +492,7 @@ build:
   type: str
   sample: '1547'
 http_method:
-  description: Last method used to provision the content into FortiGate
+  description: Last method used to provision the content into FortiSwitch
   returned: always
   type: str
   sample: 'GET'
@@ -526,7 +517,7 @@ status:
   type: str
   sample: "success"
 version:
-  description: Version of the FortiGate
+  description: Version of the FortiSwitch
   returned: always
   type: str
   sample: "v7.0.0"
@@ -767,7 +758,7 @@ MODULE_MKEY_DEFINITONS = {
         "mkey_type": None,
     },
     "system_sniffer-profile": {
-        "mkey": "profile_name",
+        "mkey": "profile-name",
         "mkey_type": str,
     },
     "system.schedule_onetime": {
@@ -823,11 +814,11 @@ MODULE_MKEY_DEFINITONS = {
         "mkey_type": str,
     },
     "router_static": {
-        "mkey": "seq_num",
+        "mkey": "seq-num",
         "mkey_type": int,
     },
     "router_policy": {
-        "mkey": "seq_num",
+        "mkey": "seq-num",
         "mkey_type": int,
     },
     "router_rip": {
@@ -851,7 +842,7 @@ MODULE_MKEY_DEFINITONS = {
         "mkey_type": None,
     },
     "router_static6": {
-        "mkey": "seq_num",
+        "mkey": "seq-num",
         "mkey_type": int,
     },
     "router_ospf": {
@@ -951,7 +942,7 @@ MODULE_MKEY_DEFINITONS = {
         "mkey_type": str,
     },
     "switch_static-mac": {
-        "mkey": "seq_num",
+        "mkey": "seq-num",
         "mkey_type": int,
     },
     "switch_mirror": {
@@ -987,7 +978,7 @@ MODULE_MKEY_DEFINITONS = {
         "mkey_type": int,
     },
     "switch_ip-mac-binding": {
-        "mkey": "seq_num",
+        "mkey": "seq-num",
         "mkey_type": int,
     },
     "switch.igmp-snooping_globals": {

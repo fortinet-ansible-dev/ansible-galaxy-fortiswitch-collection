@@ -30,7 +30,7 @@ notes:
     - Different selector may have different parameters, users are expected to look up them for a specific selector.
     - For some selectors, the objects are global, no params are allowed to appear.
     - Not all parameters are required for a slector.
-    - This module is exclusivly for FortiOS monitor API.
+    - This module is exclusivly for FortiSwitch monitor API.
     - The result of API request is stored in results.
 requirements:
     - install galaxy collection fortinet.fortiswitch >= 1.0.0.
@@ -99,7 +99,7 @@ options:
                 required: false
             selector:
                 description:
-                    - selector of the retrieved fortiOS facts
+                    - selector of the retrieved fortiSwitch facts
                 type: str
                 required: true
                 choices:
@@ -163,7 +163,7 @@ options:
 
     selector:
         description:
-            - selector of the retrieved fortiOS facts.
+            - selector of the retrieved fortiSwitch facts.
         type: str
         required: false
         choices:
@@ -233,23 +233,14 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  connection: httpapi
-  collections:
-  - fortinet.fortiswitch
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - fortiswitch_monitor_fact:
+- name: Get system status info
+  fortinet.fortiswitch.fortiswitch_monitor_fact:
        formatters:
             - model_name
        filters:
             - model_name==FortiSwitch
        selectors:
-          - system_status
-
+            - system_status
 '''
 
 RETURN = '''
@@ -259,7 +250,7 @@ build:
   type: str
   sample: '1547'
 http_method:
-  description: Last method used to provision the content into FortiGate
+  description: Last method used to provision the content into FortiSwitch
   returned: always
   type: str
   sample: 'GET'
@@ -284,7 +275,7 @@ status:
   type: str
   sample: "success"
 version:
-  description: Version of the FortiGate
+  description: Version of the FortiSwitch
   returned: always
   type: str
   sample: "v5.6.3"
@@ -690,7 +681,7 @@ def main():
         module.fail_json(**FAIL_SOCKET_MSG)
 
     if versions_check_result and versions_check_result['matched'] is False:
-        module.warn("Ansible has detected version mismatch between FortOS system and galaxy, see more details by specifying option -vvv")
+        module.warn("Ansible has detected version mismatch between FortiSwitch system and galaxy, see more details by specifying option -vvv")
 
     if not is_error:
         if versions_check_result and versions_check_result['matched'] is False:

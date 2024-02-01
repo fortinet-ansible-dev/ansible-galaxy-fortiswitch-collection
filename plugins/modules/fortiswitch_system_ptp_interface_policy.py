@@ -89,24 +89,14 @@ options:
 '''
 
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: PTP policy configuration.
-    fortiswitch_system_ptp_interface_policy:
+- name: PTP policy configuration.
+  fortinet.fortiswitch.fortiswitch_system_ptp_interface_policy:
       state: "present"
       system_ptp_interface_policy:
-        description: "<your_own_value>"
-        name: "default_name_4"
-        vlan: "5"
-        vlan_pri: "6"
-
+          description: "<your_own_value>"
+          name: "default_name_4"
+          vlan: "5"
+          vlan_pri: "6"
 '''
 
 RETURN = '''
@@ -237,56 +227,61 @@ versioned_schema = {
     "elements": "dict",
     "children": {
         "vlan": {
-            "revisions": {
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.4.0",
+                    ""
+                ]
+            ],
             "type": "integer",
             "name": "vlan",
             "help": "PTP Vlan (0-4094)",
             "category": "unitary"
         },
         "vlan_pri": {
-            "revisions": {
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.4.0",
+                    ""
+                ]
+            ],
             "type": "integer",
-            "name": "vlan_pri",
+            "name": "vlan-pri",
             "help": "PTP Vlan Priority (0-7)",
             "category": "unitary"
         },
         "name": {
-            "revisions": {
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.4.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "name",
             "help": "Policy name.",
             "category": "unitary"
         },
         "description": {
-            "revisions": {
-                "v7.2.5": True,
-                "v7.4.0": True,
-                "v7.4.1": True
-            },
+            "v_range": [
+                [
+                    "v7.4.0",
+                    ""
+                ]
+            ],
             "type": "string",
             "name": "description",
             "help": "Description.",
             "category": "unitary"
         }
     },
-    "revisions": {
-        "v7.2.5": True,
-        "v7.4.0": True,
-        "v7.4.1": True
-    },
-    "name": "interface_policy",
+    "v_range": [
+        [
+            "v7.4.0",
+            ""
+        ]
+    ],
+    "name": "interface-policy",
     "help": "PTP policy configuration.",
     "mkey": "name",
     "category": "table"

@@ -24,7 +24,7 @@ def is_same_ip_address(current_ip, applied_ip):
     2 same as above and
     "10.10.10.0/24"
     '''
-    if type(current_ip) is list:
+    if isinstance(current_ip, list):
         current_ip = ' '.join(current_ip)
     if len(current_ip) == 0 and len(applied_ip) == 0:
         return True
@@ -69,19 +69,19 @@ def is_same_comparison(reorder_current, reorder_filtered):
         if key not in reorder_current:
             return False
 
-        if type(value) == dict:
+        if isinstance(value, dict):
             if not is_same_comparison(reorder_current[key], value):
                 return False
-        elif type(value) == list:
+        elif isinstance(value, list):
             if len(value) != len(reorder_current[key]):
                 return False
-            if len(value) and type(value[0]) == dict:
+            if len(value) and isinstance(value[0], dict):
                 for current_dict in reorder_current[key]:
                     if not is_same_comparison(current_dict, value[0]):
                         return False
             elif reorder_current[key] != value:
                 return False
-        elif type(value) == str and IP_PREFIX.match(value):
+        elif isinstance(value, str) and IP_PREFIX.match(value):
             return is_same_ip_address(reorder_current[key], value)
 
         elif reorder_current[key] != value:
@@ -91,10 +91,10 @@ def is_same_comparison(reorder_current, reorder_filtered):
 
 
 def serialize(data):
-    if type(data) == str and ' ' in data:
+    if isinstance(data, str) and ' ' in data:
         return serialize(data.split(' '))
-    if type(data) == list and len(data) > 0:
-        if type(data[0]) == dict:
+    if isinstance(data, list) and len(data) > 0:
+        if isinstance(data[0], dict):
             list_to_order = []
             for dt in data:
                 ret = {}
@@ -106,7 +106,7 @@ def serialize(data):
         else:
             return sorted(data)
 
-    if type(data) == dict:
+    if isinstance(data, dict):
         result = {}
         for key, value in data.items():
             result[key] = serialize(value)

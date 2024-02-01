@@ -96,21 +96,11 @@ results:
   returned: only for successful calls
   type: str
 '''
-
 EXAMPLES = '''
-- hosts: fortiswitch01
-  collections:
-    - fortinet.fortiswitch
-  connection: httpapi
-  vars:
-   ansible_httpapi_use_ssl: yes
-   ansible_httpapi_validate_certs: no
-   ansible_httpapi_port: 443
-  tasks:
-  - name: Download sniffer profile.
-    execute_download_sniffer_profile:
+- name: Download sniffer profile.
+  fortinet.fortiswitch.execute_download_sniffer_profile:
       download_sniffer_profile:
-        packet: "<your_own_value>"
+          packet: "<your_own_value>"
 '''
 
 
