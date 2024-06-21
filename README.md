@@ -9,7 +9,7 @@ The collection is the FortiSwitch Ansible Automation project. It includes the mo
 This collection is distributed via [ansible-galaxy](https://galaxy.ansible.com/), the installation steps are as follows:
 
 1. Install or upgrade to Ansible 2.11
-2. Download this collection from galaxy: `ansible-galaxy collection install fortinet.fortiswitch:1.2.3`
+2. Download this collection from galaxy: `ansible-galaxy collection install fortinet.fortiswitch:1.2.4`
 
 ## Requirements
 * Ansible 2.11 is required to support the newer Ansible Collections format

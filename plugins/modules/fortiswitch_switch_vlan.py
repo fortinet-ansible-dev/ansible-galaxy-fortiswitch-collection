@@ -31,8 +31,9 @@ author:
     - Frank Shen (@frankshen01)
     - Miguel Angel Munoz (@mamunozgonzalez)
 
+
 requirements:
-    - ansible>=2.14
+    - ansible>=2.15
 options:
     enable_log:
         description:
@@ -83,6 +84,7 @@ options:
                 choices:
                     - 'disable'
                     - 'enable'
+                    - 'monitor'
             assignment_priority:
                 description:
                     - 802.1x Radius (Tunnel-Private-Group-Id) vlanid assign-by-name priority (smaller is higher).
@@ -752,6 +754,10 @@ versioned_schema = {
                 },
                 {
                     "value": "enable"
+                },
+                {
+                    "value": "monitor",
+                    "v_range": []
                 }
             ],
             "name": "arp-inspection",
@@ -1880,9 +1886,9 @@ def main():
         connection = Connection(module._socket_path)
 
         if 'enable_log' in module.params:
-            connection.set_option('enable_log', module.params['enable_log'])
+            connection.set_custom_option('enable_log', module.params['enable_log'])
         else:
-            connection.set_option('enable_log', False)
+            connection.set_custom_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
         versions_check_result = check_schema_versioning(fos, versioned_schema, "switch_vlan")
         is_error, has_changed, result, diff = fortiswitch_switch(module.params, fos, module.check_mode)

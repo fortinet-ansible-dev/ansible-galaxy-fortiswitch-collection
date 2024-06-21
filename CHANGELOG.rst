@@ -5,6 +5,25 @@ Fortinet.Fortiswitch Release Notes
 .. contents:: Topics
 
 
+v1.2.4
+======
+
+Release Summary
+---------------
+
+patch release of 1.2.4
+
+Major Changes
+-------------
+
+- Add warning on the document for the module `fortiswitch_system_proxy_arp` to indicate that the module is not used for production purpose.
+- Improve the no_log logic to expose all the non-sensitive data to users.
+- Support Ansible 2.17.
+- Support multiple valus for the parameter of `ip6_allowaccess` in the module of `fortiswitch_system_interface`.
+- Support new FortiSwitch versions 7.4.3.
+- Update the required Ansible version to 2.15.
+- Update the supported version for the module with version number instead of latest.
+
 v1.2.3
 ======
 

@@ -1759,9 +1759,9 @@ def main():
     if module._socket_path:
         connection = Connection(module._socket_path)
         if 'enable_log' in module.params:
-            connection.set_option('enable_log', module.params['enable_log'])
+            connection.set_custom_option('enable_log', module.params['enable_log'])
         else:
-            connection.set_option('enable_log', False)
+            connection.set_custom_option('enable', False)
 
         fos = FortiOSHandler(connection, module)
 

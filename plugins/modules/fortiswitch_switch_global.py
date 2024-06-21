@@ -31,8 +31,9 @@ author:
     - Frank Shen (@frankshen01)
     - Miguel Angel Munoz (@mamunozgonzalez)
 
+
 requirements:
-    - ansible>=2.14
+    - ansible>=2.15
 options:
     enable_log:
         description:
@@ -373,6 +374,21 @@ options:
                         description:
                             - 802.1X tx period ( second ).
                         type: int
+            storm_control_high_rate:
+                description:
+                    - Storm control high rate.
+                type: int
+            storm_control_monitor:
+                description:
+                    - Enable/disable storm control monitor.
+                type: str
+                choices:
+                    - 'enable'
+                    - 'disable'
+            storm_control_rate_filter:
+                description:
+                    - Storm control rate filter.
+                type: int
             trunk_hash_mode:
                 description:
                     - Trunk hash mode.
@@ -480,13 +496,16 @@ EXAMPLES = '''
               quarantine_vlan: "disable"
               reauth_period: "54"
               tx_period: "55"
+          storm_control_high_rate: "56"
+          storm_control_monitor: "enable"
+          storm_control_rate_filter: "58"
           trunk_hash_mode: "default"
           trunk_hash_unicast_src_port: "enable"
           trunk_hash_unkunicast_src_dst: "enable"
-          virtual_wire_tpid: "59"
-          vxlan_dport: "60"
-          vxlan_port: "61"
-          vxlan_sport: "62"
+          virtual_wire_tpid: "62"
+          vxlan_dport: "63"
+          vxlan_port: "64"
+          vxlan_sport: "65"
           vxlan_stp_virtual_mac: "<your_own_value>"
           vxlan_stp_virtual_root: "enable"
 '''
@@ -562,7 +581,8 @@ def filter_switch_global_data(json):
                    'mclag_split_brain_detect', 'mclag_split_brain_priority', 'mclag_stp_aware',
                    'mirror_qos', 'name', 'poe_alarm_threshold',
                    'poe_guard_band', 'poe_power_budget', 'poe_power_mode',
-                   'poe_pre_standard_detect', 'port_security', 'trunk_hash_mode',
+                   'poe_pre_standard_detect', 'port_security', 'storm_control_high_rate',
+                   'storm_control_monitor', 'storm_control_rate_filter', 'trunk_hash_mode',
                    'trunk_hash_unicast_src_port', 'trunk_hash_unkunicast_src_dst', 'virtual_wire_tpid',
                    'vxlan_dport', 'vxlan_port', 'vxlan_sport',
                    'vxlan_stp_virtual_mac', 'vxlan_stp_virtual_root']
@@ -1681,6 +1701,35 @@ versioned_schema = {
             "name": "vxlan-dport",
             "help": "VXLAN destination UDP port.",
             "category": "unitary"
+        },
+        "storm_control_rate_filter": {
+            "v_range": [],
+            "type": "integer",
+            "name": "storm-control-rate-filter",
+            "help": "Storm control rate filter.",
+            "category": "unitary"
+        },
+        "storm_control_high_rate": {
+            "v_range": [],
+            "type": "integer",
+            "name": "storm-control-high-rate",
+            "help": "Storm control high rate.",
+            "category": "unitary"
+        },
+        "storm_control_monitor": {
+            "v_range": [],
+            "type": "string",
+            "options": [
+                {
+                    "value": "enable"
+                },
+                {
+                    "value": "disable"
+                }
+            ],
+            "name": "storm-control-monitor",
+            "help": "Enable/disable storm control monitor.",
+            "category": "unitary"
         }
     },
     "name": "global",
@@ -1724,9 +1773,9 @@ def main():
         connection = Connection(module._socket_path)
 
         if 'enable_log' in module.params:
-            connection.set_option('enable_log', module.params['enable_log'])
+            connection.set_custom_option('enable_log', module.params['enable_log'])
         else:
-            connection.set_option('enable_log', False)
+            connection.set_custom_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
         versions_check_result = check_schema_versioning(fos, versioned_schema, "switch_global")
         is_error, has_changed, result, diff = fortiswitch_switch(module.params, fos)

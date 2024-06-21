@@ -10,10 +10,16 @@ from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
 
-from ansible_collections.fortinet.fortios.plugins.module_utils.fortimanager.common import FMGR_RC
-from ansible_collections.fortinet.fortios.plugins.module_utils.fortimanager.common import FMGBaseException
-from ansible_collections.fortinet.fortios.plugins.module_utils.fortimanager.common import FMGRCommon
-from ansible_collections.fortinet.fortios.plugins.module_utils.fortimanager.common import scrub_dict
+try:
+    from ansible_collections.fortinet.fortios.plugins.module_utils.fortimanager.common import FMGR_RC
+    from ansible_collections.fortinet.fortios.plugins.module_utils.fortimanager.common import FMGBaseException
+    from ansible_collections.fortinet.fortios.plugins.module_utils.fortimanager.common import FMGRCommon
+    from ansible_collections.fortinet.fortios.plugins.module_utils.fortimanager.common import scrub_dict
+except ImportError as err:
+    IMPORT_FORTIMANAGER_COMMON_ERROR = err
+else:
+    IMPORT_FORTIMANAGER_COMMON_ERROR = None
+
 
 # check for pyFMG lib - DEPRECATING
 try:
@@ -293,7 +299,7 @@ class FortiManagerHandler(object):
 # LEGACY PYFMG METHODS START
 # USED TO DETERMINE LOCK CONTEXT ON A FORTIMANAGER. A DATABASE LOCKING CONCEPT THAT NEEDS TO BE ACCOUNTED FOR.
 
-class FMGLockContext(object):
+class FMGLogckContext(object):
     """
     - DEPRECATING: USING CONNECTION MANAGER NOW INSTEAD. EVENTUALLY THIS CLASS WILL DISAPPEAR. PLEASE
     - CONVERT ALL MODULES TO CONNECTION MANAGER METHOD.
@@ -406,6 +412,9 @@ class AnsibleFortiManager(object):
 
         if not HAS_PYFMGR:
             module.fail_json(msg='Could not import the python library pyFMG required by this module')
+
+        if not IMPORT_FORTIMANAGER_COMMON_ERROR:
+            module.fail_json(IMPORT_FORTIMANAGER_COMMON_ERROR)
 
         self.module = module
 

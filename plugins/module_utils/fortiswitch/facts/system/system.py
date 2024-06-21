@@ -17,9 +17,12 @@ based on the configuration.
 from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
-# import re
-# from ansible.module_utils.network.common import utils
-from ansible_collections.fortinet.fortios.plugins.module_utils.fortios.argspec.system.system import SystemArgs
+try:
+    from ansible_collections.fortinet.fortios.plugins.module_utils.fortios.argspec.system.system import SystemArgs
+except ImportError as err:
+    IMPORT_FORTIOS_ERROR = err
+else:
+    IMPORT_FORTIOS_ERROR = None
 
 
 class SystemFacts(object):
@@ -30,6 +33,9 @@ class SystemFacts(object):
         self._module = module
         self._fos = fos
         self._subset = subset
+
+        if not IMPORT_FORTIOS_ERROR:
+            module.fail_json(IMPORT_FORTIOS_ERROR)
 
     def populate_facts(self, connection, ansible_facts, data=None):
         """ Populate the facts for system

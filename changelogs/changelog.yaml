@@ -115,3 +115,20 @@ releases:
     fragments:
       - 1.2.3_release.yml
     release_date: "2024-01-31"
+  1.2.4:
+    changes:
+      major_changes:
+        - Add warning on the document for the module `fortiswitch_system_proxy_arp`
+          to indicate that the module is not used for production purpose.
+        - Improve the no_log logic to expose all the non-sensitive data to users.
+        - Support Ansible 2.17.
+        - Support multiple valus for the parameter of `ip6_allowaccess` in the module
+          of `fortiswitch_system_interface`.
+        - Support new FortiSwitch versions 7.4.3.
+        - Update the required Ansible version to 2.15.
+        - Update the supported version for the module with version number instead of
+          latest.
+      release_summary: patch release of 1.2.4
+    fragments:
+      - release_1.2.4.yml
+    release_date: "2024-06-21"

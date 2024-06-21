@@ -31,8 +31,9 @@ author:
     - Frank Shen (@frankshen01)
     - Miguel Angel Munoz (@mamunozgonzalez)
 
+
 requirements:
-    - ansible>=2.14
+    - ansible>=2.15
 options:
     enable_log:
         description:
@@ -572,9 +573,9 @@ def main():
         connection = Connection(module._socket_path)
 
         if 'enable_log' in module.params:
-            connection.set_option('enable_log', module.params['enable_log'])
+            connection.set_custom_option('enable_log', module.params['enable_log'])
         else:
-            connection.set_option('enable_log', False)
+            connection.set_custom_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
         versions_check_result = check_schema_versioning(fos, versioned_schema, "log_syslogd_override_setting")
         is_error, has_changed, result, diff = fortiswitch_log_syslogd(module.params, fos)

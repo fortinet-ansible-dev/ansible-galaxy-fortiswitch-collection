@@ -657,9 +657,9 @@ def main():
         connection = Connection(module._socket_path)
         # Logging for fact module could be disabled/enabled.
         if 'enable_log' in module.params:
-            connection.set_option('enable_log', module.params['enable_log'])
+            connection.set_custom_option('enable_log', module.params['enable_log'])
         else:
-            connection.set_option('enable_log', False)
+            connection.set_custom_option('enable_log', False)
 
         fos = FortiOSHandler(connection, module)
 

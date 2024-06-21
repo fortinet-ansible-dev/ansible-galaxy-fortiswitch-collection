@@ -15,6 +15,7 @@ import traceback
 
 from ansible.module_utils._text import to_text
 import json
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.secret_field import is_secret_field
 
 try:
     import urllib.parse as urlencoding
@@ -64,7 +65,7 @@ def schema_to_module_spec(schema):
         for child in schema['children']:
             child_value = schema['children'][child]
             rdata['options'][child] = schema_to_module_spec(child_value)
-            if (child):
+            if is_secret_field(child):
                 rdata['options'][child]['no_log'] = True
     elif schema['type'] in ['integer', 'string'] or (schema['type'] == 'list' and 'children' not in schema):
         if schema['type'] == 'integer':
@@ -169,7 +170,7 @@ def __check_version(revisions, version):
 
 def __concat_attribute_sequence(trace_path):
     rdata = ''
-    if type(trace_path) is not list:
+    if not isinstance(trace_path, list):
         raise AssertionError()
     if len(trace_path) >= 1:
         rdata += str(trace_path[0])
@@ -193,13 +194,13 @@ def check_schema_versioning_internal(results, trace, schema, params, version):
         return
 
     if schema['type'] == 'list':
-        if type(params) is not list:
+        if not isinstance(params, list):
             raise AssertionError()
         if 'children' in schema:
             if 'options' in schema:
                 raise AssertionError()
             for list_item in params:
-                if type(list_item) is not dict:
+                if not isinstance(list_item, dict):
                     # Parameter inconsistency here is not covered by Ansible, we gracefully throw a warning
                     results['mismatches'].append('option [%s]\' playload is inconsistent with schema.' % (__concat_attribute_sequence(trace)))
                     continue
@@ -224,7 +225,7 @@ def check_schema_versioning_internal(results, trace, schema, params, version):
                 check_schema_versioning_internal(results, trace, target_option, param, version)
                 del trace[-1]
     elif schema['type'] == 'dict':
-        if type(params) is not dict:
+        if not isinstance(params, dict):
             raise AssertionError()
         if 'children' in schema:
             for dict_item_key in params:
@@ -303,7 +304,7 @@ class FortiOSHandler(object):
 
         if type(attr_params) not in [list, dict]:
             raise AssertionError('Invalid attribute type')
-        if type(attr_params) is dict:
+        if isinstance(attr_params, dict):
             trace_param_item = dict()
             trace_param_item[current_attr_name] = (None, attr_params)
             trace_param.append(trace_param_item)
@@ -651,7 +652,7 @@ class FortiOSHandler(object):
             resp = json.loads(data)
         except Exception:
             resp = {'raw': data}
-        if is_array and type(resp) is not list:
+        if is_array and not isinstance(resp, list):
             resp = [resp]
         if is_array and 'http_status' not in resp[0]:
             resp[0]['http_status'] = http_status

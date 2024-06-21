@@ -31,8 +31,11 @@ author:
     - Frank Shen (@frankshen01)
     - Miguel Angel Munoz (@mamunozgonzalez)
 
+notes:
+    - The module is currently under development and testing, so we do not recommend using it for production purposes. It may also be deprecated in the future.
+
 requirements:
-    - ansible>=2.14
+    - ansible>=2.15
 options:
     enable_log:
         description:
@@ -326,6 +329,7 @@ def main():
                   "choices": ["present", "absent"]},
         "system_proxy_arp": {
             "required": False, "type": "dict", "default": None,
+            "no_log": True,
             "options": {}
         }
     }
@@ -347,9 +351,9 @@ def main():
         connection = Connection(module._socket_path)
 
         if 'enable_log' in module.params:
-            connection.set_option('enable_log', module.params['enable_log'])
+            connection.set_custom_option('enable_log', module.params['enable_log'])
         else:
-            connection.set_option('enable_log', False)
+            connection.set_custom_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
         versions_check_result = check_schema_versioning(fos, versioned_schema, "system_proxy_arp")
         is_error, has_changed, result, diff = fortiswitch_system(module.params, fos, module.check_mode)

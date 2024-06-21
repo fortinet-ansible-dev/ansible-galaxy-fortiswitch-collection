@@ -31,8 +31,9 @@ author:
     - Frank Shen (@frankshen01)
     - Miguel Angel Munoz (@mamunozgonzalez)
 
+
 requirements:
-    - ansible>=2.14
+    - ansible>=2.15
 options:
     enable_log:
         description:
@@ -105,6 +106,13 @@ options:
                 description:
                     - Administrative access HTTP port (1 - 65535).
                 type: int
+            admin_restrict_local:
+                description:
+                    - Enable/disable local admin authentication restriction when remote authenticator is up and running.
+                type: str
+                choices:
+                    - 'enable'
+                    - 'disable'
             admin_scp:
                 description:
                     - Enable/disable downloading of system configuraiton using SCP.
@@ -161,6 +169,10 @@ options:
                 choices:
                     - 'enable'
                     - 'disable'
+            arp_inspection_monitor_timeout:
+                description:
+                    - Timeout used when MAC-VLAN-IP learned from ARP traffic.
+                type: int
             arp_timeout:
                 description:
                     - ARP timeout value in seconds.
@@ -407,6 +419,13 @@ options:
                 description:
                     - Remote authentication (RADIUS/LDAP) time-out (0 - 300).
                 type: int
+            reset_button:
+                description:
+                    - When disabled, reset is ignored while the OS is running.
+                type: str
+                choices:
+                    - 'enable'
+                    - 'disable'
             restart_time:
                 description:
                     - 'Daily restart time <hh:mm>.'
@@ -574,63 +593,66 @@ EXAMPLES = '''
           admin_lockout_threshold: "9"
           admin_password_hash: "sha1"
           admin_port: "11"
+          admin_restrict_local: "enable"
           admin_scp: "enable"
           admin_server_cert: "<your_own_value>"
-          admin_sport: "14"
-          admin_ssh_grace_time: "15"
-          admin_ssh_port: "16"
+          admin_sport: "15"
+          admin_ssh_grace_time: "16"
+          admin_ssh_port: "17"
           admin_ssh_v1: "enable"
-          admin_telnet_port: "18"
-          admintimeout: "19"
-          alert_interval: "20"
+          admin_telnet_port: "19"
+          admintimeout: "20"
+          alert_interval: "21"
           alertd_relog: "enable"
           allow_subnet_overlap: "enable"
-          arp_timeout: "23"
+          arp_inspection_monitor_timeout: "24"
+          arp_timeout: "25"
           asset_tag: "<your_own_value>"
           auto_isl: "enable"
-          cfg_revert_timeout: "26"
+          cfg_revert_timeout: "28"
           cfg_save: "automatic"
           clt_cert_req: "enable"
           csr_ca_attribute: "enable"
           daily_restart: "enable"
-          delaycli_timeout_cleanup: "31"
+          delaycli_timeout_cleanup: "33"
           detect_ip_conflict: "enable"
-          dh_params: "33"
+          dh_params: "35"
           dhcp_circuit_id: "intfname"
           dhcp_client_location: "intfname"
           dhcp_option_format: "legacy"
           dhcp_remote_id: "mac"
           dhcp_server_access_list: "enable"
           dhcp_snoop_client_req: "forward-untrusted"
-          dhcps_db_exp: "40"
-          dhcps_db_per_port_learn_limit: "41"
+          dhcps_db_exp: "42"
+          dhcps_db_per_port_learn_limit: "43"
           dst: "enable"
-          failtime: "43"
+          failtime: "45"
           fortilink_auto_discovery: "enable"
           hostname: "myhostname"
           image_rotation: "disable"
-          interval: "47"
+          interval: "49"
           ip_conflict_ignore_default: "enable"
-          ipv6_accept_dad: "49"
+          ipv6_accept_dad: "51"
           ipv6_all_forwarding: "enable"
           kernel_crashlog: "enable"
           kernel_devicelog: "enable"
           l3_host_expiry: "enable"
           language: "browser"
-          ldapconntimeout: "55"
+          ldapconntimeout: "57"
           post_login_banner: "<your_own_value>"
           pre_login_banner: "<your_own_value>"
           private_data_encryption: "disable"
-          radius_coa_port: "59"
-          radius_port: "60"
-          remoteauthtimeout: "61"
+          radius_coa_port: "61"
+          radius_port: "62"
+          remoteauthtimeout: "63"
+          reset_button: "enable"
           restart_time: "<your_own_value>"
           revision_backup_on_logout: "enable"
           revision_backup_on_upgrade: "enable"
           strong_crypto: "enable"
           switch_mgmt_mode: "local"
-          tcp6_mss_min: "67"
-          tcp_mss_min: "68"
+          tcp6_mss_min: "70"
+          tcp_mss_min: "71"
           tcp_options: "enable"
           tftp: "enable"
           timezone: "01"
@@ -697,23 +719,24 @@ def filter_system_global_data(json):
     option_list = ['802.1x_ca_certificate', '802.1x_certificate', 'admin_concurrent',
                    'admin_https_pki_required', 'admin_https_ssl_versions', 'admin_lockout_duration',
                    'admin_lockout_threshold', 'admin_password_hash', 'admin_port',
-                   'admin_scp', 'admin_server_cert', 'admin_sport',
-                   'admin_ssh_grace_time', 'admin_ssh_port', 'admin_ssh_v1',
-                   'admin_telnet_port', 'admintimeout', 'alert_interval',
-                   'alertd_relog', 'allow_subnet_overlap', 'arp_timeout',
-                   'asset_tag', 'auto_isl', 'cfg_revert_timeout',
-                   'cfg_save', 'clt_cert_req', 'csr_ca_attribute',
-                   'daily_restart', 'delaycli_timeout_cleanup', 'detect_ip_conflict',
-                   'dh_params', 'dhcp_circuit_id', 'dhcp_client_location',
-                   'dhcp_option_format', 'dhcp_remote_id', 'dhcp_server_access_list',
-                   'dhcp_snoop_client_req', 'dhcps_db_exp', 'dhcps_db_per_port_learn_limit',
-                   'dst', 'failtime', 'fortilink_auto_discovery',
-                   'hostname', 'image_rotation', 'interval',
-                   'ip_conflict_ignore_default', 'ipv6_accept_dad', 'ipv6_all_forwarding',
-                   'kernel_crashlog', 'kernel_devicelog', 'l3_host_expiry',
-                   'language', 'ldapconntimeout', 'post_login_banner',
-                   'pre_login_banner', 'private_data_encryption', 'radius_coa_port',
-                   'radius_port', 'remoteauthtimeout', 'restart_time',
+                   'admin_restrict_local', 'admin_scp', 'admin_server_cert',
+                   'admin_sport', 'admin_ssh_grace_time', 'admin_ssh_port',
+                   'admin_ssh_v1', 'admin_telnet_port', 'admintimeout',
+                   'alert_interval', 'alertd_relog', 'allow_subnet_overlap',
+                   'arp_inspection_monitor_timeout', 'arp_timeout', 'asset_tag',
+                   'auto_isl', 'cfg_revert_timeout', 'cfg_save',
+                   'clt_cert_req', 'csr_ca_attribute', 'daily_restart',
+                   'delaycli_timeout_cleanup', 'detect_ip_conflict', 'dh_params',
+                   'dhcp_circuit_id', 'dhcp_client_location', 'dhcp_option_format',
+                   'dhcp_remote_id', 'dhcp_server_access_list', 'dhcp_snoop_client_req',
+                   'dhcps_db_exp', 'dhcps_db_per_port_learn_limit', 'dst',
+                   'failtime', 'fortilink_auto_discovery', 'hostname',
+                   'image_rotation', 'interval', 'ip_conflict_ignore_default',
+                   'ipv6_accept_dad', 'ipv6_all_forwarding', 'kernel_crashlog',
+                   'kernel_devicelog', 'l3_host_expiry', 'language',
+                   'ldapconntimeout', 'post_login_banner', 'pre_login_banner',
+                   'private_data_encryption', 'radius_coa_port', 'radius_port',
+                   'remoteauthtimeout', 'reset_button', 'restart_time',
                    'revision_backup_on_logout', 'revision_backup_on_upgrade', 'strong_crypto',
                    'switch_mgmt_mode', 'tcp6_mss_min', 'tcp_mss_min',
                    'tcp_options', 'tftp', 'timezone']
@@ -2266,6 +2289,43 @@ versioned_schema = {
             "name": "delaycli-timeout-cleanup",
             "help": "Time-out for cleaning up the delay cli execution completion data (1-1440 minutes,).",
             "category": "unitary"
+        },
+        "reset_button": {
+            "v_range": [],
+            "type": "string",
+            "options": [
+                {
+                    "value": "enable"
+                },
+                {
+                    "value": "disable"
+                }
+            ],
+            "name": "reset-button",
+            "help": "When disabled,reset is ignored while the OS is running.",
+            "category": "unitary"
+        },
+        "admin_restrict_local": {
+            "v_range": [],
+            "type": "string",
+            "options": [
+                {
+                    "value": "enable"
+                },
+                {
+                    "value": "disable"
+                }
+            ],
+            "name": "admin-restrict-local",
+            "help": "Enable/disable local admin authentication restriction when remote authenticator is up and running. (default = disable)",
+            "category": "unitary"
+        },
+        "arp_inspection_monitor_timeout": {
+            "v_range": [],
+            "type": "integer",
+            "name": "arp-inspection-monitor-timeout",
+            "help": "Timeout used when MAC-VLAN-IP learned from ARP traffic.",
+            "category": "unitary"
         }
     },
     "name": "global",
@@ -2309,9 +2369,9 @@ def main():
         connection = Connection(module._socket_path)
 
         if 'enable_log' in module.params:
-            connection.set_option('enable_log', module.params['enable_log'])
+            connection.set_custom_option('enable_log', module.params['enable_log'])
         else:
-            connection.set_option('enable_log', False)
+            connection.set_custom_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
         versions_check_result = check_schema_versioning(fos, versioned_schema, "system_global")
         is_error, has_changed, result, diff = fortiswitch_system(module.params, fos)

@@ -31,8 +31,9 @@ author:
     - Frank Shen (@frankshen01)
     - Miguel Angel Munoz (@mamunozgonzalez)
 
+
 requirements:
-    - ansible>=2.14
+    - ansible>=2.15
 options:
     enable_log:
         description:
@@ -69,6 +70,20 @@ options:
         default: null
         type: dict
         suboptions:
+            announce_interval:
+                description:
+                    - Announce interval.
+                type: str
+                choices:
+                    - '0.25sec'
+                    - '0.5sec'
+                    - '1sec'
+                    - '2sec'
+                    - '4sec'
+            announce_timeout:
+                description:
+                    - PTP Announce timeout (2-10)
+                type: int
             description:
                 description:
                     - Description.
@@ -77,6 +92,16 @@ options:
                 description:
                     - PTP domain (0-255)
                 type: int
+            min_delay_req_interval:
+                description:
+                    - Min Delay Request interval.
+                type: str
+                choices:
+                    - '0.25sec'
+                    - '0.5sec'
+                    - '1sec'
+                    - '2sec'
+                    - '4sec'
             mode:
                 description:
                     - Select PTP mode.
@@ -98,12 +123,31 @@ options:
                     - '1sec'
                     - '2sec'
                     - '4sec'
+            priority1:
+                description:
+                    - PTP priority1 (0-255)
+                type: int
+            priority2:
+                description:
+                    - PTP priority2 (0-255)
+                type: int
             ptp_profile:
                 description:
                     - Select PTP profile.
                 type: str
                 choices:
                     - 'C37.238-2017'
+                    - 'default'
+            sync_interval:
+                description:
+                    - Sync interval.
+                type: str
+                choices:
+                    - '0.25sec'
+                    - '0.5sec'
+                    - '1sec'
+                    - '2sec'
+                    - '4sec'
             transport:
                 description:
                     - Select PTP transport.
@@ -117,12 +161,18 @@ EXAMPLES = '''
   fortinet.fortiswitch.fortiswitch_system_ptp_profile:
       state: "present"
       system_ptp_profile:
+          announce_interval: "0.25sec"
+          announce_timeout: "4"
           description: "<your_own_value>"
-          domain: "4"
+          domain: "6"
+          min_delay_req_interval: "0.25sec"
           mode: "transparent-e2e"
-          name: "default_name_6"
+          name: "default_name_9"
           pdelay_req_interval: "0.25sec"
+          priority1: "11"
+          priority2: "12"
           ptp_profile: "C37.238-2017"
+          sync_interval: "0.25sec"
           transport: "l2-mcast"
 '''
 
@@ -184,8 +234,10 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.d
 
 
 def filter_system_ptp_profile_data(json):
-    option_list = ['description', 'domain', 'mode',
-                   'name', 'pdelay_req_interval', 'ptp_profile',
+    option_list = ['announce_interval', 'announce_timeout', 'description',
+                   'domain', 'min_delay_req_interval', 'mode',
+                   'name', 'pdelay_req_interval', 'priority1',
+                   'priority2', 'ptp_profile', 'sync_interval',
                    'transport']
 
     json = remove_invalid_fields(json)
@@ -335,6 +387,10 @@ versioned_schema = {
             "options": [
                 {
                     "value": "C37.238-2017"
+                },
+                {
+                    "value": "default",
+                    "v_range": []
                 }
             ],
             "name": "ptp-profile",
@@ -368,6 +424,99 @@ versioned_schema = {
             "type": "string",
             "name": "description",
             "help": "Description.",
+            "category": "unitary"
+        },
+        "priority1": {
+            "v_range": [],
+            "type": "integer",
+            "name": "priority1",
+            "help": "PTP priority1 (0-255)",
+            "category": "unitary"
+        },
+        "announce_interval": {
+            "v_range": [],
+            "type": "string",
+            "options": [
+                {
+                    "value": "0.25sec"
+                },
+                {
+                    "value": "0.5sec"
+                },
+                {
+                    "value": "1sec"
+                },
+                {
+                    "value": "2sec"
+                },
+                {
+                    "value": "4sec"
+                }
+            ],
+            "name": "announce-interval",
+            "help": "Announce interval.",
+            "category": "unitary"
+        },
+        "min_delay_req_interval": {
+            "v_range": [],
+            "type": "string",
+            "options": [
+                {
+                    "value": "0.25sec"
+                },
+                {
+                    "value": "0.5sec"
+                },
+                {
+                    "value": "1sec"
+                },
+                {
+                    "value": "2sec"
+                },
+                {
+                    "value": "4sec"
+                }
+            ],
+            "name": "min-delay-req-interval",
+            "help": "Min Delay Request interval.",
+            "category": "unitary"
+        },
+        "sync_interval": {
+            "v_range": [],
+            "type": "string",
+            "options": [
+                {
+                    "value": "0.25sec"
+                },
+                {
+                    "value": "0.5sec"
+                },
+                {
+                    "value": "1sec"
+                },
+                {
+                    "value": "2sec"
+                },
+                {
+                    "value": "4sec"
+                }
+            ],
+            "name": "sync-interval",
+            "help": "Sync interval.",
+            "category": "unitary"
+        },
+        "priority2": {
+            "v_range": [],
+            "type": "integer",
+            "name": "priority2",
+            "help": "PTP priority2 (0-255)",
+            "category": "unitary"
+        },
+        "announce_timeout": {
+            "v_range": [],
+            "type": "integer",
+            "name": "announce-timeout",
+            "help": "PTP Announce timeout (2-10)",
             "category": "unitary"
         }
     },
@@ -421,9 +570,9 @@ def main():
         connection = Connection(module._socket_path)
 
         if 'enable_log' in module.params:
-            connection.set_option('enable_log', module.params['enable_log'])
+            connection.set_custom_option('enable_log', module.params['enable_log'])
         else:
-            connection.set_option('enable_log', False)
+            connection.set_custom_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
         versions_check_result = check_schema_versioning(fos, versioned_schema, "system_ptp_profile")
         is_error, has_changed, result, diff = fortiswitch_system_ptp(module.params, fos)

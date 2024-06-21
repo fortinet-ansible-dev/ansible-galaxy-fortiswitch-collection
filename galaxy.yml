@@ -1,6 +1,6 @@
 namespace: "fortinet"
 name: "fortiswitch"
-version: "1.2.3"
+version: "1.2.4"
 description: "A collection of Ansible Modules for FortiSwitch v7"
 readme: "README.md"
 authors:
@@ -9,9 +9,7 @@ authors:
     - Link Zheng (@chillancezen)
     - Jie Xue (@JieX19)
     - Miguel Angel Munoz (@mamunozgonzalez)
-dependencies: {
-    "ansible.netcommon": "*"
-}
+dependencies: { "ansible.netcommon": "*" }
 license:
     - "GPL-3.0-or-later"
 tags:

@@ -31,8 +31,9 @@ author:
     - Frank Shen (@frankshen01)
     - Miguel Angel Munoz (@mamunozgonzalez)
 
+
 requirements:
-    - ansible>=2.14
+    - ansible>=2.15
 options:
     enable_log:
         description:
@@ -69,6 +70,13 @@ options:
         default: null
         type: dict
         suboptions:
+            allow_arp_monitor:
+                description:
+                    - Enable/Disable ARP monitoring.
+                type: str
+                choices:
+                    - 'disable'
+                    - 'enable'
             allowed_sub_vlans:
                 description:
                     - Sub-VLANs allowed to egress this interface.
@@ -321,6 +329,22 @@ options:
                         description:
                             - Set authserver_timeout period.
                         type: int
+                    authserver_timeout_tagged:
+                        description:
+                            - Set authserver_timeout tagged vlan mode.
+                        type: str
+                        choices:
+                            - 'disable'
+                            - 'lldp-voice'
+                            - 'static'
+                    authserver_timeout_tagged_lldp_voice_vlanid:
+                        description:
+                            - authserver_timeout tagged lldp voice vlanid.
+                        type: int
+                    authserver_timeout_tagged_vlanid:
+                        description:
+                            - Set authserver_timeout tagged vlanid.
+                        type: int
                     authserver_timeout_vlan:
                         description:
                             - Enable/disable authserver_timeout vlan.
@@ -471,12 +495,20 @@ options:
                         description:
                             - Add inner-tag for untagged packets upon ingress.
                         type: int
+                    allowed_c_vlan:
+                        description:
+                            - Allowed c vlans.
+                        type: str
                     edge_type:
                         description:
                             - Choose edge type.
                         type: str
                         choices:
                             - 'customer'
+                    native_c_vlan:
+                        description:
+                            - Native c vlan for untagged packets.
+                        type: int
                     priority:
                         description:
                             - Follow S-Tag or C-Tag"s priority.
@@ -732,19 +764,20 @@ EXAMPLES = '''
   fortinet.fortiswitch.fortiswitch_switch_interface:
       state: "present"
       switch_interface:
+          allow_arp_monitor: "disable"
           allowed_sub_vlans: "<your_own_value>"
           allowed_vlans: "<your_own_value>"
           arp_inspection_trust: "trusted"
           auto_discovery_fortilink: "disable"
-          auto_discovery_fortilink_packet_interval: "7"
-          default_cos: "8"
+          auto_discovery_fortilink_packet_interval: "8"
+          default_cos: "9"
           description: "<your_own_value>"
-          dhcp_snoop_learning_limit: "10"
+          dhcp_snoop_learning_limit: "11"
           dhcp_snoop_learning_limit_check: "disable"
           dhcp_snoop_option82_override:
               -
                   circuit_id: "<your_own_value>"
-                  id: "14 (source switch.vlan.id)"
+                  id: "15 (source switch.vlan.id)"
                   remote_id: "<your_own_value>"
           dhcp_snoop_option82_trust: "enable"
           dhcp_snooping: "trusted"
@@ -755,38 +788,41 @@ EXAMPLES = '''
           igmp_snooping_flood_reports: "enable"
           interface_mode: "L2"
           ip_mac_binding: "global"
-          learning_limit: "25"
+          learning_limit: "26"
           learning_limit_action: "none"
           log_mac_event: "enable"
           loop_guard: "enabled"
-          loop_guard_mac_move_threshold: "29"
-          loop_guard_timeout: "30"
+          loop_guard_mac_move_threshold: "30"
+          loop_guard_timeout: "31"
           mcast_snooping_flood_traffic: "enable"
           mld_snooping_flood_reports: "enable"
           nac: "enable"
-          name: "default_name_34"
-          native_vlan: "35"
-          packet_sample_rate: "36"
+          name: "default_name_35"
+          native_vlan: "36"
+          packet_sample_rate: "37"
           packet_sampler: "enabled"
           port_security:
               allow_mac_move: "disable"
               allow_mac_move_to: "disable"
               auth_fail_vlan: "disable"
-              auth_fail_vlanid: "42"
+              auth_fail_vlanid: "43"
               auth_order: "dot1x-MAB"
               auth_priority: "legacy"
-              authserver_timeout_period: "45"
+              authserver_timeout_period: "46"
+              authserver_timeout_tagged: "disable"
+              authserver_timeout_tagged_lldp_voice_vlanid: "48"
+              authserver_timeout_tagged_vlanid: "49"
               authserver_timeout_vlan: "disable"
-              authserver_timeout_vlanid: "47"
+              authserver_timeout_vlanid: "51"
               dacl: "disable"
               eap_auto_untagged_vlans: "disable"
               eap_egress_tagged: "disable"
               eap_passthru: "disable"
               framevid_apply: "disable"
-              guest_auth_delay: "53"
+              guest_auth_delay: "57"
               guest_vlan: "disable"
-              guest_vlanid: "55"
-              mab_eapol_request: "56"
+              guest_vlanid: "59"
+              mab_eapol_request: "60"
               mac_auth_bypass: "disable"
               macsec_pae_mode: "none"
               macsec_profile: "<your_own_value> (source switch.macsec.profile.name)"
@@ -794,47 +830,49 @@ EXAMPLES = '''
               port_security_mode: "none"
               quarantine_vlan: "disable"
               radius_timeout_overwrite: "disable"
-          primary_vlan: "64 (source switch.vlan.id)"
+          primary_vlan: "68 (source switch.vlan.id)"
           private_vlan: "disable"
-          private_vlan_port_type: "66"
+          private_vlan_port_type: "70"
           ptp_policy: "<your_own_value> (source switch.ptp.policy.name)"
           ptp_status: "enable"
           qnq:
-              add_inner: "70"
+              add_inner: "74"
+              allowed_c_vlan: "<your_own_value>"
               edge_type: "customer"
+              native_c_vlan: "77"
               priority: "follow-c-tag"
               remove_inner: "disable"
-              s_tag_priority: "74"
+              s_tag_priority: "80"
               status: "disable"
               stp_qnq_admin: "disable"
-              untagged_s_vlan: "77"
+              untagged_s_vlan: "83"
               vlan_mapping:
                   -
                       description: "<your_own_value>"
-                      id: "80"
-                      match_c_vlan: "81"
-                      new_s_vlan: "82"
+                      id: "86"
+                      match_c_vlan: "87"
+                      new_s_vlan: "88"
               vlan_mapping_miss_drop: "disable"
           qos_policy: "<your_own_value> (source switch.qos.qos-policy.name)"
           raguard:
               -
-                  id: "86"
+                  id: "92"
                   raguard_policy: "<your_own_value> (source switch.raguard-policy.name)"
                   vlan_list: "<your_own_value>"
           rpvst_port: "enabled"
           sample_direction: "tx"
           security_groups:
               -
-                  name: "default_name_92"
-          sflow_counter_interval: "93"
-          snmp_index: "94"
+                  name: "default_name_98"
+          sflow_counter_interval: "99"
+          snmp_index: "100"
           sticky_mac: "enable"
           stp_bpdu_guard: "enabled"
-          stp_bpdu_guard_timeout: "97"
+          stp_bpdu_guard_timeout: "103"
           stp_loop_protection: "enabled"
           stp_root_guard: "enabled"
           stp_state: "enabled"
-          sub_vlan: "101 (source switch.vlan.id)"
+          sub_vlan: "107 (source switch.vlan.id)"
           switch_port_mode: "disable"
           trust_dot1p_map: "<your_own_value> (source switch.qos.dot1p-map.name)"
           trust_ip_dscp_map: "<your_own_value> (source switch.qos.ip-dscp-map.name)"
@@ -845,10 +883,10 @@ EXAMPLES = '''
                   action: "add"
                   description: "<your_own_value>"
                   direction: "ingress"
-                  id: "111"
-                  match_c_vlan: "112"
-                  match_s_vlan: "113"
-                  new_s_vlan: "114"
+                  id: "117"
+                  match_c_vlan: "118"
+                  match_s_vlan: "119"
+                  new_s_vlan: "120"
           vlan_mapping_miss_drop: "disable"
           vlan_tpid: "<your_own_value> (source switch.vlan-tpid.name)"
           vlan_traffic_type: "untagged"
@@ -914,27 +952,27 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.c
 
 
 def filter_switch_interface_data(json):
-    option_list = ['allowed_sub_vlans', 'allowed_vlans', 'arp_inspection_trust',
-                   'auto_discovery_fortilink', 'auto_discovery_fortilink_packet_interval', 'default_cos',
-                   'description', 'dhcp_snoop_learning_limit', 'dhcp_snoop_learning_limit_check',
-                   'dhcp_snoop_option82_override', 'dhcp_snoop_option82_trust', 'dhcp_snooping',
-                   'discard_mode', 'edge_port', 'filter_sub_vlans',
-                   'fortilink_l3_mode', 'igmp_snooping_flood_reports', 'interface_mode',
-                   'ip_mac_binding', 'learning_limit', 'learning_limit_action',
-                   'log_mac_event', 'loop_guard', 'loop_guard_mac_move_threshold',
-                   'loop_guard_timeout', 'mcast_snooping_flood_traffic', 'mld_snooping_flood_reports',
-                   'nac', 'name', 'native_vlan',
-                   'packet_sample_rate', 'packet_sampler', 'port_security',
-                   'primary_vlan', 'private_vlan', 'private_vlan_port_type',
-                   'ptp_policy', 'ptp_status', 'qnq',
-                   'qos_policy', 'raguard', 'rpvst_port',
-                   'sample_direction', 'security_groups', 'sflow_counter_interval',
-                   'snmp_index', 'sticky_mac', 'stp_bpdu_guard',
-                   'stp_bpdu_guard_timeout', 'stp_loop_protection', 'stp_root_guard',
-                   'stp_state', 'sub_vlan', 'switch_port_mode',
-                   'trust_dot1p_map', 'trust_ip_dscp_map', 'type',
-                   'untagged_vlans', 'vlan_mapping', 'vlan_mapping_miss_drop',
-                   'vlan_tpid', 'vlan_traffic_type']
+    option_list = ['allow_arp_monitor', 'allowed_sub_vlans', 'allowed_vlans',
+                   'arp_inspection_trust', 'auto_discovery_fortilink', 'auto_discovery_fortilink_packet_interval',
+                   'default_cos', 'description', 'dhcp_snoop_learning_limit',
+                   'dhcp_snoop_learning_limit_check', 'dhcp_snoop_option82_override', 'dhcp_snoop_option82_trust',
+                   'dhcp_snooping', 'discard_mode', 'edge_port',
+                   'filter_sub_vlans', 'fortilink_l3_mode', 'igmp_snooping_flood_reports',
+                   'interface_mode', 'ip_mac_binding', 'learning_limit',
+                   'learning_limit_action', 'log_mac_event', 'loop_guard',
+                   'loop_guard_mac_move_threshold', 'loop_guard_timeout', 'mcast_snooping_flood_traffic',
+                   'mld_snooping_flood_reports', 'nac', 'name',
+                   'native_vlan', 'packet_sample_rate', 'packet_sampler',
+                   'port_security', 'primary_vlan', 'private_vlan',
+                   'private_vlan_port_type', 'ptp_policy', 'ptp_status',
+                   'qnq', 'qos_policy', 'raguard',
+                   'rpvst_port', 'sample_direction', 'security_groups',
+                   'sflow_counter_interval', 'snmp_index', 'sticky_mac',
+                   'stp_bpdu_guard', 'stp_bpdu_guard_timeout', 'stp_loop_protection',
+                   'stp_root_guard', 'stp_state', 'sub_vlan',
+                   'switch_port_mode', 'trust_dot1p_map', 'trust_ip_dscp_map',
+                   'type', 'untagged_vlans', 'vlan_mapping',
+                   'vlan_mapping_miss_drop', 'vlan_tpid', 'vlan_traffic_type']
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -1569,6 +1607,20 @@ versioned_schema = {
                     "type": "integer",
                     "name": "s-tag-priority",
                     "help": "Set priority value if packets follow S-Tag's priority.",
+                    "category": "unitary"
+                },
+                "native_c_vlan": {
+                    "v_range": [],
+                    "type": "integer",
+                    "name": "native-c-vlan",
+                    "help": "Native c vlan for untagged packets.",
+                    "category": "unitary"
+                },
+                "allowed_c_vlan": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "allowed-c-vlan",
+                    "help": "Allowed c vlans.",
                     "category": "unitary"
                 }
             },
@@ -2755,6 +2807,38 @@ versioned_schema = {
                     "name": "allow-mac-move-to",
                     "help": "Enable/disable allow mac move mode to this port.",
                     "category": "unitary"
+                },
+                "authserver_timeout_tagged_lldp_voice_vlanid": {
+                    "v_range": [],
+                    "type": "integer",
+                    "name": "authserver-timeout-tagged-lldp-voice-vlanid",
+                    "help": "authserver_timeout tagged lldp voice vlanid.",
+                    "category": "unitary"
+                },
+                "authserver_timeout_tagged_vlanid": {
+                    "v_range": [],
+                    "type": "integer",
+                    "name": "authserver-timeout-tagged-vlanid",
+                    "help": "Set authserver_timeout tagged vlanid.",
+                    "category": "unitary"
+                },
+                "authserver_timeout_tagged": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "disable"
+                        },
+                        {
+                            "value": "lldp-voice"
+                        },
+                        {
+                            "value": "static"
+                        }
+                    ],
+                    "name": "authserver-timeout-tagged",
+                    "help": "Set authserver_timeout tagged vlan mode.",
+                    "category": "unitary"
                 }
             },
             "name": "port-security",
@@ -2940,6 +3024,21 @@ versioned_schema = {
             "name": "ptp-status",
             "help": "PTP Admin. Status.",
             "category": "unitary"
+        },
+        "allow_arp_monitor": {
+            "v_range": [],
+            "type": "string",
+            "options": [
+                {
+                    "value": "disable"
+                },
+                {
+                    "value": "enable"
+                }
+            ],
+            "name": "allow-arp-monitor",
+            "help": "Enable/Disable ARP monitoring.",
+            "category": "unitary"
         }
     },
     "v_range": [
@@ -2992,9 +3091,9 @@ def main():
         connection = Connection(module._socket_path)
 
         if 'enable_log' in module.params:
-            connection.set_option('enable_log', module.params['enable_log'])
+            connection.set_custom_option('enable_log', module.params['enable_log'])
         else:
-            connection.set_option('enable_log', False)
+            connection.set_custom_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
         versions_check_result = check_schema_versioning(fos, versioned_schema, "switch_interface")
         is_error, has_changed, result, diff = fortiswitch_switch(module.params, fos, module.check_mode)

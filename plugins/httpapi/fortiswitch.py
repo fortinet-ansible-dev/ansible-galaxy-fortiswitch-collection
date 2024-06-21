@@ -37,15 +37,22 @@ class HttpApi(HttpApiBase):
         self._ccsrftoken = ''
         self._system_version = None
         self._ansible_fos_version = '{{__fortios_version__}}'
-        self._ansible_galaxy_version = '1.2.3'
+        self._ansible_galaxy_version = '1.2.4'
         self._log = None
 
+    def set_custom_option(self, k, v):
+        # _options is defined at https://github.com/ansible/ansible/blob/devel/lib/ansible/plugins/__init__.py#L60
+        # seems to be an ansible bug that the value can be defined in the doc above but not set/get
+        self._options[k] = v
+
     def log(self, msg):
-        log_enabled = self._conn.get_option('enable_log')
+        log_enabled = self._options.get('enable_log', False)
         if not log_enabled:
             return
         if not self._log:
-            self._log = open("/tmp/fortiswitch.ansible.log", "a")
+            self._log = open("/tmp/fortiswitch.ansible.log", "w")
+            self._log.write('All set options:')
+            self._log.write(str(self.get_options()) + '\n')
         log_message = str(datetime.now())
         log_message += ": " + str(msg) + '\n'
         self._log.write(log_message)
