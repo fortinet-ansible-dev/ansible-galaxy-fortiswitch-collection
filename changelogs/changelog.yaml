@@ -132,3 +132,18 @@ releases:
     fragments:
       - release_1.2.4.yml
     release_date: "2024-06-21"
+  1.2.5:
+    changes:
+      bugfixes:
+        - Fix the issue while unsetting allowaccess in `fortiswitch_system_interface`.
+        - Fix the issue that the session max out while running multiple playboks.
+      major_changes:
+        - Support new version 7.6.0.
+        - Update README.md to satisfy the latest Ansible collection requirements.
+        - Improve the code logic to send GET request and then POST or PUT request.
+        - Add `fortiswitch_json_generic` module.
+        - Support check_mode and diff feature for all the configuration modules.
+      release_summary: patch release of 1.2.5
+    fragments:
+      - release_1.2.5.yml
+    release_date: "2024-10-23"

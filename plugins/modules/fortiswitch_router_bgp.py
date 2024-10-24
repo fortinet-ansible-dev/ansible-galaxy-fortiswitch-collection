@@ -460,6 +460,13 @@ options:
                         choices:
                             - 'enable'
                             - 'disable'
+                    capability_extended_nexthop:
+                        description:
+                            - Enable/disable extended nexthop capability.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
                     capability_orf:
                         description:
                             - Accept/Send IPv4 ORF lists to/from this neighbor.
@@ -795,6 +802,479 @@ options:
                         description:
                             - Neighbor weight.
                         type: int
+            neighbor_group:
+                description:
+                    - BGP neighbor group table.
+                type: list
+                elements: dict
+                suboptions:
+                    activate:
+                        description:
+                            - Enable/disable address family IPv4 for this neighbor.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    activate6:
+                        description:
+                            - Enable/disable address family IPv6 for this neighbor.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    activate_evpn:
+                        description:
+                            - Enable/disable address family evpn for this neighbor.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    advertisement_interval:
+                        description:
+                            - Minimum interval (seconds) between sending updates.
+                        type: int
+                    allowas_in:
+                        description:
+                            - IPv4 The maximum number of occurrence of my AS number allowed.
+                        type: int
+                    allowas_in6:
+                        description:
+                            - IPv6 The maximum number of occurrence of my AS number allowed.
+                        type: int
+                    allowas_in_enable:
+                        description:
+                            - Enable/disable IPv4 Enable to allow my AS in AS path.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    allowas_in_enable6:
+                        description:
+                            - Enable/disable IPv6 - Enable to allow my AS in AS path.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    allowas_in_enable_evpn:
+                        description:
+                            - Enable/disable EVPN Enable to allow my AS in AS path.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    as_override:
+                        description:
+                            - Enable/disable replace peer AS with own AS for IPv4.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    as_override6:
+                        description:
+                            - Enable/disable replace peer AS with own AS for IPv6.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    attribute_unchanged:
+                        description:
+                            - IPv4 List of attributes that should be unchanged.
+                        type: str
+                        choices:
+                            - 'as-path'
+                            - 'med'
+                            - 'next-hop'
+                    attribute_unchanged6:
+                        description:
+                            - IPv6 List of attributes that should be unchanged.
+                        type: str
+                        choices:
+                            - 'as-path'
+                            - 'med'
+                            - 'next-hop'
+                    attribute_unchanged_evpn:
+                        description:
+                            - EVPN List of attributes that should be unchanged.
+                        type: str
+                        choices:
+                            - 'as-path'
+                            - 'med'
+                    bfd:
+                        description:
+                            - Enable/disable BFD for this neighbor.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    capability_default_originate:
+                        description:
+                            - Enable/disable advertise default IPv4 route to this neighbor.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    capability_default_originate6:
+                        description:
+                            - Enable/disable advertise default IPv6 route to this neighbor.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    capability_dynamic:
+                        description:
+                            - Enable/disable advertise dynamic capability to this neighbor.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    capability_extended_nexthop:
+                        description:
+                            - Enable/disable extended nexthop capability.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    capability_orf:
+                        description:
+                            - Accept/Send IPv4 ORF lists to/from this neighbor.
+                        type: str
+                        choices:
+                            - 'none'
+                            - 'receive'
+                            - 'send'
+                            - 'both'
+                    capability_orf6:
+                        description:
+                            - Accept/Send IPv6 ORF lists to/from this neighbor.
+                        type: str
+                        choices:
+                            - 'none'
+                            - 'receive'
+                            - 'send'
+                            - 'both'
+                    connect_timer:
+                        description:
+                            - Interval (seconds) for connect timer.
+                        type: int
+                    default_originate_routemap:
+                        description:
+                            - Route map to specify criteria to originate IPv4 default.
+                        type: str
+                    default_originate_routemap6:
+                        description:
+                            - Route map to specify criteria to originate IPv6 default.
+                        type: str
+                    description:
+                        description:
+                            - Description.
+                        type: str
+                    distribute_list_in:
+                        description:
+                            - Filter for IPv4 updates from this neighbor.
+                        type: str
+                    distribute_list_in6:
+                        description:
+                            - Filter for IPv6 updates from this neighbor.
+                        type: str
+                    distribute_list_out:
+                        description:
+                            - Filter for IPv4 updates to this neighbor.
+                        type: str
+                    distribute_list_out6:
+                        description:
+                            - Filter for IPv6 updates to this neighbor.
+                        type: str
+                    dont_capability_negotiate:
+                        description:
+                            - Don"t negotiate capabilities with this neighbor
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    ebgp_enforce_multihop:
+                        description:
+                            - Enable/disable allow multi-hop next-hops from EBGP neighbors.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    ebgp_multihop_ttl:
+                        description:
+                            - EBGP multihop TTL for this peer.
+                        type: int
+                    ebgp_ttl_security_hops:
+                        description:
+                            - Specify the maximum number of hops to the EBGP peer.
+                        type: int
+                    enforce_first_as:
+                        description:
+                            - Enable/disable  - Enable to enforce first AS for all(IPV4/IPV6) EBGP routes.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    filter_list_in:
+                        description:
+                            - BGP aspath filter for IPv4 inbound routes.
+                        type: str
+                    filter_list_in6:
+                        description:
+                            - BGP filter for IPv6 inbound routes.
+                        type: str
+                    filter_list_out:
+                        description:
+                            - BGP aspath filter for IPv4 outbound routes.
+                        type: str
+                    filter_list_out6:
+                        description:
+                            - BGP filter for IPv6 outbound routes.
+                        type: str
+                    holdtime_timer:
+                        description:
+                            - Interval (seconds) before peer considered dead.
+                        type: int
+                    interface:
+                        description:
+                            - Interface(s).
+                        type: list
+                        elements: dict
+                        suboptions:
+                            interface_name:
+                                description:
+                                    - RVI interface name(s).
+                                type: str
+                    keep_alive_timer:
+                        description:
+                            - Keepalive timer interval (seconds).
+                        type: int
+                    maximum_prefix:
+                        description:
+                            - Maximum number of IPv4 prefixes to accept from this peer.
+                        type: int
+                    maximum_prefix6:
+                        description:
+                            - Maximum number of IPv6 prefixes to accept from this peer.
+                        type: int
+                    maximum_prefix_threshold:
+                        description:
+                            - Maximum IPv4 prefix threshold value (1-100 percent).
+                        type: int
+                    maximum_prefix_threshold6:
+                        description:
+                            - Maximum IPv6 prefix threshold value (1-100 percent)
+                        type: int
+                    maximum_prefix_warning_only:
+                        description:
+                            - Enable/disable IPv4 Only give warning message when threshold is exceeded.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    maximum_prefix_warning_only6:
+                        description:
+                            - Enable/disable IPv6 Only give warning message when threshold is exceeded.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    name:
+                        description:
+                            - Neighbor group name.
+                        type: str
+                    next_hop_self:
+                        description:
+                            - Enable/disable IPv4 next-hop calculation for this neighbor.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    next_hop_self6:
+                        description:
+                            - Enable/disable IPv6 next-hop calculation for this neighbor.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    override_capability:
+                        description:
+                            - Enable/disable override result of capability negotiation.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    passive:
+                        description:
+                            - Enable/disable sending of open messages to this neighbor.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    password:
+                        description:
+                            - Password used in MD5 authentication.
+                        type: str
+                    prefix_list_in:
+                        description:
+                            - IPv4 Inbound filter for updates from this neighbor.
+                        type: str
+                    prefix_list_in6:
+                        description:
+                            - IPv6 Inbound filter for updates from this neighbor.
+                        type: str
+                    prefix_list_out:
+                        description:
+                            - IPv4 Outbound filter for updates to this neighbor.
+                        type: str
+                    prefix_list_out6:
+                        description:
+                            - IPv6 Outbound filter for updates to this neighbor.
+                        type: str
+                    remote_as:
+                        description:
+                            - AS number of neighbor.
+                        type: str
+                    remove_private_as:
+                        description:
+                            - Enable/disable remove private AS number from IPv4 outbound updates.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    remove_private_as6:
+                        description:
+                            - Enable/disable remove private AS number from IPv6 outbound updates.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    route_map_in:
+                        description:
+                            - IPv4 Inbound route map filter.
+                        type: str
+                    route_map_in6:
+                        description:
+                            - IPv6 Inbound route map filter.
+                        type: str
+                    route_map_in_evpn:
+                        description:
+                            - EVPN Inbound route map filter.
+                        type: str
+                    route_map_out:
+                        description:
+                            - IPv4 outbound route map filter.
+                        type: str
+                    route_map_out6:
+                        description:
+                            - IPv6 Outbound route map filter.
+                        type: str
+                    route_map_out_evpn:
+                        description:
+                            - EVPN outbound route map filter.
+                        type: str
+                    route_reflector_client:
+                        description:
+                            - Enable/disable IPv4 AS route reflector client.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    route_reflector_client6:
+                        description:
+                            - Enable/disable IPv6 AS route reflector client.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    route_reflector_client_evpn:
+                        description:
+                            - Enable/disable EVPN AS route reflector client.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    route_server_client:
+                        description:
+                            - Enable/disable IPv4 AS route server client.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    route_server_client6:
+                        description:
+                            - Enable/disable IPv6 AS route server client.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    send_community:
+                        description:
+                            - IPv4 Send community attribute to neighbor.
+                        type: str
+                        choices:
+                            - 'standard'
+                            - 'extended'
+                            - 'both'
+                            - 'disable'
+                    send_community6:
+                        description:
+                            - IPv6 Send community attribute to neighbor.
+                        type: str
+                        choices:
+                            - 'standard'
+                            - 'extended'
+                            - 'both'
+                            - 'disable'
+                    shutdown:
+                        description:
+                            - Enable/disable shutdown this neighbor.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    soft_reconfiguration:
+                        description:
+                            - Enable/disable allow IPv4 inbound soft reconfiguration.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    soft_reconfiguration6:
+                        description:
+                            - Enable/disable allow IPv6 inbound soft reconfiguration.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    soft_reconfiguration_evpn:
+                        description:
+                            - Enable/disable allow EVPN inbound soft reconfiguration.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    strict_capability_match:
+                        description:
+                            - Enable/disable strict capability matching.
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
+                    unsuppress_map:
+                        description:
+                            - IPv4 Route map to selectively unsuppress suppressed routes.
+                        type: str
+                    unsuppress_map6:
+                        description:
+                            - IPv6 Route map to selectively unsuppress suppressed routes.
+                        type: str
+                    update_source:
+                        description:
+                            - Interface to use as source IP/IPv6 address of TCP connections.
+                        type: str
+                    weight:
+                        description:
+                            - Neighbor weight.
+                        type: int
             network:
                 description:
                     - BGP network table.
@@ -978,9 +1458,10 @@ EXAMPLES = '''
                   capability_default_originate: "enable"
                   capability_default_originate6: "enable"
                   capability_dynamic: "enable"
+                  capability_extended_nexthop: "enable"
                   capability_orf: "none"
                   capability_orf6: "none"
-                  connect_timer: "76"
+                  connect_timer: "77"
                   default_originate_routemap: "<your_own_value> (source router.route-map.name)"
                   default_originate_routemap6: "<your_own_value> (source router.route-map.name)"
                   description: "<your_own_value>"
@@ -990,21 +1471,21 @@ EXAMPLES = '''
                   distribute_list_out6: "<your_own_value> (source router.access-list6.name)"
                   dont_capability_negotiate: "enable"
                   ebgp_enforce_multihop: "enable"
-                  ebgp_multihop_ttl: "86"
-                  ebgp_ttl_security_hops: "87"
+                  ebgp_multihop_ttl: "87"
+                  ebgp_ttl_security_hops: "88"
                   enforce_first_as: "enable"
                   filter_list_in: "<your_own_value> (source router.aspath-list.name)"
                   filter_list_in6: "<your_own_value> (source router.aspath-list.name)"
                   filter_list_out: "<your_own_value> (source router.aspath-list.name)"
                   filter_list_out6: "<your_own_value> (source router.aspath-list.name)"
-                  holdtime_timer: "93"
+                  holdtime_timer: "94"
                   interface: "<your_own_value> (source system.interface.name)"
                   ip: "<your_own_value>"
-                  keep_alive_timer: "96"
-                  maximum_prefix: "97"
-                  maximum_prefix6: "98"
-                  maximum_prefix_threshold: "99"
-                  maximum_prefix_threshold6: "100"
+                  keep_alive_timer: "97"
+                  maximum_prefix: "98"
+                  maximum_prefix6: "99"
+                  maximum_prefix_threshold: "100"
+                  maximum_prefix_threshold6: "101"
                   maximum_prefix_warning_only: "enable"
                   maximum_prefix_warning_only6: "enable"
                   next_hop_self: "enable"
@@ -1016,7 +1497,7 @@ EXAMPLES = '''
                   prefix_list_in6: "<your_own_value> (source router.prefix-list6.name)"
                   prefix_list_out: "<your_own_value> (source router.prefix-list.name)"
                   prefix_list_out6: "<your_own_value> (source router.prefix-list6.name)"
-                  remote_as: "112"
+                  remote_as: "113"
                   remove_private_as: "enable"
                   remove_private_as6: "enable"
                   route_map_in: "<your_own_value> (source router.route-map.name)"
@@ -1040,31 +1521,117 @@ EXAMPLES = '''
                   unsuppress_map: "<your_own_value> (source router.route-map.name)"
                   unsuppress_map6: "<your_own_value> (source router.route-map.name)"
                   update_source: "<your_own_value> (source system.interface.name)"
-                  weight: "136"
+                  weight: "137"
+          neighbor_group:
+              -
+                  activate: "enable"
+                  activate6: "enable"
+                  activate_evpn: "enable"
+                  advertisement_interval: "142"
+                  allowas_in: "143"
+                  allowas_in6: "144"
+                  allowas_in_enable: "enable"
+                  allowas_in_enable6: "enable"
+                  allowas_in_enable_evpn: "enable"
+                  as_override: "enable"
+                  as_override6: "enable"
+                  attribute_unchanged: "as-path"
+                  attribute_unchanged6: "as-path"
+                  attribute_unchanged_evpn: "as-path"
+                  bfd: "enable"
+                  capability_default_originate: "enable"
+                  capability_default_originate6: "enable"
+                  capability_dynamic: "enable"
+                  capability_extended_nexthop: "enable"
+                  capability_orf: "none"
+                  capability_orf6: "none"
+                  connect_timer: "160"
+                  default_originate_routemap: "<your_own_value> (source router.route-map.name)"
+                  default_originate_routemap6: "<your_own_value> (source router.route-map.name)"
+                  description: "<your_own_value>"
+                  distribute_list_in: "<your_own_value> (source router.access-list.name)"
+                  distribute_list_in6: "<your_own_value> (source router.access-list6.name)"
+                  distribute_list_out: "<your_own_value> (source router.access-list.name)"
+                  distribute_list_out6: "<your_own_value> (source router.access-list6.name)"
+                  dont_capability_negotiate: "enable"
+                  ebgp_enforce_multihop: "enable"
+                  ebgp_multihop_ttl: "170"
+                  ebgp_ttl_security_hops: "171"
+                  enforce_first_as: "enable"
+                  filter_list_in: "<your_own_value> (source router.aspath-list.name)"
+                  filter_list_in6: "<your_own_value> (source router.aspath-list.name)"
+                  filter_list_out: "<your_own_value> (source router.aspath-list.name)"
+                  filter_list_out6: "<your_own_value> (source router.aspath-list.name)"
+                  holdtime_timer: "177"
+                  interface:
+                      -
+                          interface_name: "<your_own_value> (source system.interface.name)"
+                  keep_alive_timer: "180"
+                  maximum_prefix: "181"
+                  maximum_prefix6: "182"
+                  maximum_prefix_threshold: "183"
+                  maximum_prefix_threshold6: "184"
+                  maximum_prefix_warning_only: "enable"
+                  maximum_prefix_warning_only6: "enable"
+                  name: "default_name_187"
+                  next_hop_self: "enable"
+                  next_hop_self6: "enable"
+                  override_capability: "enable"
+                  passive: "enable"
+                  password: "<your_own_value>"
+                  prefix_list_in: "<your_own_value> (source router.prefix-list.name)"
+                  prefix_list_in6: "<your_own_value> (source router.prefix-list6.name)"
+                  prefix_list_out: "<your_own_value> (source router.prefix-list.name)"
+                  prefix_list_out6: "<your_own_value> (source router.prefix-list6.name)"
+                  remote_as: "<your_own_value>"
+                  remove_private_as: "enable"
+                  remove_private_as6: "enable"
+                  route_map_in: "<your_own_value> (source router.route-map.name)"
+                  route_map_in6: "<your_own_value> (source router.route-map.name)"
+                  route_map_in_evpn: "<your_own_value> (source router.route-map.name)"
+                  route_map_out: "<your_own_value> (source router.route-map.name)"
+                  route_map_out6: "<your_own_value> (source router.route-map.name)"
+                  route_map_out_evpn: "<your_own_value> (source router.route-map.name)"
+                  route_reflector_client: "enable"
+                  route_reflector_client6: "enable"
+                  route_reflector_client_evpn: "enable"
+                  route_server_client: "enable"
+                  route_server_client6: "enable"
+                  send_community: "standard"
+                  send_community6: "standard"
+                  shutdown: "enable"
+                  soft_reconfiguration: "enable"
+                  soft_reconfiguration6: "enable"
+                  soft_reconfiguration_evpn: "enable"
+                  strict_capability_match: "enable"
+                  unsuppress_map: "<your_own_value> (source router.route-map.name)"
+                  unsuppress_map6: "<your_own_value> (source router.route-map.name)"
+                  update_source: "<your_own_value> (source system.interface.name)"
+                  weight: "221"
           network:
               -
                   backdoor: "enable"
-                  id: "139"
+                  id: "224"
                   prefix: "<your_own_value>"
                   route_map: "<your_own_value> (source router.route-map.name)"
           network6:
               -
-                  id: "143"
+                  id: "228"
                   prefix6: "<your_own_value>"
                   route_map: "<your_own_value> (source router.route-map.name)"
           redistribute:
               -
-                  name: "default_name_147"
+                  name: "default_name_232"
                   route_map: "<your_own_value> (source router.route-map.name)"
                   status: "enable"
           redistribute6:
               -
-                  name: "default_name_151"
+                  name: "default_name_236"
                   route_map: "<your_own_value> (source router.route-map.name)"
                   status: "enable"
           route_reflector_allow_outbound_policy: "enable"
           router_id: "<your_own_value>"
-          scan_time: "156"
+          scan_time: "241"
 '''
 
 RETURN = '''
@@ -1122,6 +1689,9 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.f
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
 
 
 def filter_router_bgp_data(json):
@@ -1137,9 +1707,9 @@ def filter_router_bgp_data(json):
                    'enforce_first_as', 'fast_external_failover', 'graceful_stalepath_time',
                    'holdtime_timer', 'keepalive_timer', 'log_neighbour_changes',
                    'maximum_paths_ebgp', 'maximum_paths_ibgp', 'neighbor',
-                   'network', 'network6', 'redistribute',
-                   'redistribute6', 'route_reflector_allow_outbound_policy', 'router_id',
-                   'scan_time']
+                   'neighbor_group', 'network', 'network6',
+                   'redistribute', 'redistribute6', 'route_reflector_allow_outbound_policy',
+                   'router_id', 'scan_time']
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -1164,9 +1734,67 @@ def underscore_to_hyphen(data):
     return data
 
 
-def router_bgp(data, fos):
+def router_bgp(data, fos, check_mode=False):
+    state = data.get('state', None)
+
     router_bgp_data = data['router_bgp']
-    filtered_data = underscore_to_hyphen(filter_router_bgp_data(router_bgp_data))
+
+    filtered_data = filter_router_bgp_data(router_bgp_data)
+    filtered_data = underscore_to_hyphen(filtered_data)
+
+    # check_mode starts from here
+    if check_mode:
+        diff = {
+            "before": '',
+            "after": filtered_data,
+        }
+        mkey = fos.get_mkey('router', 'bgp', filtered_data)
+        current_data = fos.get('router', 'bgp', mkey=mkey)
+        is_existed = current_data and current_data.get('http_status') == 200 \
+            and isinstance(current_data.get('results'), list) \
+            and len(current_data['results']) > 0
+
+        # 2. if it exists and the state is 'present' then compare current settings with desired
+        if state == 'present' or state is True or state is None:
+            mkeyname = fos.get_mkeyname(None, None)
+            # for non global modules, mkeyname must exist and it's a new module when mkey is None
+            if mkeyname is not None and mkey is None:
+                return False, True, filtered_data, diff
+
+            # if mkey exists then compare each other
+            # record exits and they're matched or not
+            copied_filtered_data = filtered_data.copy()
+            copied_filtered_data.pop(mkeyname, None)
+
+            # handle global modules'
+            if mkeyname is None and state is None:
+                is_same = is_same_comparison(
+                    serialize(current_data['results']), serialize(copied_filtered_data))
+
+                current_values = find_current_values(copied_filtered_data, current_data['results'])
+
+                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+
+            if is_existed:
+                is_same = is_same_comparison(
+                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+
+                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+
+                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+
+            # record does not exist
+            return False, True, filtered_data, diff
+
+        if state == 'absent':
+            if mkey is None:
+                return False, False, filtered_data, {"before": current_data['results'][0], "after": ''}
+
+            if is_existed:
+                return False, True, filtered_data, {"before": current_data['results'][0], "after": ''}
+            return False, False, filtered_data, {}
+
+        return True, False, {'reason: ': 'Must provide state parameter'}, {}
 
     return fos.set('router',
                    'bgp',
@@ -1180,14 +1808,15 @@ def is_successful_status(resp):
         'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
 
 
-def fortiswitch_router(data, fos):
+def fortiswitch_router(data, fos, check_mode):
     fos.do_member_operation('router', 'bgp')
     current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
     if data['router_bgp']:
-        resp = router_bgp(data, fos)
+        resp = router_bgp(data, fos, check_mode)
     else:
         fos._module.fail_json(msg='missing task body: %s' % ('router_bgp'))
-
+    if check_mode:
+        return resp
     return not is_successful_status(resp), \
         is_successful_status(resp) and \
         current_cmdb_index != resp['cmdb-index'], \
@@ -3491,6 +4120,21 @@ versioned_schema = {
                     "name": "allowas-in-enable-evpn",
                     "help": "Enable/disable EVPN Enable to allow my AS in AS path.",
                     "category": "unitary"
+                },
+                "capability_extended_nexthop": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "capability-extended-nexthop",
+                    "help": "Enable/disable extended nexthop capability.",
+                    "category": "unitary"
                 }
             },
             "v_range": [
@@ -3619,6 +4263,960 @@ versioned_schema = {
             "name": "route-reflector-allow-outbound-policy",
             "help": "Enable/disable route reflector to apply a route-map to reflected routes.",
             "category": "unitary"
+        },
+        "neighbor_group": {
+            "type": "list",
+            "elements": "dict",
+            "children": {
+                "name": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "name",
+                    "help": "Neighbor group name.",
+                    "category": "unitary"
+                },
+                "advertisement_interval": {
+                    "v_range": [],
+                    "type": "integer",
+                    "name": "advertisement-interval",
+                    "help": "Minimum interval (seconds) between sending updates.",
+                    "category": "unitary"
+                },
+                "allowas_in_enable": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "allowas-in-enable",
+                    "help": "Enable/disable IPv4 Enable to allow my AS in AS path.",
+                    "category": "unitary"
+                },
+                "allowas_in_enable_evpn": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "allowas-in-enable-evpn",
+                    "help": "Enable/disable EVPN Enable to allow my AS in AS path.",
+                    "category": "unitary"
+                },
+                "allowas_in_enable6": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "allowas-in-enable6",
+                    "help": "Enable/disable IPv6 - Enable to allow my AS in AS path.",
+                    "category": "unitary"
+                },
+                "enforce_first_as": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "enforce-first-as",
+                    "help": "Enable/disable  - Enable to enforce first AS for all(IPV4/IPV6) EBGP routes.",
+                    "category": "unitary"
+                },
+                "allowas_in": {
+                    "v_range": [],
+                    "type": "integer",
+                    "name": "allowas-in",
+                    "help": "IPv4 The maximum number of occurrence of my AS number allowed.",
+                    "category": "unitary"
+                },
+                "allowas_in6": {
+                    "v_range": [],
+                    "type": "integer",
+                    "name": "allowas-in6",
+                    "help": "IPv6 The maximum number of occurrence of my AS number allowed.",
+                    "category": "unitary"
+                },
+                "attribute_unchanged": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "as-path"
+                        },
+                        {
+                            "value": "med"
+                        },
+                        {
+                            "value": "next-hop"
+                        }
+                    ],
+                    "name": "attribute-unchanged",
+                    "help": "IPv4 List of attributes that should be unchanged.",
+                    "category": "unitary"
+                },
+                "attribute_unchanged_evpn": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "as-path"
+                        },
+                        {
+                            "value": "med"
+                        }
+                    ],
+                    "name": "attribute-unchanged-evpn",
+                    "help": "EVPN List of attributes that should be unchanged.",
+                    "category": "unitary"
+                },
+                "attribute_unchanged6": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "as-path"
+                        },
+                        {
+                            "value": "med"
+                        },
+                        {
+                            "value": "next-hop"
+                        }
+                    ],
+                    "name": "attribute-unchanged6",
+                    "help": "IPv6 List of attributes that should be unchanged.",
+                    "category": "unitary"
+                },
+                "activate": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "activate",
+                    "help": "Enable/disable address family IPv4 for this neighbor.",
+                    "category": "unitary"
+                },
+                "activate6": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "activate6",
+                    "help": "Enable/disable address family IPv6 for this neighbor.",
+                    "category": "unitary"
+                },
+                "activate_evpn": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "activate-evpn",
+                    "help": "Enable/disable address family evpn for this neighbor.",
+                    "category": "unitary"
+                },
+                "bfd": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "bfd",
+                    "help": "Enable/disable BFD for this neighbor.",
+                    "category": "unitary"
+                },
+                "capability_dynamic": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "capability-dynamic",
+                    "help": "Enable/disable advertise dynamic capability to this neighbor.",
+                    "category": "unitary"
+                },
+                "capability_orf": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "none"
+                        },
+                        {
+                            "value": "receive"
+                        },
+                        {
+                            "value": "send"
+                        },
+                        {
+                            "value": "both"
+                        }
+                    ],
+                    "name": "capability-orf",
+                    "help": "Accept/Send IPv4 ORF lists to/from this neighbor.",
+                    "category": "unitary"
+                },
+                "capability_orf6": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "none"
+                        },
+                        {
+                            "value": "receive"
+                        },
+                        {
+                            "value": "send"
+                        },
+                        {
+                            "value": "both"
+                        }
+                    ],
+                    "name": "capability-orf6",
+                    "help": "Accept/Send IPv6 ORF lists to/from this neighbor.",
+                    "category": "unitary"
+                },
+                "capability_default_originate": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "capability-default-originate",
+                    "help": "Enable/disable advertise default IPv4 route to this neighbor.",
+                    "category": "unitary"
+                },
+                "capability_default_originate6": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "capability-default-originate6",
+                    "help": "Enable/disable advertise default IPv6 route to this neighbor.",
+                    "category": "unitary"
+                },
+                "capability_extended_nexthop": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "capability-extended-nexthop",
+                    "help": "Enable/disable extended nexthop capability.",
+                    "category": "unitary"
+                },
+                "dont_capability_negotiate": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "dont-capability-negotiate",
+                    "help": "Don't negotiate capabilities with this neighbor",
+                    "category": "unitary"
+                },
+                "ebgp_enforce_multihop": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "ebgp-enforce-multihop",
+                    "help": "Enable/disable allow multi-hop next-hops from EBGP neighbors.",
+                    "category": "unitary"
+                },
+                "next_hop_self": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "next-hop-self",
+                    "help": "Enable/disable IPv4 next-hop calculation for this neighbor.",
+                    "category": "unitary"
+                },
+                "next_hop_self6": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "next-hop-self6",
+                    "help": "Enable/disable IPv6 next-hop calculation for this neighbor.",
+                    "category": "unitary"
+                },
+                "override_capability": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "override-capability",
+                    "help": "Enable/disable override result of capability negotiation.",
+                    "category": "unitary"
+                },
+                "passive": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "passive",
+                    "help": "Enable/disable sending of open messages to this neighbor.",
+                    "category": "unitary"
+                },
+                "remove_private_as": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "remove-private-as",
+                    "help": "Enable/disable remove private AS number from IPv4 outbound updates.",
+                    "category": "unitary"
+                },
+                "remove_private_as6": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "remove-private-as6",
+                    "help": "Enable/disable remove private AS number from IPv6 outbound updates.",
+                    "category": "unitary"
+                },
+                "route_reflector_client": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "route-reflector-client",
+                    "help": "Enable/disable IPv4 AS route reflector client.",
+                    "category": "unitary"
+                },
+                "route_reflector_client_evpn": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "route-reflector-client-evpn",
+                    "help": "Enable/disable EVPN AS route reflector client.",
+                    "category": "unitary"
+                },
+                "route_reflector_client6": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "route-reflector-client6",
+                    "help": "Enable/disable IPv6 AS route reflector client.",
+                    "category": "unitary"
+                },
+                "route_server_client": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "route-server-client",
+                    "help": "Enable/disable IPv4 AS route server client.",
+                    "category": "unitary"
+                },
+                "route_server_client6": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "route-server-client6",
+                    "help": "Enable/disable IPv6 AS route server client.",
+                    "category": "unitary"
+                },
+                "shutdown": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "shutdown",
+                    "help": "Enable/disable shutdown this neighbor.",
+                    "category": "unitary"
+                },
+                "soft_reconfiguration": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "soft-reconfiguration",
+                    "help": "Enable/disable allow IPv4 inbound soft reconfiguration.",
+                    "category": "unitary"
+                },
+                "soft_reconfiguration_evpn": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "soft-reconfiguration-evpn",
+                    "help": "Enable/disable allow EVPN inbound soft reconfiguration.",
+                    "category": "unitary"
+                },
+                "soft_reconfiguration6": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "soft-reconfiguration6",
+                    "help": "Enable/disable allow IPv6 inbound soft reconfiguration.",
+                    "category": "unitary"
+                },
+                "as_override": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "as-override",
+                    "help": "Enable/disable replace peer AS with own AS for IPv4.",
+                    "category": "unitary"
+                },
+                "as_override6": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "as-override6",
+                    "help": "Enable/disable replace peer AS with own AS for IPv6.",
+                    "category": "unitary"
+                },
+                "strict_capability_match": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "strict-capability-match",
+                    "help": "Enable/disable strict capability matching.",
+                    "category": "unitary"
+                },
+                "default_originate_routemap": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "default-originate-routemap",
+                    "help": "Route map to specify criteria to originate IPv4 default.",
+                    "category": "unitary"
+                },
+                "default_originate_routemap6": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "default-originate-routemap6",
+                    "help": "Route map to specify criteria to originate IPv6 default.",
+                    "category": "unitary"
+                },
+                "description": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "description",
+                    "help": "Description.",
+                    "category": "unitary"
+                },
+                "distribute_list_in": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "distribute-list-in",
+                    "help": "Filter for IPv4 updates from this neighbor.",
+                    "category": "unitary"
+                },
+                "distribute_list_in6": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "distribute-list-in6",
+                    "help": "Filter for IPv6 updates from this neighbor.",
+                    "category": "unitary"
+                },
+                "distribute_list_out": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "distribute-list-out",
+                    "help": "Filter for IPv4 updates to this neighbor.",
+                    "category": "unitary"
+                },
+                "distribute_list_out6": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "distribute-list-out6",
+                    "help": "Filter for IPv6 updates to this neighbor.",
+                    "category": "unitary"
+                },
+                "ebgp_multihop_ttl": {
+                    "v_range": [],
+                    "type": "integer",
+                    "name": "ebgp-multihop-ttl",
+                    "help": "EBGP multihop TTL for this peer.",
+                    "category": "unitary"
+                },
+                "ebgp_ttl_security_hops": {
+                    "v_range": [],
+                    "type": "integer",
+                    "name": "ebgp-ttl-security-hops",
+                    "help": "Specify the maximum number of hops to the EBGP peer.",
+                    "category": "unitary"
+                },
+                "filter_list_in": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "filter-list-in",
+                    "help": "BGP aspath filter for IPv4 inbound routes.",
+                    "category": "unitary"
+                },
+                "filter_list_in6": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "filter-list-in6",
+                    "help": "BGP filter for IPv6 inbound routes.",
+                    "category": "unitary"
+                },
+                "filter_list_out": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "filter-list-out",
+                    "help": "BGP aspath filter for IPv4 outbound routes.",
+                    "category": "unitary"
+                },
+                "filter_list_out6": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "filter-list-out6",
+                    "help": "BGP filter for IPv6 outbound routes.",
+                    "category": "unitary"
+                },
+                "interface": {
+                    "type": "list",
+                    "elements": "dict",
+                    "children": {
+                        "interface_name": {
+                            "v_range": [],
+                            "type": "string",
+                            "name": "interface-name",
+                            "help": "RVI interface name(s).",
+                            "category": "unitary"
+                        }
+                    },
+                    "v_range": [],
+                    "name": "interface",
+                    "help": "Interface(s).",
+                    "mkey": "interface-name",
+                    "category": "table"
+                },
+                "maximum_prefix": {
+                    "v_range": [],
+                    "type": "integer",
+                    "name": "maximum-prefix",
+                    "help": "Maximum number of IPv4 prefixes to accept from this peer.",
+                    "category": "unitary"
+                },
+                "maximum_prefix6": {
+                    "v_range": [],
+                    "type": "integer",
+                    "name": "maximum-prefix6",
+                    "help": "Maximum number of IPv6 prefixes to accept from this peer.",
+                    "category": "unitary"
+                },
+                "maximum_prefix_threshold": {
+                    "v_range": [],
+                    "type": "integer",
+                    "name": "maximum-prefix-threshold",
+                    "help": "Maximum IPv4 prefix threshold value (1-100 percent).",
+                    "category": "unitary"
+                },
+                "maximum_prefix_threshold6": {
+                    "v_range": [],
+                    "type": "integer",
+                    "name": "maximum-prefix-threshold6",
+                    "help": "Maximum IPv6 prefix threshold value (1-100 percent)",
+                    "category": "unitary"
+                },
+                "maximum_prefix_warning_only": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "maximum-prefix-warning-only",
+                    "help": "Enable/disable IPv4 Only give warning message when threshold is exceeded.",
+                    "category": "unitary"
+                },
+                "maximum_prefix_warning_only6": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "maximum-prefix-warning-only6",
+                    "help": "Enable/disable IPv6 Only give warning message when threshold is exceeded.",
+                    "category": "unitary"
+                },
+                "prefix_list_in": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "prefix-list-in",
+                    "help": "IPv4 Inbound filter for updates from this neighbor.",
+                    "category": "unitary"
+                },
+                "prefix_list_in6": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "prefix-list-in6",
+                    "help": "IPv6 Inbound filter for updates from this neighbor.",
+                    "category": "unitary"
+                },
+                "prefix_list_out": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "prefix-list-out",
+                    "help": "IPv4 Outbound filter for updates to this neighbor.",
+                    "category": "unitary"
+                },
+                "prefix_list_out6": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "prefix-list-out6",
+                    "help": "IPv6 Outbound filter for updates to this neighbor.",
+                    "category": "unitary"
+                },
+                "remote_as": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "remote-as",
+                    "help": "AS number of neighbor.",
+                    "category": "unitary"
+                },
+                "route_map_in": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "route-map-in",
+                    "help": "IPv4 Inbound route map filter.",
+                    "category": "unitary"
+                },
+                "route_map_in_evpn": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "route-map-in-evpn",
+                    "help": "EVPN Inbound route map filter.",
+                    "category": "unitary"
+                },
+                "route_map_in6": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "route-map-in6",
+                    "help": "IPv6 Inbound route map filter.",
+                    "category": "unitary"
+                },
+                "route_map_out": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "route-map-out",
+                    "help": "IPv4 outbound route map filter.",
+                    "category": "unitary"
+                },
+                "route_map_out_evpn": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "route-map-out-evpn",
+                    "help": "EVPN outbound route map filter.",
+                    "category": "unitary"
+                },
+                "route_map_out6": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "route-map-out6",
+                    "help": "IPv6 Outbound route map filter.",
+                    "category": "unitary"
+                },
+                "send_community": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "standard"
+                        },
+                        {
+                            "value": "extended"
+                        },
+                        {
+                            "value": "both"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "send-community",
+                    "help": "IPv4 Send community attribute to neighbor.",
+                    "category": "unitary"
+                },
+                "send_community6": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "standard"
+                        },
+                        {
+                            "value": "extended"
+                        },
+                        {
+                            "value": "both"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "send-community6",
+                    "help": "IPv6 Send community attribute to neighbor.",
+                    "category": "unitary"
+                },
+                "keep_alive_timer": {
+                    "v_range": [],
+                    "type": "integer",
+                    "name": "keep-alive-timer",
+                    "help": "Keepalive timer interval (seconds).",
+                    "category": "unitary"
+                },
+                "holdtime_timer": {
+                    "v_range": [],
+                    "type": "integer",
+                    "name": "holdtime-timer",
+                    "help": "Interval (seconds) before peer considered dead.",
+                    "category": "unitary"
+                },
+                "connect_timer": {
+                    "v_range": [],
+                    "type": "integer",
+                    "name": "connect-timer",
+                    "help": "Interval (seconds) for connect timer.",
+                    "category": "unitary"
+                },
+                "unsuppress_map": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "unsuppress-map",
+                    "help": "IPv4 Route map to selectively unsuppress suppressed routes.",
+                    "category": "unitary"
+                },
+                "unsuppress_map6": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "unsuppress-map6",
+                    "help": "IPv6 Route map to selectively unsuppress suppressed routes.",
+                    "category": "unitary"
+                },
+                "update_source": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "update-source",
+                    "help": "Interface to use as source IP/IPv6 address of TCP connections.",
+                    "category": "unitary"
+                },
+                "weight": {
+                    "v_range": [],
+                    "type": "integer",
+                    "name": "weight",
+                    "help": "Neighbor weight.",
+                    "category": "unitary"
+                },
+                "password": {
+                    "v_range": [],
+                    "type": "string",
+                    "name": "password",
+                    "help": "Password used in MD5 authentication.",
+                    "category": "unitary"
+                }
+            },
+            "v_range": [],
+            "name": "neighbor-group",
+            "help": "BGP neighbor group table.",
+            "mkey": "name",
+            "category": "table"
         }
     },
     "name": "bgp",
@@ -3629,7 +5227,6 @@ versioned_schema = {
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    # mkeyname = None
     mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
@@ -3650,7 +5247,7 @@ def main():
             fields["router_bgp"]['options'][attribute_name]['required'] = True
 
     module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=False)
+                           supports_check_mode=True)
 
     is_error = False
     has_changed = False
@@ -3667,7 +5264,7 @@ def main():
             connection.set_custom_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
         versions_check_result = check_schema_versioning(fos, versioned_schema, "router_bgp")
-        is_error, has_changed, result, diff = fortiswitch_router(module.params, fos)
+        is_error, has_changed, result, diff = fortiswitch_router(module.params, fos, module.check_mode)
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 

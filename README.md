@@ -1,20 +1,91 @@
 ![Fortinet logo|](https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Fortinet_logo.svg/320px-Fortinet_logo.svg.png)
 
-## FortiSwitch Ansible Collection
-***
+# fortinet.fortiswitch - Configuring FortiSwitch
 
-The collection is the FortiSwitch Ansible Automation project. It includes the modules that are able to configure FortiSwitch. 
+## Description
 
-## Installation
-This collection is distributed via [ansible-galaxy](https://galaxy.ansible.com/), the installation steps are as follows:
-
-1. Install or upgrade to Ansible 2.11
-2. Download this collection from galaxy: `ansible-galaxy collection install fortinet.fortiswitch:1.2.4`
+The collection includes modules that allow users to configure FortiSwitch, specifically for managing firewall features.
+Please refer to https://ansible-galaxy-fortiswitch-docs.readthedocs.io/en/latest/index.html for more information.
 
 ## Requirements
-* Ansible 2.11 is required to support the newer Ansible Collections format
 
-## Supported FortiSwitch Versions
+- Ansible 2.15.0 or above
+- Python 3.9 or above
+
+## Installation
+This collection is distributed via [ansible-galaxy](https://galaxy.ansible.com/).
+
+Before using this collection, you need to install it with the Ansible Galaxy command-line tool:
+
+```
+ansible-galaxy collection install fortinet.fortiswitch
+```
+
+You can also include it in a requirements.yml file and install it with ansible-galaxy collection install -r requirements.yml, using the format:
+
+
+```yaml
+collections:
+  - name: fortinet.fortiswitch
+```
+
+Note that if you install any collections from Ansible Galaxy, they will not be upgraded automatically when you upgrade the Ansible package.
+To upgrade the collection to the latest available version, run the following command:
+
+```
+ansible-galaxy collection install fortinet.fortiswitch --upgrade
+```
+
+You can also install a specific version of the collection, for example, if you need to downgrade when something is broken in the latest version (please report an issue in this repository). Use the following syntax to install version 1.2.4:
+
+```
+ansible-galaxy collection install fortinet.fortiswitch:==1.2.4
+```
+
+See [using Ansible collections](https://docs.ansible.com/ansible/devel/user_guide/collections_using.html) for more details.
+
+## Use Cases
+
+The FortiSwitch collection supports only username/password authentication.
+
+Follow the example here https://ansible-galaxy-fortiswitch-docs.readthedocs.io/en/latest/playbook.html to configure the hosts file and write your first playbook.
+
+Configure the allowaccess for port1:
+```yaml
+tasks:
+- name: configure the allowaccess for port1
+  fortiswitch_system_interface:
+    state: present
+    system_interface:
+      name: port1
+      allowaccess:
+        - https
+        - http
+        - ssh
+        - ping
+```
+
+Run the playbook:
+```bash
+ansible-playbook configure_allowaccess_for_port1.yml
+```
+
+## Testing
+
+Testing is conducted by the Fortinet team. The new version will be released once the entire collection passes both unit and sanity tests.
+
+## Support
+
+Please open a Github issue if your have any questions https://github.com/fortinet-ansible-dev/ansible-galaxy-fortiswitch-collection/issues
+
+## Release Notes and Roadmap
+
+Refer to the release notes here https://ansible-galaxy-fortiswitch-docs.readthedocs.io/en/latest/release.html
+The FortiSwitch Ansible collection is scheduled to be updated every two months.
+
+## Related Information
+
+For more information, please refer to [Documentation](https://ansible-galaxy-fortiswitch-docs.readthedocs.io/en/latest/index.html)
 | FSW version|Galaxy  Version| Release date|Path to Install |
 |----------|:-------------:|:-------------:|:------:|
 |7.0.0|1.0.0 |2021/12/15|`ansible-galaxy collection install fortinet.fortiswitch:1.0.0`|
@@ -207,44 +278,6 @@ The collection provides the following modules:
 * `fortiswitch_user_setting` User authentication setting in Fortinet's FortiSwitch
 * `fortiswitch_user_tacacsplus` TACACS+ server entry configuration in Fortinet's FortiSwitch
 
-## Roles
+## License Information
 
-## Usage
-The following example is used to configure system interface in Fortinet's FortiSwitch.
-
-Create `config_system_interface.yml` with the following template:
-```yaml
----
-- hosts: fortiswitch01
-  collections:
-  - fortinet.fortiswitch
-  connection: httpapi
-  gather_facts: 'no'
-  vars:
-    ansible_httpapi_use_ssl: 'yes'
-    ansible_httpapi_validate_certs: 'no'
-    ansible_httpapi_port: 443
-  tasks:
-  - name: edit internal interface
-    fortiswitch_system_interface:
-      state: present
-      system_interface:
-        name: internal
-        vdom: root
-        allowaccess: https
-```
-Create the `hosts` inventory file
-```
-[fortiswitches]
-fortiswitch01 ansible_host=192.168.190.100 ansible_user="admin" ansible_password="password"
-
-[fortiswitches:vars]
-ansible_network_os=fortinet.fortiswitch.fortiswitch
-```
-
-Run the test:
-```bash
-ansible-playbook -i hosts config_system_interface.yml
-```
-
-The task will set up the allowaccess in system_interface.
+FortiSwitch Ansible Collection follows [GNU General Public License v3.0](LICENSE).

@@ -5,6 +5,25 @@ Fortinet.Fortiswitch Release Notes
 .. contents:: Topics
 
 
+v1.2.5
+======
+
+Release Summary
+---------------
+
+patch release of 1.2.5
+
+Major Changes
+-------------
+
+- Support new version 7.6.0
+- Update README.md to satisfy the latest Ansible collection requirements.
+
+Bugfixes
+--------
+
+- Fix the issue while unsetting allowaccess in `fortiswitch_system_interface`
+
 v1.2.4
 ======
 

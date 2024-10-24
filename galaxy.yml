@@ -1,6 +1,6 @@
 namespace: "fortinet"
 name: "fortiswitch"
-version: "1.2.4"
+version: "1.2.5"
 description: "A collection of Ansible Modules for FortiSwitch v7"
 readme: "README.md"
 authors:

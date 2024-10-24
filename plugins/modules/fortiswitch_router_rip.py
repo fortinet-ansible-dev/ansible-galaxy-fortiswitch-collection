@@ -160,6 +160,13 @@ options:
                         description:
                             - Authentication string/password.
                         type: str
+                    bfd:
+                        description:
+                            - Bidirectional Forwarding Detection (BFD).
+                        type: str
+                        choices:
+                            - 'enable'
+                            - 'disable'
                     flags:
                         description:
                             - flags
@@ -631,104 +638,105 @@ EXAMPLES = '''
                   auth_keychain: "<your_own_value> (source router.key-chain.name)"
                   auth_mode: "none"
                   auth_string: "<your_own_value>"
-                  flags: "22"
-                  name: "default_name_23 (source system.interface.name)"
+                  bfd: "enable"
+                  flags: "23"
+                  name: "default_name_24 (source system.interface.name)"
                   receive_version: "global"
                   send_version: "global"
                   send_version2_broadcast: "disable"
                   split_horizon: "poisoned"
                   split_horizon_status: "enable"
-          name: "default_name_29"
+          name: "default_name_30"
           neighbor:
               -
-                  id: "31"
+                  id: "32"
                   ip: "<your_own_value>"
           network:
               -
-                  id: "34"
+                  id: "35"
                   prefix: "<your_own_value>"
           offset_list:
               -
                   access_list: "<your_own_value> (source router.access-list.name)"
                   direction: "in"
-                  id: "39"
+                  id: "40"
                   interface: "<your_own_value> (source system.interface.name)"
-                  offset: "41"
+                  offset: "42"
                   status: "enable"
           passive_interface:
               -
-                  name: "default_name_44 (source system.interface.name)"
-          recv_buffer_size: "45"
+                  name: "default_name_45 (source system.interface.name)"
+          recv_buffer_size: "46"
           redistribute:
               -
-                  flags: "47"
-                  metric: "48"
-                  name: "default_name_49"
+                  flags: "48"
+                  metric: "49"
+                  name: "default_name_50"
                   routemap: "<your_own_value> (source router.route-map.name)"
                   status: "enable"
-          timeout_timer: "52"
-          update_timer: "53"
+          timeout_timer: "53"
+          update_timer: "54"
           version: "1"
           vrf:
               -
                   default_information_originate: "enable"
-                  default_metric: "57"
+                  default_metric: "58"
                   distance:
                       -
                           access_list: "<your_own_value> (source router.access-list.name)"
-                          distance: "60"
-                          id: "61"
+                          distance: "61"
+                          id: "62"
                           prefix: "<your_own_value>"
                   distribute_list:
                       -
                           direction: "in"
-                          id: "65"
+                          id: "66"
                           interface: "<your_own_value> (source system.interface.name)"
                           listname: "<your_own_value> (source router.access-list.name router.prefix-list.name)"
                           status: "enable"
-                  garbage_timer: "69"
+                  garbage_timer: "70"
                   interface:
                       -
                           auth_keychain: "<your_own_value> (source router.key-chain.name)"
                           auth_mode: "none"
                           auth_string: "<your_own_value>"
-                          flags: "74"
-                          name: "default_name_75 (source system.interface.name)"
+                          flags: "75"
+                          name: "default_name_76 (source system.interface.name)"
                           receive_version: "global"
                           send_version: "global"
                           send_version2_broadcast: "disable"
                           split_horizon: "poisoned"
                           split_horizon_status: "enable"
-                  name: "default_name_81 (source router.vrf.name)"
+                  name: "default_name_82 (source router.vrf.name)"
                   neighbor:
                       -
-                          id: "83"
+                          id: "84"
                           ip: "<your_own_value>"
                   network:
                       -
-                          id: "86"
+                          id: "87"
                           prefix: "<your_own_value>"
                   offset_list:
                       -
                           access_list: "<your_own_value> (source router.access-list.name)"
                           direction: "in"
-                          id: "91"
+                          id: "92"
                           interface: "<your_own_value> (source system.interface.name)"
-                          offset: "93"
+                          offset: "94"
                           status: "enable"
                   passive_interface:
                       -
-                          name: "default_name_96 (source system.interface.name)"
-                  recv_buffer_size: "97"
+                          name: "default_name_97 (source system.interface.name)"
+                  recv_buffer_size: "98"
                   redistribute:
                       -
-                          flags: "99"
-                          metric: "100"
-                          name: "default_name_101"
+                          flags: "100"
+                          metric: "101"
+                          name: "default_name_102"
                           routemap: "<your_own_value> (source router.route-map.name)"
                           status: "enable"
-                  timeout_timer: "104"
-                  update_timer: "105"
+                  timeout_timer: "105"
+                  update_timer: "106"
                   version: "1"
 '''
 
@@ -787,6 +795,9 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.f
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
 
 
 def filter_router_rip_data(json):
@@ -820,9 +831,67 @@ def underscore_to_hyphen(data):
     return data
 
 
-def router_rip(data, fos):
+def router_rip(data, fos, check_mode=False):
+    state = data.get('state', None)
+
     router_rip_data = data['router_rip']
-    filtered_data = underscore_to_hyphen(filter_router_rip_data(router_rip_data))
+
+    filtered_data = filter_router_rip_data(router_rip_data)
+    filtered_data = underscore_to_hyphen(filtered_data)
+
+    # check_mode starts from here
+    if check_mode:
+        diff = {
+            "before": '',
+            "after": filtered_data,
+        }
+        mkey = fos.get_mkey('router', 'rip', filtered_data)
+        current_data = fos.get('router', 'rip', mkey=mkey)
+        is_existed = current_data and current_data.get('http_status') == 200 \
+            and isinstance(current_data.get('results'), list) \
+            and len(current_data['results']) > 0
+
+        # 2. if it exists and the state is 'present' then compare current settings with desired
+        if state == 'present' or state is True or state is None:
+            mkeyname = fos.get_mkeyname(None, None)
+            # for non global modules, mkeyname must exist and it's a new module when mkey is None
+            if mkeyname is not None and mkey is None:
+                return False, True, filtered_data, diff
+
+            # if mkey exists then compare each other
+            # record exits and they're matched or not
+            copied_filtered_data = filtered_data.copy()
+            copied_filtered_data.pop(mkeyname, None)
+
+            # handle global modules'
+            if mkeyname is None and state is None:
+                is_same = is_same_comparison(
+                    serialize(current_data['results']), serialize(copied_filtered_data))
+
+                current_values = find_current_values(copied_filtered_data, current_data['results'])
+
+                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+
+            if is_existed:
+                is_same = is_same_comparison(
+                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+
+                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+
+                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+
+            # record does not exist
+            return False, True, filtered_data, diff
+
+        if state == 'absent':
+            if mkey is None:
+                return False, False, filtered_data, {"before": current_data['results'][0], "after": ''}
+
+            if is_existed:
+                return False, True, filtered_data, {"before": current_data['results'][0], "after": ''}
+            return False, False, filtered_data, {}
+
+        return True, False, {'reason: ': 'Must provide state parameter'}, {}
 
     return fos.set('router',
                    'rip',
@@ -836,14 +905,15 @@ def is_successful_status(resp):
         'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
 
 
-def fortiswitch_router(data, fos):
+def fortiswitch_router(data, fos, check_mode):
     fos.do_member_operation('router', 'rip')
     current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
     if data['router_rip']:
-        resp = router_rip(data, fos)
+        resp = router_rip(data, fos, check_mode)
     else:
         fos._module.fail_json(msg='missing task body: %s' % ('router_rip'))
-
+    if check_mode:
+        return resp
     return not is_successful_status(resp), \
         is_successful_status(resp) and \
         current_cmdb_index != resp['cmdb-index'], \
@@ -2276,6 +2346,21 @@ versioned_schema = {
                     "name": "receive-version",
                     "help": "Receive version.",
                     "category": "unitary"
+                },
+                "bfd": {
+                    "v_range": [],
+                    "type": "string",
+                    "options": [
+                        {
+                            "value": "enable"
+                        },
+                        {
+                            "value": "disable"
+                        }
+                    ],
+                    "name": "bfd",
+                    "help": "Bidirectional Forwarding Detection (BFD).",
+                    "category": "unitary"
                 }
             },
             "v_range": [
@@ -2430,7 +2515,6 @@ versioned_schema = {
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    # mkeyname = None
     mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
@@ -2451,7 +2535,7 @@ def main():
             fields["router_rip"]['options'][attribute_name]['required'] = True
 
     module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=False)
+                           supports_check_mode=True)
 
     is_error = False
     has_changed = False
@@ -2468,7 +2552,7 @@ def main():
             connection.set_custom_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
         versions_check_result = check_schema_versioning(fos, versioned_schema, "router_rip")
-        is_error, has_changed, result, diff = fortiswitch_router(module.params, fos)
+        is_error, has_changed, result, diff = fortiswitch_router(module.params, fos, module.check_mode)
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 

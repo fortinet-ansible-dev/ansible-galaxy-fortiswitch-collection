@@ -120,6 +120,7 @@ options:
                 type: str
                 choices:
                     - 'enable'
+                    - 'disable'
             macsec_mode:
                 description:
                     - Set mode of the MACsec Profile.
@@ -150,6 +151,7 @@ options:
                         type: str
                         choices:
                             - 'AES_128_CMAC'
+                            - 'AES_256_CMAC'
                     mka_cak:
                         description:
                             - MKA CAK pre-shared key hex string.
@@ -168,6 +170,10 @@ options:
                         type: str
                         choices:
                             - 'active'
+            mka_sak_rekey_time:
+                description:
+                    - MACsec MKA Session SAK rekey timer.
+                type: int
             name:
                 description:
                     - Profile name.
@@ -253,14 +259,15 @@ EXAMPLES = '''
                   mka_ckn: "<your_own_value>"
                   name: "default_name_19"
                   status: "active"
-          name: "default_name_21"
+          mka_sak_rekey_time: "21"
+          name: "default_name_22"
           replay_protect: "enable"
-          replay_window: "23"
+          replay_window: "24"
           status: "enable"
           traffic_policy:
               -
                   exclude_protocol: "ipv4"
-                  name: "default_name_27"
+                  name: "default_name_28"
                   security_policy: "must-secure"
                   status: "enable"
 '''
@@ -322,6 +329,7 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
 
 
 def filter_switch_macsec_profile_data(json):
@@ -329,8 +337,9 @@ def filter_switch_macsec_profile_data(json):
                    'eap_tls_cert', 'eap_tls_identity', 'eap_tls_radius_server',
                    'encrypt_traffic', 'include_macsec_sci', 'include_mka_icv_ind',
                    'macsec_mode', 'macsec_validate', 'mka_priority',
-                   'mka_psk', 'name', 'replay_protect',
-                   'replay_window', 'status', 'traffic_policy']
+                   'mka_psk', 'mka_sak_rekey_time', 'name',
+                   'replay_protect', 'replay_window', 'status',
+                   'traffic_policy']
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -356,9 +365,12 @@ def underscore_to_hyphen(data):
 
 
 def switch_macsec_profile(data, fos, check_mode=False):
-    state = data['state']
+    state = data.get('state', None)
+
     switch_macsec_profile_data = data['switch_macsec_profile']
-    filtered_data = underscore_to_hyphen(filter_switch_macsec_profile_data(switch_macsec_profile_data))
+
+    filtered_data = filter_switch_macsec_profile_data(switch_macsec_profile_data)
+    filtered_data = underscore_to_hyphen(filtered_data)
 
     # check_mode starts from here
     if check_mode:
@@ -373,16 +385,33 @@ def switch_macsec_profile(data, fos, check_mode=False):
             and len(current_data['results']) > 0
 
         # 2. if it exists and the state is 'present' then compare current settings with desired
-        if state == 'present' or state is True:
-            if mkey is None:
+        if state == 'present' or state is True or state is None:
+            mkeyname = fos.get_mkeyname(None, None)
+            # for non global modules, mkeyname must exist and it's a new module when mkey is None
+            if mkeyname is not None and mkey is None:
                 return False, True, filtered_data, diff
 
             # if mkey exists then compare each other
             # record exits and they're matched or not
+            copied_filtered_data = filtered_data.copy()
+            copied_filtered_data.pop(mkeyname, None)
+
+            # handle global modules'
+            if mkeyname is None and state is None:
+                is_same = is_same_comparison(
+                    serialize(current_data['results']), serialize(copied_filtered_data))
+
+                current_values = find_current_values(copied_filtered_data, current_data['results'])
+
+                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+
             if is_existed:
                 is_same = is_same_comparison(
-                    serialize(current_data['results'][0]), serialize(filtered_data))
-                return False, not is_same, filtered_data, {"before": current_data['results'][0], "after": filtered_data}
+                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+
+                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+
+                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
 
             # record does not exist
             return False, True, filtered_data, diff
@@ -546,6 +575,10 @@ versioned_schema = {
             "options": [
                 {
                     "value": "enable"
+                },
+                {
+                    "value": "disable",
+                    "v_range": []
                 }
             ],
             "name": "include-mka-icv-ind",
@@ -753,6 +786,10 @@ versioned_schema = {
                     "options": [
                         {
                             "value": "AES_128_CMAC"
+                        },
+                        {
+                            "value": "AES_256_CMAC",
+                            "v_range": []
                         }
                     ],
                     "name": "crypto-alg",
@@ -897,6 +934,13 @@ versioned_schema = {
             "name": "eap-tls-identity",
             "help": "Client identity for MACSEC CAK EAP-TLS.",
             "category": "unitary"
+        },
+        "mka_sak_rekey_time": {
+            "v_range": [],
+            "type": "integer",
+            "name": "mka-sak-rekey-time",
+            "help": "MACsec MKA Session SAK rekey timer.",
+            "category": "unitary"
         }
     },
     "v_range": [
@@ -914,7 +958,6 @@ versioned_schema = {
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    # mkeyname = None
     mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
@@ -928,6 +971,7 @@ def main():
                   "choices": ["present", "absent"]},
         "switch_macsec_profile": {
             "required": False, "type": "dict", "default": None,
+            "no_log": True,
             "options": {}
         }
     }

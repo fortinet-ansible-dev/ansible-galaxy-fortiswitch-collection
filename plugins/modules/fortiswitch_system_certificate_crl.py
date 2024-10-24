@@ -187,6 +187,7 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
 
 
 def filter_system_certificate_crl_data(json):
@@ -219,9 +220,12 @@ def underscore_to_hyphen(data):
 
 
 def system_certificate_crl(data, fos, check_mode=False):
-    state = data['state']
+    state = data.get('state', None)
+
     system_certificate_crl_data = data['system_certificate_crl']
-    filtered_data = underscore_to_hyphen(filter_system_certificate_crl_data(system_certificate_crl_data))
+
+    filtered_data = filter_system_certificate_crl_data(system_certificate_crl_data)
+    filtered_data = underscore_to_hyphen(filtered_data)
 
     # check_mode starts from here
     if check_mode:
@@ -236,16 +240,33 @@ def system_certificate_crl(data, fos, check_mode=False):
             and len(current_data['results']) > 0
 
         # 2. if it exists and the state is 'present' then compare current settings with desired
-        if state == 'present' or state is True:
-            if mkey is None:
+        if state == 'present' or state is True or state is None:
+            mkeyname = fos.get_mkeyname(None, None)
+            # for non global modules, mkeyname must exist and it's a new module when mkey is None
+            if mkeyname is not None and mkey is None:
                 return False, True, filtered_data, diff
 
             # if mkey exists then compare each other
             # record exits and they're matched or not
+            copied_filtered_data = filtered_data.copy()
+            copied_filtered_data.pop(mkeyname, None)
+
+            # handle global modules'
+            if mkeyname is None and state is None:
+                is_same = is_same_comparison(
+                    serialize(current_data['results']), serialize(copied_filtered_data))
+
+                current_values = find_current_values(copied_filtered_data, current_data['results'])
+
+                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+
             if is_existed:
                 is_same = is_same_comparison(
-                    serialize(current_data['results'][0]), serialize(filtered_data))
-                return False, not is_same, filtered_data, {"before": current_data['results'][0], "after": filtered_data}
+                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+
+                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+
+                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
 
             # record does not exist
             return False, True, filtered_data, diff
@@ -435,7 +456,6 @@ versioned_schema = {
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    # mkeyname = None
     mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},

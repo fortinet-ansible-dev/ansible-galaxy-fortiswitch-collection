@@ -146,6 +146,9 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.f
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
 
 
 def filter_system_autoupdate_override_data(json):
@@ -174,9 +177,67 @@ def underscore_to_hyphen(data):
     return data
 
 
-def system_autoupdate_override(data, fos):
+def system_autoupdate_override(data, fos, check_mode=False):
+    state = data.get('state', None)
+
     system_autoupdate_override_data = data['system_autoupdate_override']
-    filtered_data = underscore_to_hyphen(filter_system_autoupdate_override_data(system_autoupdate_override_data))
+
+    filtered_data = filter_system_autoupdate_override_data(system_autoupdate_override_data)
+    filtered_data = underscore_to_hyphen(filtered_data)
+
+    # check_mode starts from here
+    if check_mode:
+        diff = {
+            "before": '',
+            "after": filtered_data,
+        }
+        mkey = fos.get_mkey('system.autoupdate', 'override', filtered_data)
+        current_data = fos.get('system.autoupdate', 'override', mkey=mkey)
+        is_existed = current_data and current_data.get('http_status') == 200 \
+            and isinstance(current_data.get('results'), list) \
+            and len(current_data['results']) > 0
+
+        # 2. if it exists and the state is 'present' then compare current settings with desired
+        if state == 'present' or state is True or state is None:
+            mkeyname = fos.get_mkeyname(None, None)
+            # for non global modules, mkeyname must exist and it's a new module when mkey is None
+            if mkeyname is not None and mkey is None:
+                return False, True, filtered_data, diff
+
+            # if mkey exists then compare each other
+            # record exits and they're matched or not
+            copied_filtered_data = filtered_data.copy()
+            copied_filtered_data.pop(mkeyname, None)
+
+            # handle global modules'
+            if mkeyname is None and state is None:
+                is_same = is_same_comparison(
+                    serialize(current_data['results']), serialize(copied_filtered_data))
+
+                current_values = find_current_values(copied_filtered_data, current_data['results'])
+
+                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+
+            if is_existed:
+                is_same = is_same_comparison(
+                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+
+                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+
+                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+
+            # record does not exist
+            return False, True, filtered_data, diff
+
+        if state == 'absent':
+            if mkey is None:
+                return False, False, filtered_data, {"before": current_data['results'][0], "after": ''}
+
+            if is_existed:
+                return False, True, filtered_data, {"before": current_data['results'][0], "after": ''}
+            return False, False, filtered_data, {}
+
+        return True, False, {'reason: ': 'Must provide state parameter'}, {}
 
     return fos.set('system.autoupdate',
                    'override',
@@ -190,14 +251,15 @@ def is_successful_status(resp):
         'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
 
 
-def fortiswitch_system_autoupdate(data, fos):
+def fortiswitch_system_autoupdate(data, fos, check_mode):
     fos.do_member_operation('system.autoupdate', 'override')
     current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
     if data['system_autoupdate_override']:
-        resp = system_autoupdate_override(data, fos)
+        resp = system_autoupdate_override(data, fos, check_mode)
     else:
         fos._module.fail_json(msg='missing task body: %s' % ('system_autoupdate_override'))
-
+    if check_mode:
+        return resp
     return not is_successful_status(resp), \
         is_successful_status(resp) and \
         current_cmdb_index != resp['cmdb-index'], \
@@ -274,7 +336,6 @@ versioned_schema = {
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    # mkeyname = None
     mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
@@ -295,7 +356,7 @@ def main():
             fields["system_autoupdate_override"]['options'][attribute_name]['required'] = True
 
     module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=False)
+                           supports_check_mode=True)
 
     is_error = False
     has_changed = False
@@ -312,7 +373,7 @@ def main():
             connection.set_custom_option('enable_log', False)
         fos = FortiOSHandler(connection, module, mkeyname)
         versions_check_result = check_schema_versioning(fos, versioned_schema, "system_autoupdate_override")
-        is_error, has_changed, result, diff = fortiswitch_system_autoupdate(module.params, fos)
+        is_error, has_changed, result, diff = fortiswitch_system_autoupdate(module.params, fos, module.check_mode)
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
