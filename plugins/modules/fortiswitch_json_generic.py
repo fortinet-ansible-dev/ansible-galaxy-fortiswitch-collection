@@ -79,20 +79,21 @@ options:
 """
 
 EXAMPLES = """
-    - name: test add with string
-      fortiswitch_json_generic:
-        enable_log: True
-        json_generic:
-          method: "PUT"
-          path: "/api/v2/cmdb/system/global"
-          jsonbody: |
-            {
-            "timezone": "04"
-            }
-      register: info
+- name: test add with string
+  fortinet.fortiswitch.fortiswitch_json_generic:
+    enable_log: true
+    json_generic:
+      method: "PUT"
+      path: "/api/v2/cmdb/system/global"
+      jsonbody: |
+       {
+        "timezone": "04"
+        }
+    register: info
 
-    - name: display vars
-      debug: msg="{{info}}"
+- name: display vars
+  debug:
+    msg: "{{info}}"
 """
 
 RETURN = """

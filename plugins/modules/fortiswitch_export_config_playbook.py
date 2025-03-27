@@ -1,5 +1,6 @@
 #!/usr/bin/python
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 # Copyright (c) 2022 Fortinet
 # GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
 
@@ -10,11 +11,13 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'community',
-                    'metadata_version': '1.1'}
+ANSIBLE_METADATA = {
+    "status": ["preview"],
+    "supported_by": "community",
+    "metadata_version": "1.1",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: fortiswitch_export_config_playbook
 version_added: "1.0.0"
@@ -280,6 +283,8 @@ options:
                  - system_auto-script
                  - system.ptp_profile
                  - system.ptp_interface-policy
+                 - system_debug
+                 - switch_vlan-pruning
 
     selector:
         description:
@@ -458,15 +463,17 @@ options:
          - system_auto-script
          - system.ptp_profile
          - system.ptp_interface-policy
+         - system_debug
+         - switch_vlan-pruning
 
     params:
         description:
             - the parameter for each selector, see definition in above list.
         type: dict
         required: false
-'''
+"""
 
-EXAMPLES = '''
+EXAMPLES = """
 - name: Will generate the playbooks for each selector/module.
   fortiswitch_export_config_playbook:
       selectors:
@@ -475,9 +482,9 @@ EXAMPLES = '''
                 name: "port1"
           - selector: system_ntp
       output_path: "./"
-'''
+"""
 
-RETURN = '''
+RETURN = """
 build:
   description: Build number of the fortiswitch image
   returned: always
@@ -518,11 +525,15 @@ ansible_facts:
   returned: always
   type: dict
 
-'''
+"""
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import FortiOSHandler
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    FortiOSHandler,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import (
+    FAIL_SOCKET_MSG,
+)
 
 MODULE_MKEY_DEFINITONS = {
     "system_vdom": {
@@ -1209,23 +1220,41 @@ MODULE_MKEY_DEFINITONS = {
         "mkey": "name",
         "mkey_type": str,
     },
+    "system_debug": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
+    "switch_vlan-pruning": {
+        "mkey": "None",
+        "mkey_type": None,
+    },
 }
 
 SPECIAL_ATTRIBUTE_TABLE = {
-    "system_interface": [['allowaccess'], ['ipv6', 'ip6_allowaccess'], ['secondaryip', 'allowaccess']],
-    "system_link_monitor": [['protocol']],
+    "system_interface": [
+        ["allowaccess"],
+        ["ipv6", "ip6_allowaccess"],
+        ["secondaryip", "allowaccess"],
+    ],
+    "system_link_monitor": [["protocol"]],
 }
 
 
 def is_successful_status(resp):
-    return 'status' in resp and resp['status'] == 'success' or \
-        'http_status' in resp and resp['http_status'] == 200 or \
-        'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
+    return (
+        "status" in resp
+        and resp["status"] == "success"
+        or "http_status" in resp
+        and resp["http_status"] == 200
+        or "http_method" in resp
+        and resp["http_method"] == "DELETE"
+        and resp["http_status"] == 404
+    )
 
 
 def validate_mkey(params):
-    selector = params['selector']
-    selector_params = params.get('params', {})
+    selector = params["selector"]
+    selector_params = params.get("params", {})
 
     if selector not in MODULE_MKEY_DEFINITONS:
         return False, {"message": "unknown selector: " + selector}
@@ -1235,8 +1264,8 @@ def validate_mkey(params):
     if not selector_params or len(selector_params) == 0 or len(definition) == 0:
         return True, {}
 
-    mkey = definition['mkey']
-    mkey_type = definition['mkey_type']
+    mkey = definition["mkey"]
+    mkey_type = definition["mkey_type"]
     if mkey_type is None:
         return False, {"message": "params are not allowed for " + selector}
     mkey_value = selector_params.get(mkey)
@@ -1244,7 +1273,13 @@ def validate_mkey(params):
     if not mkey_value:
         return False, {"message": "param '" + mkey + "' is required"}
     if not isinstance(mkey_value, mkey_type):
-        return False, {"message": "param '" + mkey + "' does not match, " + str(mkey_type) + " required"}
+        return False, {
+            "message": "param '"
+            + mkey
+            + "' does not match, "
+            + str(mkey_type)
+            + " required"
+        }
 
     return True, {}
 
@@ -1252,20 +1287,18 @@ def validate_mkey(params):
 PLAYBOOK_BASIC_CONFIG = [
     {
         "hosts": "fortiswitch01",
-        "collections": [
-            "fortinet.fortiswitch"
-        ],
+        "collections": ["fortinet.fortiswitch"],
         "connection": "httpapi",
         "gather_facts": "no",
         "vars": {
             "ansible_httpapi_use_ssl": "yes",
             "ansible_httpapi_validate_certs": "no",
-            "ansible_httpapi_port": 443
-        }
+            "ansible_httpapi_port": 443,
+        },
     }
 ]
 
-EXCLUDED_LIST = ['q_origin_key']
+EXCLUDED_LIST = ["q_origin_key"]
 
 import copy
 import traceback
@@ -1284,16 +1317,25 @@ def preprocess_to_valid_data(data):
     if isinstance(data, list):
         return [preprocess_to_valid_data(elem) for elem in data]
     elif isinstance(data, dict):
-        return {k.replace('-', '_'): preprocess_to_valid_data(v) for k, v in data.items() if k not in EXCLUDED_LIST}
+        return {
+            k.replace("-", "_"): preprocess_to_valid_data(v)
+            for k, v in data.items()
+            if k not in EXCLUDED_LIST
+        }
     return data
 
 
 def flatten_single_path(data, path, index):
-    if not data or index == len(path) or path[index] not in data or not data[path[index]]:
+    if (
+        not data
+        or index == len(path)
+        or path[index] not in data
+        or not data[path[index]]
+    ):
         return
 
     if index == len(path) - 1:
-        data[path[index]] = data[path[index]].split(' ')
+        data[path[index]] = data[path[index]].split(" ")
     elif isinstance(data[path[index]], list):
         for value in data[path[index]]:
             flatten_single_path(value, path, index + 1)
@@ -1315,31 +1357,31 @@ def fortiswitch_configuration_fact(params, fos):
     if not isValid:
         return True, False, result
 
-    selector = params['selector']
-    selector_params = params['params']
-    mkey_name = MODULE_MKEY_DEFINITONS[selector]['mkey']
+    selector = params["selector"]
+    selector_params = params["params"]
+    mkey_name = MODULE_MKEY_DEFINITONS[selector]["mkey"]
     mkey_value = selector_params.get(mkey_name) if selector_params else None
 
-    [path, name] = selector.split('_')
+    [path, name] = selector.split("_")
     # XXX: The plugin level do not accept duplicated url keys, so we make only keep one key here.
     url_params = dict()
-    if params['filters'] and len(params['filters']):
-        filter_body = params['filters'][0]
-        for filter_item in params['filters'][1:]:
+    if params["filters"] and len(params["filters"]):
+        filter_body = params["filters"][0]
+        for filter_item in params["filters"][1:]:
             filter_body = "%s&filter=%s" % (filter_body, filter_item)
-        url_params['filter'] = filter_body
+        url_params["filter"] = filter_body
 
-    if params['sorters'] and len(params['sorters']):
-        sorter_body = params['sorters'][0]
-        for sorter_item in params['sorters'][1:]:
+    if params["sorters"] and len(params["sorters"]):
+        sorter_body = params["sorters"][0]
+        for sorter_item in params["sorters"][1:]:
             sorter_body = "%s&sort=%s" % (sorter_body, sorter_item)
-        url_params['sort'] = sorter_body
+        url_params["sort"] = sorter_body
 
-    if params['formatters'] and len(params['formatters']):
-        formatter_body = params['formatters'][0]
-        for formatter_item in params['formatters'][1:]:
-            formatter_body = '%s|%s' % (formatter_body, formatter_item)
-        url_params['format'] = formatter_body
+    if params["formatters"] and len(params["formatters"]):
+        formatter_body = params["formatters"][0]
+        for formatter_item in params["formatters"][1:]:
+            formatter_body = "%s|%s" % (formatter_body, formatter_item)
+        url_params["format"] = formatter_body
 
     fact = None
     if mkey_value:
@@ -1348,21 +1390,37 @@ def fortiswitch_configuration_fact(params, fos):
         fact = fos.get(path, name, parameters=url_params)
 
     target_playbook = []
-    selector = selector.replace('.', '_').replace('-', '_')
+    selector = selector.replace(".", "_").replace("-", "_")
 
     # some raw results are not list so we need to wrap it first in order to use the flatten call below
-    results = fact.get("results") if isinstance(fact.get("results"), list) else [fact.get("results")]
+    results = (
+        fact.get("results")
+        if isinstance(fact.get("results"), list)
+        else [fact.get("results")]
+    )
 
     for element in PLAYBOOK_BASIC_CONFIG:
         copied_element = copy.deepcopy(element)
-        copied_element.update({
-            "tasks": [{
-                "fortiswitch_" + selector: {
-                    "state": "present",
-                    selector: {k: v for k, v in flatten_multilists_attributes(preprocess_to_valid_data(result), selector).items() if k not in EXCLUDED_LIST}
-                }} for result in results
-            ]
-        })
+        copied_element.update(
+            {
+                "tasks": [
+                    {
+                        "fortiswitch_"
+                        + selector: {
+                            "state": "present",
+                            selector: {
+                                k: v
+                                for k, v in flatten_multilists_attributes(
+                                    preprocess_to_valid_data(result), selector
+                                ).items()
+                                if k not in EXCLUDED_LIST
+                            },
+                        }
+                    }
+                    for result in results
+                ]
+            }
+        )
 
         target_playbook.append(copied_element)
 
@@ -1376,9 +1434,9 @@ def main():
     fields = {
         "output_path": {"required": True, "type": "str"},
         "enable_log": {"required": False, "type": "bool", "default": False},
-        "filters": {"required": False, "type": 'list', 'elements': 'str'},
-        "sorters": {"required": False, "type": 'list', 'elements': 'str'},
-        "formatters": {"required": False, "type": 'list', 'elements': 'str'},
+        "filters": {"required": False, "type": "list", "elements": "str"},
+        "sorters": {"required": False, "type": "list", "elements": "str"},
+        "formatters": {"required": False, "type": "list", "elements": "str"},
         "params": {"required": False, "type": "dict"},
         "selector": {
             "required": False,
@@ -1555,6 +1613,8 @@ def main():
                 "system_auto-script",
                 "system.ptp_profile",
                 "system.ptp_interface-policy",
+                "system_debug",
+                "switch_vlan-pruning",
             ],
         },
         "selectors": {
@@ -1562,9 +1622,9 @@ def main():
             "type": "list",
             "elements": "dict",
             "options": {
-                "filters": {"required": False, "type": 'list', 'elements': 'str'},
-                "sorters": {"required": False, "type": 'list', 'elements': 'str'},
-                "formatters": {"required": False, "type": 'list', 'elements': 'str'},
+                "filters": {"required": False, "type": "list", "elements": "str"},
+                "sorters": {"required": False, "type": "list", "elements": "str"},
+                "formatters": {"required": False, "type": "list", "elements": "str"},
                 "params": {"required": False, "type": "dict"},
                 "selector": {
                     "required": True,
@@ -1741,44 +1801,53 @@ def main():
                         "system_auto-script",
                         "system.ptp_profile",
                         "system.ptp_interface-policy",
+                        "system_debug",
+                        "switch_vlan-pruning",
                     ],
                 },
-            }
-        }
+            },
+        },
     }
 
-    module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=False)
+    module = AnsibleModule(argument_spec=fields, supports_check_mode=False)
 
     # Only selector or selectors is provided.
-    if module.params['selector'] and module.params['selectors'] or \
-            not module.params['selector'] and not module.params['selectors']:
-        module.fail_json(msg='please use selector or selectors in a task.')
+    if (
+        module.params["selector"]
+        and module.params["selectors"]
+        or not module.params["selector"]
+        and not module.params["selectors"]
+    ):
+        module.fail_json(msg="please use selector or selectors in a task.")
 
     versions_check_result = None
     if module._socket_path:
         connection = Connection(module._socket_path)
-        if 'enable_log' in module.params:
-            connection.set_custom_option('enable_log', module.params['enable_log'])
+        if "enable_log" in module.params:
+            connection.set_custom_option("enable_log", module.params["enable_log"])
         else:
-            connection.set_custom_option('enable', False)
+            connection.set_custom_option("enable", False)
 
         fos = FortiOSHandler(connection, module)
 
-        if module.params['selector']:
-            is_error, has_changed, result = fortiswitch_configuration_fact(module.params, fos)
+        if module.params["selector"]:
+            is_error, has_changed, result = fortiswitch_configuration_fact(
+                module.params, fos
+            )
         else:
             params = module.params
-            selectors = params['selectors']
+            selectors = params["selectors"]
             is_error = False
             has_changed = False
             result = []
             for selector_obj in selectors:
                 per_selector = {
-                    'output_path': params.get('output_path'),
+                    "output_path": params.get("output_path"),
                 }
                 per_selector.update(selector_obj)
-                is_error_local, has_changed_local, result_local = fortiswitch_configuration_fact(per_selector, fos)
+                is_error_local, has_changed_local, result_local = (
+                    fortiswitch_configuration_fact(per_selector, fos)
+                )
 
                 is_error = is_error or is_error_local
                 has_changed = has_changed or has_changed_local
@@ -1786,21 +1855,33 @@ def main():
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
-    if versions_check_result and versions_check_result['matched'] is False:
-        module.warn("Ansible has detected version mismatch between FortOS system and galaxy, see more details by specifying option -vvv")
+    if versions_check_result and versions_check_result["matched"] is False:
+        module.warn(
+            "Ansible has detected version mismatch between FortOS system and galaxy, see more details by specifying option -vvv"
+        )
 
     if not is_error:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.exit_json(changed=has_changed, version_check_warning=versions_check_result, meta=result)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.exit_json(
+                changed=has_changed,
+                version_check_warning=versions_check_result,
+                meta=result,
+            )
         else:
             module.exit_json(changed=has_changed, meta=result)
     else:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.fail_json(msg="Error in repo", version_check_warning=versions_check_result, meta=result)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.fail_json(
+                msg="Error in repo",
+                version_check_warning=versions_check_result,
+                meta=result,
+            )
         else:
             if not HAS_YAML:
-                module.fail_json(msg="Error in repo", meta=result, exception=YAML_IMPORT_ERROR)
+                module.fail_json(
+                    msg="Error in repo", meta=result, exception=YAML_IMPORT_ERROR
+                )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

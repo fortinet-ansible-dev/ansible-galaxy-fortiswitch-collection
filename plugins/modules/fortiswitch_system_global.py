@@ -1,5 +1,6 @@
 #!/usr/bin/python
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 # Copyright (c) 2022 Fortinet
 # GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
 
@@ -10,11 +11,13 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'community',
-                    'metadata_version': '1.1'}
+ANSIBLE_METADATA = {
+    "status": ["preview"],
+    "supported_by": "community",
+    "metadata_version": "1.1",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: fortiswitch_system_global
 short_description: Configure global range attributes in Fortinet's FortiSwitch
@@ -578,9 +581,9 @@ options:
                     - '90'
                     - '91'
                     - '92'
-'''
+"""
 
-EXAMPLES = '''
+EXAMPLES = """
 - name: Configure global range attributes.
   fortinet.fortiswitch.fortiswitch_system_global:
       system_global:
@@ -589,27 +592,27 @@ EXAMPLES = '''
           admin_concurrent: "enable"
           admin_https_pki_required: "enable"
           admin_https_ssl_versions: "tlsv1-0"
-          admin_lockout_duration: "8"
+          admin_lockout_duration: "1073741823"
           admin_lockout_threshold: "9"
           admin_password_hash: "sha1"
-          admin_port: "11"
+          admin_port: "32767"
           admin_restrict_local: "enable"
           admin_scp: "enable"
           admin_server_cert: "<your_own_value>"
-          admin_sport: "15"
-          admin_ssh_grace_time: "16"
-          admin_ssh_port: "17"
+          admin_sport: "32767"
+          admin_ssh_grace_time: "1800"
+          admin_ssh_port: "32767"
           admin_ssh_v1: "enable"
-          admin_telnet_port: "19"
+          admin_telnet_port: "32767"
           admintimeout: "20"
           alert_interval: "21"
           alertd_relog: "enable"
           allow_subnet_overlap: "enable"
-          arp_inspection_monitor_timeout: "24"
+          arp_inspection_monitor_timeout: "5040"
           arp_timeout: "25"
           asset_tag: "<your_own_value>"
           auto_isl: "enable"
-          cfg_revert_timeout: "28"
+          cfg_revert_timeout: "1073741823"
           cfg_save: "automatic"
           clt_cert_req: "enable"
           csr_ca_attribute: "enable"
@@ -623,8 +626,8 @@ EXAMPLES = '''
           dhcp_remote_id: "mac"
           dhcp_server_access_list: "enable"
           dhcp_snoop_client_req: "forward-untrusted"
-          dhcps_db_exp: "42"
-          dhcps_db_per_port_learn_limit: "43"
+          dhcps_db_exp: "129600"
+          dhcps_db_per_port_learn_limit: "512"
           dst: "enable"
           failtime: "45"
           fortilink_auto_discovery: "enable"
@@ -632,19 +635,19 @@ EXAMPLES = '''
           image_rotation: "disable"
           interval: "49"
           ip_conflict_ignore_default: "enable"
-          ipv6_accept_dad: "51"
+          ipv6_accept_dad: "1"
           ipv6_all_forwarding: "enable"
           kernel_crashlog: "enable"
           kernel_devicelog: "enable"
           l3_host_expiry: "enable"
           language: "browser"
-          ldapconntimeout: "57"
+          ldapconntimeout: "1073741823"
           post_login_banner: "<your_own_value>"
           pre_login_banner: "<your_own_value>"
           private_data_encryption: "disable"
           radius_coa_port: "61"
           radius_port: "62"
-          remoteauthtimeout: "63"
+          remoteauthtimeout: "150"
           reset_button: "enable"
           restart_time: "<your_own_value>"
           revision_backup_on_logout: "enable"
@@ -656,9 +659,9 @@ EXAMPLES = '''
           tcp_options: "enable"
           tftp: "enable"
           timezone: "01"
-'''
+"""
 
-RETURN = '''
+RETURN = """
 build:
   description: Build number of the fortiSwitch image
   returned: always
@@ -705,44 +708,110 @@ version:
   type: str
   sample: "v7.0.0"
 
-'''
+"""
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import FortiOSHandler
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import schema_to_module_spec
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    FortiOSHandler,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    schema_to_module_spec,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    check_schema_versioning,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import (
+    FAIL_SOCKET_MSG,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import (
+    remove_invalid_fields,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    is_same_comparison,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    serialize,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    find_current_values,
+)
 
 
 def filter_system_global_data(json):
-    option_list = ['802.1x_ca_certificate', '802.1x_certificate', 'admin_concurrent',
-                   'admin_https_pki_required', 'admin_https_ssl_versions', 'admin_lockout_duration',
-                   'admin_lockout_threshold', 'admin_password_hash', 'admin_port',
-                   'admin_restrict_local', 'admin_scp', 'admin_server_cert',
-                   'admin_sport', 'admin_ssh_grace_time', 'admin_ssh_port',
-                   'admin_ssh_v1', 'admin_telnet_port', 'admintimeout',
-                   'alert_interval', 'alertd_relog', 'allow_subnet_overlap',
-                   'arp_inspection_monitor_timeout', 'arp_timeout', 'asset_tag',
-                   'auto_isl', 'cfg_revert_timeout', 'cfg_save',
-                   'clt_cert_req', 'csr_ca_attribute', 'daily_restart',
-                   'delaycli_timeout_cleanup', 'detect_ip_conflict', 'dh_params',
-                   'dhcp_circuit_id', 'dhcp_client_location', 'dhcp_option_format',
-                   'dhcp_remote_id', 'dhcp_server_access_list', 'dhcp_snoop_client_req',
-                   'dhcps_db_exp', 'dhcps_db_per_port_learn_limit', 'dst',
-                   'failtime', 'fortilink_auto_discovery', 'hostname',
-                   'image_rotation', 'interval', 'ip_conflict_ignore_default',
-                   'ipv6_accept_dad', 'ipv6_all_forwarding', 'kernel_crashlog',
-                   'kernel_devicelog', 'l3_host_expiry', 'language',
-                   'ldapconntimeout', 'post_login_banner', 'pre_login_banner',
-                   'private_data_encryption', 'radius_coa_port', 'radius_port',
-                   'remoteauthtimeout', 'reset_button', 'restart_time',
-                   'revision_backup_on_logout', 'revision_backup_on_upgrade', 'strong_crypto',
-                   'switch_mgmt_mode', 'tcp6_mss_min', 'tcp_mss_min',
-                   'tcp_options', 'tftp', 'timezone']
+    option_list = [
+        "802.1x_ca_certificate",
+        "802.1x_certificate",
+        "admin_concurrent",
+        "admin_https_pki_required",
+        "admin_https_ssl_versions",
+        "admin_lockout_duration",
+        "admin_lockout_threshold",
+        "admin_password_hash",
+        "admin_port",
+        "admin_restrict_local",
+        "admin_scp",
+        "admin_server_cert",
+        "admin_sport",
+        "admin_ssh_grace_time",
+        "admin_ssh_port",
+        "admin_ssh_v1",
+        "admin_telnet_port",
+        "admintimeout",
+        "alert_interval",
+        "alertd_relog",
+        "allow_subnet_overlap",
+        "arp_inspection_monitor_timeout",
+        "arp_timeout",
+        "asset_tag",
+        "auto_isl",
+        "cfg_revert_timeout",
+        "cfg_save",
+        "clt_cert_req",
+        "csr_ca_attribute",
+        "daily_restart",
+        "delaycli_timeout_cleanup",
+        "detect_ip_conflict",
+        "dh_params",
+        "dhcp_circuit_id",
+        "dhcp_client_location",
+        "dhcp_option_format",
+        "dhcp_remote_id",
+        "dhcp_server_access_list",
+        "dhcp_snoop_client_req",
+        "dhcps_db_exp",
+        "dhcps_db_per_port_learn_limit",
+        "dst",
+        "failtime",
+        "fortilink_auto_discovery",
+        "hostname",
+        "image_rotation",
+        "interval",
+        "ip_conflict_ignore_default",
+        "ipv6_accept_dad",
+        "ipv6_all_forwarding",
+        "kernel_crashlog",
+        "kernel_devicelog",
+        "l3_host_expiry",
+        "language",
+        "ldapconntimeout",
+        "post_login_banner",
+        "pre_login_banner",
+        "private_data_encryption",
+        "radius_coa_port",
+        "radius_port",
+        "remoteauthtimeout",
+        "reset_button",
+        "restart_time",
+        "revision_backup_on_logout",
+        "revision_backup_on_upgrade",
+        "strong_crypto",
+        "switch_mgmt_mode",
+        "tcp6_mss_min",
+        "tcp_mss_min",
+        "tcp_options",
+        "tftp",
+        "timezone",
+    ]
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -761,16 +830,16 @@ def underscore_to_hyphen(data):
     elif isinstance(data, dict):
         new_data = {}
         for k, v in data.items():
-            new_data[k.replace('_', '-')] = underscore_to_hyphen(v)
+            new_data[k.replace("_", "-")] = underscore_to_hyphen(v)
         data = new_data
 
     return data
 
 
 def system_global(data, fos, check_mode=False):
-    state = data.get('state', None)
+    state = data.get("state", None)
 
-    system_global_data = data['system_global']
+    system_global_data = data["system_global"]
 
     filtered_data = filter_system_global_data(system_global_data)
     filtered_data = underscore_to_hyphen(filtered_data)
@@ -778,17 +847,20 @@ def system_global(data, fos, check_mode=False):
     # check_mode starts from here
     if check_mode:
         diff = {
-            "before": '',
+            "before": "",
             "after": filtered_data,
         }
-        mkey = fos.get_mkey('system', 'global', filtered_data)
-        current_data = fos.get('system', 'global', mkey=mkey)
-        is_existed = current_data and current_data.get('http_status') == 200 \
-            and isinstance(current_data.get('results'), list) \
-            and len(current_data['results']) > 0
+        mkey = fos.get_mkey("system", "global", filtered_data)
+        current_data = fos.get("system", "global", mkey=mkey)
+        is_existed = (
+            current_data
+            and current_data.get("http_status") == 200
+            and isinstance(current_data.get("results"), list)
+            and len(current_data["results"]) > 0
+        )
 
         # 2. if it exists and the state is 'present' then compare current settings with desired
-        if state == 'present' or state is True or state is None:
+        if state == "present" or state is True or state is None:
             mkeyname = fos.get_mkeyname(None, None)
             # for non global modules, mkeyname must exist and it's a new module when mkey is None
             if mkeyname is not None and mkey is None:
@@ -802,1623 +874,807 @@ def system_global(data, fos, check_mode=False):
             # handle global modules'
             if mkeyname is None and state is None:
                 is_same = is_same_comparison(
-                    serialize(current_data['results']), serialize(copied_filtered_data))
+                    serialize(current_data["results"]), serialize(copied_filtered_data)
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             if is_existed:
                 is_same = is_same_comparison(
-                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+                    serialize(current_data["results"][0]),
+                    serialize(copied_filtered_data),
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"][0]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             # record does not exist
             return False, True, filtered_data, diff
 
-        if state == 'absent':
+        if state == "absent":
             if mkey is None:
-                return False, False, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    False,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
 
             if is_existed:
-                return False, True, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    True,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
             return False, False, filtered_data, {}
 
-        return True, False, {'reason: ': 'Must provide state parameter'}, {}
+        return True, False, {"reason: ": "Must provide state parameter"}, {}
 
-    return fos.set('system',
-                   'global',
-                   data=filtered_data,
-                   )
+    return fos.set(
+        "system",
+        "global",
+        data=filtered_data,
+    )
 
 
 def is_successful_status(resp):
-    return 'status' in resp and resp['status'] == 'success' or \
-        'http_status' in resp and resp['http_status'] == 200 or \
-        'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
+    return (
+        "status" in resp
+        and resp["status"] == "success"
+        or "http_status" in resp
+        and resp["http_status"] == 200
+        or "http_method" in resp
+        and resp["http_method"] == "DELETE"
+        and resp["http_status"] == 404
+    )
 
 
 def fortiswitch_system(data, fos, check_mode):
-    fos.do_member_operation('system', 'global')
-    current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
-    if data['system_global']:
+    fos.do_member_operation("system", "global")
+    current_cmdb_index = fos.monitor_get("/system/status")["cmdb-index"]
+    if data["system_global"]:
         resp = system_global(data, fos, check_mode)
     else:
-        fos._module.fail_json(msg='missing task body: %s' % ('system_global'))
+        fos._module.fail_json(msg="missing task body: %s" % ("system_global"))
     if check_mode:
         return resp
-    return not is_successful_status(resp), \
-        is_successful_status(resp) and \
-        current_cmdb_index != resp['cmdb-index'], \
-        resp, {}
+    return (
+        not is_successful_status(resp),
+        is_successful_status(resp) and current_cmdb_index != resp["cmdb-index"],
+        resp,
+        {},
+    )
 
 
 versioned_schema = {
-    "v_range": [
-        [
-            "v7.0.0",
-            ""
-        ]
-    ],
+    "v_range": [["v7.0.0", ""]],
     "type": "dict",
     "children": {
         "certificate_802dot1x": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "802.1x-certificate",
             "help": "Certificate for Port Security (802.1x).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ipv6_all_forwarding": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "ipv6-all-forwarding",
             "help": "Enable/disable ipv6 all forwarding.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcps_db_per_port_learn_limit": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "dhcps-db-per-port-learn-limit",
             "help": "Per Interface dhcp-server entries learn limit .",
-            "category": "unitary"
+            "category": "unitary",
         },
         "private_data_encryption": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "enable"
-                }
-            ],
+            "options": [{"value": "disable"}, {"value": "enable"}],
             "name": "private-data-encryption",
             "help": "Enable/disable private data encryption using an AES 128-bit key.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "remoteauthtimeout": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "remoteauthtimeout",
             "help": "Remote authentication (RADIUS/LDAP) time-out (0 - 300).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "alert_interval": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "alert-interval",
             "help": "Interval between each syslog entry when a sensor is out-of-range with respect to its threshold (in mins).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "pre_login_banner": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "pre-login-banner",
             "help": "System pre-login banner message.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "switch_mgmt_mode": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.6"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.6"]],
             "type": "string",
-            "options": [
-                {
-                    "value": "local"
-                },
-                {
-                    "value": "fortilink"
-                }
-            ],
+            "options": [{"value": "local"}, {"value": "fortilink"}],
             "name": "switch-mgmt-mode",
             "help": "Switch mode setting.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "strong_crypto": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "strong-crypto",
             "help": "Enable/disable strong cryptography for HTTPS/SSH access.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "detect_ip_conflict": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "detect-ip-conflict",
             "help": "Enable/disable detection of IP address conflicts.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "asset_tag": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "asset-tag",
             "help": "Asset tag.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ip_conflict_ignore_default": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "ip-conflict-ignore-default",
             "help": "Enable/disable IP conflict detection for default IP address.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "timezone": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "01"
-                },
-                {
-                    "value": "02"
-                },
-                {
-                    "value": "03"
-                },
-                {
-                    "value": "04"
-                },
-                {
-                    "value": "05"
-                },
-                {
-                    "value": "81"
-                },
-                {
-                    "value": "06"
-                },
-                {
-                    "value": "07"
-                },
-                {
-                    "value": "08"
-                },
-                {
-                    "value": "09"
-                },
-                {
-                    "value": "10"
-                },
-                {
-                    "value": "11"
-                },
-                {
-                    "value": "12"
-                },
-                {
-                    "value": "13"
-                },
-                {
-                    "value": "74"
-                },
-                {
-                    "value": "14"
-                },
-                {
-                    "value": "77"
-                },
-                {
-                    "value": "15"
-                },
-                {
-                    "value": "87"
-                },
-                {
-                    "value": "16"
-                },
-                {
-                    "value": "17"
-                },
-                {
-                    "value": "18"
-                },
-                {
-                    "value": "19"
-                },
-                {
-                    "value": "20"
-                },
-                {
-                    "value": "75"
-                },
-                {
-                    "value": "21"
-                },
-                {
-                    "value": "22"
-                },
-                {
-                    "value": "23"
-                },
-                {
-                    "value": "24"
-                },
-                {
-                    "value": "80"
-                },
-                {
-                    "value": "79"
-                },
-                {
-                    "value": "25"
-                },
-                {
-                    "value": "26"
-                },
-                {
-                    "value": "27"
-                },
-                {
-                    "value": "28"
-                },
-                {
-                    "value": "78"
-                },
-                {
-                    "value": "29"
-                },
-                {
-                    "value": "30"
-                },
-                {
-                    "value": "31"
-                },
-                {
-                    "value": "32"
-                },
-                {
-                    "value": "33"
-                },
-                {
-                    "value": "34"
-                },
-                {
-                    "value": "35"
-                },
-                {
-                    "value": "36"
-                },
-                {
-                    "value": "37"
-                },
-                {
-                    "value": "38"
-                },
-                {
-                    "value": "83"
-                },
-                {
-                    "value": "84"
-                },
-                {
-                    "value": "40"
-                },
-                {
-                    "value": "85"
-                },
-                {
-                    "value": "41"
-                },
-                {
-                    "value": "42"
-                },
-                {
-                    "value": "43"
-                },
-                {
-                    "value": "39"
-                },
-                {
-                    "value": "44"
-                },
-                {
-                    "value": "46"
-                },
-                {
-                    "value": "47"
-                },
-                {
-                    "value": "51"
-                },
-                {
-                    "value": "48"
-                },
-                {
-                    "value": "45"
-                },
-                {
-                    "value": "49"
-                },
-                {
-                    "value": "50"
-                },
-                {
-                    "value": "52"
-                },
-                {
-                    "value": "53"
-                },
-                {
-                    "value": "54"
-                },
-                {
-                    "value": "55"
-                },
-                {
-                    "value": "56"
-                },
-                {
-                    "value": "57"
-                },
-                {
-                    "value": "58"
-                },
-                {
-                    "value": "59"
-                },
-                {
-                    "value": "60"
-                },
-                {
-                    "value": "62"
-                },
-                {
-                    "value": "63"
-                },
-                {
-                    "value": "61"
-                },
-                {
-                    "value": "64"
-                },
-                {
-                    "value": "65"
-                },
-                {
-                    "value": "66"
-                },
-                {
-                    "value": "67"
-                },
-                {
-                    "value": "68"
-                },
-                {
-                    "value": "69"
-                },
-                {
-                    "value": "70"
-                },
-                {
-                    "value": "71"
-                },
-                {
-                    "value": "72"
-                },
-                {
-                    "value": "00"
-                },
-                {
-                    "value": "82"
-                },
-                {
-                    "value": "73"
-                },
-                {
-                    "value": "86"
-                },
-                {
-                    "value": "76"
-                },
-                {
-                    "value": "88",
-                    "v_range": [
-                        [
-                            "v7.4.2",
-                            ""
-                        ]
-                    ]
-                },
-                {
-                    "value": "89",
-                    "v_range": [
-                        [
-                            "v7.4.2",
-                            ""
-                        ]
-                    ]
-                },
-                {
-                    "value": "90",
-                    "v_range": [
-                        [
-                            "v7.4.2",
-                            ""
-                        ]
-                    ]
-                },
-                {
-                    "value": "91",
-                    "v_range": [
-                        [
-                            "v7.4.2",
-                            ""
-                        ]
-                    ]
-                },
-                {
-                    "value": "92",
-                    "v_range": [
-                        [
-                            "v7.4.2",
-                            ""
-                        ]
-                    ]
-                }
+                {"value": "01"},
+                {"value": "02"},
+                {"value": "03"},
+                {"value": "04"},
+                {"value": "05"},
+                {"value": "81"},
+                {"value": "06"},
+                {"value": "07"},
+                {"value": "08"},
+                {"value": "09"},
+                {"value": "10"},
+                {"value": "11"},
+                {"value": "12"},
+                {"value": "13"},
+                {"value": "74"},
+                {"value": "14"},
+                {"value": "77"},
+                {"value": "15"},
+                {"value": "87"},
+                {"value": "16"},
+                {"value": "17"},
+                {"value": "18"},
+                {"value": "19"},
+                {"value": "20"},
+                {"value": "75"},
+                {"value": "21"},
+                {"value": "22"},
+                {"value": "23"},
+                {"value": "24"},
+                {"value": "80"},
+                {"value": "79"},
+                {"value": "25"},
+                {"value": "26"},
+                {"value": "27"},
+                {"value": "28"},
+                {"value": "78"},
+                {"value": "29"},
+                {"value": "30"},
+                {"value": "31"},
+                {"value": "32"},
+                {"value": "33"},
+                {"value": "34"},
+                {"value": "35"},
+                {"value": "36"},
+                {"value": "37"},
+                {"value": "38"},
+                {"value": "83"},
+                {"value": "84"},
+                {"value": "40"},
+                {"value": "85"},
+                {"value": "41"},
+                {"value": "42"},
+                {"value": "43"},
+                {"value": "39"},
+                {"value": "44"},
+                {"value": "46"},
+                {"value": "47"},
+                {"value": "51"},
+                {"value": "48"},
+                {"value": "45"},
+                {"value": "49"},
+                {"value": "50"},
+                {"value": "52"},
+                {"value": "53"},
+                {"value": "54"},
+                {"value": "55"},
+                {"value": "56"},
+                {"value": "57"},
+                {"value": "58"},
+                {"value": "59"},
+                {"value": "60"},
+                {"value": "62"},
+                {"value": "63"},
+                {"value": "61"},
+                {"value": "64"},
+                {"value": "65"},
+                {"value": "66"},
+                {"value": "67"},
+                {"value": "68"},
+                {"value": "69"},
+                {"value": "70"},
+                {"value": "71"},
+                {"value": "72"},
+                {"value": "00"},
+                {"value": "82"},
+                {"value": "73"},
+                {"value": "86"},
+                {"value": "76"},
+                {"value": "88", "v_range": [["v7.4.2", ""]]},
+                {"value": "89", "v_range": [["v7.4.2", ""]]},
+                {"value": "90", "v_range": [["v7.4.2", ""]]},
+                {"value": "91", "v_range": [["v7.4.2", ""]]},
+                {"value": "92", "v_range": [["v7.4.2", ""]]},
             ],
             "name": "timezone",
             "help": "Time zone.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "admin_sport": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.6"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.6"]],
             "type": "integer",
             "name": "admin-sport",
             "help": "Administrative access HTTPS port (1 - 65535).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "image_rotation": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "enable"
-                }
-            ],
+            "options": [{"value": "disable"}, {"value": "enable"}],
             "name": "image-rotation",
             "help": "Enable/disable image upgrade partition rotation.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "admin_telnet_port": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "admin-telnet-port",
             "help": "Administrative access TELNET port (1 - 65535).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "kernel_crashlog": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "kernel-crashlog",
             "help": "Enable/disable capture of kernel error messages to crash log.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "fortilink_auto_discovery": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.2.4"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.2.4"]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "fortilink-auto-discovery",
             "help": "Enable/disable automatic discovery of FortiLink.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "kernel_devicelog": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "kernel-devicelog",
             "help": "Enable/disable capture of kernel device messages to log.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "revision_backup_on_upgrade": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "revision-backup-on-upgrade",
             "help": "Enable/disable automatic revision backup upon upgrade of system image.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "admin_https_ssl_versions": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.6"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.6"]],
             "type": "string",
             "options": [
-                {
-                    "value": "tlsv1-0"
-                },
-                {
-                    "value": "tlsv1-1"
-                },
-                {
-                    "value": "tlsv1-2"
-                },
-                {
-                    "value": "tlsv1-3"
-                }
+                {"value": "tlsv1-0"},
+                {"value": "tlsv1-1"},
+                {"value": "tlsv1-2"},
+                {"value": "tlsv1-3"},
             ],
             "name": "admin-https-ssl-versions",
             "help": "Allowed SSL/TLS versions for web administration.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "hostname": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "hostname",
             "help": "FortiSwitch hostname.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "revision_backup_on_logout": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "revision-backup-on-logout",
             "help": "Enable/disable automatic revision backup upon logout.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "tcp6_mss_min": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "tcp6-mss-min",
             "help": "Minimum allowed TCP MSS value in bytes.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "cfg_revert_timeout": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "cfg-revert-timeout",
             "help": "Time-out for reverting to the last saved configuration (10 - 2147483647).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "admin_ssh_v1": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "admin-ssh-v1",
             "help": "Enable/disable SSH v1 compatibility.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "allow_subnet_overlap": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "allow-subnet-overlap",
             "help": "Enable/disable subnet overlap.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dh_params": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "dh-params",
             "help": "Minimum size of Diffie-Hellman prime for HTTPS/SSH (bits).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ldapconntimeout": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "ldapconntimeout",
             "help": "LDAP connection time-out (0 - 2147483647 milliseconds).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "tcp_mss_min": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "tcp-mss-min",
             "help": "Minimum allowed TCP MSS value in bytes.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "admin_concurrent": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "admin-concurrent",
             "help": "Enable/disable concurrent login of adminstrative users.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "admintimeout": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "admintimeout",
             "help": "Idle time-out for firewall administration.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "arp_timeout": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "arp-timeout",
             "help": "ARP timeout value in seconds.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "admin_lockout_duration": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "admin-lockout-duration",
             "help": "Lockout duration for FortiSwitch administration (1 - 2147483647 sec).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcp_server_access_list": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "dhcp-server-access-list",
             "help": "Enable/Disable trusted DHCP Server list.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "admin_port": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.6"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.6"]],
             "type": "integer",
             "name": "admin-port",
             "help": "Administrative access HTTP port (1 - 65535).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "l3_host_expiry": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "l3-host-expiry",
             "help": "Enable/disable l3 host expiry.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "post_login_banner": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "post-login-banner",
             "help": "System post-login banner message.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "failtime": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "failtime",
             "help": "Fail-time for PING server lost.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "admin_lockout_threshold": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "admin-lockout-threshold",
             "help": "Lockout threshold for FortiSwitch administration.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcps_db_exp": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "dhcps-db-exp",
             "help": "Expiry time for dhcp-snoop server-db entry (300-259200 sec,).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ca_certificate_802dot1x": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "802.1x-ca-certificate",
             "help": "CA certificate for Port Security (802.1x).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcp_remote_id": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "mac"
-                },
-                {
-                    "value": "hostname"
-                },
-                {
-                    "value": "ip"
-                }
-            ],
+            "options": [{"value": "mac"}, {"value": "hostname"}, {"value": "ip"}],
             "name": "dhcp-remote-id",
             "help": "List the parameters to be included in remote-id field.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcp_snoop_client_req": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "forward-untrusted"
-                },
-                {
-                    "value": "drop-untrusted"
-                }
-            ],
+            "options": [{"value": "forward-untrusted"}, {"value": "drop-untrusted"}],
             "name": "dhcp-snoop-client-req",
             "help": "Client DHCP packet broadcast mode.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcp_client_location": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.2.1"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.2.1"]],
             "type": "string",
             "options": [
-                {
-                    "value": "intfname"
-                },
-                {
-                    "value": "vlan"
-                },
-                {
-                    "value": "hostname"
-                },
-                {
-                    "value": "mode"
-                },
-                {
-                    "value": "description"
-                }
+                {"value": "intfname"},
+                {"value": "vlan"},
+                {"value": "hostname"},
+                {"value": "mode"},
+                {"value": "description"},
             ],
             "name": "dhcp-client-location",
             "help": "List the parameters to be included to inform about client location.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "csr_ca_attribute": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "csr-ca-attribute",
             "help": "Enable/disable CA attribute in CSR.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ipv6_accept_dad": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "ipv6-accept-dad",
             "help": "Whether to accept ipv6 DAD (Duplicate Address Detection).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "admin_ssh_port": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "admin-ssh-port",
             "help": "Administrative access SSH port (1 - 65535).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "admin_server_cert": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.6"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.6"]],
             "type": "string",
             "name": "admin-server-cert",
             "help": "Administrative HTTPS server certificate.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "auto_isl": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.2.4"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.2.4"]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "auto-isl",
             "help": "Enable/disable automatic inter-switch LAG.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "language": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.6"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.6"]],
             "type": "string",
             "options": [
-                {
-                    "value": "browser"
-                },
-                {
-                    "value": "english"
-                },
-                {
-                    "value": "simch"
-                },
-                {
-                    "value": "japanese"
-                },
-                {
-                    "value": "korean"
-                },
-                {
-                    "value": "spanish"
-                },
-                {
-                    "value": "trach"
-                },
-                {
-                    "value": "french"
-                },
-                {
-                    "value": "portuguese"
-                },
-                {
-                    "value": "german"
-                }
+                {"value": "browser"},
+                {"value": "english"},
+                {"value": "simch"},
+                {"value": "japanese"},
+                {"value": "korean"},
+                {"value": "spanish"},
+                {"value": "trach"},
+                {"value": "french"},
+                {"value": "portuguese"},
+                {"value": "german"},
             ],
             "name": "language",
             "help": "GUI display language.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "radius_coa_port": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "radius-coa-port",
             "help": "RADIUS CoA port number.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dst": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "dst",
             "help": "Enable/disable daylight saving time.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "interval": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "interval",
             "help": "Dead gateway detection interval.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "cfg_save": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "automatic"
-                },
-                {
-                    "value": "manual"
-                },
-                {
-                    "value": "revert"
-                }
+                {"value": "automatic"},
+                {"value": "manual"},
+                {"value": "revert"},
             ],
             "name": "cfg-save",
             "help": "Configure configuration saving mode (valid only for changes made in the CLI).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "restart_time": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "restart-time",
             "help": "Daily restart time <hh:mm>.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcp_option_format": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "legacy"
-                },
-                {
-                    "value": "ascii"
-                }
-            ],
+            "options": [{"value": "legacy"}, {"value": "ascii"}],
             "name": "dhcp-option-format",
             "help": "DHCP Option format string.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "admin_scp": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "admin-scp",
             "help": "Enable/disable downloading of system configuraiton using SCP.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "alertd_relog": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "alertd-relog",
             "help": "Enable/disable re-logs when a sensor exceeds it's threshold.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "clt_cert_req": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "clt-cert-req",
             "help": "Enable the requirement of client certificate for GUI login.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "daily_restart": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "daily-restart",
             "help": "Enable/disable FortiSwitch daily reboot.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "tftp": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "tftp",
             "help": "Enable/disable TFTP.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "admin_ssh_grace_time": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "admin-ssh-grace-time",
             "help": "Administrative access login grace time (10 - 3600 sec).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "admin_https_pki_required": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.6"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.6"]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "admin-https-pki-required",
             "help": "Enable/disable HTTPS login page when PKI is enabled.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "radius_port": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "radius-port",
             "help": "RADIUS server port number.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcp_circuit_id": {
-            "v_range": [
-                [
-                    "v7.2.2",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.2", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "intfname"
-                },
-                {
-                    "value": "vlan"
-                },
-                {
-                    "value": "hostname"
-                },
-                {
-                    "value": "mode"
-                },
-                {
-                    "value": "description"
-                }
+                {"value": "intfname"},
+                {"value": "vlan"},
+                {"value": "hostname"},
+                {"value": "mode"},
+                {"value": "description"},
             ],
             "name": "dhcp-circuit-id",
             "help": "List the parameters to be included to inform about client identification.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "admin_password_hash": {
-            "v_range": [
-                [
-                    "v7.4.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.4.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "sha1"
-                },
-                {
-                    "value": "sha256"
-                },
-                {
-                    "value": "pbkdf2"
-                },
-                {
-                    "value": "pbkdf2-high"
-                }
+                {"value": "sha1"},
+                {"value": "sha256"},
+                {"value": "pbkdf2"},
+                {"value": "pbkdf2-high"},
             ],
             "name": "admin-password-hash",
             "help": "Admin password hash algorithm. (sha1,sha256,pbkdf2)",
-            "category": "unitary"
+            "category": "unitary",
         },
         "tcp_options": {
-            "v_range": [
-                [
-                    "v7.4.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.4.1", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "tcp-options",
             "help": "Enable/disable TCP options (timestamps,SACK,window scaling).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "delaycli_timeout_cleanup": {
-            "v_range": [
-                [
-                    "v7.4.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.4.1", ""]],
             "type": "integer",
             "name": "delaycli-timeout-cleanup",
             "help": "Time-out for cleaning up the delay cli execution completion data (1-1440 minutes,).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "reset_button": {
             "v_range": [],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "reset-button",
             "help": "When disabled,reset is ignored while the OS is running.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "admin_restrict_local": {
             "v_range": [],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "admin-restrict-local",
             "help": "Enable/disable local admin authentication restriction when remote authenticator is up and running. (default = disable)",
-            "category": "unitary"
+            "category": "unitary",
         },
         "arp_inspection_monitor_timeout": {
             "v_range": [],
             "type": "integer",
             "name": "arp-inspection-monitor-timeout",
             "help": "Timeout used when MAC-VLAN-IP learned from ARP traffic.",
-            "category": "unitary"
-        }
+            "category": "unitary",
+        },
     },
     "name": "global",
     "help": "Configure global range attributes.",
-    "category": "complex"
+    "category": "complex",
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
+    mkeyname = versioned_schema["mkey"] if "mkey" in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},
         "member_state": {
             "type": "str",
             "required": False,
-            "choices": ["present", "absent"]
+            "choices": ["present", "absent"],
         },
         "system_global": {
-            "required": False, "type": "dict", "default": None,
-            "options": {}
-        }
+            "required": False,
+            "type": "dict",
+            "default": None,
+            "options": {},
+        },
     }
-    for attribute_name in module_spec['options']:
-        fields["system_global"]['options'][attribute_name] = module_spec['options'][attribute_name]
+    for attribute_name in module_spec["options"]:
+        fields["system_global"]["options"][attribute_name] = module_spec["options"][
+            attribute_name
+        ]
         if mkeyname and mkeyname == attribute_name:
-            fields["system_global"]['options'][attribute_name]['required'] = True
+            fields["system_global"]["options"][attribute_name]["required"] = True
 
-    module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=True)
+    module = AnsibleModule(argument_spec=fields, supports_check_mode=True)
 
     is_error = False
     has_changed = False
@@ -2429,30 +1685,45 @@ def main():
     if module._socket_path:
         connection = Connection(module._socket_path)
 
-        if 'enable_log' in module.params:
-            connection.set_custom_option('enable_log', module.params['enable_log'])
+        if "enable_log" in module.params:
+            connection.set_custom_option("enable_log", module.params["enable_log"])
         else:
-            connection.set_custom_option('enable_log', False)
+            connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module, mkeyname)
-        versions_check_result = check_schema_versioning(fos, versioned_schema, "system_global")
-        is_error, has_changed, result, diff = fortiswitch_system(module.params, fos, module.check_mode)
+        versions_check_result = check_schema_versioning(
+            fos, versioned_schema, "system_global"
+        )
+        is_error, has_changed, result, diff = fortiswitch_system(
+            module.params, fos, module.check_mode
+        )
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
-    if versions_check_result and versions_check_result['matched'] is False:
-        module.warn("Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv")
+    if versions_check_result and versions_check_result["matched"] is False:
+        module.warn(
+            "Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv"
+        )
 
     if not is_error:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.exit_json(changed=has_changed, version_check_warning=versions_check_result, meta=result, diff=diff)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.exit_json(
+                changed=has_changed,
+                version_check_warning=versions_check_result,
+                meta=result,
+                diff=diff,
+            )
         else:
             module.exit_json(changed=has_changed, meta=result, diff=diff)
     else:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.fail_json(msg="Error in repo", version_check_warning=versions_check_result, meta=result)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.fail_json(
+                msg="Error in repo",
+                version_check_warning=versions_check_result,
+                meta=result,
+            )
         else:
             module.fail_json(msg="Error in repo", meta=result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

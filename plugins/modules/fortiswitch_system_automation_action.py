@@ -1,5 +1,6 @@
 #!/usr/bin/python
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 # Copyright (c) 2022 Fortinet
 # GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
 
@@ -10,11 +11,13 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'community',
-                    'metadata_version': '1.1'}
+ANSIBLE_METADATA = {
+    "status": ["preview"],
+    "supported_by": "community",
+    "metadata_version": "1.1",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: fortiswitch_system_automation_action
 short_description: Action for automation stitches in Fortinet's FortiSwitch
@@ -275,9 +278,9 @@ options:
                 description:
                     - Request API URI.
                 type: str
-'''
+"""
 
-EXAMPLES = '''
+EXAMPLES = """
 - name: Action for automation stitches.
   fortinet.fortiswitch.fortiswitch_system_automation_action:
       state: "present"
@@ -319,16 +322,16 @@ EXAMPLES = '''
                   header: "<your_own_value>"
           http_body: "<your_own_value>"
           method: "post"
-          minimum_interval: "38"
+          minimum_interval: "1296000"
           name: "default_name_39"
-          port: "40"
+          port: "32767"
           protocol: "http"
           script: "<your_own_value>"
           snmp_trap: "cpu-high"
           uri: "<your_own_value>"
-'''
+"""
 
-RETURN = '''
+RETURN = """
 build:
   description: Build number of the fortiSwitch image
   returned: always
@@ -375,34 +378,78 @@ version:
   type: str
   sample: "v7.0.0"
 
-'''
+"""
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import FortiOSHandler
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import schema_to_module_spec
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    FortiOSHandler,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    schema_to_module_spec,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    check_schema_versioning,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import (
+    FAIL_SOCKET_MSG,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import (
+    remove_invalid_fields,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    is_same_comparison,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    serialize,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    find_current_values,
+)
 
 
 def filter_system_automation_action_data(json):
-    option_list = ['accprofile', 'action_type', 'alicloud_access_key_id',
-                   'alicloud_access_key_secret', 'alicloud_account_id', 'alicloud_function',
-                   'alicloud_function_authorization', 'alicloud_function_domain', 'alicloud_region',
-                   'alicloud_service', 'alicloud_version', 'aws_api_id',
-                   'aws_api_key', 'aws_api_path', 'aws_api_stage',
-                   'aws_domain', 'aws_region', 'azure_api_key',
-                   'azure_app', 'azure_domain', 'azure_function',
-                   'azure_function_authorization', 'email_body', 'email_from',
-                   'email_subject', 'email_to', 'gcp_function',
-                   'gcp_function_domain', 'gcp_function_region', 'gcp_project',
-                   'headers', 'http_body', 'method',
-                   'minimum_interval', 'name', 'port',
-                   'protocol', 'script', 'snmp_trap',
-                   'uri']
+    option_list = [
+        "accprofile",
+        "action_type",
+        "alicloud_access_key_id",
+        "alicloud_access_key_secret",
+        "alicloud_account_id",
+        "alicloud_function",
+        "alicloud_function_authorization",
+        "alicloud_function_domain",
+        "alicloud_region",
+        "alicloud_service",
+        "alicloud_version",
+        "aws_api_id",
+        "aws_api_key",
+        "aws_api_path",
+        "aws_api_stage",
+        "aws_domain",
+        "aws_region",
+        "azure_api_key",
+        "azure_app",
+        "azure_domain",
+        "azure_function",
+        "azure_function_authorization",
+        "email_body",
+        "email_from",
+        "email_subject",
+        "email_to",
+        "gcp_function",
+        "gcp_function_domain",
+        "gcp_function_region",
+        "gcp_project",
+        "headers",
+        "http_body",
+        "method",
+        "minimum_interval",
+        "name",
+        "port",
+        "protocol",
+        "script",
+        "snmp_trap",
+        "uri",
+    ]
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -421,16 +468,16 @@ def underscore_to_hyphen(data):
     elif isinstance(data, dict):
         new_data = {}
         for k, v in data.items():
-            new_data[k.replace('_', '-')] = underscore_to_hyphen(v)
+            new_data[k.replace("_", "-")] = underscore_to_hyphen(v)
         data = new_data
 
     return data
 
 
 def system_automation_action(data, fos, check_mode=False):
-    state = data.get('state', None)
+    state = data.get("state", None)
 
-    system_automation_action_data = data['system_automation_action']
+    system_automation_action_data = data["system_automation_action"]
 
     filtered_data = filter_system_automation_action_data(system_automation_action_data)
     filtered_data = underscore_to_hyphen(filtered_data)
@@ -438,17 +485,20 @@ def system_automation_action(data, fos, check_mode=False):
     # check_mode starts from here
     if check_mode:
         diff = {
-            "before": '',
+            "before": "",
             "after": filtered_data,
         }
-        mkey = fos.get_mkey('system', 'automation-action', filtered_data)
-        current_data = fos.get('system', 'automation-action', mkey=mkey)
-        is_existed = current_data and current_data.get('http_status') == 200 \
-            and isinstance(current_data.get('results'), list) \
-            and len(current_data['results']) > 0
+        mkey = fos.get_mkey("system", "automation-action", filtered_data)
+        current_data = fos.get("system", "automation-action", mkey=mkey)
+        is_existed = (
+            current_data
+            and current_data.get("http_status") == 200
+            and isinstance(current_data.get("results"), list)
+            and len(current_data["results"]) > 0
+        )
 
         # 2. if it exists and the state is 'present' then compare current settings with desired
-        if state == 'present' or state is True or state is None:
+        if state == "present" or state is True or state is None:
             mkeyname = fos.get_mkeyname(None, None)
             # for non global modules, mkeyname must exist and it's a new module when mkey is None
             if mkeyname is not None and mkey is None:
@@ -462,66 +512,102 @@ def system_automation_action(data, fos, check_mode=False):
             # handle global modules'
             if mkeyname is None and state is None:
                 is_same = is_same_comparison(
-                    serialize(current_data['results']), serialize(copied_filtered_data))
+                    serialize(current_data["results"]), serialize(copied_filtered_data)
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             if is_existed:
                 is_same = is_same_comparison(
-                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+                    serialize(current_data["results"][0]),
+                    serialize(copied_filtered_data),
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"][0]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             # record does not exist
             return False, True, filtered_data, diff
 
-        if state == 'absent':
+        if state == "absent":
             if mkey is None:
-                return False, False, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    False,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
 
             if is_existed:
-                return False, True, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    True,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
             return False, False, filtered_data, {}
 
-        return True, False, {'reason: ': 'Must provide state parameter'}, {}
+        return True, False, {"reason: ": "Must provide state parameter"}, {}
 
     if state == "present" or state is True:
-        return fos.set('system',
-                       'automation-action',
-                       data=filtered_data,
-                       )
+        return fos.set(
+            "system",
+            "automation-action",
+            data=filtered_data,
+        )
 
     elif state == "absent":
-        return fos.delete('system',
-                          'automation-action',
-                          mkey=filtered_data['name'])
+        return fos.delete("system", "automation-action", mkey=filtered_data["name"])
     else:
-        fos._module.fail_json(msg='state must be present or absent!')
+        fos._module.fail_json(msg="state must be present or absent!")
 
 
 def is_successful_status(resp):
-    return 'status' in resp and resp['status'] == 'success' or \
-        'http_status' in resp and resp['http_status'] == 200 or \
-        'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
+    return (
+        "status" in resp
+        and resp["status"] == "success"
+        or "http_status" in resp
+        and resp["http_status"] == 200
+        or "http_method" in resp
+        and resp["http_method"] == "DELETE"
+        and resp["http_status"] == 404
+    )
 
 
 def fortiswitch_system(data, fos, check_mode):
-    fos.do_member_operation('system', 'automation-action')
-    current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
-    if data['system_automation_action']:
+    fos.do_member_operation("system", "automation-action")
+    current_cmdb_index = fos.monitor_get("/system/status")["cmdb-index"]
+    if data["system_automation_action"]:
         resp = system_automation_action(data, fos, check_mode)
     else:
-        fos._module.fail_json(msg='missing task body: %s' % ('system_automation_action'))
+        fos._module.fail_json(
+            msg="missing task body: %s" % ("system_automation_action")
+        )
     if check_mode:
         return resp
-    return not is_successful_status(resp), \
-        is_successful_status(resp) and \
-        current_cmdb_index != resp['cmdb-index'], \
-        resp, {}
+    return (
+        not is_successful_status(resp),
+        is_successful_status(resp) and current_cmdb_index != resp["cmdb-index"],
+        resp,
+        {},
+    )
 
 
 versioned_schema = {
@@ -529,652 +615,377 @@ versioned_schema = {
     "elements": "dict",
     "children": {
         "aws_api_key": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "aws-api-key",
             "help": "AWS API Gateway API key.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "alicloud_account_id": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "alicloud-account-id",
             "help": "AliCloud account ID.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "protocol": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "http"
-                },
-                {
-                    "value": "https"
-                }
-            ],
+            "options": [{"value": "http"}, {"value": "https"}],
             "name": "protocol",
             "help": "Request protocol.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "alicloud_function": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "alicloud-function",
             "help": "AliCloud function name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "aws_domain": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "aws-domain",
             "help": "AWS domain.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "aws_api_id": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "aws-api-id",
             "help": "AWS API Gateway ID.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "email_to": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "name": {
-                    "v_range": [
-                        [
-                            "v7.2.1",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.2.1", ""]],
                     "type": "string",
                     "name": "name",
                     "help": "Email address.",
-                    "category": "unitary"
+                    "category": "unitary",
                 }
             },
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "name": "email-to",
             "help": "Email addresses.",
             "mkey": "name",
-            "category": "table"
+            "category": "table",
         },
         "azure_api_key": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "azure-api-key",
             "help": "Azure function API key.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "port": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "integer",
             "name": "port",
             "help": "Protocol port.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "minimum_interval": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "integer",
             "name": "minimum-interval",
             "help": "Limit execution to no more than once in this interval (in seconds).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "gcp_function_domain": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "gcp-function-domain",
             "help": "Google Cloud function domain.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "email_body": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "email-body",
             "help": "Email body.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "http_body": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "http-body",
             "help": "Request body (if necessary). Should be serialized json string.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "azure_domain": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "azure-domain",
             "help": "Azure function domain.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "alicloud_version": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "alicloud-version",
             "help": "AliCloud version.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "accprofile": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "accprofile",
             "help": "Access profile for CLI script action to access FortiSwitch features.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "headers": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "header": {
-                    "v_range": [
-                        [
-                            "v7.2.1",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.2.1", ""]],
                     "type": "string",
                     "name": "header",
                     "help": "Request header.",
-                    "category": "unitary"
+                    "category": "unitary",
                 }
             },
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "name": "headers",
             "help": "Request headers.",
             "mkey": "header",
-            "category": "table"
+            "category": "table",
         },
         "script": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "script",
             "help": "CLI script.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "email_subject": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "email-subject",
             "help": "Email subject.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "email_from": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "email-from",
             "help": "Email sender name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "aws_api_path": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "aws-api-path",
             "help": "AWS API Gateway path.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "method": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "post"
-                },
-                {
-                    "value": "put"
-                },
-                {
-                    "value": "get"
-                },
-                {
-                    "value": "patch"
-                },
-                {
-                    "value": "delete"
-                }
+                {"value": "post"},
+                {"value": "put"},
+                {"value": "get"},
+                {"value": "patch"},
+                {"value": "delete"},
             ],
             "name": "method",
             "help": "Request method (POST,PUT,GET,PATCH or DELETE).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "action_type": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "email"
-                },
-                {
-                    "value": "alert"
-                },
-                {
-                    "value": "cli-script"
-                },
-                {
-                    "value": "snmp-trap"
-                },
-                {
-                    "value": "webhook"
-                }
+                {"value": "email"},
+                {"value": "alert"},
+                {"value": "cli-script"},
+                {"value": "snmp-trap"},
+                {"value": "webhook"},
             ],
             "name": "action-type",
             "help": "Action type.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "alicloud_function_domain": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "alicloud-function-domain",
             "help": "AliCloud function domain.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "azure_app": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "azure-app",
             "help": "Azure function application name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "gcp_function": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "gcp-function",
             "help": "Google Cloud function name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "alicloud_access_key_id": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "alicloud-access-key-id",
             "help": "AliCloud AccessKey ID.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "gcp_project": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "gcp-project",
             "help": "Google Cloud Platform project name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "alicloud_access_key_secret": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "alicloud-access-key-secret",
             "help": "AliCloud AccessKey secret.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "name": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "name",
             "help": "Name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "aws_region": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "aws-region",
             "help": "AWS region.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "azure_function": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "azure-function",
             "help": "Azure function name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "aws_api_stage": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "aws-api-stage",
             "help": "AWS API Gateway deployment stage name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "alicloud_region": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "alicloud-region",
             "help": "AliCloud region.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "uri": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "uri",
             "help": "Request API URI.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "azure_function_authorization": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "anonymous"
-                },
-                {
-                    "value": "function"
-                },
-                {
-                    "value": "admin"
-                }
+                {"value": "anonymous"},
+                {"value": "function"},
+                {"value": "admin"},
             ],
             "name": "azure-function-authorization",
             "help": "Azure function authorization level.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "snmp_trap": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "cpu-high"
-                },
-                {
-                    "value": "mem-low"
-                },
-                {
-                    "value": "syslog-full"
-                },
-                {
-                    "value": "test-trap"
-                },
-                {
-                    "value": "fsStitchTrap1",
-                    "v_range": []
-                },
-                {
-                    "value": "fsStitchTrap2",
-                    "v_range": []
-                },
-                {
-                    "value": "fsStitchTrap3",
-                    "v_range": []
-                },
-                {
-                    "value": "fsStitchTrap4",
-                    "v_range": []
-                },
-                {
-                    "value": "fsStitchTrap5",
-                    "v_range": []
-                }
+                {"value": "cpu-high"},
+                {"value": "mem-low"},
+                {"value": "syslog-full"},
+                {"value": "test-trap"},
+                {"value": "fsStitchTrap1", "v_range": []},
+                {"value": "fsStitchTrap2", "v_range": []},
+                {"value": "fsStitchTrap3", "v_range": []},
+                {"value": "fsStitchTrap4", "v_range": []},
+                {"value": "fsStitchTrap5", "v_range": []},
             ],
             "name": "snmp-trap",
             "help": "SNMP trap.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "gcp_function_region": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "gcp-function-region",
             "help": "Google Cloud function region.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "alicloud_service": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "alicloud-service",
             "help": "AliCloud service name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "alicloud_function_authorization": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "anonymous"
-                },
-                {
-                    "value": "function"
-                }
-            ],
+            "options": [{"value": "anonymous"}, {"value": "function"}],
             "name": "alicloud-function-authorization",
             "help": "AliCloud function authorization type.",
-            "category": "unitary"
-        }
+            "category": "unitary",
+        },
     },
-    "v_range": [
-        [
-            "v7.2.1",
-            ""
-        ]
-    ],
+    "v_range": [["v7.2.1", ""]],
     "name": "automation-action",
     "help": "Action for automation stitches.",
     "mkey": "name",
-    "category": "table"
+    "category": "table",
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
+    mkeyname = versioned_schema["mkey"] if "mkey" in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},
         "member_state": {
             "type": "str",
             "required": False,
-            "choices": ["present", "absent"]
+            "choices": ["present", "absent"],
         },
-        "state": {"required": True, "type": "str",
-                  "choices": ["present", "absent"]},
+        "state": {"required": True, "type": "str", "choices": ["present", "absent"]},
         "system_automation_action": {
-            "required": False, "type": "dict", "default": None,
-            "no_log": True,
-            "options": {}
-        }
+            "required": False,
+            "type": "dict",
+            "default": None,
+            "options": {},
+        },
     }
-    for attribute_name in module_spec['options']:
-        fields["system_automation_action"]['options'][attribute_name] = module_spec['options'][attribute_name]
+    for attribute_name in module_spec["options"]:
+        fields["system_automation_action"]["options"][attribute_name] = module_spec[
+            "options"
+        ][attribute_name]
         if mkeyname and mkeyname == attribute_name:
-            fields["system_automation_action"]['options'][attribute_name]['required'] = True
+            fields["system_automation_action"]["options"][attribute_name][
+                "required"
+            ] = True
 
-    module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=True)
+    module = AnsibleModule(argument_spec=fields, supports_check_mode=True)
 
     is_error = False
     has_changed = False
@@ -1185,30 +996,45 @@ def main():
     if module._socket_path:
         connection = Connection(module._socket_path)
 
-        if 'enable_log' in module.params:
-            connection.set_custom_option('enable_log', module.params['enable_log'])
+        if "enable_log" in module.params:
+            connection.set_custom_option("enable_log", module.params["enable_log"])
         else:
-            connection.set_custom_option('enable_log', False)
+            connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module, mkeyname)
-        versions_check_result = check_schema_versioning(fos, versioned_schema, "system_automation_action")
-        is_error, has_changed, result, diff = fortiswitch_system(module.params, fos, module.check_mode)
+        versions_check_result = check_schema_versioning(
+            fos, versioned_schema, "system_automation_action"
+        )
+        is_error, has_changed, result, diff = fortiswitch_system(
+            module.params, fos, module.check_mode
+        )
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
-    if versions_check_result and versions_check_result['matched'] is False:
-        module.warn("Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv")
+    if versions_check_result and versions_check_result["matched"] is False:
+        module.warn(
+            "Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv"
+        )
 
     if not is_error:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.exit_json(changed=has_changed, version_check_warning=versions_check_result, meta=result, diff=diff)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.exit_json(
+                changed=has_changed,
+                version_check_warning=versions_check_result,
+                meta=result,
+                diff=diff,
+            )
         else:
             module.exit_json(changed=has_changed, meta=result, diff=diff)
     else:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.fail_json(msg="Error in repo", version_check_warning=versions_check_result, meta=result)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.fail_json(
+                msg="Error in repo",
+                version_check_warning=versions_check_result,
+                meta=result,
+            )
         else:
             module.fail_json(msg="Error in repo", meta=result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

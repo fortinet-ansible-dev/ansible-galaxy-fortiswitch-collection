@@ -1,5 +1,6 @@
 #!/usr/bin/python
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 # Copyright (c) 2022 Fortinet
 # GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
 
@@ -10,11 +11,13 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'community',
-                    'metadata_version': '1.1'}
+ANSIBLE_METADATA = {
+    "status": ["preview"],
+    "supported_by": "community",
+    "metadata_version": "1.1",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: fortiswitch_system_interface
 short_description: Configure interfaces in Fortinet's FortiSwitch
@@ -724,9 +727,9 @@ options:
                 description:
                     - Default weight for static routes if route has no weight configured (0 - 255).
                 type: int
-'''
+"""
 
-EXAMPLES = '''
+EXAMPLES = """
 - name: Configure interfaces.
   fortinet.fortiswitch.fortiswitch_system_interface:
       state: "present"
@@ -755,9 +758,9 @@ EXAMPLES = '''
           dynamic_dns1: "<your_own_value>"
           dynamic_dns2: "<your_own_value>"
           dynamicgw: "<your_own_value>"
-          forward_domain: "27"
+          forward_domain: "1073741823"
           gwdetect: "enable"
-          ha_priority: "29"
+          ha_priority: "25"
           icmp_redirect: "enable"
           interface: "<your_own_value> (source system.interface.name)"
           ip: "<your_own_value>"
@@ -766,41 +769,41 @@ EXAMPLES = '''
               dhcp6_information_request: "enable"
               ip6_address: "<your_own_value>"
               ip6_allowaccess: "any"
-              ip6_default_life: "38"
+              ip6_default_life: "4500"
               ip6_dns_server_override: "enable"
               ip6_extra_addr:
                   -
                       prefix: "<your_own_value>"
-              ip6_hop_limit: "42"
+              ip6_hop_limit: "127"
               ip6_link_mtu: "43"
               ip6_manage_flag: "enable"
-              ip6_max_interval: "45"
-              ip6_min_interval: "46"
+              ip6_max_interval: "900"
+              ip6_min_interval: "675"
               ip6_mode: "static"
               ip6_other_flag: "enable"
               ip6_prefix_list:
                   -
                       autonomous_flag: "enable"
                       onlink_flag: "enable"
-                      preferred_life_time: "52"
+                      preferred_life_time: "1073741823"
                       prefix: "<your_own_value>"
-                      valid_life_time: "54"
-              ip6_reachable_time: "55"
-              ip6_retrans_time: "56"
+                      valid_life_time: "1073741823"
+              ip6_reachable_time: "1800000"
+              ip6_retrans_time: "1073741823"
               ip6_send_adv: "enable"
               ip6_unknown_mcast_to_cpu: "enable"
               vrip6_link_local: "<your_own_value>"
               vrrp6:
                   -
                       accept_mode: "enable"
-                      adv_interval: "62"
+                      adv_interval: "127"
                       preempt: "enable"
-                      priority: "64"
-                      start_time: "65"
+                      priority: "127"
+                      start_time: "127"
                       status: "enable"
                       vrdst6: "<your_own_value>"
-                      vrgrp: "68"
-                      vrid: "69"
+                      vrgrp: "32767"
+                      vrid: "<you_own_value>"
                       vrip6: "<your_own_value>"
               vrrp_virtual_mac6: "enable"
           l2_interface: "<your_own_value> (source switch.interface.name)"
@@ -819,7 +822,7 @@ EXAMPLES = '''
                   detectprotocol: "ping"
                   detectserver: "<your_own_value>"
                   gwdetect: "enable"
-                  ha_priority: "87"
+                  ha_priority: "25"
                   id: "88"
                   ip: "<your_own_value>"
                   ping_serv_status: "90"
@@ -839,22 +842,22 @@ EXAMPLES = '''
           vrf: "<your_own_value> (source router.vrf.name)"
           vrrp:
               -
-                  adv_interval: "105"
+                  adv_interval: "127"
                   backup_vmac_fwd: "enable"
                   preempt: "enable"
-                  priority: "108"
-                  start_time: "109"
+                  priority: "127"
+                  start_time: "127"
                   status: "enable"
                   version: "2"
                   vrdst: "<your_own_value>"
-                  vrgrp: "113"
-                  vrid: "114"
+                  vrgrp: "32767"
+                  vrid: "<you_own_value>"
                   vrip: "<your_own_value>"
           vrrp_virtual_mac: "enable"
-          weight: "117"
-'''
+          weight: "127"
+"""
 
-RETURN = '''
+RETURN = """
 build:
   description: Build number of the fortiSwitch image
   returned: always
@@ -901,39 +904,95 @@ version:
   type: str
   sample: "v7.0.0"
 
-'''
+"""
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import FortiOSHandler
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import schema_to_module_spec
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    FortiOSHandler,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    schema_to_module_spec,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    check_schema_versioning,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import (
+    FAIL_SOCKET_MSG,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import (
+    remove_invalid_fields,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    is_same_comparison,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    serialize,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    find_current_values,
+)
 
 
 def filter_system_interface_data(json):
-    option_list = ['alias', 'allowaccess', 'auth_type',
-                   'bfd', 'bfd_desired_min_tx', 'bfd_detect_mult',
-                   'bfd_required_min_rx', 'cli_conn_status', 'defaultgw',
-                   'description', 'detectprotocol', 'detectserver',
-                   'dhcp_client_identifier', 'dhcp_client_status', 'dhcp_expire',
-                   'dhcp_relay_ip', 'dhcp_relay_option82', 'dhcp_relay_service',
-                   'dhcp_vendor_specific_option', 'distance', 'dns_server_override',
-                   'dynamic_dns1', 'dynamic_dns2', 'dynamicgw',
-                   'forward_domain', 'gwdetect', 'ha_priority',
-                   'icmp_redirect', 'interface', 'ip',
-                   'ipv6', 'l2_interface', 'macaddr',
-                   'mode', 'mtu', 'mtu_override',
-                   'name', 'ping_serv_status', 'priority',
-                   'remote_ip', 'secondary_IP', 'secondaryip',
-                   'snmp_index', 'speed', 'src_check',
-                   'src_check_allow_default', 'status', 'switch',
-                   'switch_members', 'type', 'vdom',
-                   'vlanforward', 'vlanid', 'vrf',
-                   'vrrp', 'vrrp_virtual_mac', 'weight']
+    option_list = [
+        "alias",
+        "allowaccess",
+        "auth_type",
+        "bfd",
+        "bfd_desired_min_tx",
+        "bfd_detect_mult",
+        "bfd_required_min_rx",
+        "cli_conn_status",
+        "defaultgw",
+        "description",
+        "detectprotocol",
+        "detectserver",
+        "dhcp_client_identifier",
+        "dhcp_client_status",
+        "dhcp_expire",
+        "dhcp_relay_ip",
+        "dhcp_relay_option82",
+        "dhcp_relay_service",
+        "dhcp_vendor_specific_option",
+        "distance",
+        "dns_server_override",
+        "dynamic_dns1",
+        "dynamic_dns2",
+        "dynamicgw",
+        "forward_domain",
+        "gwdetect",
+        "ha_priority",
+        "icmp_redirect",
+        "interface",
+        "ip",
+        "ipv6",
+        "l2_interface",
+        "macaddr",
+        "mode",
+        "mtu",
+        "mtu_override",
+        "name",
+        "ping_serv_status",
+        "priority",
+        "remote_ip",
+        "secondary_IP",
+        "secondaryip",
+        "snmp_index",
+        "speed",
+        "src_check",
+        "src_check_allow_default",
+        "status",
+        "switch",
+        "switch_members",
+        "type",
+        "vdom",
+        "vlanforward",
+        "vlanid",
+        "vrf",
+        "vrrp",
+        "vrrp_virtual_mac",
+        "weight",
+    ]
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -946,11 +1005,17 @@ def filter_system_interface_data(json):
 
 
 def flatten_single_path(data, path, index):
-    if not data or index == len(path) or path[index] not in data or not data[path[index]] and not isinstance(data[path[index]], list):
+    if (
+        not data
+        or index == len(path)
+        or path[index] not in data
+        or not data[path[index]]
+        and not isinstance(data[path[index]], list)
+    ):
         return
 
     if index == len(path) - 1:
-        data[path[index]] = ' '.join(str(elem) for elem in data[path[index]])
+        data[path[index]] = " ".join(str(elem) for elem in data[path[index]])
         if len(data[path[index]]) == 0:
             data[path[index]] = None
 
@@ -963,9 +1028,9 @@ def flatten_single_path(data, path, index):
 
 def flatten_multilists_attributes(data):
     multilist_attrs = [
-        ['allowaccess'],
-        ['ipv6', 'ip6_allowaccess'],
-        ['secondaryip', 'allowaccess'],
+        ["allowaccess"],
+        ["ipv6", "ip6_allowaccess"],
+        ["secondaryip", "allowaccess"],
     ]
 
     for attr in multilist_attrs:
@@ -981,16 +1046,16 @@ def underscore_to_hyphen(data):
     elif isinstance(data, dict):
         new_data = {}
         for k, v in data.items():
-            new_data[k.replace('_', '-')] = underscore_to_hyphen(v)
+            new_data[k.replace("_", "-")] = underscore_to_hyphen(v)
         data = new_data
 
     return data
 
 
 def system_interface(data, fos, check_mode=False):
-    state = data.get('state', None)
+    state = data.get("state", None)
 
-    system_interface_data = data['system_interface']
+    system_interface_data = data["system_interface"]
 
     filtered_data = filter_system_interface_data(system_interface_data)
     filtered_data = flatten_multilists_attributes(filtered_data)
@@ -999,17 +1064,20 @@ def system_interface(data, fos, check_mode=False):
     # check_mode starts from here
     if check_mode:
         diff = {
-            "before": '',
+            "before": "",
             "after": filtered_data,
         }
-        mkey = fos.get_mkey('system', 'interface', filtered_data)
-        current_data = fos.get('system', 'interface', mkey=mkey)
-        is_existed = current_data and current_data.get('http_status') == 200 \
-            and isinstance(current_data.get('results'), list) \
-            and len(current_data['results']) > 0
+        mkey = fos.get_mkey("system", "interface", filtered_data)
+        current_data = fos.get("system", "interface", mkey=mkey)
+        is_existed = (
+            current_data
+            and current_data.get("http_status") == 200
+            and isinstance(current_data.get("results"), list)
+            and len(current_data["results"]) > 0
+        )
 
         # 2. if it exists and the state is 'present' then compare current settings with desired
-        if state == 'present' or state is True or state is None:
+        if state == "present" or state is True or state is None:
             mkeyname = fos.get_mkeyname(None, None)
             # for non global modules, mkeyname must exist and it's a new module when mkey is None
             if mkeyname is not None and mkey is None:
@@ -1023,66 +1091,100 @@ def system_interface(data, fos, check_mode=False):
             # handle global modules'
             if mkeyname is None and state is None:
                 is_same = is_same_comparison(
-                    serialize(current_data['results']), serialize(copied_filtered_data))
+                    serialize(current_data["results"]), serialize(copied_filtered_data)
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             if is_existed:
                 is_same = is_same_comparison(
-                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+                    serialize(current_data["results"][0]),
+                    serialize(copied_filtered_data),
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"][0]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             # record does not exist
             return False, True, filtered_data, diff
 
-        if state == 'absent':
+        if state == "absent":
             if mkey is None:
-                return False, False, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    False,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
 
             if is_existed:
-                return False, True, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    True,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
             return False, False, filtered_data, {}
 
-        return True, False, {'reason: ': 'Must provide state parameter'}, {}
+        return True, False, {"reason: ": "Must provide state parameter"}, {}
 
     if state == "present" or state is True:
-        return fos.set('system',
-                       'interface',
-                       data=filtered_data,
-                       )
+        return fos.set(
+            "system",
+            "interface",
+            data=filtered_data,
+        )
 
     elif state == "absent":
-        return fos.delete('system',
-                          'interface',
-                          mkey=filtered_data['name'])
+        return fos.delete("system", "interface", mkey=filtered_data["name"])
     else:
-        fos._module.fail_json(msg='state must be present or absent!')
+        fos._module.fail_json(msg="state must be present or absent!")
 
 
 def is_successful_status(resp):
-    return 'status' in resp and resp['status'] == 'success' or \
-        'http_status' in resp and resp['http_status'] == 200 or \
-        'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
+    return (
+        "status" in resp
+        and resp["status"] == "success"
+        or "http_status" in resp
+        and resp["http_status"] == 200
+        or "http_method" in resp
+        and resp["http_method"] == "DELETE"
+        and resp["http_status"] == 404
+    )
 
 
 def fortiswitch_system(data, fos, check_mode):
-    fos.do_member_operation('system', 'interface')
-    current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
-    if data['system_interface']:
+    fos.do_member_operation("system", "interface")
+    current_cmdb_index = fos.monitor_get("/system/status")["cmdb-index"]
+    if data["system_interface"]:
         resp = system_interface(data, fos, check_mode)
     else:
-        fos._module.fail_json(msg='missing task body: %s' % ('system_interface'))
+        fos._module.fail_json(msg="missing task body: %s" % ("system_interface"))
     if check_mode:
         return resp
-    return not is_successful_status(resp), \
-        is_successful_status(resp) and \
-        current_cmdb_index != resp['cmdb-index'], \
-        resp, {}
+    return (
+        not is_successful_status(resp),
+        is_successful_status(resp) and current_cmdb_index != resp["cmdb-index"],
+        resp,
+        {},
+    )
 
 
 versioned_schema = {
@@ -1090,931 +1192,454 @@ versioned_schema = {
     "elements": "dict",
     "children": {
         "defaultgw": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "defaultgw",
             "help": "Enable/disable default gateway.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "gwdetect": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "gwdetect",
             "help": "Enable/disable gateway detection.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "weight": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "weight",
             "help": "Default weight for static routes if route has no weight configured (0 - 255).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ip": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "ip",
             "help": "Interface IPv4 address.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "vrrp_virtual_mac": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "vrrp-virtual-mac",
             "help": "enable to use virtual MAC for VRRP",
-            "category": "unitary"
+            "category": "unitary",
         },
         "bfd_detect_mult": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "bfd-detect-mult",
             "help": "BFD detection multiplier.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "bfd_required_min_rx": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "bfd-required-min-rx",
             "help": "BFD required minimal receive interval.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "src_check_allow_default": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "src-check-allow-default",
             "help": "Enable/disable.When src ip lookup hits default route,enable means allow pkt else drop.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcp_relay_ip": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "dhcp-relay-ip",
             "help": "DHCP relay IP address.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "forward_domain": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "forward-domain",
             "help": "TP mode forward domain.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "speed": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "auto"
-                },
-                {
-                    "value": "10full"
-                },
-                {
-                    "value": "10half"
-                },
-                {
-                    "value": "100full"
-                },
-                {
-                    "value": "100half"
-                },
-                {
-                    "value": "1000full"
-                },
-                {
-                    "value": "1000half"
-                },
-                {
-                    "value": "1000auto"
-                }
+                {"value": "auto"},
+                {"value": "10full"},
+                {"value": "10half"},
+                {"value": "100full"},
+                {"value": "100half"},
+                {"value": "1000full"},
+                {"value": "1000half"},
+                {"value": "1000auto"},
             ],
             "name": "speed",
             "help": "Speed (copper mode port only).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "vlanforward": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "vlanforward",
             "help": "Enable/disable VLAN forwarding.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "priority": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "priority",
             "help": "Priority of learned routes.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "bfd": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "global"
-                },
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "global"}, {"value": "enable"}, {"value": "disable"}],
             "name": "bfd",
             "help": "Bidirectional Forwarding Detection (BFD).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "macaddr": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "macaddr",
             "help": "MAC address.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "bfd_desired_min_tx": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "bfd-desired-min-tx",
             "help": "BFD desired minimal transmit interval.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "switch": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "switch",
             "help": "Contained in switch.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "vlanid": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "vlanid",
             "help": "VLAN ID.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "cli_conn_status": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.4.0"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.4.0"]],
             "type": "string",
             "options": [
-                {
-                    "value": "initial"
-                },
-                {
-                    "value": "connecting"
-                },
-                {
-                    "value": "connected"
-                },
-                {
-                    "value": "failed"
-                }
+                {"value": "initial"},
+                {"value": "connecting"},
+                {"value": "connected"},
+                {"value": "failed"},
             ],
             "name": "cli-conn-status",
             "help": "CLI connection status.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "detectserver": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "detectserver",
             "help": "IP address to PING for gateway detection.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "vrrp": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "status": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "status",
                     "help": "Enable/disable status.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "priority": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "priority",
                     "help": "Priority of the virtual router (1 - 255).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "adv_interval": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "adv-interval",
                     "help": "Advertisement interval (1 - 255 seconds).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "start_time": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "start-time",
                     "help": "Startup time (1 - 255 seconds).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "vrid": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "vrid",
                     "help": "Virtual router identifier (1 - 255).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "vrgrp": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "vrgrp",
                     "help": "VRRP group ID (1 - 65535).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "preempt": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "preempt",
                     "help": "Enable/disable preempt mode.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "version": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "2"
-                        },
-                        {
-                            "value": "3"
-                        }
-                    ],
+                    "options": [{"value": "2"}, {"value": "3"}],
                     "name": "version",
                     "help": "VRRP version.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "vrdst": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "vrdst",
                     "help": "Monitor the route to this destination.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "vrip": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "vrip",
                     "help": "IP address of the virtual router.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "backup_vmac_fwd": {
-                    "v_range": [
-                        [
-                            "v7.0.1",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.1", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "backup-vmac-fwd",
                     "help": "Enable/disable backup-vmac-fwd.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "vrrp",
             "help": "VRRP configuration",
             "mkey": "vrid",
-            "category": "table"
+            "category": "table",
         },
         "allowaccess": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "list",
             "options": [
-                {
-                    "value": "ping"
-                },
-                {
-                    "value": "https"
-                },
-                {
-                    "value": "http"
-                },
-                {
-                    "value": "ssh"
-                },
-                {
-                    "value": "snmp"
-                },
-                {
-                    "value": "telnet"
-                },
-                {
-                    "value": "radius-acct"
-                }
+                {"value": "ping"},
+                {"value": "https"},
+                {"value": "http"},
+                {"value": "ssh"},
+                {"value": "snmp"},
+                {"value": "telnet"},
+                {"value": "radius-acct"},
             ],
             "name": "allowaccess",
             "help": "Interface management access.",
             "category": "unitary",
-            "elements": "str"
+            "elements": "str",
         },
         "dhcp_client_identifier": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "dhcp-client-identifier",
             "help": "DHCP client identifier.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ping_serv_status": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "ping-serv-status",
             "help": "PING server status.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "type": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "physical"
-                },
-                {
-                    "value": "vlan"
-                },
-                {
-                    "value": "tunnel"
-                },
-                {
-                    "value": "loopback"
-                },
-                {
-                    "value": "switch"
-                },
-                {
-                    "value": "hard-switch"
-                },
-                {
-                    "value": "vap-switch"
-                },
-                {
-                    "value": "hdlc"
-                },
-                {
-                    "value": "vxlan",
-                    "v_range": [
-                        [
-                            "v7.2.1",
-                            ""
-                        ]
-                    ]
-                }
+                {"value": "physical"},
+                {"value": "vlan"},
+                {"value": "tunnel"},
+                {"value": "loopback"},
+                {"value": "switch"},
+                {"value": "hard-switch"},
+                {"value": "vap-switch"},
+                {"value": "hdlc"},
+                {"value": "vxlan", "v_range": [["v7.2.1", ""]]},
             ],
             "name": "type",
             "help": "Interface type.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "snmp_index": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "snmp-index",
             "help": "SNMP index.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "icmp_redirect": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "icmp-redirect",
             "help": "Enable/disable ICMP rediect.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcp_relay_option82": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "enable"
-                }
-            ],
+            "options": [{"value": "disable"}, {"value": "enable"}],
             "name": "dhcp-relay-option82",
             "help": "Enable / Disable DHCP relay option-82 insertion.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "description": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "description",
             "help": "Description.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "remote_ip": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "remote-ip",
             "help": "Remote IP address of tunnel.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dns_server_override": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "dns-server-override",
             "help": "Enable/disable use of DNS server aquired by DHCP or PPPoE.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "secondary_IP": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "secondary-IP",
             "help": "Enable/disable use of secondary IP address.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "vrf": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "vrf",
             "help": "VRF.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcp_expire": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "dhcp_expire",
             "help": "DHCP client expiration.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "interface": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "interface",
             "help": "Interface name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcp_vendor_specific_option": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "dhcp-vendor-specific-option",
             "help": "DHCP Vendor specific option 43.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "vdom": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "vdom",
             "help": "Virtual domain name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcp_relay_service": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "enable"
-                }
-            ],
+            "options": [{"value": "disable"}, {"value": "enable"}],
             "name": "dhcp-relay-service",
             "help": "Enable/disable use DHCP relay service.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "distance": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "distance",
             "help": "Distance of learned routes.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "name": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "name",
             "help": "Name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "detectprotocol": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "ping"
-                },
-                {
-                    "value": "tcp-echo"
-                },
-                {
-                    "value": "udp-echo"
-                }
+                {"value": "ping"},
+                {"value": "tcp-echo"},
+                {"value": "udp-echo"},
             ],
             "name": "detectprotocol",
             "help": "Protocol to use for gateway detection.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "src_check": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "loose"
-                },
-                {
-                    "value": "strict"
-                }
-            ],
+            "options": [{"value": "disable"}, {"value": "loose"}, {"value": "strict"}],
             "name": "src-check",
             "help": "Enable/disable source IP check.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ipv6": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "dict",
             "children": {
                 "ip6_allowaccess": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "list",
                     "options": [
-                        {
-                            "value": "any"
-                        },
-                        {
-                            "value": "ping"
-                        },
-                        {
-                            "value": "https"
-                        },
-                        {
-                            "value": "http"
-                        },
-                        {
-                            "value": "ssh"
-                        },
-                        {
-                            "value": "snmp"
-                        },
-                        {
-                            "value": "telnet"
-                        },
-                        {
-                            "value": "radius-acct"
-                        }
+                        {"value": "any"},
+                        {"value": "ping"},
+                        {"value": "https"},
+                        {"value": "http"},
+                        {"value": "ssh"},
+                        {"value": "snmp"},
+                        {"value": "telnet"},
+                        {"value": "radius-acct"},
                     ],
                     "name": "ip6-allowaccess",
                     "help": "Allow management access to the interface.",
@@ -2022,1014 +1647,537 @@ versioned_schema = {
                     "elements": "str"
                 },
                 "ip6_retrans_time": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "ip6-retrans-time",
                     "help": "IPv6 retransmit time (milliseconds).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "vrrp6": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "status": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
-                            "options": [
-                                {
-                                    "value": "enable"
-                                },
-                                {
-                                    "value": "disable"
-                                }
-                            ],
+                            "options": [{"value": "enable"}, {"value": "disable"}],
                             "name": "status",
                             "help": "Enable/disable VRRP.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "priority": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "priority",
                             "help": "Priority of the virtual router (1 - 255).",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "vrip6": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "vrip6",
                             "help": "IPv6 address of the virtual router.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "adv_interval": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "adv-interval",
                             "help": "Advertisement interval (1 - 255 seconds).",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "start_time": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "start-time",
                             "help": "Startup time (1 - 255 seconds).",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "vrid": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "vrid",
                             "help": "Virtual router identifier (1 - 255).",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "vrgrp": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "vrgrp",
                             "help": "VRRP group ID (1 - 65535).",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "preempt": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
-                            "options": [
-                                {
-                                    "value": "enable"
-                                },
-                                {
-                                    "value": "disable"
-                                }
-                            ],
+                            "options": [{"value": "enable"}, {"value": "disable"}],
                             "name": "preempt",
                             "help": "Enable/disable preempt mode.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "accept_mode": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
-                            "options": [
-                                {
-                                    "value": "enable"
-                                },
-                                {
-                                    "value": "disable"
-                                }
-                            ],
+                            "options": [{"value": "enable"}, {"value": "disable"}],
                             "name": "accept-mode",
                             "help": "Enable/disable accept mode.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "vrdst6": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "vrdst6",
                             "help": "Monitor the route to this destination.",
-                            "category": "unitary"
-                        }
+                            "category": "unitary",
+                        },
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "vrrp6",
                     "help": "IPv6 VRRP configuration.",
                     "mkey": "vrid",
-                    "category": "table"
+                    "category": "table",
                 },
                 "ip6_other_flag": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "ip6-other-flag",
                     "help": "Enable/disable sending of IPv6 other flag.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "ip6_dns_server_override": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "ip6-dns-server-override",
                     "help": "Enable/disable using the DNS server acquired by DHCP.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "vrip6_link_local": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "vrip6_link_local",
                     "help": "Link-local IPv6 address of virtual router.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "ip6_address": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "ip6-address",
                     "help": "Primary IPv6 address prefix of interface.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "ip6_prefix_list": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "valid_life_time": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "valid-life-time",
                             "help": "Valid life time (sec).",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "prefix": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "prefix",
                             "help": "IPv6 prefix.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "autonomous_flag": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
-                            "options": [
-                                {
-                                    "value": "enable"
-                                },
-                                {
-                                    "value": "disable"
-                                }
-                            ],
+                            "options": [{"value": "enable"}, {"value": "disable"}],
                             "name": "autonomous-flag",
                             "help": "Enable/disable autonomous flag.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "onlink_flag": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
-                            "options": [
-                                {
-                                    "value": "enable"
-                                },
-                                {
-                                    "value": "disable"
-                                }
-                            ],
+                            "options": [{"value": "enable"}, {"value": "disable"}],
                             "name": "onlink-flag",
                             "help": "Enable/disable onlink flag.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "preferred_life_time": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "preferred-life-time",
                             "help": "Preferred life time (sec).",
-                            "category": "unitary"
-                        }
+                            "category": "unitary",
+                        },
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "ip6-prefix-list",
                     "help": "IPv6 advertised prefix list.",
                     "mkey": "prefix",
-                    "category": "table"
+                    "category": "table",
                 },
                 "ip6_link_mtu": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "ip6-link-mtu",
                     "help": "IPv6 link MTU.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "ip6_manage_flag": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "ip6-manage-flag",
                     "help": "Enable/disable sending of IPv6 managed flag.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "ip6_min_interval": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "ip6-min-interval",
                     "help": "IPv6 minimum interval (sec) after which RA will be sent.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "ip6_mode": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "static"
-                        },
-                        {
-                            "value": "dhcp"
-                        }
-                    ],
+                    "options": [{"value": "static"}, {"value": "dhcp"}],
                     "name": "ip6-mode",
                     "help": "Addressing mode (static,DHCP).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "ip6_hop_limit": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "ip6-hop-limit",
                     "help": "IPv6 hop limit.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "ip6_reachable_time": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "ip6-reachable-time",
                     "help": "IPv6 reachable time (milliseconds).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "ip6_extra_addr": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "prefix": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "prefix",
                             "help": "IPv6 address prefix.",
-                            "category": "unitary"
+                            "category": "unitary",
                         }
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "ip6-extra-addr",
                     "help": "Extra IPv6 address prefixes of interface.",
                     "mkey": "prefix",
-                    "category": "table"
+                    "category": "table",
                 },
                 "ip6_default_life": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "ip6-default-life",
                     "help": "IPv6 default life (sec).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "ip6_max_interval": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "ip6-max-interval",
                     "help": "IPv6 maximum interval (sec) after which RA will be sent.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "vrrp_virtual_mac6": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "vrrp-virtual-mac6",
                     "help": "Enable/disable virtual MAC for VRRP.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "ip6_unknown_mcast_to_cpu": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "ip6-unknown-mcast-to-cpu",
                     "help": "Enable/disable unknown mcast to cpu.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "ip6_send_adv": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "ip6-send-adv",
                     "help": "Enable/disable sending of IPv6 Router advertisement.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "autoconf": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "autoconf",
                     "help": "Enable/disable address automatic config.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "dhcp6_information_request": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "dhcp6-information-request",
                     "help": "Enable/disable DHCPv6 information request.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
             "name": "ipv6",
             "help": "IPv6 address.",
-            "category": "complex"
+            "category": "complex",
         },
         "dynamicgw": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "dynamicgw",
             "help": "Dynamic gateway.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mtu_override": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "mtu-override",
             "help": "Enable/disable override of default MTU.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mtu": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "mtu",
             "help": "Maximum transportation unit (MTU).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dynamic_dns1": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "dynamic_dns1",
             "help": "Primary dynamic DNS server.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "alias": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "alias",
             "help": "Alias.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "auth_type": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "auto"
-                },
-                {
-                    "value": "pap"
-                },
-                {
-                    "value": "chap"
-                },
-                {
-                    "value": "mschapv1"
-                },
-                {
-                    "value": "mschapv2"
-                }
+                {"value": "auto"},
+                {"value": "pap"},
+                {"value": "chap"},
+                {"value": "mschapv1"},
+                {"value": "mschapv2"},
             ],
             "name": "auth-type",
             "help": "PPP authentication type.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dynamic_dns2": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "dynamic_dns2",
             "help": "Secondary dynamic DNS server.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "status": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "up"
-                },
-                {
-                    "value": "down"
-                }
-            ],
+            "options": [{"value": "up"}, {"value": "down"}],
             "name": "status",
             "help": "Interface status.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mode": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "static"
-                },
-                {
-                    "value": "dhcp"
-                }
-            ],
+            "options": [{"value": "static"}, {"value": "dhcp"}],
             "name": "mode",
             "help": "Interface addressing mode.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ha_priority": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "ha-priority",
             "help": "PING server HA election priority (1 - 50).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "secondaryip": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "gwdetect": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "gwdetect",
                     "help": "Enable/disable gateway detection.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "detectprotocol": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "ping"
-                        },
-                        {
-                            "value": "tcp-echo"
-                        },
-                        {
-                            "value": "udp-echo"
-                        }
+                        {"value": "ping"},
+                        {"value": "tcp-echo"},
+                        {"value": "udp-echo"},
                     ],
                     "name": "detectprotocol",
                     "help": "Protocol to use for gateway detection.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "ip": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "ip",
                     "help": "Interface IPv4 address.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "detectserver": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "detectserver",
                     "help": "IP address to PING for gateway detection.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "allowaccess": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "list",
                     "options": [
-                        {
-                            "value": "ping"
-                        },
-                        {
-                            "value": "https"
-                        },
-                        {
-                            "value": "http"
-                        },
-                        {
-                            "value": "ssh"
-                        },
-                        {
-                            "value": "snmp"
-                        },
-                        {
-                            "value": "telnet"
-                        },
-                        {
-                            "value": "radius-acct"
-                        }
+                        {"value": "ping"},
+                        {"value": "https"},
+                        {"value": "http"},
+                        {"value": "ssh"},
+                        {"value": "snmp"},
+                        {"value": "telnet"},
+                        {"value": "radius-acct"},
                     ],
                     "name": "allowaccess",
                     "help": "Interface management access.",
                     "category": "unitary",
-                    "elements": "str"
+                    "elements": "str",
                 },
                 "ping_serv_status": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "ping-serv-status",
                     "help": "PING server status.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "ha_priority": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "ha-priority",
                     "help": "PING server HA election priority (1 - 50).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "id",
                     "help": "Id.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "secondaryip",
             "help": "Second IP address of interface.",
             "mkey": "id",
-            "category": "table"
+            "category": "table",
         },
         "switch_members": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "member_name": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            "v7.0.6"
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", "v7.0.6"]],
                     "type": "string",
                     "name": "member-name",
                     "help": "Interface name.",
-                    "category": "unitary"
+                    "category": "unitary",
                 }
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.6"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.6"]],
             "name": "switch-members",
             "help": "Switch interfaces.",
             "mkey": "member-name",
-            "category": "table"
+            "category": "table",
         },
         "l2_interface": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "l2-interface",
             "help": "L2 interface name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcp_client_status": {
-            "v_range": [
-                [
-                    "v7.4.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.4.1", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "initial"
-                },
-                {
-                    "value": "stopped"
-                },
-                {
-                    "value": "connected"
-                },
-                {
-                    "value": "rebooting"
-                },
-                {
-                    "value": "selecting"
-                },
-                {
-                    "value": "requesting"
-                },
-                {
-                    "value": "binding"
-                },
-                {
-                    "value": "renewing"
-                },
-                {
-                    "value": "rebinding"
-                }
+                {"value": "initial"},
+                {"value": "stopped"},
+                {"value": "connected"},
+                {"value": "rebooting"},
+                {"value": "selecting"},
+                {"value": "requesting"},
+                {"value": "binding"},
+                {"value": "renewing"},
+                {"value": "rebinding"},
             ],
             "name": "dhcp-client-status",
             "help": "DHCP client connection status.",
-            "category": "unitary"
-        }
+            "category": "unitary",
+        },
     },
-    "v_range": [
-        [
-            "v7.0.0",
-            ""
-        ]
-    ],
+    "v_range": [["v7.0.0", ""]],
     "name": "interface",
     "help": "Configure interfaces.",
     "mkey": "name",
-    "category": "table"
+    "category": "table",
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
+    mkeyname = versioned_schema["mkey"] if "mkey" in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},
         "member_state": {
             "type": "str",
             "required": False,
-            "choices": ["present", "absent"]
+            "choices": ["present", "absent"],
         },
-        "state": {"required": True, "type": "str",
-                  "choices": ["present", "absent"]},
+        "state": {"required": True, "type": "str", "choices": ["present", "absent"]},
         "system_interface": {
-            "required": False, "type": "dict", "default": None,
-            "options": {}
-        }
+            "required": False,
+            "type": "dict",
+            "default": None,
+            "options": {},
+        },
     }
-    for attribute_name in module_spec['options']:
-        fields["system_interface"]['options'][attribute_name] = module_spec['options'][attribute_name]
+    for attribute_name in module_spec["options"]:
+        fields["system_interface"]["options"][attribute_name] = module_spec["options"][
+            attribute_name
+        ]
         if mkeyname and mkeyname == attribute_name:
-            fields["system_interface"]['options'][attribute_name]['required'] = True
+            fields["system_interface"]["options"][attribute_name]["required"] = True
 
-    module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=True)
+    module = AnsibleModule(argument_spec=fields, supports_check_mode=True)
 
     is_error = False
     has_changed = False
@@ -3040,30 +2188,45 @@ def main():
     if module._socket_path:
         connection = Connection(module._socket_path)
 
-        if 'enable_log' in module.params:
-            connection.set_custom_option('enable_log', module.params['enable_log'])
+        if "enable_log" in module.params:
+            connection.set_custom_option("enable_log", module.params["enable_log"])
         else:
-            connection.set_custom_option('enable_log', False)
+            connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module, mkeyname)
-        versions_check_result = check_schema_versioning(fos, versioned_schema, "system_interface")
-        is_error, has_changed, result, diff = fortiswitch_system(module.params, fos, module.check_mode)
+        versions_check_result = check_schema_versioning(
+            fos, versioned_schema, "system_interface"
+        )
+        is_error, has_changed, result, diff = fortiswitch_system(
+            module.params, fos, module.check_mode
+        )
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
-    if versions_check_result and versions_check_result['matched'] is False:
-        module.warn("Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv")
+    if versions_check_result and versions_check_result["matched"] is False:
+        module.warn(
+            "Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv"
+        )
 
     if not is_error:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.exit_json(changed=has_changed, version_check_warning=versions_check_result, meta=result, diff=diff)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.exit_json(
+                changed=has_changed,
+                version_check_warning=versions_check_result,
+                meta=result,
+                diff=diff,
+            )
         else:
             module.exit_json(changed=has_changed, meta=result, diff=diff)
     else:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.fail_json(msg="Error in repo", version_check_warning=versions_check_result, meta=result)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.fail_json(
+                msg="Error in repo",
+                version_check_warning=versions_check_result,
+                meta=result,
+            )
         else:
             module.fail_json(msg="Error in repo", meta=result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

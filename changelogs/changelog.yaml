@@ -135,15 +135,29 @@ releases:
   1.2.5:
     changes:
       bugfixes:
-        - Fix the issue while unsetting allowaccess in `fortiswitch_system_interface`.
         - Fix the issue that the session max out while running multiple playboks.
+        - Fix the issue while unsetting allowaccess in `fortiswitch_system_interface`.
       major_changes:
+        - Add `fortiswitch_json_generic` module.
+        - Improve the code logic to send GET request and then POST or PUT request.
+        - Support check_mode and diff feature for all the configuration modules.
         - Support new version 7.6.0.
         - Update README.md to satisfy the latest Ansible collection requirements.
-        - Improve the code logic to send GET request and then POST or PUT request.
-        - Add `fortiswitch_json_generic` module.
-        - Support check_mode and diff feature for all the configuration modules.
       release_summary: patch release of 1.2.5
     fragments:
       - release_1.2.5.yml
-    release_date: "2024-10-23"
+    release_date: "2024-10-21"
+  1.2.6:
+    changes:
+      bugfixes:
+        - Corrected the value of `dns_cache_ttl` in `fortiswitch_system_dns` in the
+          documentation.
+        - Fixed the issue that all non-sensitive data shows as sensitive in meta data.
+        - Fixed sanity-test errors.
+      major_changes:
+        - Supported new version 7.6.1.
+        - Improved the documentation for all the parameters with min and max values in all the modules.
+      release_summary: patch release of 1.2.6
+    fragments:
+      - 1.2.6.yml
+    release_date: "2025-03-26"

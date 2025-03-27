@@ -1,5 +1,6 @@
 #!/usr/bin/python
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 # Copyright (c) 2022 Fortinet
 # GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
 
@@ -10,11 +11,13 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'community',
-                    'metadata_version': '1.1'}
+ANSIBLE_METADATA = {
+    "status": ["preview"],
+    "supported_by": "community",
+    "metadata_version": "1.1",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: fortiswitch_switch_mld_snooping_globals
 short_description: Configure mld-snooping on Switch in Fortinet's FortiSwitch
@@ -82,20 +85,20 @@ options:
                 description:
                     - Max time a host waits before responses to general query message (in milliseconds).
                 type: int
-'''
+"""
 
-EXAMPLES = '''
+EXAMPLES = """
 - name: Configure mld-snooping on Switch.
   fortinet.fortiswitch.fortiswitch_switch_mld_snooping_globals:
       switch_mld_snooping_globals:
-          aging_time: "3"
-          leave_response_timeout: "4"
-          proxy_report_interval: "5"
-          query_interval: "6"
-          query_max_response_timeout: "7"
-'''
+          aging_time: "1800"
+          leave_response_timeout: "10"
+          proxy_report_interval: "130"
+          query_interval: "600"
+          query_max_response_timeout: "16384"
+"""
 
-RETURN = '''
+RETURN = """
 build:
   description: Build number of the fortiSwitch image
   returned: always
@@ -142,22 +145,43 @@ version:
   type: str
   sample: "v7.0.0"
 
-'''
+"""
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import FortiOSHandler
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import schema_to_module_spec
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    FortiOSHandler,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    schema_to_module_spec,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    check_schema_versioning,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import (
+    FAIL_SOCKET_MSG,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import (
+    remove_invalid_fields,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    is_same_comparison,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    serialize,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    find_current_values,
+)
 
 
 def filter_switch_mld_snooping_globals_data(json):
-    option_list = ['aging_time', 'leave_response_timeout', 'proxy_report_interval',
-                   'query_interval', 'query_max_response_timeout']
+    option_list = [
+        "aging_time",
+        "leave_response_timeout",
+        "proxy_report_interval",
+        "query_interval",
+        "query_max_response_timeout",
+    ]
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -176,34 +200,39 @@ def underscore_to_hyphen(data):
     elif isinstance(data, dict):
         new_data = {}
         for k, v in data.items():
-            new_data[k.replace('_', '-')] = underscore_to_hyphen(v)
+            new_data[k.replace("_", "-")] = underscore_to_hyphen(v)
         data = new_data
 
     return data
 
 
 def switch_mld_snooping_globals(data, fos, check_mode=False):
-    state = data.get('state', None)
+    state = data.get("state", None)
 
-    switch_mld_snooping_globals_data = data['switch_mld_snooping_globals']
+    switch_mld_snooping_globals_data = data["switch_mld_snooping_globals"]
 
-    filtered_data = filter_switch_mld_snooping_globals_data(switch_mld_snooping_globals_data)
+    filtered_data = filter_switch_mld_snooping_globals_data(
+        switch_mld_snooping_globals_data
+    )
     filtered_data = underscore_to_hyphen(filtered_data)
 
     # check_mode starts from here
     if check_mode:
         diff = {
-            "before": '',
+            "before": "",
             "after": filtered_data,
         }
-        mkey = fos.get_mkey('switch.mld-snooping', 'globals', filtered_data)
-        current_data = fos.get('switch.mld-snooping', 'globals', mkey=mkey)
-        is_existed = current_data and current_data.get('http_status') == 200 \
-            and isinstance(current_data.get('results'), list) \
-            and len(current_data['results']) > 0
+        mkey = fos.get_mkey("switch.mld-snooping", "globals", filtered_data)
+        current_data = fos.get("switch.mld-snooping", "globals", mkey=mkey)
+        is_existed = (
+            current_data
+            and current_data.get("http_status") == 200
+            and isinstance(current_data.get("results"), list)
+            and len(current_data["results"]) > 0
+        )
 
         # 2. if it exists and the state is 'present' then compare current settings with desired
-        if state == 'present' or state is True or state is None:
+        if state == "present" or state is True or state is None:
             mkeyname = fos.get_mkeyname(None, None)
             # for non global modules, mkeyname must exist and it's a new module when mkey is None
             if mkeyname is not None and mkey is None:
@@ -217,159 +246,172 @@ def switch_mld_snooping_globals(data, fos, check_mode=False):
             # handle global modules'
             if mkeyname is None and state is None:
                 is_same = is_same_comparison(
-                    serialize(current_data['results']), serialize(copied_filtered_data))
+                    serialize(current_data["results"]), serialize(copied_filtered_data)
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             if is_existed:
                 is_same = is_same_comparison(
-                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+                    serialize(current_data["results"][0]),
+                    serialize(copied_filtered_data),
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"][0]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             # record does not exist
             return False, True, filtered_data, diff
 
-        if state == 'absent':
+        if state == "absent":
             if mkey is None:
-                return False, False, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    False,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
 
             if is_existed:
-                return False, True, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    True,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
             return False, False, filtered_data, {}
 
-        return True, False, {'reason: ': 'Must provide state parameter'}, {}
+        return True, False, {"reason: ": "Must provide state parameter"}, {}
 
-    return fos.set('switch.mld-snooping',
-                   'globals',
-                   data=filtered_data,
-                   )
+    return fos.set(
+        "switch.mld-snooping",
+        "globals",
+        data=filtered_data,
+    )
 
 
 def is_successful_status(resp):
-    return 'status' in resp and resp['status'] == 'success' or \
-        'http_status' in resp and resp['http_status'] == 200 or \
-        'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
+    return (
+        "status" in resp
+        and resp["status"] == "success"
+        or "http_status" in resp
+        and resp["http_status"] == 200
+        or "http_method" in resp
+        and resp["http_method"] == "DELETE"
+        and resp["http_status"] == 404
+    )
 
 
 def fortiswitch_switch_mld_snooping(data, fos, check_mode):
-    fos.do_member_operation('switch.mld-snooping', 'globals')
-    current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
-    if data['switch_mld_snooping_globals']:
+    fos.do_member_operation("switch.mld-snooping", "globals")
+    current_cmdb_index = fos.monitor_get("/system/status")["cmdb-index"]
+    if data["switch_mld_snooping_globals"]:
         resp = switch_mld_snooping_globals(data, fos, check_mode)
     else:
-        fos._module.fail_json(msg='missing task body: %s' % ('switch_mld_snooping_globals'))
+        fos._module.fail_json(
+            msg="missing task body: %s" % ("switch_mld_snooping_globals")
+        )
     if check_mode:
         return resp
-    return not is_successful_status(resp), \
-        is_successful_status(resp) and \
-        current_cmdb_index != resp['cmdb-index'], \
-        resp, {}
+    return (
+        not is_successful_status(resp),
+        is_successful_status(resp) and current_cmdb_index != resp["cmdb-index"],
+        resp,
+        {},
+    )
 
 
 versioned_schema = {
-    "v_range": [
-        [
-            "v7.0.0",
-            ""
-        ]
-    ],
+    "v_range": [["v7.0.0", ""]],
     "type": "dict",
     "children": {
         "query_interval": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "query-interval",
             "help": "Max number of seconds after which MLD query will be sent.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "proxy_report_interval": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "proxy-report-interval",
             "help": "Unsolicited report interval in seconds.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "leave_response_timeout": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "leave-response-timeout",
             "help": "Switch waits after sending group specific query in response to leave message.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "aging_time": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "aging-time",
             "help": "Max number of seconds to retain a multicast snooping entry for which no packets have been seen.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "query_max_response_timeout": {
-            "v_range": [
-                [
-                    "v7.0.3",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.3", ""]],
             "type": "integer",
             "name": "query-max-response-timeout",
             "help": "Max time a host waits before responses to general query message (in milliseconds).",
-            "category": "unitary"
-        }
+            "category": "unitary",
+        },
     },
     "name": "globals",
     "help": "Configure mld-snooping on Switch.",
-    "category": "complex"
+    "category": "complex",
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
+    mkeyname = versioned_schema["mkey"] if "mkey" in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},
         "member_state": {
             "type": "str",
             "required": False,
-            "choices": ["present", "absent"]
+            "choices": ["present", "absent"],
         },
         "switch_mld_snooping_globals": {
-            "required": False, "type": "dict", "default": None,
-            "options": {}
-        }
+            "required": False,
+            "type": "dict",
+            "default": None,
+            "options": {},
+        },
     }
-    for attribute_name in module_spec['options']:
-        fields["switch_mld_snooping_globals"]['options'][attribute_name] = module_spec['options'][attribute_name]
+    for attribute_name in module_spec["options"]:
+        fields["switch_mld_snooping_globals"]["options"][attribute_name] = module_spec[
+            "options"
+        ][attribute_name]
         if mkeyname and mkeyname == attribute_name:
-            fields["switch_mld_snooping_globals"]['options'][attribute_name]['required'] = True
+            fields["switch_mld_snooping_globals"]["options"][attribute_name][
+                "required"
+            ] = True
 
-    module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=True)
+    module = AnsibleModule(argument_spec=fields, supports_check_mode=True)
 
     is_error = False
     has_changed = False
@@ -380,30 +422,45 @@ def main():
     if module._socket_path:
         connection = Connection(module._socket_path)
 
-        if 'enable_log' in module.params:
-            connection.set_custom_option('enable_log', module.params['enable_log'])
+        if "enable_log" in module.params:
+            connection.set_custom_option("enable_log", module.params["enable_log"])
         else:
-            connection.set_custom_option('enable_log', False)
+            connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module, mkeyname)
-        versions_check_result = check_schema_versioning(fos, versioned_schema, "switch_mld_snooping_globals")
-        is_error, has_changed, result, diff = fortiswitch_switch_mld_snooping(module.params, fos, module.check_mode)
+        versions_check_result = check_schema_versioning(
+            fos, versioned_schema, "switch_mld_snooping_globals"
+        )
+        is_error, has_changed, result, diff = fortiswitch_switch_mld_snooping(
+            module.params, fos, module.check_mode
+        )
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
-    if versions_check_result and versions_check_result['matched'] is False:
-        module.warn("Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv")
+    if versions_check_result and versions_check_result["matched"] is False:
+        module.warn(
+            "Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv"
+        )
 
     if not is_error:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.exit_json(changed=has_changed, version_check_warning=versions_check_result, meta=result, diff=diff)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.exit_json(
+                changed=has_changed,
+                version_check_warning=versions_check_result,
+                meta=result,
+                diff=diff,
+            )
         else:
             module.exit_json(changed=has_changed, meta=result, diff=diff)
     else:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.fail_json(msg="Error in repo", version_check_warning=versions_check_result, meta=result)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.fail_json(
+                msg="Error in repo",
+                version_check_warning=versions_check_result,
+                meta=result,
+            )
         else:
             module.fail_json(msg="Error in repo", meta=result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

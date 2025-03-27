@@ -1,5 +1,6 @@
 #!/usr/bin/python
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 # Copyright (c) 2022 Fortinet
 # GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
 
@@ -10,11 +11,13 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'community',
-                    'metadata_version': '1.1'}
+ANSIBLE_METADATA = {
+    "status": ["preview"],
+    "supported_by": "community",
+    "metadata_version": "1.1",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: fortiswitch_execute_backup_full_config
 short_description: Backup Switch's Full Configuration.
@@ -48,9 +51,9 @@ options:
                 description:
                     - Configuration"s Chunked String.
                 type: str
-'''
+"""
 
-RETURN = '''
+RETURN = """
 build:
   description: Build number of the fortiSwitch image
   returned: always
@@ -95,24 +98,30 @@ results:
   description: the main output of the execution
   returned: only for successful calls
   type: str
-'''
-EXAMPLES = '''
+"""
+EXAMPLES = """
 - name: Backup Switch's Full Configuration.
   fortinet.fortiswitch.execute_backup_full_config:
       backup_full_config:
           config: "<your_own_value>"
-'''
+"""
 
 
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import FortiOSHandler
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import schema_to_module_spec
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    FortiOSHandler,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    schema_to_module_spec,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import (
+    FAIL_SOCKET_MSG,
+)
 
 
 def filter_backup_full_config_data(config_data):
-    option_list = ['config']
+    option_list = ["config"]
     dictionary = {}
 
     for attribute in option_list:
@@ -129,35 +138,41 @@ def underscore_to_hyphen(data):
     elif isinstance(data, dict):
         new_data = {}
         for k, v in data.items():
-            new_data[k.replace('_', '-')] = underscore_to_hyphen(v)
+            new_data[k.replace("_", "-")] = underscore_to_hyphen(v)
         data = new_data
 
     return data
 
 
 def backup_full_config(data, fos):
-    backup_full_config_data = data['execute_backup_full_config']
-    filtered_data = underscore_to_hyphen(filter_backup_full_config_data(backup_full_config_data))
+    backup_full_config_data = data["execute_backup_full_config"]
+    filtered_data = underscore_to_hyphen(
+        filter_backup_full_config_data(backup_full_config_data)
+    )
 
     return fos.invoke_execute_api(
-        'backup',
-        'full-config',
+        "backup",
+        "full-config",
         data=filtered_data,
     )
 
 
 def is_successful_status(resp):
-    return 'status' in resp and resp['status'] == 'success' or \
-        'http_status' in resp and resp['http_status'] == 200 or \
-        'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
+    return (
+        "status" in resp
+        and resp["status"] == "success"
+        or "http_status" in resp
+        and resp["http_status"] == 200
+        or "http_method" in resp
+        and resp["http_method"] == "DELETE"
+        and resp["http_status"] == 404
+    )
 
 
 def fortiswitch_execute_backup_full_config(data, fos):
     resp = backup_full_config(data, fos)
 
-    return not is_successful_status(resp), \
-        is_successful_status(resp), \
-        resp
+    return not is_successful_status(resp), is_successful_status(resp), resp
 
 
 params = {
@@ -171,9 +186,9 @@ params = {
                 "v7.0.3": True,
                 "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.6": True
+                "v7.0.6": True,
             },
-            "type": "string"
+            "type": "string",
         }
     },
     "revisions": {
@@ -183,8 +198,8 @@ params = {
         "v7.0.3": True,
         "v7.0.4": True,
         "v7.0.5": True,
-        "v7.0.6": True
-    }
+        "v7.0.6": True,
+    },
 }
 
 
@@ -193,18 +208,19 @@ def main():
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "execute_backup_full_config": {
-            "required": False, "type": "dict", "default": None,
-            "options": {
-            }
-        }
+            "required": False,
+            "type": "dict",
+            "default": None,
+            "options": {},
+        },
     }
 
-    for attribute_name in module_spec['options']:
-        fields["execute_backup_full_config"]['options'][attribute_name] = module_spec['options'][attribute_name]
+    for attribute_name in module_spec["options"]:
+        fields["execute_backup_full_config"]["options"][attribute_name] = module_spec[
+            "options"
+        ][attribute_name]
 
-    module = AnsibleModule(
-        argument_spec=fields
-    )
+    module = AnsibleModule(argument_spec=fields)
 
     is_error = False
     has_changed = False
@@ -213,12 +229,14 @@ def main():
     if module._socket_path:
         connection = Connection(module._socket_path)
 
-        if 'enable_log' in module.params:
-            connection.set_custom_option('enable_log', module.params['enable_log'])
+        if "enable_log" in module.params:
+            connection.set_custom_option("enable_log", module.params["enable_log"])
         else:
-            connection.set_custom_option('enable_log', False)
+            connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module)
-        is_error, has_changed, result = fortiswitch_execute_backup_full_config(module.params, fos)
+        is_error, has_changed, result = fortiswitch_execute_backup_full_config(
+            module.params, fos
+        )
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
@@ -228,5 +246,5 @@ def main():
         module.fail_json(msg="Error in repo", meta=result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

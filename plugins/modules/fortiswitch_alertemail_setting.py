@@ -1,5 +1,6 @@
 #!/usr/bin/python
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 # Copyright (c) 2022 Fortinet
 # GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
 
@@ -10,11 +11,13 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'community',
-                    'metadata_version': '1.1'}
+ANSIBLE_METADATA = {
+    "status": ["preview"],
+    "supported_by": "community",
+    "metadata_version": "1.1",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: fortiswitch_alertemail_setting
 short_description: Alertemail setting configuration in Fortinet's FortiSwitch
@@ -254,48 +257,48 @@ options:
                 choices:
                     - 'enable'
                     - 'disable'
-'''
+"""
 
-EXAMPLES = '''
+EXAMPLES = """
 - name: Alertemail setting configuration.
   fortinet.fortiswitch.fortiswitch_alertemail_setting:
       alertemail_setting:
           admin_login_logs: "enable"
-          alert_interval: "4"
+          alert_interval: "1073741823"
           amc_interface_bypass_mode: "enable"
           antivirus_logs: "enable"
           configuration_changes_logs: "enable"
-          critical_interval: "8"
-          debug_interval: "9"
-          email_interval: "10"
-          emergency_interval: "11"
-          error_interval: "12"
-          FDS_license_expiring_days: "13"
+          critical_interval: "1073741823"
+          debug_interval: "1073741823"
+          email_interval: "49999"
+          emergency_interval: "1073741823"
+          error_interval: "1073741823"
+          FDS_license_expiring_days: "50"
           FDS_license_expiring_warning: "enable"
           FDS_update_logs: "enable"
           filter_mode: "category"
           firewall_authentication_failure_logs: "enable"
           fortiguard_log_quota_warning: "enable"
           HA_logs: "enable"
-          information_interval: "20"
+          information_interval: "1073741823"
           IPS_logs: "enable"
           IPsec_errors_logs: "enable"
-          local_disk_usage: "23"
+          local_disk_usage: "49"
           log_disk_usage_warning: "enable"
           mailto1: "<your_own_value>"
           mailto2: "<your_own_value>"
           mailto3: "<your_own_value>"
-          notification_interval: "28"
+          notification_interval: "1073741823"
           PPP_errors_logs: "enable"
           severity: "emergency"
           sslvpn_authentication_errors_logs: "enable"
           username: "<your_own_value>"
           violation_traffic_logs: "enable"
-          warning_interval: "34"
+          warning_interval: "1073741823"
           webfilter_logs: "enable"
-'''
+"""
 
-RETURN = '''
+RETURN = """
 build:
   description: Build number of the fortiSwitch image
   returned: always
@@ -342,31 +345,71 @@ version:
   type: str
   sample: "v7.0.0"
 
-'''
+"""
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import FortiOSHandler
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import schema_to_module_spec
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    FortiOSHandler,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    schema_to_module_spec,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    check_schema_versioning,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import (
+    FAIL_SOCKET_MSG,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import (
+    remove_invalid_fields,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    is_same_comparison,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    serialize,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    find_current_values,
+)
 
 
 def filter_alertemail_setting_data(json):
-    option_list = ['admin_login_logs', 'alert_interval', 'amc_interface_bypass_mode',
-                   'antivirus_logs', 'configuration_changes_logs', 'critical_interval',
-                   'debug_interval', 'email_interval', 'emergency_interval',
-                   'error_interval', 'FDS_license_expiring_days', 'FDS_license_expiring_warning',
-                   'FDS_update_logs', 'filter_mode', 'firewall_authentication_failure_logs',
-                   'fortiguard_log_quota_warning', 'HA_logs', 'information_interval',
-                   'IPS_logs', 'IPsec_errors_logs', 'local_disk_usage',
-                   'log_disk_usage_warning', 'mailto1', 'mailto2',
-                   'mailto3', 'notification_interval', 'PPP_errors_logs',
-                   'severity', 'sslvpn_authentication_errors_logs', 'username',
-                   'violation_traffic_logs', 'warning_interval', 'webfilter_logs']
+    option_list = [
+        "admin_login_logs",
+        "alert_interval",
+        "amc_interface_bypass_mode",
+        "antivirus_logs",
+        "configuration_changes_logs",
+        "critical_interval",
+        "debug_interval",
+        "email_interval",
+        "emergency_interval",
+        "error_interval",
+        "FDS_license_expiring_days",
+        "FDS_license_expiring_warning",
+        "FDS_update_logs",
+        "filter_mode",
+        "firewall_authentication_failure_logs",
+        "fortiguard_log_quota_warning",
+        "HA_logs",
+        "information_interval",
+        "IPS_logs",
+        "IPsec_errors_logs",
+        "local_disk_usage",
+        "log_disk_usage_warning",
+        "mailto1",
+        "mailto2",
+        "mailto3",
+        "notification_interval",
+        "PPP_errors_logs",
+        "severity",
+        "sslvpn_authentication_errors_logs",
+        "username",
+        "violation_traffic_logs",
+        "warning_interval",
+        "webfilter_logs",
+    ]
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -385,16 +428,16 @@ def underscore_to_hyphen(data):
     elif isinstance(data, dict):
         new_data = {}
         for k, v in data.items():
-            new_data[k.replace('_', '-')] = underscore_to_hyphen(v)
+            new_data[k.replace("_", "-")] = underscore_to_hyphen(v)
         data = new_data
 
     return data
 
 
 def alertemail_setting(data, fos, check_mode=False):
-    state = data.get('state', None)
+    state = data.get("state", None)
 
-    alertemail_setting_data = data['alertemail_setting']
+    alertemail_setting_data = data["alertemail_setting"]
 
     filtered_data = filter_alertemail_setting_data(alertemail_setting_data)
     filtered_data = underscore_to_hyphen(filtered_data)
@@ -402,17 +445,20 @@ def alertemail_setting(data, fos, check_mode=False):
     # check_mode starts from here
     if check_mode:
         diff = {
-            "before": '',
+            "before": "",
             "after": filtered_data,
         }
-        mkey = fos.get_mkey('alertemail', 'setting', filtered_data)
-        current_data = fos.get('alertemail', 'setting', mkey=mkey)
-        is_existed = current_data and current_data.get('http_status') == 200 \
-            and isinstance(current_data.get('results'), list) \
-            and len(current_data['results']) > 0
+        mkey = fos.get_mkey("alertemail", "setting", filtered_data)
+        current_data = fos.get("alertemail", "setting", mkey=mkey)
+        is_existed = (
+            current_data
+            and current_data.get("http_status") == 200
+            and isinstance(current_data.get("results"), list)
+            and len(current_data["results"]) > 0
+        )
 
         # 2. if it exists and the state is 'present' then compare current settings with desired
-        if state == 'present' or state is True or state is None:
+        if state == "present" or state is True or state is None:
             mkeyname = fos.get_mkeyname(None, None)
             # for non global modules, mkeyname must exist and it's a new module when mkey is None
             if mkeyname is not None and mkey is None:
@@ -426,657 +472,391 @@ def alertemail_setting(data, fos, check_mode=False):
             # handle global modules'
             if mkeyname is None and state is None:
                 is_same = is_same_comparison(
-                    serialize(current_data['results']), serialize(copied_filtered_data))
+                    serialize(current_data["results"]), serialize(copied_filtered_data)
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             if is_existed:
                 is_same = is_same_comparison(
-                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+                    serialize(current_data["results"][0]),
+                    serialize(copied_filtered_data),
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"][0]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             # record does not exist
             return False, True, filtered_data, diff
 
-        if state == 'absent':
+        if state == "absent":
             if mkey is None:
-                return False, False, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    False,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
 
             if is_existed:
-                return False, True, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    True,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
             return False, False, filtered_data, {}
 
-        return True, False, {'reason: ': 'Must provide state parameter'}, {}
+        return True, False, {"reason: ": "Must provide state parameter"}, {}
 
-    return fos.set('alertemail',
-                   'setting',
-                   data=filtered_data,
-                   )
+    return fos.set(
+        "alertemail",
+        "setting",
+        data=filtered_data,
+    )
 
 
 def is_successful_status(resp):
-    return 'status' in resp and resp['status'] == 'success' or \
-        'http_status' in resp and resp['http_status'] == 200 or \
-        'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
+    return (
+        "status" in resp
+        and resp["status"] == "success"
+        or "http_status" in resp
+        and resp["http_status"] == 200
+        or "http_method" in resp
+        and resp["http_method"] == "DELETE"
+        and resp["http_status"] == 404
+    )
 
 
 def fortiswitch_alertemail(data, fos, check_mode):
-    fos.do_member_operation('alertemail', 'setting')
-    current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
-    if data['alertemail_setting']:
+    fos.do_member_operation("alertemail", "setting")
+    current_cmdb_index = fos.monitor_get("/system/status")["cmdb-index"]
+    if data["alertemail_setting"]:
         resp = alertemail_setting(data, fos, check_mode)
     else:
-        fos._module.fail_json(msg='missing task body: %s' % ('alertemail_setting'))
+        fos._module.fail_json(msg="missing task body: %s" % ("alertemail_setting"))
     if check_mode:
         return resp
-    return not is_successful_status(resp), \
-        is_successful_status(resp) and \
-        current_cmdb_index != resp['cmdb-index'], \
-        resp, {}
+    return (
+        not is_successful_status(resp),
+        is_successful_status(resp) and current_cmdb_index != resp["cmdb-index"],
+        resp,
+        {},
+    )
 
 
 versioned_schema = {
-    "v_range": [
-        [
-            "v7.0.0",
-            ""
-        ]
-    ],
+    "v_range": [["v7.0.0", ""]],
     "type": "dict",
     "children": {
         "email_interval": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "email-interval",
             "help": "Interval between each email.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "critical_interval": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "critical-interval",
             "help": "Set Critical alert interval in minutes.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "debug_interval": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "debug-interval",
             "help": "Set Debug alert interval in minutes.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "error_interval": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "error-interval",
             "help": "Set Error alert interval in minutes.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "sslvpn_authentication_errors_logs": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "sslvpn-authentication-errors-logs",
             "help": "Sslvpn-authentication-errors-logs.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "IPsec_errors_logs": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "IPsec-errors-logs",
             "help": "IPsec-errors-logs.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "antivirus_logs": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "antivirus-logs",
             "help": "Antivirus-logs.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "warning_interval": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "warning-interval",
             "help": "Set Warning alert interval in minutes.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "firewall_authentication_failure_logs": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "firewall-authentication-failure-logs",
             "help": "Firewall-authentication-failure-logs.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "severity": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "emergency"
-                },
-                {
-                    "value": "alert"
-                },
-                {
-                    "value": "critical"
-                },
-                {
-                    "value": "error"
-                },
-                {
-                    "value": "warning"
-                },
-                {
-                    "value": "notification"
-                },
-                {
-                    "value": "information"
-                },
-                {
-                    "value": "debug"
-                }
+                {"value": "emergency"},
+                {"value": "alert"},
+                {"value": "critical"},
+                {"value": "error"},
+                {"value": "warning"},
+                {"value": "notification"},
+                {"value": "information"},
+                {"value": "debug"},
             ],
             "name": "severity",
             "help": "The least severity level to log.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "emergency_interval": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "emergency-interval",
             "help": "Set Emergency alert interval in minutes.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "FDS_license_expiring_warning": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "FDS-license-expiring-warning",
             "help": "FDS-license-expiring-warning.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "configuration_changes_logs": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "configuration-changes-logs",
             "help": "Configuration-changes-logs.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "notification_interval": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "notification-interval",
             "help": "Set Notification alert interval in minutes.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "information_interval": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "information-interval",
             "help": "Set Information alert interval in minutes.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "FDS_license_expiring_days": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "FDS-license-expiring-days",
             "help": "Send alertemail before these days FortiGuard license expire (1-100).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "admin_login_logs": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "admin-login-logs",
             "help": "Admin-login-logs.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "username": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "username",
             "help": "Set email from address.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "alert_interval": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "alert-interval",
             "help": "Set Alert alert interval in minutes.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mailto1": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "mailto1",
             "help": "Set destination email address 1.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mailto3": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "mailto3",
             "help": "Set destination email address 3.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mailto2": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "mailto2",
             "help": "Set destination email address 2.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "webfilter_logs": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "webfilter-logs",
             "help": "Webfilter-logs.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "fortiguard_log_quota_warning": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "fortiguard-log-quota-warning",
             "help": "Fortiguard-log-quota-warning.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "filter_mode": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "category"
-                },
-                {
-                    "value": "threshold"
-                }
-            ],
+            "options": [{"value": "category"}, {"value": "threshold"}],
             "name": "filter-mode",
             "help": "Filter mode.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "IPS_logs": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "IPS-logs",
             "help": "IPS-logs.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "HA_logs": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "HA-logs",
             "help": "HA-logs.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "local_disk_usage": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "local-disk-usage",
             "help": "Send alertemail when disk usage exceeds this threshold (1-99).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "PPP_errors_logs": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "PPP-errors-logs",
             "help": "PPP-errors-logs.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "violation_traffic_logs": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "violation-traffic-logs",
             "help": "Violation-traffic-logs.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "log_disk_usage_warning": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "log-disk-usage-warning",
             "help": "Log-disk-usage-warning.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "FDS_update_logs": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "FDS-update-logs",
             "help": "FDS-update-logs.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "amc_interface_bypass_mode": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "amc-interface-bypass-mode",
             "help": "Amc-interface-bypass-mode.",
-            "category": "unitary"
-        }
+            "category": "unitary",
+        },
     },
     "name": "setting",
     "help": "Alertemail setting configuration.",
-    "category": "complex"
+    "category": "complex",
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
+    mkeyname = versioned_schema["mkey"] if "mkey" in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},
         "member_state": {
             "type": "str",
             "required": False,
-            "choices": ["present", "absent"]
+            "choices": ["present", "absent"],
         },
         "alertemail_setting": {
-            "required": False, "type": "dict", "default": None,
-            "options": {}
-        }
+            "required": False,
+            "type": "dict",
+            "default": None,
+            "options": {},
+        },
     }
-    for attribute_name in module_spec['options']:
-        fields["alertemail_setting"]['options'][attribute_name] = module_spec['options'][attribute_name]
+    for attribute_name in module_spec["options"]:
+        fields["alertemail_setting"]["options"][attribute_name] = module_spec[
+            "options"
+        ][attribute_name]
         if mkeyname and mkeyname == attribute_name:
-            fields["alertemail_setting"]['options'][attribute_name]['required'] = True
+            fields["alertemail_setting"]["options"][attribute_name]["required"] = True
 
-    module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=True)
+    module = AnsibleModule(argument_spec=fields, supports_check_mode=True)
 
     is_error = False
     has_changed = False
@@ -1087,30 +867,45 @@ def main():
     if module._socket_path:
         connection = Connection(module._socket_path)
 
-        if 'enable_log' in module.params:
-            connection.set_custom_option('enable_log', module.params['enable_log'])
+        if "enable_log" in module.params:
+            connection.set_custom_option("enable_log", module.params["enable_log"])
         else:
-            connection.set_custom_option('enable_log', False)
+            connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module, mkeyname)
-        versions_check_result = check_schema_versioning(fos, versioned_schema, "alertemail_setting")
-        is_error, has_changed, result, diff = fortiswitch_alertemail(module.params, fos, module.check_mode)
+        versions_check_result = check_schema_versioning(
+            fos, versioned_schema, "alertemail_setting"
+        )
+        is_error, has_changed, result, diff = fortiswitch_alertemail(
+            module.params, fos, module.check_mode
+        )
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
-    if versions_check_result and versions_check_result['matched'] is False:
-        module.warn("Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv")
+    if versions_check_result and versions_check_result["matched"] is False:
+        module.warn(
+            "Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv"
+        )
 
     if not is_error:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.exit_json(changed=has_changed, version_check_warning=versions_check_result, meta=result, diff=diff)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.exit_json(
+                changed=has_changed,
+                version_check_warning=versions_check_result,
+                meta=result,
+                diff=diff,
+            )
         else:
             module.exit_json(changed=has_changed, meta=result, diff=diff)
     else:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.fail_json(msg="Error in repo", version_check_warning=versions_check_result, meta=result)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.fail_json(
+                msg="Error in repo",
+                version_check_warning=versions_check_result,
+                meta=result,
+            )
         else:
             module.fail_json(msg="Error in repo", meta=result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

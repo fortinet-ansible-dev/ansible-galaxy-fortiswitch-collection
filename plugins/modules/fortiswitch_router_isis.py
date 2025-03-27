@@ -1,5 +1,6 @@
 #!/usr/bin/python
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 # Copyright (c) 2022 Fortinet
 # GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
 
@@ -10,11 +11,13 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'community',
-                    'metadata_version': '1.1'}
+ANSIBLE_METADATA = {
+    "status": ["preview"],
+    "supported_by": "community",
+    "metadata_version": "1.1",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: fortiswitch_router_isis
 short_description: ISIS configuration in Fortinet's FortiSwitch
@@ -487,9 +490,9 @@ options:
                         description:
                             - IPv6 prefix
                         type: str
-'''
+"""
 
-EXAMPLES = '''
+EXAMPLES = """
 - name: ISIS configuration.
   fortinet.fortiswitch.fortiswitch_router_isis:
       router_isis:
@@ -503,8 +506,8 @@ EXAMPLES = '''
           auth_sendonly_domain: "enable"
           default_information_level: "level-1-2"
           default_information_level6: "level-1-2"
-          default_information_metric: "13"
-          default_information_metric6: "14"
+          default_information_metric: "8388607"
+          default_information_metric6: "8388607"
           default_information_originate: "enable"
           default_information_originate6: "enable"
           ignore_attached_bit: "enable"
@@ -516,29 +519,29 @@ EXAMPLES = '''
                   bfd: "enable"
                   bfd6: "enable"
                   circuit_type: "level-1-2"
-                  csnp_interval_l1: "25"
-                  csnp_interval_l2: "26"
-                  hello_interval_l1: "27"
-                  hello_interval_l2: "28"
-                  hello_multiplier_l1: "29"
-                  hello_multiplier_l2: "30"
+                  csnp_interval_l1: "32767"
+                  csnp_interval_l2: "32767"
+                  hello_interval_l1: "32767"
+                  hello_interval_l2: "32767"
+                  hello_multiplier_l1: "50"
+                  hello_multiplier_l2: "50"
                   hello_padding: "enable"
-                  metric_l1: "32"
-                  metric_l2: "33"
+                  metric_l1: "31"
+                  metric_l2: "31"
                   name: "default_name_34 (source system.interface.name)"
                   passive: "enable"
-                  priority_l1: "36"
-                  priority_l2: "37"
+                  priority_l1: "63"
+                  priority_l2: "63"
                   status: "enable"
                   status6: "enable"
-                  wide_metric_l1: "40"
-                  wide_metric_l2: "41"
+                  wide_metric_l1: "8388607"
+                  wide_metric_l2: "8388607"
           is_type: "level-1-2"
           log_neighbour_changes: "enable"
-          lsp_gen_interval_l1: "44"
-          lsp_gen_interval_l2: "45"
-          lsp_refresh_interval: "46"
-          max_lsp_lifetime: "47"
+          lsp_gen_interval_l1: "60"
+          lsp_gen_interval_l2: "60"
+          lsp_refresh_interval: "32767"
+          max_lsp_lifetime: "32767"
           metric_style: "narrow"
           net:
               -
@@ -548,7 +551,7 @@ EXAMPLES = '''
           redistribute:
               -
                   level: "level-1-2"
-                  metric: "55"
+                  metric: "2130706432"
                   metric_type: "external"
                   protocol: "<your_own_value>"
                   routemap: "<your_own_value> (source router.route-map.name)"
@@ -556,7 +559,7 @@ EXAMPLES = '''
           redistribute6:
               -
                   level: "level-1-2"
-                  metric: "62"
+                  metric: "2130706432"
                   protocol: "<your_own_value>"
                   routemap: "<your_own_value> (source router.route-map.name)"
                   status: "enable"
@@ -565,8 +568,8 @@ EXAMPLES = '''
           redistribute_l1: "enable"
           redistribute_l1_list: "<your_own_value> (source router.access-list.name)"
           router_id: "<your_own_value>"
-          spf_interval_exp_l1: "71"
-          spf_interval_exp_l2: "72"
+          spf_interval_exp_l1: "60"
+          spf_interval_exp_l2: "60"
           summary_address:
               -
                   id: "74"
@@ -577,9 +580,9 @@ EXAMPLES = '''
                   id: "78"
                   level: "level-1-2"
                   prefix6: "<your_own_value>"
-'''
+"""
 
-RETURN = '''
+RETURN = """
 build:
   description: Build number of the fortiSwitch image
   returned: always
@@ -626,32 +629,74 @@ version:
   type: str
   sample: "v7.0.0"
 
-'''
+"""
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import FortiOSHandler
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import schema_to_module_spec
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    FortiOSHandler,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    schema_to_module_spec,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    check_schema_versioning,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import (
+    FAIL_SOCKET_MSG,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import (
+    remove_invalid_fields,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    is_same_comparison,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    serialize,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    find_current_values,
+)
 
 
 def filter_router_isis_data(json):
-    option_list = ['auth_keychain_area', 'auth_keychain_domain', 'auth_mode_area',
-                   'auth_mode_domain', 'auth_password_area', 'auth_password_domain',
-                   'auth_sendonly_area', 'auth_sendonly_domain', 'default_information_level',
-                   'default_information_level6', 'default_information_metric', 'default_information_metric6',
-                   'default_information_originate', 'default_information_originate6', 'ignore_attached_bit',
-                   'interface', 'is_type', 'log_neighbour_changes',
-                   'lsp_gen_interval_l1', 'lsp_gen_interval_l2', 'lsp_refresh_interval',
-                   'max_lsp_lifetime', 'metric_style', 'net',
-                   'overload_bit', 'redistribute', 'redistribute6',
-                   'redistribute6_l1', 'redistribute6_l1_list', 'redistribute_l1',
-                   'redistribute_l1_list', 'router_id', 'spf_interval_exp_l1',
-                   'spf_interval_exp_l2', 'summary_address', 'summary_address6']
+    option_list = [
+        "auth_keychain_area",
+        "auth_keychain_domain",
+        "auth_mode_area",
+        "auth_mode_domain",
+        "auth_password_area",
+        "auth_password_domain",
+        "auth_sendonly_area",
+        "auth_sendonly_domain",
+        "default_information_level",
+        "default_information_level6",
+        "default_information_metric",
+        "default_information_metric6",
+        "default_information_originate",
+        "default_information_originate6",
+        "ignore_attached_bit",
+        "interface",
+        "is_type",
+        "log_neighbour_changes",
+        "lsp_gen_interval_l1",
+        "lsp_gen_interval_l2",
+        "lsp_refresh_interval",
+        "max_lsp_lifetime",
+        "metric_style",
+        "net",
+        "overload_bit",
+        "redistribute",
+        "redistribute6",
+        "redistribute6_l1",
+        "redistribute6_l1_list",
+        "redistribute_l1",
+        "redistribute_l1_list",
+        "router_id",
+        "spf_interval_exp_l1",
+        "spf_interval_exp_l2",
+        "summary_address",
+        "summary_address6",
+    ]
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -670,16 +715,16 @@ def underscore_to_hyphen(data):
     elif isinstance(data, dict):
         new_data = {}
         for k, v in data.items():
-            new_data[k.replace('_', '-')] = underscore_to_hyphen(v)
+            new_data[k.replace("_", "-")] = underscore_to_hyphen(v)
         data = new_data
 
     return data
 
 
 def router_isis(data, fos, check_mode=False):
-    state = data.get('state', None)
+    state = data.get("state", None)
 
-    router_isis_data = data['router_isis']
+    router_isis_data = data["router_isis"]
 
     filtered_data = filter_router_isis_data(router_isis_data)
     filtered_data = underscore_to_hyphen(filtered_data)
@@ -687,17 +732,20 @@ def router_isis(data, fos, check_mode=False):
     # check_mode starts from here
     if check_mode:
         diff = {
-            "before": '',
+            "before": "",
             "after": filtered_data,
         }
-        mkey = fos.get_mkey('router', 'isis', filtered_data)
-        current_data = fos.get('router', 'isis', mkey=mkey)
-        is_existed = current_data and current_data.get('http_status') == 200 \
-            and isinstance(current_data.get('results'), list) \
-            and len(current_data['results']) > 0
+        mkey = fos.get_mkey("router", "isis", filtered_data)
+        current_data = fos.get("router", "isis", mkey=mkey)
+        is_existed = (
+            current_data
+            and current_data.get("http_status") == 200
+            and isinstance(current_data.get("results"), list)
+            and len(current_data["results"]) > 0
+        )
 
         # 2. if it exists and the state is 'present' then compare current settings with desired
-        if state == 'present' or state is True or state is None:
+        if state == "present" or state is True or state is None:
             mkeyname = fos.get_mkeyname(None, None)
             # for non global modules, mkeyname must exist and it's a new module when mkey is None
             if mkeyname is not None and mkey is None:
@@ -711,1333 +759,769 @@ def router_isis(data, fos, check_mode=False):
             # handle global modules'
             if mkeyname is None and state is None:
                 is_same = is_same_comparison(
-                    serialize(current_data['results']), serialize(copied_filtered_data))
+                    serialize(current_data["results"]), serialize(copied_filtered_data)
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             if is_existed:
                 is_same = is_same_comparison(
-                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+                    serialize(current_data["results"][0]),
+                    serialize(copied_filtered_data),
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"][0]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             # record does not exist
             return False, True, filtered_data, diff
 
-        if state == 'absent':
+        if state == "absent":
             if mkey is None:
-                return False, False, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    False,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
 
             if is_existed:
-                return False, True, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    True,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
             return False, False, filtered_data, {}
 
-        return True, False, {'reason: ': 'Must provide state parameter'}, {}
+        return True, False, {"reason: ": "Must provide state parameter"}, {}
 
-    return fos.set('router',
-                   'isis',
-                   data=filtered_data,
-                   )
+    return fos.set(
+        "router",
+        "isis",
+        data=filtered_data,
+    )
 
 
 def is_successful_status(resp):
-    return 'status' in resp and resp['status'] == 'success' or \
-        'http_status' in resp and resp['http_status'] == 200 or \
-        'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
+    return (
+        "status" in resp
+        and resp["status"] == "success"
+        or "http_status" in resp
+        and resp["http_status"] == 200
+        or "http_method" in resp
+        and resp["http_method"] == "DELETE"
+        and resp["http_status"] == 404
+    )
 
 
 def fortiswitch_router(data, fos, check_mode):
-    fos.do_member_operation('router', 'isis')
-    current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
-    if data['router_isis']:
+    fos.do_member_operation("router", "isis")
+    current_cmdb_index = fos.monitor_get("/system/status")["cmdb-index"]
+    if data["router_isis"]:
         resp = router_isis(data, fos, check_mode)
     else:
-        fos._module.fail_json(msg='missing task body: %s' % ('router_isis'))
+        fos._module.fail_json(msg="missing task body: %s" % ("router_isis"))
     if check_mode:
         return resp
-    return not is_successful_status(resp), \
-        is_successful_status(resp) and \
-        current_cmdb_index != resp['cmdb-index'], \
-        resp, {}
+    return (
+        not is_successful_status(resp),
+        is_successful_status(resp) and current_cmdb_index != resp["cmdb-index"],
+        resp,
+        {},
+    )
 
 
 versioned_schema = {
-    "v_range": [
-        [
-            "v7.0.0",
-            ""
-        ]
-    ],
+    "v_range": [["v7.0.0", ""]],
     "type": "dict",
     "children": {
         "default_information_metric6": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "default-information-metric6",
             "help": "Default ipv6 route metric.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "auth_sendonly_domain": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "auth-sendonly-domain",
             "help": "Enable authentication send-only for level 2 SNP PDUs.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "default_information_originate6": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "always"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "always"}, {"value": "disable"}],
             "name": "default-information-originate6",
             "help": "Enable/disable generation of default ipv6 route.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "summary_address": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "prefix": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "prefix",
                     "help": "prefix.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "id",
                     "help": "Summary address entry id.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "level": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "level-1-2"
-                        },
-                        {
-                            "value": "level-1"
-                        },
-                        {
-                            "value": "level-2"
-                        }
+                        {"value": "level-1-2"},
+                        {"value": "level-1"},
+                        {"value": "level-2"},
                     ],
                     "name": "level",
                     "help": "Level.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "summary-address",
             "help": "IS-IS summary addresses.",
             "mkey": "id",
-            "category": "table"
+            "category": "table",
         },
         "metric_style": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "narrow"
-                },
-                {
-                    "value": "wide"
-                },
-                {
-                    "value": "transition"
-                }
+                {"value": "narrow"},
+                {"value": "wide"},
+                {"value": "transition"},
             ],
             "name": "metric-style",
             "help": "Use old-style (ISO 10589) or new-style packet formats.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "redistribute6_l1": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "redistribute6-l1",
             "help": "Redistribute level 1 v6 routes into level 2.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "lsp_refresh_interval": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "lsp-refresh-interval",
             "help": "LSP refresh time in seconds.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "max_lsp_lifetime": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "max-lsp-lifetime",
             "help": "Maximum LSP lifetime in seconds.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ignore_attached_bit": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "ignore-attached-bit",
             "help": "Ignore Attached bit on incoming L1 LSP.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "redistribute6_l1_list": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "redistribute6-l1-list",
             "help": "Access-list for redistribute v6 routes from l1 to l2.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "auth_keychain_area": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "auth-keychain-area",
             "help": "IS-IS area authentication key-chain. Applicable when area's auth mode is md5.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "auth_mode_area": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "password"
-                },
-                {
-                    "value": "md5"
-                }
-            ],
+            "options": [{"value": "password"}, {"value": "md5"}],
             "name": "auth-mode-area",
             "help": "IS-IS area(level-1) authentication mode.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "default_information_level": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "level-1-2"
-                },
-                {
-                    "value": "level-1"
-                },
-                {
-                    "value": "level-2"
-                }
+                {"value": "level-1-2"},
+                {"value": "level-1"},
+                {"value": "level-2"},
             ],
             "name": "default-information-level",
             "help": "Distribute default route into level's LSP.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "redistribute_l1": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "redistribute-l1",
             "help": "Redistribute level 1 routes into level 2.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "net": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "net": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "net",
                     "help": "isis net xx.xxxx. ... .xxxx.xx",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "id": {
-                    "v_range": [
-                        [
-                            "v7.4.1",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.4.1", ""]],
                     "type": "integer",
                     "name": "id",
                     "help": "ISIS net ID",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "net",
             "help": "IS-IS net configuration.",
             "mkey": "id",
-            "category": "table"
+            "category": "table",
         },
         "summary_address6": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "level": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "level-1-2"
-                        },
-                        {
-                            "value": "level-1"
-                        },
-                        {
-                            "value": "level-2"
-                        }
+                        {"value": "level-1-2"},
+                        {"value": "level-1"},
+                        {"value": "level-2"},
                     ],
                     "name": "level",
                     "help": "Level.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "prefix6": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "prefix6",
                     "help": "IPv6 prefix",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "id",
                     "help": "Summary address entry id.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "summary-address6",
             "help": "IS-IS summary ipv6 addresses.",
             "mkey": "id",
-            "category": "table"
+            "category": "table",
         },
         "auth_mode_domain": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "password"
-                },
-                {
-                    "value": "md5"
-                }
-            ],
+            "options": [{"value": "password"}, {"value": "md5"}],
             "name": "auth-mode-domain",
             "help": "ISIS domain(level-2) authentication mode.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "lsp_gen_interval_l1": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "lsp-gen-interval-l1",
             "help": "Minimum interval for level 1 LSP regenerating.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "lsp_gen_interval_l2": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "lsp-gen-interval-l2",
             "help": "Minimum interval for level 2 LSP regenerating.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "redistribute_l1_list": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "redistribute-l1-list",
             "help": "Access-list for redistribute l1 to l2.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "overload_bit": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "overload-bit",
             "help": "Signal other routers not to use us in SPF.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "auth_password_area": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "auth-password-area",
             "help": "IS-IS area(level-1) authentication password. Applicable when area's auth mode is password.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "default_information_metric": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "default-information-metric",
             "help": "Default information metric.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "default_information_originate": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "always"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "always"}, {"value": "disable"}],
             "name": "default-information-originate",
             "help": "Enable/disable generation of default route.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "interface": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "auth_password_hello": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "auth-password-hello",
                     "help": "Hello PDU authentication password. Applicable when hello's auth mode is password.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "priority_l2": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "priority-l2",
                     "help": "Level 2 priority.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "priority_l1": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "priority-l1",
                     "help": "Level 1 priority.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "hello_multiplier_l2": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "hello-multiplier-l2",
                     "help": "Level 2 multiplier for Hello holding time.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "hello_multiplier_l1": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "hello-multiplier-l1",
                     "help": "Level 1 multiplier for Hello holding time.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "auth_mode_hello": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "md5"
-                        },
-                        {
-                            "value": "password"
-                        }
-                    ],
+                    "options": [{"value": "md5"}, {"value": "password"}],
                     "name": "auth-mode-hello",
                     "help": "Hello PDU authentication mode.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "bfd": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "bfd",
                     "help": "Bidirectional Forwarding Detection (BFD).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "passive": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "passive",
                     "help": "Set this interface as passive.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "circuit_type": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "level-1-2"
-                        },
-                        {
-                            "value": "level-1"
-                        },
-                        {
-                            "value": "level-2"
-                        }
+                        {"value": "level-1-2"},
+                        {"value": "level-1"},
+                        {"value": "level-2"},
                     ],
                     "name": "circuit-type",
                     "help": "IS-IS interface's circuit type.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "bfd6": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            "v7.2.1"
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", "v7.2.1"]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "bfd6",
                     "help": "Ipv6 Bidirectional Forwarding Detection (BFD).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "wide_metric_l1": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "wide-metric-l1",
                     "help": "Level 1 wide metric for interface.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "wide_metric_l2": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "wide-metric-l2",
                     "help": "Level 2 wide metric for interface.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "status": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "status",
                     "help": "Enable the interface for IS-IS.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "metric_l1": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "metric-l1",
                     "help": "Level 1 metric for interface.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "metric_l2": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "metric-l2",
                     "help": "Level 2 metric for interface.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "status6": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "status6",
                     "help": "Enable/disable interface for ipv6 IS-IS.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "name": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "name",
                     "help": "IS-IS interface name",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "auth_keychain_hello": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "auth-keychain-hello",
                     "help": "Hello PDU authentication key-chain. Applicable when hello's auth mode is md5.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "hello_interval_l2": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "hello-interval-l2",
                     "help": "Level 2 hello interval.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "csnp_interval_l2": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "csnp-interval-l2",
                     "help": "Level 2 CSNP interval.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "csnp_interval_l1": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "csnp-interval-l1",
                     "help": "Level 1 CSNP interval.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "hello_padding": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "hello-padding",
                     "help": "Enable padding to IS-IS hello packets.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "hello_interval_l1": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "hello-interval-l1",
                     "help": "Level 1 hello interval.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "interface",
             "help": "IS-IS interface configuration.",
             "mkey": "name",
-            "category": "table"
+            "category": "table",
         },
         "auth_keychain_domain": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "auth-keychain-domain",
             "help": "IS-IS domain authentication key-chain. Applicable when domain's auth mode is md5.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "spf_interval_exp_l2": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "spf-interval-exp-l2",
             "help": "Level 2 SPF minimum calculation delay in secs.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "spf_interval_exp_l1": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "spf-interval-exp-l1",
             "help": "Level 1 SPF minimum calculation delay in secs.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "auth_password_domain": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "auth-password-domain",
             "help": "IS-IS domain(level-2) authentication password. Applicable when domain's auth mode is password.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "redistribute": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "status": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "status",
                     "help": "status.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "protocol": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "protocol",
                     "help": "protocol name.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "level": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "level-1-2"
-                        },
-                        {
-                            "value": "level-1"
-                        },
-                        {
-                            "value": "level-2"
-                        }
+                        {"value": "level-1-2"},
+                        {"value": "level-1"},
+                        {"value": "level-2"},
                     ],
                     "name": "level",
                     "help": "level.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "metric": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "metric",
                     "help": "metric.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "routemap": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "routemap",
                     "help": "routemap name.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "metric_type": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "external"
-                        },
-                        {
-                            "value": "internal"
-                        }
-                    ],
+                    "options": [{"value": "external"}, {"value": "internal"}],
                     "name": "metric-type",
                     "help": "metric type.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "redistribute",
             "help": "IS-IS redistribute protocols.",
             "mkey": "protocol",
-            "category": "table"
+            "category": "table",
         },
         "router_id": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "router-id",
             "help": "Router ID.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "auth_sendonly_area": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "auth-sendonly-area",
             "help": "Enable authentication send-only for level 1 SNP PDUs.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "is_type": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "level-1-2"
-                },
-                {
-                    "value": "level-1"
-                },
-                {
-                    "value": "level-2-only"
-                }
+                {"value": "level-1-2"},
+                {"value": "level-1"},
+                {"value": "level-2-only"},
             ],
             "name": "is-type",
             "help": "IS-type.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "default_information_level6": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "level-1-2"
-                },
-                {
-                    "value": "level-1"
-                },
-                {
-                    "value": "level-2"
-                }
+                {"value": "level-1-2"},
+                {"value": "level-1"},
+                {"value": "level-2"},
             ],
             "name": "default-information-level6",
             "help": "Distribute ipv6 default route into level's LSP.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "redistribute6": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "status": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "status",
                     "help": "status.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "metric": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "metric",
                     "help": "metric.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "routemap": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "routemap",
                     "help": "routemap name.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "protocol": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "protocol",
                     "help": "protocol name.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "level": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "level-1-2"
-                        },
-                        {
-                            "value": "level-1"
-                        },
-                        {
-                            "value": "level-2"
-                        }
+                        {"value": "level-1-2"},
+                        {"value": "level-1"},
+                        {"value": "level-2"},
                     ],
                     "name": "level",
                     "help": "level.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "redistribute6",
             "help": "IS-IS redistribute v6 protocols.",
             "mkey": "protocol",
-            "category": "table"
+            "category": "table",
         },
         "log_neighbour_changes": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "log-neighbour-changes",
             "help": "Enable logging of ISIS neighbour's changes",
-            "category": "unitary"
-        }
+            "category": "unitary",
+        },
     },
     "name": "isis",
     "help": "ISIS configuration.",
-    "category": "complex"
+    "category": "complex",
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
+    mkeyname = versioned_schema["mkey"] if "mkey" in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},
         "member_state": {
             "type": "str",
             "required": False,
-            "choices": ["present", "absent"]
+            "choices": ["present", "absent"],
         },
         "router_isis": {
-            "required": False, "type": "dict", "default": None,
-            "no_log": True,
-            "options": {}
-        }
+            "required": False,
+            "type": "dict",
+            "default": None,
+            "options": {},
+        },
     }
-    for attribute_name in module_spec['options']:
-        fields["router_isis"]['options'][attribute_name] = module_spec['options'][attribute_name]
+    for attribute_name in module_spec["options"]:
+        fields["router_isis"]["options"][attribute_name] = module_spec["options"][
+            attribute_name
+        ]
         if mkeyname and mkeyname == attribute_name:
-            fields["router_isis"]['options'][attribute_name]['required'] = True
+            fields["router_isis"]["options"][attribute_name]["required"] = True
 
-    module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=True)
+    module = AnsibleModule(argument_spec=fields, supports_check_mode=True)
 
     is_error = False
     has_changed = False
@@ -2048,30 +1532,45 @@ def main():
     if module._socket_path:
         connection = Connection(module._socket_path)
 
-        if 'enable_log' in module.params:
-            connection.set_custom_option('enable_log', module.params['enable_log'])
+        if "enable_log" in module.params:
+            connection.set_custom_option("enable_log", module.params["enable_log"])
         else:
-            connection.set_custom_option('enable_log', False)
+            connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module, mkeyname)
-        versions_check_result = check_schema_versioning(fos, versioned_schema, "router_isis")
-        is_error, has_changed, result, diff = fortiswitch_router(module.params, fos, module.check_mode)
+        versions_check_result = check_schema_versioning(
+            fos, versioned_schema, "router_isis"
+        )
+        is_error, has_changed, result, diff = fortiswitch_router(
+            module.params, fos, module.check_mode
+        )
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
-    if versions_check_result and versions_check_result['matched'] is False:
-        module.warn("Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv")
+    if versions_check_result and versions_check_result["matched"] is False:
+        module.warn(
+            "Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv"
+        )
 
     if not is_error:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.exit_json(changed=has_changed, version_check_warning=versions_check_result, meta=result, diff=diff)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.exit_json(
+                changed=has_changed,
+                version_check_warning=versions_check_result,
+                meta=result,
+                diff=diff,
+            )
         else:
             module.exit_json(changed=has_changed, meta=result, diff=diff)
     else:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.fail_json(msg="Error in repo", version_check_warning=versions_check_result, meta=result)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.fail_json(
+                msg="Error in repo",
+                version_check_warning=versions_check_result,
+                meta=result,
+            )
         else:
             module.fail_json(msg="Error in repo", meta=result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

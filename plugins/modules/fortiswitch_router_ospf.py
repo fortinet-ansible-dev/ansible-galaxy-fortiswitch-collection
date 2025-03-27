@@ -1,5 +1,6 @@
 #!/usr/bin/python
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 # Copyright (c) 2022 Fortinet
 # GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
 
@@ -10,11 +11,13 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'community',
-                    'metadata_version': '1.1'}
+ANSIBLE_METADATA = {
+    "status": ["preview"],
+    "supported_by": "community",
+    "metadata_version": "1.1",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: fortiswitch_router_ospf
 short_description: OSPF configuration in Fortinet's FortiSwitch
@@ -916,16 +919,16 @@ options:
                                 description:
                                     - Tag value.
                                 type: int
-'''
+"""
 
-EXAMPLES = '''
+EXAMPLES = """
 - name: OSPF configuration.
   fortinet.fortiswitch.fortiswitch_router_ospf:
       router_ospf:
           abr_type: "cisco"
           area:
               -
-                  default_cost: "5"
+                  default_cost: "1073741823"
                   filter_list:
                       -
                           direction: "in"
@@ -958,7 +961,7 @@ EXAMPLES = '''
                           retransmit_interval: "31"
                           transmit_delay: "32"
           database_overflow: "enable"
-          database_overflow_max_external_lsa: "34"
+          database_overflow_max_external_lsa: "1073741823"
           database_overflow_time_to_recover: "35"
           default_information_metric: "36"
           default_information_metric_type: "1"
@@ -991,7 +994,7 @@ EXAMPLES = '''
                   priority: "61"
                   retransmit_interval: "62"
                   transmit_delay: "63"
-                  ttl: "64"
+                  ttl: "127"
                   ucast_ttl: "65"
           log_neighbour_changes: "enable"
           name: "default_name_67"
@@ -1010,7 +1013,7 @@ EXAMPLES = '''
                   name: "default_name_77"
                   routemap: "<your_own_value> (source router.route-map.name)"
                   status: "enable"
-                  tag: "80"
+                  tag: "1073741823"
           rfc1583_compatible: "enable"
           router_id: "<your_own_value>"
           spf_timers: "<your_own_value>"
@@ -1018,13 +1021,13 @@ EXAMPLES = '''
               -
                   id: "85"
                   prefix: "<your_own_value>"
-                  tag: "87"
+                  tag: "1073741823"
           vrf:
               -
                   abr_type: "cisco"
                   area:
                       -
-                          default_cost: "91"
+                          default_cost: "1073741823"
                           filter_list:
                               -
                                   direction: "in"
@@ -1053,7 +1056,7 @@ EXAMPLES = '''
                                   retransmit_interval: "114"
                                   transmit_delay: "115"
                   database_overflow: "enable"
-                  database_overflow_max_external_lsa: "117"
+                  database_overflow_max_external_lsa: "1073741823"
                   database_overflow_time_to_recover: "118"
                   default_information_metric: "119"
                   default_information_metric_type: "1"
@@ -1085,7 +1088,7 @@ EXAMPLES = '''
                           priority: "143"
                           retransmit_interval: "144"
                           transmit_delay: "145"
-                          ttl: "146"
+                          ttl: "127"
                           ucast_ttl: "147"
                   log_neighbour_changes: "enable"
                   name: "default_name_149 (source router.vrf.name)"
@@ -1104,7 +1107,7 @@ EXAMPLES = '''
                           name: "default_name_159"
                           routemap: "<your_own_value> (source router.route-map.name)"
                           status: "enable"
-                          tag: "162"
+                          tag: "1073741823"
                   rfc1583_compatible: "enable"
                   router_id: "<your_own_value>"
                   spf_timers: "<your_own_value>"
@@ -1112,10 +1115,10 @@ EXAMPLES = '''
                       -
                           id: "167"
                           prefix: "<your_own_value>"
-                          tag: "169"
-'''
+                          tag: "1073741823"
+"""
 
-RETURN = '''
+RETURN = """
 build:
   description: Build number of the fortiSwitch image
   returned: always
@@ -1162,28 +1165,62 @@ version:
   type: str
   sample: "v7.0.0"
 
-'''
+"""
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import FortiOSHandler
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import schema_to_module_spec
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    FortiOSHandler,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    schema_to_module_spec,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    check_schema_versioning,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import (
+    FAIL_SOCKET_MSG,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import (
+    remove_invalid_fields,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    is_same_comparison,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    serialize,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    find_current_values,
+)
 
 
 def filter_router_ospf_data(json):
-    option_list = ['abr_type', 'area', 'database_overflow',
-                   'database_overflow_max_external_lsa', 'database_overflow_time_to_recover', 'default_information_metric',
-                   'default_information_metric_type', 'default_information_originate', 'distance',
-                   'distance_external', 'distance_inter_area', 'distance_intra_area',
-                   'distribute_list', 'interface', 'log_neighbour_changes',
-                   'name', 'network', 'passive_interface',
-                   'redistribute', 'rfc1583_compatible', 'router_id',
-                   'spf_timers', 'summary_address', 'vrf']
+    option_list = [
+        "abr_type",
+        "area",
+        "database_overflow",
+        "database_overflow_max_external_lsa",
+        "database_overflow_time_to_recover",
+        "default_information_metric",
+        "default_information_metric_type",
+        "default_information_originate",
+        "distance",
+        "distance_external",
+        "distance_inter_area",
+        "distance_intra_area",
+        "distribute_list",
+        "interface",
+        "log_neighbour_changes",
+        "name",
+        "network",
+        "passive_interface",
+        "redistribute",
+        "rfc1583_compatible",
+        "router_id",
+        "spf_timers",
+        "summary_address",
+        "vrf",
+    ]
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -1202,16 +1239,16 @@ def underscore_to_hyphen(data):
     elif isinstance(data, dict):
         new_data = {}
         for k, v in data.items():
-            new_data[k.replace('_', '-')] = underscore_to_hyphen(v)
+            new_data[k.replace("_", "-")] = underscore_to_hyphen(v)
         data = new_data
 
     return data
 
 
 def router_ospf(data, fos, check_mode=False):
-    state = data.get('state', None)
+    state = data.get("state", None)
 
-    router_ospf_data = data['router_ospf']
+    router_ospf_data = data["router_ospf"]
 
     filtered_data = filter_router_ospf_data(router_ospf_data)
     filtered_data = underscore_to_hyphen(filtered_data)
@@ -1219,17 +1256,20 @@ def router_ospf(data, fos, check_mode=False):
     # check_mode starts from here
     if check_mode:
         diff = {
-            "before": '',
+            "before": "",
             "after": filtered_data,
         }
-        mkey = fos.get_mkey('router', 'ospf', filtered_data)
-        current_data = fos.get('router', 'ospf', mkey=mkey)
-        is_existed = current_data and current_data.get('http_status') == 200 \
-            and isinstance(current_data.get('results'), list) \
-            and len(current_data['results']) > 0
+        mkey = fos.get_mkey("router", "ospf", filtered_data)
+        current_data = fos.get("router", "ospf", mkey=mkey)
+        is_existed = (
+            current_data
+            and current_data.get("http_status") == 200
+            and isinstance(current_data.get("results"), list)
+            and len(current_data["results"]) > 0
+        )
 
         # 2. if it exists and the state is 'present' then compare current settings with desired
-        if state == 'present' or state is True or state is None:
+        if state == "present" or state is True or state is None:
             mkeyname = fos.get_mkeyname(None, None)
             # for non global modules, mkeyname must exist and it's a new module when mkey is None
             if mkeyname is not None and mkey is None:
@@ -1243,67 +1283,98 @@ def router_ospf(data, fos, check_mode=False):
             # handle global modules'
             if mkeyname is None and state is None:
                 is_same = is_same_comparison(
-                    serialize(current_data['results']), serialize(copied_filtered_data))
+                    serialize(current_data["results"]), serialize(copied_filtered_data)
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             if is_existed:
                 is_same = is_same_comparison(
-                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+                    serialize(current_data["results"][0]),
+                    serialize(copied_filtered_data),
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"][0]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             # record does not exist
             return False, True, filtered_data, diff
 
-        if state == 'absent':
+        if state == "absent":
             if mkey is None:
-                return False, False, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    False,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
 
             if is_existed:
-                return False, True, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    True,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
             return False, False, filtered_data, {}
 
-        return True, False, {'reason: ': 'Must provide state parameter'}, {}
+        return True, False, {"reason: ": "Must provide state parameter"}, {}
 
-    return fos.set('router',
-                   'ospf',
-                   data=filtered_data,
-                   )
+    return fos.set(
+        "router",
+        "ospf",
+        data=filtered_data,
+    )
 
 
 def is_successful_status(resp):
-    return 'status' in resp and resp['status'] == 'success' or \
-        'http_status' in resp and resp['http_status'] == 200 or \
-        'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
+    return (
+        "status" in resp
+        and resp["status"] == "success"
+        or "http_status" in resp
+        and resp["http_status"] == 200
+        or "http_method" in resp
+        and resp["http_method"] == "DELETE"
+        and resp["http_status"] == 404
+    )
 
 
 def fortiswitch_router(data, fos, check_mode):
-    fos.do_member_operation('router', 'ospf')
-    current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
-    if data['router_ospf']:
+    fos.do_member_operation("router", "ospf")
+    current_cmdb_index = fos.monitor_get("/system/status")["cmdb-index"]
+    if data["router_ospf"]:
         resp = router_ospf(data, fos, check_mode)
     else:
-        fos._module.fail_json(msg='missing task body: %s' % ('router_ospf'))
+        fos._module.fail_json(msg="missing task body: %s" % ("router_ospf"))
     if check_mode:
         return resp
-    return not is_successful_status(resp), \
-        is_successful_status(resp) and \
-        current_cmdb_index != resp['cmdb-index'], \
-        resp, {}
+    return (
+        not is_successful_status(resp),
+        is_successful_status(resp) and current_cmdb_index != resp["cmdb-index"],
+        resp,
+        {},
+    )
 
 
 versioned_schema = {
-    "v_range": [
-        [
-            "v7.0.0",
-            ""
-        ]
-    ],
+    "v_range": [["v7.0.0", ""]],
     "type": "dict",
     "children": {
         "summary_address": {
@@ -1311,1261 +1382,690 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "prefix": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "prefix",
                     "help": "Prefix.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "tag": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "tag",
                     "help": "Tag value.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "id",
                     "help": "Summary address entry ID.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "summary-address",
             "help": "Aggregate address for redistributed routes.",
             "mkey": "id",
-            "category": "table"
+            "category": "table",
         },
         "area": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "nssa_translator_role": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "candidate"
-                        },
-                        {
-                            "value": "never"
-                        },
-                        {
-                            "value": "always"
-                        }
+                        {"value": "candidate"},
+                        {"value": "never"},
+                        {"value": "always"},
                     ],
                     "name": "nssa-translator-role",
                     "help": "NSSA translator role type.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "virtual_link": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "dead_interval": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "dead-interval",
                             "help": "Dead interval.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "hello_interval": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "hello-interval",
                             "help": "Hello interval.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "name": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "name",
                             "help": "Virtual link entry name.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "transmit_delay": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "transmit-delay",
                             "help": "Link state transmit delay.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "retransmit_interval": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "retransmit-interval",
                             "help": "Time between retransmitting lost link state advertisements.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "authentication": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "options": [
-                                {
-                                    "value": "none"
-                                },
-                                {
-                                    "value": "text"
-                                },
-                                {
-                                    "value": "md5"
-                                }
+                                {"value": "none"},
+                                {"value": "text"},
+                                {"value": "md5"},
                             ],
                             "name": "authentication",
                             "help": "Authentication type.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "peer": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "peer",
                             "help": "Peer IP.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "md5_keys": {
                             "type": "list",
                             "elements": "dict",
                             "children": {
                                 "id": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "integer",
                                     "name": "id",
                                     "help": "key-id (1-255).",
-                                    "category": "unitary"
+                                    "category": "unitary",
                                 },
                                 "key": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "string",
                                     "name": "key",
                                     "help": "md5-key.",
-                                    "category": "unitary"
-                                }
+                                    "category": "unitary",
+                                },
                             },
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "name": "md5-keys",
                             "help": "OSPF md5 key configuration. Applicable only when authentication field is set to md5.",
                             "mkey": "id",
-                            "category": "table"
+                            "category": "table",
                         },
                         "authentication_key": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "authentication-key",
                             "help": "Authentication key.",
-                            "category": "unitary"
-                        }
+                            "category": "unitary",
+                        },
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "virtual-link",
                     "help": "OSPF virtual link configuration.",
                     "mkey": "name",
-                    "category": "table"
+                    "category": "table",
                 },
                 "shortcut": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "default"
-                        }
+                        {"value": "disable"},
+                        {"value": "enable"},
+                        {"value": "default"},
                     ],
                     "name": "shortcut",
                     "help": "Enable/disable shortcut option.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "stub_type": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "no-summary"
-                        },
-                        {
-                            "value": "summary"
-                        }
-                    ],
+                    "options": [{"value": "no-summary"}, {"value": "summary"}],
                     "name": "stub-type",
                     "help": "Stub summary setting.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "range": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "substitute": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "substitute",
                             "help": "Substitute prefix.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "prefix": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "prefix",
                             "help": "Prefix.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "substitute_status": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
-                            "options": [
-                                {
-                                    "value": "enable"
-                                },
-                                {
-                                    "value": "disable"
-                                }
-                            ],
+                            "options": [{"value": "enable"}, {"value": "disable"}],
                             "name": "substitute-status",
                             "help": "Enable/disable substitute status.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "id": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "id",
                             "help": "Range entry ID.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "advertise": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
-                            "options": [
-                                {
-                                    "value": "disable"
-                                },
-                                {
-                                    "value": "enable"
-                                }
-                            ],
+                            "options": [{"value": "disable"}, {"value": "enable"}],
                             "name": "advertise",
                             "help": "Enable/disable advertise status.",
-                            "category": "unitary"
-                        }
+                            "category": "unitary",
+                        },
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "range",
                     "help": "OSPF area range configuration.",
                     "mkey": "id",
-                    "category": "table"
+                    "category": "table",
                 },
                 "filter_list": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "direction": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
-                            "options": [
-                                {
-                                    "value": "in"
-                                },
-                                {
-                                    "value": "out"
-                                }
-                            ],
+                            "options": [{"value": "in"}, {"value": "out"}],
                             "name": "direction",
                             "help": "Direction.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "list": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "list",
                             "help": "Access-list or prefix-list name.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "id": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "id",
                             "help": "Filter list entry ID.",
-                            "category": "unitary"
-                        }
+                            "category": "unitary",
+                        },
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "filter-list",
                     "help": "OSPF area filter-list configuration.",
                     "mkey": "id",
-                    "category": "table"
+                    "category": "table",
                 },
                 "default_cost": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "default-cost",
                     "help": "Summary default cost of stub or NSSA area.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "type": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "regular"
-                        },
-                        {
-                            "value": "nssa"
-                        },
-                        {
-                            "value": "stub"
-                        }
+                        {"value": "regular"},
+                        {"value": "nssa"},
+                        {"value": "stub"},
                     ],
                     "name": "type",
                     "help": "Area type setting.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "id",
                     "help": "Area entry IP address.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "area",
             "help": "OSPF area configuration.",
             "mkey": "id",
-            "category": "table"
+            "category": "table",
         },
         "distance_intra_area": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "distance-intra-area",
             "help": "Administrative intra-area route distance.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "distance_external": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "distance-external",
             "help": "Administrative external route distance.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "network": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "prefix": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "prefix",
                     "help": "Prefix.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "id",
                     "help": "Network entry ID.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "area": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "area",
                     "help": "Attach the network to area.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "network",
             "help": "Enable OSPF on an IP network.",
             "mkey": "id",
-            "category": "table"
+            "category": "table",
         },
         "router_id": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "router-id",
             "help": "Router ID.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "default_information_metric_type": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "1"
-                },
-                {
-                    "value": "2"
-                }
-            ],
+            "options": [{"value": "1"}, {"value": "2"}],
             "name": "default-information-metric-type",
             "help": "Default information metric type.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "database_overflow_time_to_recover": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "database-overflow-time-to-recover",
             "help": "Database overflow time to recover (sec).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "log_neighbour_changes": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "log-neighbour-changes",
             "help": "Enable logging of OSPF neighbour's changes",
-            "category": "unitary"
+            "category": "unitary",
         },
         "rfc1583_compatible": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "rfc1583-compatible",
             "help": "Enable/disable RFC1583 compatibility.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "default_information_metric": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "default-information-metric",
             "help": "Default information metric.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "default_information_originate": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "always"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "always"}, {"value": "disable"}],
             "name": "default-information-originate",
             "help": "Enable/disable generation of default route.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "passive_interface": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "name": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "name",
                     "help": "Passive interface name.",
-                    "category": "unitary"
+                    "category": "unitary",
                 }
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "passive-interface",
             "help": "Passive interface configuration.",
             "mkey": "name",
-            "category": "table"
+            "category": "table",
         },
         "distribute_list": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "access_list": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "access-list",
                     "help": "Access list name.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "protocol": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "connected"
-                        },
-                        {
-                            "value": "static"
-                        },
-                        {
-                            "value": "rip"
-                        },
-                        {
-                            "value": "bgp"
-                        },
-                        {
-                            "value": "isis"
-                        }
+                        {"value": "connected"},
+                        {"value": "static"},
+                        {"value": "rip"},
+                        {"value": "bgp"},
+                        {"value": "isis"},
                     ],
                     "name": "protocol",
                     "help": "Protocol type.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "id",
                     "help": "Distribute list entry ID.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "distribute-list",
             "help": "Redistribute routes filter.",
             "mkey": "id",
-            "category": "table"
+            "category": "table",
         },
         "distance": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "distance",
             "help": "Administrative distance.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "redistribute": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "status": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "status",
                     "help": "status",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "name": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "name",
                     "help": "Redistribute name.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "metric_type": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "1"
-                        },
-                        {
-                            "value": "2"
-                        }
-                    ],
+                    "options": [{"value": "1"}, {"value": "2"}],
                     "name": "metric-type",
                     "help": "Metric type.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "tag": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "tag",
                     "help": "Tag value.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "routemap": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "routemap",
                     "help": "Route map name.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "metric": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "metric",
                     "help": "Redistribute metric setting.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "redistribute",
             "help": "Redistribute configuration.",
             "mkey": "name",
-            "category": "table"
+            "category": "table",
         },
         "database_overflow": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "database-overflow",
             "help": "Enable/disable database overflow.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "database_overflow_max_external_lsa": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "database-overflow-max-external-lsa",
             "help": "Database overflow maximum External LSAs.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "name": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "name",
             "help": "Vrf name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "spf_timers": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "spf-timers",
             "help": "SPF calculation frequency.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "distance_inter_area": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "distance-inter-area",
             "help": "Administrative inter-area route distance.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "abr_type": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "cisco"
-                },
-                {
-                    "value": "ibm"
-                },
-                {
-                    "value": "shortcut"
-                },
-                {
-                    "value": "standard"
-                }
+                {"value": "cisco"},
+                {"value": "ibm"},
+                {"value": "shortcut"},
+                {"value": "standard"},
             ],
             "name": "abr-type",
             "help": "Area border router type.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "interface": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "priority": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "priority",
                     "help": "Router priority.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "authentication_key": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "authentication-key",
                     "help": "Authentication key.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "name": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "name",
                     "help": "Interface entry name.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "dead_interval": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "dead-interval",
                     "help": "Dead interval. For fast-hello assign value 1.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "hello_multiplier": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "hello-multiplier",
                     "help": "Number of hello packets within dead interval.Valid only for fast-hello.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "bfd": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "bfd",
                     "help": "Bidirectional Forwarding Detection (BFD).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "transmit_delay": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "transmit-delay",
                     "help": "Link state transmit delay.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "mtu": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "mtu",
                     "help": "Interface MTU.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "retransmit_interval": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "retransmit-interval",
                     "help": "Time between retransmitting lost link state advertisements.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "authentication": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "none"
-                        },
-                        {
-                            "value": "text"
-                        },
-                        {
-                            "value": "md5"
-                        }
-                    ],
+                    "options": [{"value": "none"}, {"value": "text"}, {"value": "md5"}],
                     "name": "authentication",
                     "help": "Authentication type.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "cost": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "cost",
                     "help": "Cost of the interface.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "hello_interval": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "hello-interval",
                     "help": "Hello interval.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "md5_keys": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "id": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "id",
                             "help": "key-id (1-255).",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "key": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "key",
                             "help": "md5-key.",
-                            "category": "unitary"
-                        }
+                            "category": "unitary",
+                        },
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "md5-keys",
                     "help": "OSPF md5 key configuration. Applicable only when authentication field is set to md5.",
                     "mkey": "id",
-                    "category": "table"
+                    "category": "table",
                 },
                 "mtu_ignore": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "mtu-ignore",
                     "help": "Disable MTU mismatch detection on this interface.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "ucast_ttl": {
-                    "v_range": [
-                        [
-                            "v7.0.1",
-                            "v7.2.1"
-                        ]
-                    ],
+                    "v_range": [["v7.0.1", "v7.2.1"]],
                     "type": "integer",
                     "name": "ucast-ttl",
                     "help": "Unicast TTL.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "ttl": {
-                    "v_range": [
-                        [
-                            "v7.2.2",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.2.2", ""]],
                     "type": "integer",
                     "name": "ttl",
                     "help": "TTL.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "interface",
             "help": "OSPF interface configuration.",
             "mkey": "name",
-            "category": "table"
+            "category": "table",
         },
         "vrf": {
             "type": "list",
@@ -2576,1241 +2076,708 @@ versioned_schema = {
                     "elements": "dict",
                     "children": {
                         "prefix": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "prefix",
                             "help": "Prefix.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "tag": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "tag",
                             "help": "Tag value.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "id": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "id",
                             "help": "Summary address entry ID.",
-                            "category": "unitary"
-                        }
+                            "category": "unitary",
+                        },
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "summary-address",
                     "help": "Aggregate address for redistributed routes.",
                     "mkey": "id",
-                    "category": "table"
+                    "category": "table",
                 },
                 "area": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "nssa_translator_role": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "options": [
-                                {
-                                    "value": "candidate"
-                                },
-                                {
-                                    "value": "never"
-                                },
-                                {
-                                    "value": "always"
-                                }
+                                {"value": "candidate"},
+                                {"value": "never"},
+                                {"value": "always"},
                             ],
                             "name": "nssa-translator-role",
                             "help": "NSSA translator role type.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "virtual_link": {
                             "type": "list",
                             "elements": "dict",
                             "children": {
                                 "dead_interval": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "integer",
                                     "name": "dead-interval",
                                     "help": "Dead interval.",
-                                    "category": "unitary"
+                                    "category": "unitary",
                                 },
                                 "hello_interval": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "integer",
                                     "name": "hello-interval",
                                     "help": "Hello interval.",
-                                    "category": "unitary"
+                                    "category": "unitary",
                                 },
                                 "name": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "string",
                                     "name": "name",
                                     "help": "Virtual link entry name.",
-                                    "category": "unitary"
+                                    "category": "unitary",
                                 },
                                 "transmit_delay": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "integer",
                                     "name": "transmit-delay",
                                     "help": "Link state transmit delay.",
-                                    "category": "unitary"
+                                    "category": "unitary",
                                 },
                                 "retransmit_interval": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "integer",
                                     "name": "retransmit-interval",
                                     "help": "Time between retransmitting lost link state advertisements.",
-                                    "category": "unitary"
+                                    "category": "unitary",
                                 },
                                 "authentication": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "string",
-                                    "options": [
-                                        {
-                                            "value": "none"
-                                        },
-                                        {
-                                            "value": "text"
-                                        }
-                                    ],
+                                    "options": [{"value": "none"}, {"value": "text"}],
                                     "name": "authentication",
                                     "help": "Authentication type.",
-                                    "category": "unitary"
+                                    "category": "unitary",
                                 },
                                 "peer": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "string",
                                     "name": "peer",
                                     "help": "Peer IP.",
-                                    "category": "unitary"
+                                    "category": "unitary",
                                 },
                                 "authentication_key": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "string",
                                     "name": "authentication-key",
                                     "help": "Authentication key.",
-                                    "category": "unitary"
-                                }
+                                    "category": "unitary",
+                                },
                             },
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "name": "virtual-link",
                             "help": "OSPF virtual link configuration.",
                             "mkey": "name",
-                            "category": "table"
+                            "category": "table",
                         },
                         "shortcut": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "options": [
-                                {
-                                    "value": "disable"
-                                },
-                                {
-                                    "value": "enable"
-                                },
-                                {
-                                    "value": "default"
-                                }
+                                {"value": "disable"},
+                                {"value": "enable"},
+                                {"value": "default"},
                             ],
                             "name": "shortcut",
                             "help": "Enable/disable shortcut option.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "stub_type": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
-                            "options": [
-                                {
-                                    "value": "no-summary"
-                                },
-                                {
-                                    "value": "summary"
-                                }
-                            ],
+                            "options": [{"value": "no-summary"}, {"value": "summary"}],
                             "name": "stub-type",
                             "help": "Stub summary setting.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "range": {
                             "type": "list",
                             "elements": "dict",
                             "children": {
                                 "substitute": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "string",
                                     "name": "substitute",
                                     "help": "Substitute prefix.",
-                                    "category": "unitary"
+                                    "category": "unitary",
                                 },
                                 "prefix": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "string",
                                     "name": "prefix",
                                     "help": "Prefix.",
-                                    "category": "unitary"
+                                    "category": "unitary",
                                 },
                                 "substitute_status": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "string",
                                     "options": [
-                                        {
-                                            "value": "enable"
-                                        },
-                                        {
-                                            "value": "disable"
-                                        }
+                                        {"value": "enable"},
+                                        {"value": "disable"},
                                     ],
                                     "name": "substitute-status",
                                     "help": "Enable/disable substitute status.",
-                                    "category": "unitary"
+                                    "category": "unitary",
                                 },
                                 "id": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "integer",
                                     "name": "id",
                                     "help": "Range entry ID.",
-                                    "category": "unitary"
+                                    "category": "unitary",
                                 },
                                 "advertise": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "string",
                                     "options": [
-                                        {
-                                            "value": "disable"
-                                        },
-                                        {
-                                            "value": "enable"
-                                        }
+                                        {"value": "disable"},
+                                        {"value": "enable"},
                                     ],
                                     "name": "advertise",
                                     "help": "Enable/disable advertise status.",
-                                    "category": "unitary"
-                                }
+                                    "category": "unitary",
+                                },
                             },
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "name": "range",
                             "help": "OSPF area range configuration.",
                             "mkey": "id",
-                            "category": "table"
+                            "category": "table",
                         },
                         "filter_list": {
                             "type": "list",
                             "elements": "dict",
                             "children": {
                                 "direction": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "string",
-                                    "options": [
-                                        {
-                                            "value": "in"
-                                        },
-                                        {
-                                            "value": "out"
-                                        }
-                                    ],
+                                    "options": [{"value": "in"}, {"value": "out"}],
                                     "name": "direction",
                                     "help": "Direction.",
-                                    "category": "unitary"
+                                    "category": "unitary",
                                 },
                                 "list": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "string",
                                     "name": "list",
                                     "help": "Access-list or prefix-list name.",
-                                    "category": "unitary"
+                                    "category": "unitary",
                                 },
                                 "id": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "integer",
                                     "name": "id",
                                     "help": "Filter list entry ID.",
-                                    "category": "unitary"
-                                }
+                                    "category": "unitary",
+                                },
                             },
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "name": "filter-list",
                             "help": "OSPF area filter-list configuration.",
                             "mkey": "id",
-                            "category": "table"
+                            "category": "table",
                         },
                         "default_cost": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "default-cost",
                             "help": "Summary default cost of stub or NSSA area.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "type": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "options": [
-                                {
-                                    "value": "regular"
-                                },
-                                {
-                                    "value": "nssa"
-                                },
-                                {
-                                    "value": "stub"
-                                }
+                                {"value": "regular"},
+                                {"value": "nssa"},
+                                {"value": "stub"},
                             ],
                             "name": "type",
                             "help": "Area type setting.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "id": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "id",
                             "help": "Area entry IP address.",
-                            "category": "unitary"
-                        }
+                            "category": "unitary",
+                        },
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "area",
                     "help": "OSPF area configuration.",
                     "mkey": "id",
-                    "category": "table"
+                    "category": "table",
                 },
                 "distance_intra_area": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "distance-intra-area",
                     "help": "Administrative intra-area route distance.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "distance_external": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "distance-external",
                     "help": "Administrative external route distance.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "network": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "prefix": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "prefix",
                             "help": "Prefix.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "id": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "id",
                             "help": "Network entry ID.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "area": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "area",
                             "help": "Attach the network to area.",
-                            "category": "unitary"
-                        }
+                            "category": "unitary",
+                        },
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "network",
                     "help": "Enable OSPF on an IP network.",
                     "mkey": "id",
-                    "category": "table"
+                    "category": "table",
                 },
                 "router_id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "router-id",
                     "help": "Router ID.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "default_information_metric_type": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "1"
-                        },
-                        {
-                            "value": "2"
-                        }
-                    ],
+                    "options": [{"value": "1"}, {"value": "2"}],
                     "name": "default-information-metric-type",
                     "help": "Default information metric type.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "database_overflow_time_to_recover": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "database-overflow-time-to-recover",
                     "help": "Database overflow time to recover (sec).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "log_neighbour_changes": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "log-neighbour-changes",
                     "help": "Enable logging of OSPF neighbour's changes",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "rfc1583_compatible": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "rfc1583-compatible",
                     "help": "Enable/disable RFC1583 compatibility.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "default_information_metric": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "default-information-metric",
                     "help": "Default information metric.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "default_information_originate": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "always"
-                        },
-                        {
-                            "value": "disable"
-                        }
+                        {"value": "enable"},
+                        {"value": "always"},
+                        {"value": "disable"},
                     ],
                     "name": "default-information-originate",
                     "help": "Enable/disable generation of default route.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "passive_interface": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "name": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "name",
                             "help": "Passive interface name.",
-                            "category": "unitary"
+                            "category": "unitary",
                         }
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "passive-interface",
                     "help": "Passive interface configuration.",
                     "mkey": "name",
-                    "category": "table"
+                    "category": "table",
                 },
                 "distribute_list": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "access_list": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "access-list",
                             "help": "Access list name.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "protocol": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "options": [
-                                {
-                                    "value": "connected"
-                                },
-                                {
-                                    "value": "static"
-                                },
-                                {
-                                    "value": "rip"
-                                },
-                                {
-                                    "value": "bgp"
-                                },
-                                {
-                                    "value": "isis"
-                                }
+                                {"value": "connected"},
+                                {"value": "static"},
+                                {"value": "rip"},
+                                {"value": "bgp"},
+                                {"value": "isis"},
                             ],
                             "name": "protocol",
                             "help": "Protocol type.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "id": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "id",
                             "help": "Distribute list entry ID.",
-                            "category": "unitary"
-                        }
+                            "category": "unitary",
+                        },
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "distribute-list",
                     "help": "Redistribute routes filter.",
                     "mkey": "id",
-                    "category": "table"
+                    "category": "table",
                 },
                 "distance": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "distance",
                     "help": "Administrative distance.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "redistribute": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "status": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
-                            "options": [
-                                {
-                                    "value": "enable"
-                                },
-                                {
-                                    "value": "disable"
-                                }
-                            ],
+                            "options": [{"value": "enable"}, {"value": "disable"}],
                             "name": "status",
                             "help": "status",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "name": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "name",
                             "help": "Redistribute name.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "metric_type": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
-                            "options": [
-                                {
-                                    "value": "1"
-                                },
-                                {
-                                    "value": "2"
-                                }
-                            ],
+                            "options": [{"value": "1"}, {"value": "2"}],
                             "name": "metric-type",
                             "help": "Metric type.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "tag": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "tag",
                             "help": "Tag value.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "routemap": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "routemap",
                             "help": "Route map name.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "metric": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "metric",
                             "help": "Redistribute metric setting.",
-                            "category": "unitary"
-                        }
+                            "category": "unitary",
+                        },
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "redistribute",
                     "help": "Redistribute configuration.",
                     "mkey": "name",
-                    "category": "table"
+                    "category": "table",
                 },
                 "database_overflow": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "database-overflow",
                     "help": "Enable/disable database overflow.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "database_overflow_max_external_lsa": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "database-overflow-max-external-lsa",
                     "help": "Database overflow maximum External LSAs.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "name": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "name",
                     "help": "Vrf name.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "spf_timers": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "spf-timers",
                     "help": "SPF calculation frequency.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "distance_inter_area": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "distance-inter-area",
                     "help": "Administrative inter-area route distance.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "abr_type": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "cisco"
-                        },
-                        {
-                            "value": "ibm"
-                        },
-                        {
-                            "value": "shortcut"
-                        },
-                        {
-                            "value": "standard"
-                        }
+                        {"value": "cisco"},
+                        {"value": "ibm"},
+                        {"value": "shortcut"},
+                        {"value": "standard"},
                     ],
                     "name": "abr-type",
                     "help": "Area border router type.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "interface": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "priority": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "priority",
                             "help": "Router priority.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "authentication_key": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "authentication-key",
                             "help": "Authentication key.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "name": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "name",
                             "help": "Interface entry name.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "dead_interval": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "dead-interval",
                             "help": "Dead interval. For fast-hello assign value 1.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "hello_multiplier": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "hello-multiplier",
                             "help": "Number of hello packets within dead interval.Valid only for fast-hello.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "transmit_delay": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "transmit-delay",
                             "help": "Link state transmit delay.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "mtu": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "mtu",
                             "help": "Interface MTU.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "retransmit_interval": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "retransmit-interval",
                             "help": "Time between retransmitting lost link state advertisements.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "authentication": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "options": [
-                                {
-                                    "value": "none"
-                                },
-                                {
-                                    "value": "text"
-                                },
-                                {
-                                    "value": "md5"
-                                }
+                                {"value": "none"},
+                                {"value": "text"},
+                                {"value": "md5"},
                             ],
                             "name": "authentication",
                             "help": "Authentication type.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "cost": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "cost",
                             "help": "Cost of the interface.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "hello_interval": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "hello-interval",
                             "help": "Hello interval.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "md5_keys": {
                             "type": "list",
                             "elements": "dict",
                             "children": {
                                 "id": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "integer",
                                     "name": "id",
                                     "help": "key-id (1-255).",
-                                    "category": "unitary"
+                                    "category": "unitary",
                                 },
                                 "key": {
-                                    "v_range": [
-                                        [
-                                            "v7.0.0",
-                                            ""
-                                        ]
-                                    ],
+                                    "v_range": [["v7.0.0", ""]],
                                     "type": "string",
                                     "name": "key",
                                     "help": "md5-key.",
-                                    "category": "unitary"
-                                }
+                                    "category": "unitary",
+                                },
                             },
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "name": "md5-keys",
                             "help": "OSPF md5 key configuration. Applicable only when authentication field is set to md5.",
                             "mkey": "id",
-                            "category": "table"
+                            "category": "table",
                         },
                         "mtu_ignore": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
-                            "options": [
-                                {
-                                    "value": "enable"
-                                },
-                                {
-                                    "value": "disable"
-                                }
-                            ],
+                            "options": [{"value": "enable"}, {"value": "disable"}],
                             "name": "mtu-ignore",
                             "help": "Disable MTU mismatch detection on this interface.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "ucast_ttl": {
-                            "v_range": [
-                                [
-                                    "v7.0.1",
-                                    "v7.2.1"
-                                ]
-                            ],
+                            "v_range": [["v7.0.1", "v7.2.1"]],
                             "type": "integer",
                             "name": "ucast-ttl",
                             "help": "Unicast TTL.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "ttl": {
-                            "v_range": [
-                                [
-                                    "v7.2.2",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.2.2", ""]],
                             "type": "integer",
                             "name": "ttl",
                             "help": "TTL.",
-                            "category": "unitary"
-                        }
+                            "category": "unitary",
+                        },
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "interface",
                     "help": "OSPF interface configuration.",
                     "mkey": "name",
-                    "category": "table"
-                }
+                    "category": "table",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "vrf",
             "help": "Enable OSPF on VRF.",
             "mkey": "name",
-            "category": "table"
-        }
+            "category": "table",
+        },
     },
     "name": "ospf",
     "help": "OSPF configuration.",
-    "category": "complex"
+    "category": "complex",
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
+    mkeyname = versioned_schema["mkey"] if "mkey" in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},
         "member_state": {
             "type": "str",
             "required": False,
-            "choices": ["present", "absent"]
+            "choices": ["present", "absent"],
         },
         "router_ospf": {
-            "required": False, "type": "dict", "default": None,
-            "options": {}
-        }
+            "required": False,
+            "type": "dict",
+            "default": None,
+            "options": {},
+        },
     }
-    for attribute_name in module_spec['options']:
-        fields["router_ospf"]['options'][attribute_name] = module_spec['options'][attribute_name]
+    for attribute_name in module_spec["options"]:
+        fields["router_ospf"]["options"][attribute_name] = module_spec["options"][
+            attribute_name
+        ]
         if mkeyname and mkeyname == attribute_name:
-            fields["router_ospf"]['options'][attribute_name]['required'] = True
+            fields["router_ospf"]["options"][attribute_name]["required"] = True
 
-    module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=True)
+    module = AnsibleModule(argument_spec=fields, supports_check_mode=True)
 
     is_error = False
     has_changed = False
@@ -3821,30 +2788,45 @@ def main():
     if module._socket_path:
         connection = Connection(module._socket_path)
 
-        if 'enable_log' in module.params:
-            connection.set_custom_option('enable_log', module.params['enable_log'])
+        if "enable_log" in module.params:
+            connection.set_custom_option("enable_log", module.params["enable_log"])
         else:
-            connection.set_custom_option('enable_log', False)
+            connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module, mkeyname)
-        versions_check_result = check_schema_versioning(fos, versioned_schema, "router_ospf")
-        is_error, has_changed, result, diff = fortiswitch_router(module.params, fos, module.check_mode)
+        versions_check_result = check_schema_versioning(
+            fos, versioned_schema, "router_ospf"
+        )
+        is_error, has_changed, result, diff = fortiswitch_router(
+            module.params, fos, module.check_mode
+        )
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
-    if versions_check_result and versions_check_result['matched'] is False:
-        module.warn("Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv")
+    if versions_check_result and versions_check_result["matched"] is False:
+        module.warn(
+            "Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv"
+        )
 
     if not is_error:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.exit_json(changed=has_changed, version_check_warning=versions_check_result, meta=result, diff=diff)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.exit_json(
+                changed=has_changed,
+                version_check_warning=versions_check_result,
+                meta=result,
+                diff=diff,
+            )
         else:
             module.exit_json(changed=has_changed, meta=result, diff=diff)
     else:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.fail_json(msg="Error in repo", version_check_warning=versions_check_result, meta=result)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.fail_json(
+                msg="Error in repo",
+                version_check_warning=versions_check_result,
+                meta=result,
+            )
         else:
             module.fail_json(msg="Error in repo", meta=result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

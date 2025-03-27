@@ -1,5 +1,6 @@
 #!/usr/bin/python
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 # Copyright (c) 2022 Fortinet
 # GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
 
@@ -10,11 +11,13 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'community',
-                    'metadata_version': '1.1'}
+ANSIBLE_METADATA = {
+    "status": ["preview"],
+    "supported_by": "community",
+    "metadata_version": "1.1",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: fortiswitch_system_dhcp_server
 short_description: Configure DHCP servers in Fortinet's FortiSwitch
@@ -453,15 +456,15 @@ options:
                 description:
                     - WINS server 2.
                 type: str
-'''
+"""
 
-EXAMPLES = '''
+EXAMPLES = """
 - name: Configure DHCP servers.
   fortinet.fortiswitch.fortiswitch_system_dhcp_server:
       state: "present"
       system_dhcp_server:
           auto_configuration: "disable"
-          conflicted_ip_timeout: "4"
+          conflicted_ip_timeout: "4320000"
           default_gateway: "<your_own_value>"
           dns_server1: "<your_own_value>"
           dns_server2: "<your_own_value>"
@@ -491,7 +494,7 @@ EXAMPLES = '''
           ntp_service: "local"
           options:
               -
-                  code: "31"
+                  code: "127"
                   id: "32"
                   ip: "<your_own_value>"
                   type: "hex"
@@ -524,9 +527,9 @@ EXAMPLES = '''
           wifi_ac3: "<your_own_value>"
           wins_server1: "<your_own_value>"
           wins_server2: "<your_own_value>"
-'''
+"""
 
-RETURN = '''
+RETURN = """
 build:
   description: Build number of the fortiSwitch image
   returned: always
@@ -573,32 +576,73 @@ version:
   type: str
   sample: "v7.0.0"
 
-'''
+"""
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import FortiOSHandler
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import schema_to_module_spec
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    FortiOSHandler,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    schema_to_module_spec,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    check_schema_versioning,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import (
+    FAIL_SOCKET_MSG,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import (
+    remove_invalid_fields,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    is_same_comparison,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    serialize,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    find_current_values,
+)
 
 
 def filter_system_dhcp_server_data(json):
-    option_list = ['auto_configuration', 'conflicted_ip_timeout', 'default_gateway',
-                   'dns_server1', 'dns_server2', 'dns_server3',
-                   'dns_service', 'domain', 'exclude_range',
-                   'filename', 'id', 'interface',
-                   'ip_mode', 'ip_range', 'lease_time',
-                   'netmask', 'next_server', 'ntp_server1',
-                   'ntp_server2', 'ntp_server3', 'ntp_service',
-                   'options', 'reserved_address', 'server_type',
-                   'status', 'tftp_server', 'timezone',
-                   'timezone_option', 'vci_match', 'vci_string',
-                   'wifi_ac1', 'wifi_ac2', 'wifi_ac3',
-                   'wins_server1', 'wins_server2']
+    option_list = [
+        "auto_configuration",
+        "conflicted_ip_timeout",
+        "default_gateway",
+        "dns_server1",
+        "dns_server2",
+        "dns_server3",
+        "dns_service",
+        "domain",
+        "exclude_range",
+        "filename",
+        "id",
+        "interface",
+        "ip_mode",
+        "ip_range",
+        "lease_time",
+        "netmask",
+        "next_server",
+        "ntp_server1",
+        "ntp_server2",
+        "ntp_server3",
+        "ntp_service",
+        "options",
+        "reserved_address",
+        "server_type",
+        "status",
+        "tftp_server",
+        "timezone",
+        "timezone_option",
+        "vci_match",
+        "vci_string",
+        "wifi_ac1",
+        "wifi_ac2",
+        "wifi_ac3",
+        "wins_server1",
+        "wins_server2",
+    ]
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -617,16 +661,16 @@ def underscore_to_hyphen(data):
     elif isinstance(data, dict):
         new_data = {}
         for k, v in data.items():
-            new_data[k.replace('_', '-')] = underscore_to_hyphen(v)
+            new_data[k.replace("_", "-")] = underscore_to_hyphen(v)
         data = new_data
 
     return data
 
 
 def system_dhcp_server(data, fos, check_mode=False):
-    state = data.get('state', None)
+    state = data.get("state", None)
 
-    system_dhcp_server_data = data['system_dhcp_server']
+    system_dhcp_server_data = data["system_dhcp_server"]
 
     filtered_data = filter_system_dhcp_server_data(system_dhcp_server_data)
     filtered_data = underscore_to_hyphen(filtered_data)
@@ -634,17 +678,20 @@ def system_dhcp_server(data, fos, check_mode=False):
     # check_mode starts from here
     if check_mode:
         diff = {
-            "before": '',
+            "before": "",
             "after": filtered_data,
         }
-        mkey = fos.get_mkey('system.dhcp', 'server', filtered_data)
-        current_data = fos.get('system.dhcp', 'server', mkey=mkey)
-        is_existed = current_data and current_data.get('http_status') == 200 \
-            and isinstance(current_data.get('results'), list) \
-            and len(current_data['results']) > 0
+        mkey = fos.get_mkey("system.dhcp", "server", filtered_data)
+        current_data = fos.get("system.dhcp", "server", mkey=mkey)
+        is_existed = (
+            current_data
+            and current_data.get("http_status") == 200
+            and isinstance(current_data.get("results"), list)
+            and len(current_data["results"]) > 0
+        )
 
         # 2. if it exists and the state is 'present' then compare current settings with desired
-        if state == 'present' or state is True or state is None:
+        if state == "present" or state is True or state is None:
             mkeyname = fos.get_mkeyname(None, None)
             # for non global modules, mkeyname must exist and it's a new module when mkey is None
             if mkeyname is not None and mkey is None:
@@ -658,66 +705,100 @@ def system_dhcp_server(data, fos, check_mode=False):
             # handle global modules'
             if mkeyname is None and state is None:
                 is_same = is_same_comparison(
-                    serialize(current_data['results']), serialize(copied_filtered_data))
+                    serialize(current_data["results"]), serialize(copied_filtered_data)
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             if is_existed:
                 is_same = is_same_comparison(
-                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+                    serialize(current_data["results"][0]),
+                    serialize(copied_filtered_data),
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"][0]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             # record does not exist
             return False, True, filtered_data, diff
 
-        if state == 'absent':
+        if state == "absent":
             if mkey is None:
-                return False, False, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    False,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
 
             if is_existed:
-                return False, True, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    True,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
             return False, False, filtered_data, {}
 
-        return True, False, {'reason: ': 'Must provide state parameter'}, {}
+        return True, False, {"reason: ": "Must provide state parameter"}, {}
 
     if state == "present" or state is True:
-        return fos.set('system.dhcp',
-                       'server',
-                       data=filtered_data,
-                       )
+        return fos.set(
+            "system.dhcp",
+            "server",
+            data=filtered_data,
+        )
 
     elif state == "absent":
-        return fos.delete('system.dhcp',
-                          'server',
-                          mkey=filtered_data['id'])
+        return fos.delete("system.dhcp", "server", mkey=filtered_data["id"])
     else:
-        fos._module.fail_json(msg='state must be present or absent!')
+        fos._module.fail_json(msg="state must be present or absent!")
 
 
 def is_successful_status(resp):
-    return 'status' in resp and resp['status'] == 'success' or \
-        'http_status' in resp and resp['http_status'] == 200 or \
-        'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
+    return (
+        "status" in resp
+        and resp["status"] == "success"
+        or "http_status" in resp
+        and resp["http_status"] == 200
+        or "http_method" in resp
+        and resp["http_method"] == "DELETE"
+        and resp["http_status"] == 404
+    )
 
 
 def fortiswitch_system_dhcp(data, fos, check_mode):
-    fos.do_member_operation('system.dhcp', 'server')
-    current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
-    if data['system_dhcp_server']:
+    fos.do_member_operation("system.dhcp", "server")
+    current_cmdb_index = fos.monitor_get("/system/status")["cmdb-index"]
+    if data["system_dhcp_server"]:
         resp = system_dhcp_server(data, fos, check_mode)
     else:
-        fos._module.fail_json(msg='missing task body: %s' % ('system_dhcp_server'))
+        fos._module.fail_json(msg="missing task body: %s" % ("system_dhcp_server"))
     if check_mode:
         return resp
-    return not is_successful_status(resp), \
-        is_successful_status(resp) and \
-        current_cmdb_index != resp['cmdb-index'], \
-        resp, {}
+    return (
+        not is_successful_status(resp),
+        is_successful_status(resp) and current_cmdb_index != resp["cmdb-index"],
+        resp,
+        {},
+    )
 
 
 versioned_schema = {
@@ -725,1194 +806,592 @@ versioned_schema = {
     "elements": "dict",
     "children": {
         "domain": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "domain",
             "help": "Domain name suffix for the IP addresses that the DHCP server assigns to clients.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "lease_time": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "lease-time",
             "help": "Lease time in seconds,0 means unlimited.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "exclude_range": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "id",
                     "help": "ID.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "start_ip": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "start-ip",
                     "help": "Start of IP range.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "end_ip": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "end-ip",
                     "help": "End of IP range.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "exclude-range",
             "help": "Exclude one or more ranges of IP addresses from being assigned to clients.",
             "mkey": "id",
-            "category": "table"
+            "category": "table",
         },
         "server_type": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "regular"
-                }
-            ],
+            "options": [{"value": "regular"}],
             "name": "server-type",
             "help": "DHCP server can be a normal DHCP server or an IPsec DHCP server.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "conflicted_ip_timeout": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "conflicted-ip-timeout",
             "help": "Time in seconds to wait after a conflicted IP address is removed from the DHCP range before it can be reused.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "timezone_option": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "default"
-                },
-                {
-                    "value": "specify"
-                }
+                {"value": "disable"},
+                {"value": "default"},
+                {"value": "specify"},
             ],
             "name": "timezone-option",
             "help": "Options for the DHCP server to set the client's time zone.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "timezone": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "01"
-                },
-                {
-                    "value": "02"
-                },
-                {
-                    "value": "03"
-                },
-                {
-                    "value": "04"
-                },
-                {
-                    "value": "05"
-                },
-                {
-                    "value": "81"
-                },
-                {
-                    "value": "06"
-                },
-                {
-                    "value": "07"
-                },
-                {
-                    "value": "08"
-                },
-                {
-                    "value": "09"
-                },
-                {
-                    "value": "10"
-                },
-                {
-                    "value": "11"
-                },
-                {
-                    "value": "12"
-                },
-                {
-                    "value": "13"
-                },
-                {
-                    "value": "74"
-                },
-                {
-                    "value": "14"
-                },
-                {
-                    "value": "77"
-                },
-                {
-                    "value": "15"
-                },
-                {
-                    "value": "87"
-                },
-                {
-                    "value": "16"
-                },
-                {
-                    "value": "17"
-                },
-                {
-                    "value": "18"
-                },
-                {
-                    "value": "19"
-                },
-                {
-                    "value": "20"
-                },
-                {
-                    "value": "75"
-                },
-                {
-                    "value": "21"
-                },
-                {
-                    "value": "22"
-                },
-                {
-                    "value": "23"
-                },
-                {
-                    "value": "24"
-                },
-                {
-                    "value": "80"
-                },
-                {
-                    "value": "79"
-                },
-                {
-                    "value": "25"
-                },
-                {
-                    "value": "26"
-                },
-                {
-                    "value": "27"
-                },
-                {
-                    "value": "28"
-                },
-                {
-                    "value": "78"
-                },
-                {
-                    "value": "29"
-                },
-                {
-                    "value": "30"
-                },
-                {
-                    "value": "31"
-                },
-                {
-                    "value": "32"
-                },
-                {
-                    "value": "33"
-                },
-                {
-                    "value": "34"
-                },
-                {
-                    "value": "35"
-                },
-                {
-                    "value": "36"
-                },
-                {
-                    "value": "37"
-                },
-                {
-                    "value": "38"
-                },
-                {
-                    "value": "83"
-                },
-                {
-                    "value": "84"
-                },
-                {
-                    "value": "40"
-                },
-                {
-                    "value": "85"
-                },
-                {
-                    "value": "41"
-                },
-                {
-                    "value": "42"
-                },
-                {
-                    "value": "43"
-                },
-                {
-                    "value": "39"
-                },
-                {
-                    "value": "44"
-                },
-                {
-                    "value": "46"
-                },
-                {
-                    "value": "47"
-                },
-                {
-                    "value": "51"
-                },
-                {
-                    "value": "48"
-                },
-                {
-                    "value": "45"
-                },
-                {
-                    "value": "49"
-                },
-                {
-                    "value": "50"
-                },
-                {
-                    "value": "52"
-                },
-                {
-                    "value": "53"
-                },
-                {
-                    "value": "54"
-                },
-                {
-                    "value": "55"
-                },
-                {
-                    "value": "56"
-                },
-                {
-                    "value": "57"
-                },
-                {
-                    "value": "58"
-                },
-                {
-                    "value": "59"
-                },
-                {
-                    "value": "60"
-                },
-                {
-                    "value": "62"
-                },
-                {
-                    "value": "63"
-                },
-                {
-                    "value": "61"
-                },
-                {
-                    "value": "64"
-                },
-                {
-                    "value": "65"
-                },
-                {
-                    "value": "66"
-                },
-                {
-                    "value": "67"
-                },
-                {
-                    "value": "68"
-                },
-                {
-                    "value": "69"
-                },
-                {
-                    "value": "70"
-                },
-                {
-                    "value": "71"
-                },
-                {
-                    "value": "72"
-                },
-                {
-                    "value": "00"
-                },
-                {
-                    "value": "82"
-                },
-                {
-                    "value": "73"
-                },
-                {
-                    "value": "86"
-                },
-                {
-                    "value": "76"
-                },
-                {
-                    "value": "88",
-                    "v_range": [
-                        [
-                            "v7.4.2",
-                            ""
-                        ]
-                    ]
-                },
-                {
-                    "value": "89",
-                    "v_range": [
-                        [
-                            "v7.4.2",
-                            ""
-                        ]
-                    ]
-                },
-                {
-                    "value": "90",
-                    "v_range": [
-                        [
-                            "v7.4.2",
-                            ""
-                        ]
-                    ]
-                },
-                {
-                    "value": "91",
-                    "v_range": [
-                        [
-                            "v7.4.2",
-                            ""
-                        ]
-                    ]
-                },
-                {
-                    "value": "92",
-                    "v_range": [
-                        [
-                            "v7.4.2",
-                            ""
-                        ]
-                    ]
-                }
+                {"value": "01"},
+                {"value": "02"},
+                {"value": "03"},
+                {"value": "04"},
+                {"value": "05"},
+                {"value": "81"},
+                {"value": "06"},
+                {"value": "07"},
+                {"value": "08"},
+                {"value": "09"},
+                {"value": "10"},
+                {"value": "11"},
+                {"value": "12"},
+                {"value": "13"},
+                {"value": "74"},
+                {"value": "14"},
+                {"value": "77"},
+                {"value": "15"},
+                {"value": "87"},
+                {"value": "16"},
+                {"value": "17"},
+                {"value": "18"},
+                {"value": "19"},
+                {"value": "20"},
+                {"value": "75"},
+                {"value": "21"},
+                {"value": "22"},
+                {"value": "23"},
+                {"value": "24"},
+                {"value": "80"},
+                {"value": "79"},
+                {"value": "25"},
+                {"value": "26"},
+                {"value": "27"},
+                {"value": "28"},
+                {"value": "78"},
+                {"value": "29"},
+                {"value": "30"},
+                {"value": "31"},
+                {"value": "32"},
+                {"value": "33"},
+                {"value": "34"},
+                {"value": "35"},
+                {"value": "36"},
+                {"value": "37"},
+                {"value": "38"},
+                {"value": "83"},
+                {"value": "84"},
+                {"value": "40"},
+                {"value": "85"},
+                {"value": "41"},
+                {"value": "42"},
+                {"value": "43"},
+                {"value": "39"},
+                {"value": "44"},
+                {"value": "46"},
+                {"value": "47"},
+                {"value": "51"},
+                {"value": "48"},
+                {"value": "45"},
+                {"value": "49"},
+                {"value": "50"},
+                {"value": "52"},
+                {"value": "53"},
+                {"value": "54"},
+                {"value": "55"},
+                {"value": "56"},
+                {"value": "57"},
+                {"value": "58"},
+                {"value": "59"},
+                {"value": "60"},
+                {"value": "62"},
+                {"value": "63"},
+                {"value": "61"},
+                {"value": "64"},
+                {"value": "65"},
+                {"value": "66"},
+                {"value": "67"},
+                {"value": "68"},
+                {"value": "69"},
+                {"value": "70"},
+                {"value": "71"},
+                {"value": "72"},
+                {"value": "00"},
+                {"value": "82"},
+                {"value": "73"},
+                {"value": "86"},
+                {"value": "76"},
+                {"value": "88", "v_range": [["v7.4.2", ""]]},
+                {"value": "89", "v_range": [["v7.4.2", ""]]},
+                {"value": "90", "v_range": [["v7.4.2", ""]]},
+                {"value": "91", "v_range": [["v7.4.2", ""]]},
+                {"value": "92", "v_range": [["v7.4.2", ""]]},
             ],
             "name": "timezone",
             "help": "Select the time zone to be assigned to DHCP clients.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "id": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "id",
             "help": "ID.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "filename": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "filename",
             "help": "Name of the boot file on the TFTP server.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ntp_server1": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "ntp-server1",
             "help": "NTP server 1.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "default_gateway": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "default-gateway",
             "help": "Default gateway IP address assigned by the DHCP server.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "next_server": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "next-server",
             "help": "IP address of a server (for example,a TFTP sever) that DHCP clients can download a boot file from.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ntp_server2": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "ntp-server2",
             "help": "NTP server 2.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dns_service": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "local"
-                },
-                {
-                    "value": "default"
-                },
-                {
-                    "value": "specify"
-                }
-            ],
+            "options": [{"value": "local"}, {"value": "default"}, {"value": "specify"}],
             "name": "dns-service",
             "help": "Options for assigning DNS servers to DHCP clients.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ip_range": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "id",
                     "help": "ID.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "start_ip": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "start-ip",
                     "help": "Start of IP range.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "end_ip": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "end-ip",
                     "help": "End of IP range.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "ip-range",
             "help": "DHCP IP range configuration.",
             "mkey": "id",
-            "category": "table"
+            "category": "table",
         },
         "ip_mode": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "range"
-                },
-                {
-                    "value": "usrgrp"
-                }
-            ],
+            "options": [{"value": "range"}, {"value": "usrgrp"}],
             "name": "ip-mode",
             "help": "Method used to assign client IP.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "auto_configuration": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "enable"
-                }
-            ],
+            "options": [{"value": "disable"}, {"value": "enable"}],
             "name": "auto-configuration",
             "help": "Enable/disable auto configuration.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "status": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "enable"
-                }
-            ],
+            "options": [{"value": "disable"}, {"value": "enable"}],
             "name": "status",
             "help": "Enable/disable this DHCP configuration.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "reserved_address": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "description": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "description",
                     "help": "Description.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "ip": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "ip",
                     "help": "IP address to be reserved for the MAC address.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "mac": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "mac",
                     "help": "MAC address of the client that will get the reserved IP address.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "circuit_id_type": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "hex"
-                        },
-                        {
-                            "value": "string"
-                        }
-                    ],
+                    "options": [{"value": "hex"}, {"value": "string"}],
                     "name": "circuit-id-type",
                     "help": "DHCP option type.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "circuit_id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "circuit-id",
                     "help": "Option 82 circuit-ID of the client that will get the reserved IP address.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "action": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "assign"
-                        },
-                        {
-                            "value": "block"
-                        },
-                        {
-                            "value": "reserved"
-                        }
+                        {"value": "assign"},
+                        {"value": "block"},
+                        {"value": "reserved"},
                     ],
                     "name": "action",
                     "help": "Options for the DHCP server to configure the client with the reserved MAC address.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "remote_id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "remote-id",
                     "help": "Option 82 remote-ID of the client that will get the reserved IP address.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "type": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "mac"
-                        },
-                        {
-                            "value": "option82"
-                        }
-                    ],
+                    "options": [{"value": "mac"}, {"value": "option82"}],
                     "name": "type",
                     "help": "DHCP reserved-address type.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "id",
                     "help": "ID.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "remote_id_type": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "hex"
-                        },
-                        {
-                            "value": "string"
-                        }
-                    ],
+                    "options": [{"value": "hex"}, {"value": "string"}],
                     "name": "remote-id-type",
                     "help": "DHCP option type.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "reserved-address",
             "help": "Options for the DHCP server to assign IP settings to specific MAC addresses.",
             "mkey": "id",
-            "category": "table"
+            "category": "table",
         },
         "ntp_server3": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "ntp-server3",
             "help": "NTP server 3.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "netmask": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "netmask",
             "help": "Netmask assigned by the DHCP server.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ntp_service": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "local"
-                },
-                {
-                    "value": "default"
-                },
-                {
-                    "value": "specify"
-                }
-            ],
+            "options": [{"value": "local"}, {"value": "default"}, {"value": "specify"}],
             "name": "ntp-service",
             "help": "Options for assigning Network Time Protocol (NTP) servers to DHCP clients.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "wins_server1": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "wins-server1",
             "help": "WINS server 1.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "wins_server2": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "wins-server2",
             "help": "WINS server 2.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "interface": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "interface",
             "help": "DHCP server can assign IP configurations to clients connected to this interface.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "wifi_ac1": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "wifi-ac1",
             "help": "WiFi Access Controller 1 IP address (DHCP option 138,RFC 5417).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "wifi_ac2": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "wifi-ac2",
             "help": "WiFi Access Controller 2 IP address (DHCP option 138,RFC 5417).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "wifi_ac3": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "wifi-ac3",
             "help": "WiFi Access Controller 3 IP address (DHCP option 138,RFC 5417).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "options": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "ip": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "ip",
                     "help": "DHCP option IPs.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "code": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "code",
                     "help": "DHCP option code.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "type": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "hex"
-                        },
-                        {
-                            "value": "string"
-                        },
-                        {
-                            "value": "ip"
-                        },
-                        {
-                            "value": "fqdn"
-                        }
+                        {"value": "hex"},
+                        {"value": "string"},
+                        {"value": "ip"},
+                        {"value": "fqdn"},
                     ],
                     "name": "type",
                     "help": "DHCP option type.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "id",
                     "help": "ID.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "value": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "value",
                     "help": "DHCP option value.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "options",
             "help": "DHCP options.",
             "mkey": "id",
-            "category": "table"
+            "category": "table",
         },
         "vci_string": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "vci_string": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "vci-string",
                     "help": "VCI strings.",
-                    "category": "unitary"
+                    "category": "unitary",
                 }
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "vci-string",
             "help": "One or more VCI strings in quotes separated by spaces.",
             "mkey": "vci-string",
-            "category": "table"
+            "category": "table",
         },
         "dns_server2": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "dns-server2",
             "help": "DNS server 2.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dns_server3": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "dns-server3",
             "help": "DNS server 3.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dns_server1": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "dns-server1",
             "help": "DNS server 1.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "tftp_server": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "tftp_server": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "tftp-server",
                     "help": "TFTP server.",
-                    "category": "unitary"
+                    "category": "unitary",
                 }
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "tftp-server",
             "help": "One or more hostnames or IP addresses of the TFTP servers in quotes separated by spaces.",
             "mkey": "tftp-server",
-            "category": "table"
+            "category": "table",
         },
         "vci_match": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "enable"
-                }
-            ],
+            "options": [{"value": "disable"}, {"value": "enable"}],
             "name": "vci-match",
             "help": "Enable/disable vendor class identifier (VCI) matching. When enabled only DHCP requests with a matching VCI are served.",
-            "category": "unitary"
-        }
+            "category": "unitary",
+        },
     },
-    "v_range": [
-        [
-            "v7.0.0",
-            ""
-        ]
-    ],
+    "v_range": [["v7.0.0", ""]],
     "name": "server",
     "help": "Configure DHCP servers.",
     "mkey": "id",
-    "category": "table"
+    "category": "table",
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
+    mkeyname = versioned_schema["mkey"] if "mkey" in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},
         "member_state": {
             "type": "str",
             "required": False,
-            "choices": ["present", "absent"]
+            "choices": ["present", "absent"],
         },
-        "state": {"required": True, "type": "str",
-                  "choices": ["present", "absent"]},
+        "state": {"required": True, "type": "str", "choices": ["present", "absent"]},
         "system_dhcp_server": {
-            "required": False, "type": "dict", "default": None,
-            "options": {}
-        }
+            "required": False,
+            "type": "dict",
+            "default": None,
+            "options": {},
+        },
     }
-    for attribute_name in module_spec['options']:
-        fields["system_dhcp_server"]['options'][attribute_name] = module_spec['options'][attribute_name]
+    for attribute_name in module_spec["options"]:
+        fields["system_dhcp_server"]["options"][attribute_name] = module_spec[
+            "options"
+        ][attribute_name]
         if mkeyname and mkeyname == attribute_name:
-            fields["system_dhcp_server"]['options'][attribute_name]['required'] = True
+            fields["system_dhcp_server"]["options"][attribute_name]["required"] = True
 
-    module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=True)
+    module = AnsibleModule(argument_spec=fields, supports_check_mode=True)
 
     is_error = False
     has_changed = False
@@ -1923,30 +1402,45 @@ def main():
     if module._socket_path:
         connection = Connection(module._socket_path)
 
-        if 'enable_log' in module.params:
-            connection.set_custom_option('enable_log', module.params['enable_log'])
+        if "enable_log" in module.params:
+            connection.set_custom_option("enable_log", module.params["enable_log"])
         else:
-            connection.set_custom_option('enable_log', False)
+            connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module, mkeyname)
-        versions_check_result = check_schema_versioning(fos, versioned_schema, "system_dhcp_server")
-        is_error, has_changed, result, diff = fortiswitch_system_dhcp(module.params, fos, module.check_mode)
+        versions_check_result = check_schema_versioning(
+            fos, versioned_schema, "system_dhcp_server"
+        )
+        is_error, has_changed, result, diff = fortiswitch_system_dhcp(
+            module.params, fos, module.check_mode
+        )
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
-    if versions_check_result and versions_check_result['matched'] is False:
-        module.warn("Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv")
+    if versions_check_result and versions_check_result["matched"] is False:
+        module.warn(
+            "Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv"
+        )
 
     if not is_error:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.exit_json(changed=has_changed, version_check_warning=versions_check_result, meta=result, diff=diff)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.exit_json(
+                changed=has_changed,
+                version_check_warning=versions_check_result,
+                meta=result,
+                diff=diff,
+            )
         else:
             module.exit_json(changed=has_changed, meta=result, diff=diff)
     else:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.fail_json(msg="Error in repo", version_check_warning=versions_check_result, meta=result)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.fail_json(
+                msg="Error in repo",
+                version_check_warning=versions_check_result,
+                meta=result,
+            )
         else:
             module.fail_json(msg="Error in repo", meta=result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

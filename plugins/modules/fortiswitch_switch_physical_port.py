@@ -1,5 +1,6 @@
 #!/usr/bin/python
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 # Copyright (c) 2022 Fortinet
 # GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
 
@@ -10,11 +11,13 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'community',
-                    'metadata_version': '1.1'}
+ANSIBLE_METADATA = {
+    "status": ["preview"],
+    "supported_by": "community",
+    "metadata_version": "1.1",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: fortiswitch_switch_physical_port
 short_description: Physical port specific configuration in Fortinet's FortiSwitch
@@ -372,9 +375,9 @@ options:
                     - 'global'
                     - 'override'
                     - 'disabled'
-'''
+"""
 
-EXAMPLES = '''
+EXAMPLES = """
 - name: Physical port specific configuration.
   fortinet.fortiswitch.fortiswitch_switch_physical_port:
       state: "present"
@@ -424,9 +427,9 @@ EXAMPLES = '''
               unknown_multicast: "enable"
               unknown_unicast: "enable"
           storm_control_mode: "global"
-'''
+"""
 
-RETURN = '''
+RETURN = """
 build:
   description: Build number of the fortiSwitch image
   returned: always
@@ -473,34 +476,78 @@ version:
   type: str
   sample: "v7.0.0"
 
-'''
+"""
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import FortiOSHandler
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import schema_to_module_spec
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    FortiOSHandler,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    schema_to_module_spec,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    check_schema_versioning,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import (
+    FAIL_SOCKET_MSG,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import (
+    remove_invalid_fields,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    is_same_comparison,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    serialize,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    find_current_values,
+)
 
 
 def filter_switch_physical_port_data(json):
-    option_list = ['cdp_status', 'description', 'dmi_status',
-                   'eee_tx_idle_time', 'eee_tx_wake_time', 'egress_drop_mode',
-                   'energy_efficient_ethernet', 'flap_duration', 'flap_rate',
-                   'flap_timeout', 'flap_trig', 'flapguard',
-                   'flapguard_state', 'flow_control', 'fortilink_p2p',
-                   'l2_learning', 'l2_sa_unknown', 'link_status',
-                   'lldp_profile', 'lldp_status', 'loopback',
-                   'macsec_pae_mode', 'macsec_profile', 'max_frame_size',
-                   'medium', 'name', 'owning_interface',
-                   'pause_meter_rate', 'pause_resume', 'poe_port_mode',
-                   'poe_port_priority', 'poe_status', 'port_index',
-                   'priority_based_flow_control', 'qsfp_low_power_mode', 'security_mode',
-                   'speed', 'status', 'storm_control',
-                   'storm_control_mode']
+    option_list = [
+        "cdp_status",
+        "description",
+        "dmi_status",
+        "eee_tx_idle_time",
+        "eee_tx_wake_time",
+        "egress_drop_mode",
+        "energy_efficient_ethernet",
+        "flap_duration",
+        "flap_rate",
+        "flap_timeout",
+        "flap_trig",
+        "flapguard",
+        "flapguard_state",
+        "flow_control",
+        "fortilink_p2p",
+        "l2_learning",
+        "l2_sa_unknown",
+        "link_status",
+        "lldp_profile",
+        "lldp_status",
+        "loopback",
+        "macsec_pae_mode",
+        "macsec_profile",
+        "max_frame_size",
+        "medium",
+        "name",
+        "owning_interface",
+        "pause_meter_rate",
+        "pause_resume",
+        "poe_port_mode",
+        "poe_port_priority",
+        "poe_status",
+        "port_index",
+        "priority_based_flow_control",
+        "qsfp_low_power_mode",
+        "security_mode",
+        "speed",
+        "status",
+        "storm_control",
+        "storm_control_mode",
+    ]
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -519,16 +566,16 @@ def underscore_to_hyphen(data):
     elif isinstance(data, dict):
         new_data = {}
         for k, v in data.items():
-            new_data[k.replace('_', '-')] = underscore_to_hyphen(v)
+            new_data[k.replace("_", "-")] = underscore_to_hyphen(v)
         data = new_data
 
     return data
 
 
 def switch_physical_port(data, fos, check_mode=False):
-    state = data.get('state', None)
+    state = data.get("state", None)
 
-    switch_physical_port_data = data['switch_physical_port']
+    switch_physical_port_data = data["switch_physical_port"]
 
     filtered_data = filter_switch_physical_port_data(switch_physical_port_data)
     filtered_data = underscore_to_hyphen(filtered_data)
@@ -536,17 +583,20 @@ def switch_physical_port(data, fos, check_mode=False):
     # check_mode starts from here
     if check_mode:
         diff = {
-            "before": '',
+            "before": "",
             "after": filtered_data,
         }
-        mkey = fos.get_mkey('switch', 'physical-port', filtered_data)
-        current_data = fos.get('switch', 'physical-port', mkey=mkey)
-        is_existed = current_data and current_data.get('http_status') == 200 \
-            and isinstance(current_data.get('results'), list) \
-            and len(current_data['results']) > 0
+        mkey = fos.get_mkey("switch", "physical-port", filtered_data)
+        current_data = fos.get("switch", "physical-port", mkey=mkey)
+        is_existed = (
+            current_data
+            and current_data.get("http_status") == 200
+            and isinstance(current_data.get("results"), list)
+            and len(current_data["results"]) > 0
+        )
 
         # 2. if it exists and the state is 'present' then compare current settings with desired
-        if state == 'present' or state is True or state is None:
+        if state == "present" or state is True or state is None:
             mkeyname = fos.get_mkeyname(None, None)
             # for non global modules, mkeyname must exist and it's a new module when mkey is None
             if mkeyname is not None and mkey is None:
@@ -560,66 +610,100 @@ def switch_physical_port(data, fos, check_mode=False):
             # handle global modules'
             if mkeyname is None and state is None:
                 is_same = is_same_comparison(
-                    serialize(current_data['results']), serialize(copied_filtered_data))
+                    serialize(current_data["results"]), serialize(copied_filtered_data)
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             if is_existed:
                 is_same = is_same_comparison(
-                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+                    serialize(current_data["results"][0]),
+                    serialize(copied_filtered_data),
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"][0]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             # record does not exist
             return False, True, filtered_data, diff
 
-        if state == 'absent':
+        if state == "absent":
             if mkey is None:
-                return False, False, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    False,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
 
             if is_existed:
-                return False, True, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    True,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
             return False, False, filtered_data, {}
 
-        return True, False, {'reason: ': 'Must provide state parameter'}, {}
+        return True, False, {"reason: ": "Must provide state parameter"}, {}
 
     if state == "present" or state is True:
-        return fos.set('switch',
-                       'physical-port',
-                       data=filtered_data,
-                       )
+        return fos.set(
+            "switch",
+            "physical-port",
+            data=filtered_data,
+        )
 
     elif state == "absent":
-        return fos.delete('switch',
-                          'physical-port',
-                          mkey=filtered_data['name'])
+        return fos.delete("switch", "physical-port", mkey=filtered_data["name"])
     else:
-        fos._module.fail_json(msg='state must be present or absent!')
+        fos._module.fail_json(msg="state must be present or absent!")
 
 
 def is_successful_status(resp):
-    return 'status' in resp and resp['status'] == 'success' or \
-        'http_status' in resp and resp['http_status'] == 200 or \
-        'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
+    return (
+        "status" in resp
+        and resp["status"] == "success"
+        or "http_status" in resp
+        and resp["http_status"] == 200
+        or "http_method" in resp
+        and resp["http_method"] == "DELETE"
+        and resp["http_status"] == 404
+    )
 
 
 def fortiswitch_switch(data, fos, check_mode):
-    fos.do_member_operation('switch', 'physical-port')
-    current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
-    if data['switch_physical_port']:
+    fos.do_member_operation("switch", "physical-port")
+    current_cmdb_index = fos.monitor_get("/system/status")["cmdb-index"]
+    if data["switch_physical_port"]:
         resp = switch_physical_port(data, fos, check_mode)
     else:
-        fos._module.fail_json(msg='missing task body: %s' % ('switch_physical_port'))
+        fos._module.fail_json(msg="missing task body: %s" % ("switch_physical_port"))
     if check_mode:
         return resp
-    return not is_successful_status(resp), \
-        is_successful_status(resp) and \
-        current_cmdb_index != resp['cmdb-index'], \
-        resp, {}
+    return (
+        not is_successful_status(resp),
+        is_successful_status(resp) and current_cmdb_index != resp["cmdb-index"],
+        resp,
+        {},
+    )
 
 
 versioned_schema = {
@@ -627,932 +711,443 @@ versioned_schema = {
     "elements": "dict",
     "children": {
         "l2_learning": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enabled"
-                },
-                {
-                    "value": "disabled"
-                }
-            ],
+            "options": [{"value": "enabled"}, {"value": "disabled"}],
             "name": "l2-learning",
             "help": "Enable / disable dynamic MAC address learning.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dmi_status": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "global"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}, {"value": "global"}],
             "name": "dmi-status",
             "help": "DMI status.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "storm_control_mode": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "global"
-                },
-                {
-                    "value": "override"
-                },
-                {
-                    "value": "disabled"
-                }
+                {"value": "global"},
+                {"value": "override"},
+                {"value": "disabled"},
             ],
             "name": "storm-control-mode",
             "help": "Storm control mode.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "speed": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "auto"
-                },
-                {
-                    "value": "10half"
-                },
-                {
-                    "value": "10full"
-                },
-                {
-                    "value": "100half"
-                },
-                {
-                    "value": "100full"
-                },
-                {
-                    "value": "100FX-half"
-                },
-                {
-                    "value": "100FX-full"
-                },
-                {
-                    "value": "1000full"
-                },
-                {
-                    "value": "2500auto"
-                },
-                {
-                    "value": "5000auto"
-                },
-                {
-                    "value": "10000full"
-                },
-                {
-                    "value": "10000cr"
-                },
-                {
-                    "value": "10000sr"
-                },
-                {
-                    "value": "40000full"
-                },
-                {
-                    "value": "40000sr4"
-                },
-                {
-                    "value": "40000cr4"
-                },
-                {
-                    "value": "100000full"
-                },
-                {
-                    "value": "100000cr4"
-                },
-                {
-                    "value": "100000sr4"
-                },
-                {
-                    "value": "auto-module"
-                },
-                {
-                    "value": "1000full-fiber"
-                },
-                {
-                    "value": "1000auto"
-                },
-                {
-                    "value": "25000full"
-                },
-                {
-                    "value": "25000cr"
-                },
-                {
-                    "value": "25000sr"
-                },
-                {
-                    "value": "50000full"
-                },
-                {
-                    "value": "50000cr"
-                },
-                {
-                    "value": "50000sr"
-                },
-                {
-                    "value": "2500full",
-                    "v_range": [
-                        [
-                            "v7.4.0",
-                            ""
-                        ]
-                    ]
-                },
-                {
-                    "value": "40000auto",
-                    "v_range": [
-                        [
-                            "v7.4.1",
-                            ""
-                        ]
-                    ]
-                }
+                {"value": "auto"},
+                {"value": "10half"},
+                {"value": "10full"},
+                {"value": "100half"},
+                {"value": "100full"},
+                {"value": "100FX-half"},
+                {"value": "100FX-full"},
+                {"value": "1000full"},
+                {"value": "2500auto"},
+                {"value": "5000auto"},
+                {"value": "10000full"},
+                {"value": "10000cr"},
+                {"value": "10000sr"},
+                {"value": "40000full"},
+                {"value": "40000sr4"},
+                {"value": "40000cr4"},
+                {"value": "100000full"},
+                {"value": "100000cr4"},
+                {"value": "100000sr4"},
+                {"value": "auto-module"},
+                {"value": "1000full-fiber"},
+                {"value": "1000auto"},
+                {"value": "25000full"},
+                {"value": "25000cr"},
+                {"value": "25000sr"},
+                {"value": "50000full"},
+                {"value": "50000cr"},
+                {"value": "50000sr"},
+                {"value": "2500full", "v_range": [["v7.4.0", ""]]},
+                {"value": "40000auto", "v_range": [["v7.4.1", ""]]},
             ],
             "name": "speed",
             "help": "Configure interface speed and duplex.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "fortilink_p2p": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "fortilink-p2p",
             "help": "FortiLink point-to-point.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "flap_rate": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "flap-rate",
             "help": "Number of stage change events needed within flap-duration.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "egress_drop_mode": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enabled"
-                },
-                {
-                    "value": "disabled"
-                }
-            ],
+            "options": [{"value": "enabled"}, {"value": "disabled"}],
             "name": "egress-drop-mode",
             "help": "Enable/Disable egress drop.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "loopback": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "local"
-                },
-                {
-                    "value": "remote"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "local"}, {"value": "remote"}, {"value": "disable"}],
             "name": "loopback",
             "help": "Phy Port Loopback.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "priority_based_flow_control": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "enable"
-                }
-            ],
+            "options": [{"value": "disable"}, {"value": "enable"}],
             "name": "priority-based-flow-control",
             "help": "Enable / disable priority-based flow control. 802.3 flow control will be applied when disabled",
-            "category": "unitary"
+            "category": "unitary",
         },
         "owning_interface": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "owning-interface",
             "help": "Trunk interface.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "energy_efficient_ethernet": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "energy-efficient-ethernet",
             "help": "Enable / disable energy efficient ethernet.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "qsfp_low_power_mode": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enabled"
-                },
-                {
-                    "value": "disabled"
-                }
-            ],
+            "options": [{"value": "enabled"}, {"value": "disabled"}],
             "name": "qsfp-low-power-mode",
             "help": "Enable/Disable QSFP low power mode.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "poe_status": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "poe-status",
             "help": "Enable/disable PSE.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "status": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "up"
-                },
-                {
-                    "value": "down"
-                }
-            ],
+            "options": [{"value": "up"}, {"value": "down"}],
             "name": "status",
             "help": "Administrative status.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "medium": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "fiber-preferred"
-                },
-                {
-                    "value": "copper-preferred"
-                },
-                {
-                    "value": "fiber-forced"
-                },
-                {
-                    "value": "copper-forced"
-                }
+                {"value": "fiber-preferred"},
+                {"value": "copper-preferred"},
+                {"value": "fiber-forced"},
+                {"value": "copper-forced"},
             ],
             "name": "medium",
             "help": "Configure port preference for shared ports.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "cdp_status": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "rx-only"
-                },
-                {
-                    "value": "tx-only"
-                },
-                {
-                    "value": "tx-rx"
-                }
+                {"value": "disable"},
+                {"value": "rx-only"},
+                {"value": "tx-only"},
+                {"value": "tx-rx"},
             ],
             "name": "cdp-status",
             "help": "CDP transmit and receive status (LLDP must be enabled in LLDP settings).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "description": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "description",
             "help": "Description.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "flapguard": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enabled"
-                },
-                {
-                    "value": "disabled"
-                }
-            ],
+            "options": [{"value": "enabled"}, {"value": "disabled"}],
             "name": "flapguard",
             "help": "Enable / disable FlapGuard.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "flap_duration": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "flap-duration",
             "help": "Period over which flap events are calculated (seconds).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "eee_tx_wake_time": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "eee-tx-wake-time",
             "help": "EEE Transmit wake time (microseconds)(0-2560).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "storm_control": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "dict",
             "children": {
                 "broadcast": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "broadcast",
                     "help": "Enable/disable broadcast storm control.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "unknown_unicast": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "unknown-unicast",
                     "help": "Enable/disable unknown unicast storm control.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "unknown_multicast": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "unknown-multicast",
                     "help": "Enable/disable unknown multicast storm control.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "rate": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "rate",
                     "help": "Storm control traffic rate.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "burst_size_level": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "burst-size-level",
                     "help": "Storm control burst size level 0-4.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
             "name": "storm-control",
             "help": "Storm control.",
-            "category": "complex"
+            "category": "complex",
         },
         "flapguard_state": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "flapguard-state",
             "help": "Timestamp of last triggered event (or 0 if none).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "pause_resume": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "75%"
-                },
-                {
-                    "value": "50%"
-                },
-                {
-                    "value": "25%"
-                }
-            ],
+            "options": [{"value": "75%"}, {"value": "50%"}, {"value": "25%"}],
             "name": "pause-resume",
             "help": "Resume threshold for resuming reception on pause metering of an ingress port.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "l2_sa_unknown": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "forward"
-                },
-                {
-                    "value": "drop"
-                }
-            ],
+            "options": [{"value": "forward"}, {"value": "drop"}],
             "name": "l2-sa-unknown",
             "help": "Forward / drop unknown(SMAC) packets when dynamic MAC address learning is disabled.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "lldp_status": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "rx-only"
-                },
-                {
-                    "value": "tx-only"
-                },
-                {
-                    "value": "tx-rx"
-                }
+                {"value": "disable"},
+                {"value": "rx-only"},
+                {"value": "tx-only"},
+                {"value": "tx-rx"},
             ],
             "name": "lldp-status",
             "help": "LLDP transmit and receive status.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "eee_tx_idle_time": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "eee-tx-idle-time",
             "help": "EEE Transmit idle time (microseconds)(0-2560).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "name": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "name",
             "help": "Port name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "lldp_profile": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "lldp-profile",
             "help": "LLDP port TLV profile.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "flap_trig": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.4.1"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.4.1"]],
             "type": "integer",
             "name": "flap-trig",
             "help": "Flag is set if triggered on this port.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "link_status": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "link-status",
             "help": "Physical link status.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "flap_timeout": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "flap-timeout",
             "help": "Flap guard disabling protection (min).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "poe_port_mode": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "IEEE802_3AF"
-                },
-                {
-                    "value": "IEEE802_3AT"
-                }
-            ],
+            "options": [{"value": "IEEE802_3AF"}, {"value": "IEEE802_3AT"}],
             "name": "poe-port-mode",
             "help": "IEEE802.3AF/IEEE802.3AT",
-            "category": "unitary"
+            "category": "unitary",
         },
         "port_index": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "port-index",
             "help": "Port index.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "max_frame_size": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "max-frame-size",
             "help": "Maximum frame size.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "flow_control": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "tx"
-                },
-                {
-                    "value": "rx"
-                },
-                {
-                    "value": "both"
-                }
+                {"value": "disable"},
+                {"value": "tx"},
+                {"value": "rx"},
+                {"value": "both"},
             ],
             "name": "flow-control",
             "help": "Configure flow control pause frames.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "pause_meter_rate": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "pause-meter-rate",
             "help": "Configure ingress metering rate. In kbits. 0 = disabled.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "poe_port_priority": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "low-priority"
-                },
-                {
-                    "value": "high-priority"
-                },
-                {
-                    "value": "critical-priority"
-                }
+                {"value": "low-priority"},
+                {"value": "high-priority"},
+                {"value": "critical-priority"},
             ],
             "name": "poe-port-priority",
             "help": "Configure port priority",
-            "category": "unitary"
+            "category": "unitary",
         },
         "macsec_pae_mode": {
-            "v_range": [
-                [
-                    "v7.4.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.4.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "none"
-                },
-                {
-                    "value": "supp"
-                },
-                {
-                    "value": "auth"
-                }
-            ],
+            "options": [{"value": "none"}, {"value": "supp"}, {"value": "auth"}],
             "name": "macsec-pae-mode",
             "help": "Assign PAE mode to a MACSEC interface.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "macsec_profile": {
-            "v_range": [
-                [
-                    "v7.4.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.4.0", ""]],
             "type": "string",
             "name": "macsec-profile",
             "help": "macsec port profile.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "security_mode": {
-            "v_range": [
-                [
-                    "v7.4.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.4.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "none"
-                },
-                {
-                    "value": "macsec"
-                }
-            ],
+            "options": [{"value": "none"}, {"value": "macsec"}],
             "name": "security-mode",
             "help": "Security mode.",
-            "category": "unitary"
-        }
+            "category": "unitary",
+        },
     },
-    "v_range": [
-        [
-            "v7.0.0",
-            ""
-        ]
-    ],
+    "v_range": [["v7.0.0", ""]],
     "name": "physical-port",
     "help": "Physical port specific configuration.",
     "mkey": "name",
-    "category": "table"
+    "category": "table",
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
+    mkeyname = versioned_schema["mkey"] if "mkey" in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},
         "member_state": {
             "type": "str",
             "required": False,
-            "choices": ["present", "absent"]
+            "choices": ["present", "absent"],
         },
-        "state": {"required": True, "type": "str",
-                  "choices": ["present", "absent"]},
+        "state": {"required": True, "type": "str", "choices": ["present", "absent"]},
         "switch_physical_port": {
-            "required": False, "type": "dict", "default": None,
-            "options": {}
-        }
+            "required": False,
+            "type": "dict",
+            "default": None,
+            "options": {},
+        },
     }
-    for attribute_name in module_spec['options']:
-        fields["switch_physical_port"]['options'][attribute_name] = module_spec['options'][attribute_name]
+    for attribute_name in module_spec["options"]:
+        fields["switch_physical_port"]["options"][attribute_name] = module_spec[
+            "options"
+        ][attribute_name]
         if mkeyname and mkeyname == attribute_name:
-            fields["switch_physical_port"]['options'][attribute_name]['required'] = True
+            fields["switch_physical_port"]["options"][attribute_name]["required"] = True
 
-    module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=True)
+    module = AnsibleModule(argument_spec=fields, supports_check_mode=True)
 
     is_error = False
     has_changed = False
@@ -1563,30 +1158,45 @@ def main():
     if module._socket_path:
         connection = Connection(module._socket_path)
 
-        if 'enable_log' in module.params:
-            connection.set_custom_option('enable_log', module.params['enable_log'])
+        if "enable_log" in module.params:
+            connection.set_custom_option("enable_log", module.params["enable_log"])
         else:
-            connection.set_custom_option('enable_log', False)
+            connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module, mkeyname)
-        versions_check_result = check_schema_versioning(fos, versioned_schema, "switch_physical_port")
-        is_error, has_changed, result, diff = fortiswitch_switch(module.params, fos, module.check_mode)
+        versions_check_result = check_schema_versioning(
+            fos, versioned_schema, "switch_physical_port"
+        )
+        is_error, has_changed, result, diff = fortiswitch_switch(
+            module.params, fos, module.check_mode
+        )
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
-    if versions_check_result and versions_check_result['matched'] is False:
-        module.warn("Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv")
+    if versions_check_result and versions_check_result["matched"] is False:
+        module.warn(
+            "Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv"
+        )
 
     if not is_error:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.exit_json(changed=has_changed, version_check_warning=versions_check_result, meta=result, diff=diff)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.exit_json(
+                changed=has_changed,
+                version_check_warning=versions_check_result,
+                meta=result,
+                diff=diff,
+            )
         else:
             module.exit_json(changed=has_changed, meta=result, diff=diff)
     else:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.fail_json(msg="Error in repo", version_check_warning=versions_check_result, meta=result)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.fail_json(
+                msg="Error in repo",
+                version_check_warning=versions_check_result,
+                meta=result,
+            )
         else:
             module.fail_json(msg="Error in repo", meta=result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

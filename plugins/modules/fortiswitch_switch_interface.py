@@ -1,5 +1,6 @@
 #!/usr/bin/python
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 # Copyright (c) 2022 Fortinet
 # GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
 
@@ -10,11 +11,13 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'community',
-                    'metadata_version': '1.1'}
+ANSIBLE_METADATA = {
+    "status": ["preview"],
+    "supported_by": "community",
+    "metadata_version": "1.1",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: fortiswitch_switch_interface
 short_description: Usable interfaces (trunks and ports) in Fortinet's FortiSwitch
@@ -757,9 +760,9 @@ options:
                 choices:
                     - 'untagged'
                     - 'tagged'
-'''
+"""
 
-EXAMPLES = '''
+EXAMPLES = """
 - name: Usable interfaces (trunks and ports).
   fortinet.fortiswitch.fortiswitch_switch_interface:
       state: "present"
@@ -769,7 +772,7 @@ EXAMPLES = '''
           allowed_vlans: "<your_own_value>"
           arp_inspection_trust: "trusted"
           auto_discovery_fortilink: "disable"
-          auto_discovery_fortilink_packet_interval: "8"
+          auto_discovery_fortilink_packet_interval: "150"
           default_cos: "9"
           description: "<your_own_value>"
           dhcp_snoop_learning_limit: "11"
@@ -836,22 +839,22 @@ EXAMPLES = '''
           ptp_policy: "<your_own_value> (source switch.ptp.policy.name)"
           ptp_status: "enable"
           qnq:
-              add_inner: "74"
+              add_inner: "2047"
               allowed_c_vlan: "<your_own_value>"
               edge_type: "customer"
-              native_c_vlan: "77"
+              native_c_vlan: "2047"
               priority: "follow-c-tag"
               remove_inner: "disable"
-              s_tag_priority: "80"
+              s_tag_priority: "3"
               status: "disable"
               stp_qnq_admin: "disable"
-              untagged_s_vlan: "83"
+              untagged_s_vlan: "2047"
               vlan_mapping:
                   -
                       description: "<your_own_value>"
                       id: "86"
-                      match_c_vlan: "87"
-                      new_s_vlan: "88"
+                      match_c_vlan: "2047"
+                      new_s_vlan: "2047"
               vlan_mapping_miss_drop: "disable"
           qos_policy: "<your_own_value> (source switch.qos.qos-policy.name)"
           raguard:
@@ -864,7 +867,7 @@ EXAMPLES = '''
           security_groups:
               -
                   name: "default_name_98"
-          sflow_counter_interval: "99"
+          sflow_counter_interval: "127"
           snmp_index: "100"
           sticky_mac: "enable"
           stp_bpdu_guard: "enabled"
@@ -884,15 +887,15 @@ EXAMPLES = '''
                   description: "<your_own_value>"
                   direction: "ingress"
                   id: "117"
-                  match_c_vlan: "118"
-                  match_s_vlan: "119"
-                  new_s_vlan: "120"
+                  match_c_vlan: "2047"
+                  match_s_vlan: "2047"
+                  new_s_vlan: "2047"
           vlan_mapping_miss_drop: "disable"
           vlan_tpid: "<your_own_value> (source switch.vlan-tpid.name)"
           vlan_traffic_type: "untagged"
-'''
+"""
 
-RETURN = '''
+RETURN = """
 build:
   description: Build number of the fortiSwitch image
   returned: always
@@ -939,41 +942,101 @@ version:
   type: str
   sample: "v7.0.0"
 
-'''
+"""
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import FortiOSHandler
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import schema_to_module_spec
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    FortiOSHandler,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    schema_to_module_spec,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    check_schema_versioning,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import (
+    FAIL_SOCKET_MSG,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import (
+    remove_invalid_fields,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    is_same_comparison,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    serialize,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    find_current_values,
+)
 
 
 def filter_switch_interface_data(json):
-    option_list = ['allow_arp_monitor', 'allowed_sub_vlans', 'allowed_vlans',
-                   'arp_inspection_trust', 'auto_discovery_fortilink', 'auto_discovery_fortilink_packet_interval',
-                   'default_cos', 'description', 'dhcp_snoop_learning_limit',
-                   'dhcp_snoop_learning_limit_check', 'dhcp_snoop_option82_override', 'dhcp_snoop_option82_trust',
-                   'dhcp_snooping', 'discard_mode', 'edge_port',
-                   'filter_sub_vlans', 'fortilink_l3_mode', 'igmp_snooping_flood_reports',
-                   'interface_mode', 'ip_mac_binding', 'learning_limit',
-                   'learning_limit_action', 'log_mac_event', 'loop_guard',
-                   'loop_guard_mac_move_threshold', 'loop_guard_timeout', 'mcast_snooping_flood_traffic',
-                   'mld_snooping_flood_reports', 'nac', 'name',
-                   'native_vlan', 'packet_sample_rate', 'packet_sampler',
-                   'port_security', 'primary_vlan', 'private_vlan',
-                   'private_vlan_port_type', 'ptp_policy', 'ptp_status',
-                   'qnq', 'qos_policy', 'raguard',
-                   'rpvst_port', 'sample_direction', 'security_groups',
-                   'sflow_counter_interval', 'snmp_index', 'sticky_mac',
-                   'stp_bpdu_guard', 'stp_bpdu_guard_timeout', 'stp_loop_protection',
-                   'stp_root_guard', 'stp_state', 'sub_vlan',
-                   'switch_port_mode', 'trust_dot1p_map', 'trust_ip_dscp_map',
-                   'type', 'untagged_vlans', 'vlan_mapping',
-                   'vlan_mapping_miss_drop', 'vlan_tpid', 'vlan_traffic_type']
+    option_list = [
+        "allow_arp_monitor",
+        "allowed_sub_vlans",
+        "allowed_vlans",
+        "arp_inspection_trust",
+        "auto_discovery_fortilink",
+        "auto_discovery_fortilink_packet_interval",
+        "default_cos",
+        "description",
+        "dhcp_snoop_learning_limit",
+        "dhcp_snoop_learning_limit_check",
+        "dhcp_snoop_option82_override",
+        "dhcp_snoop_option82_trust",
+        "dhcp_snooping",
+        "discard_mode",
+        "edge_port",
+        "filter_sub_vlans",
+        "fortilink_l3_mode",
+        "igmp_snooping_flood_reports",
+        "interface_mode",
+        "ip_mac_binding",
+        "learning_limit",
+        "learning_limit_action",
+        "log_mac_event",
+        "loop_guard",
+        "loop_guard_mac_move_threshold",
+        "loop_guard_timeout",
+        "mcast_snooping_flood_traffic",
+        "mld_snooping_flood_reports",
+        "nac",
+        "name",
+        "native_vlan",
+        "packet_sample_rate",
+        "packet_sampler",
+        "port_security",
+        "primary_vlan",
+        "private_vlan",
+        "private_vlan_port_type",
+        "ptp_policy",
+        "ptp_status",
+        "qnq",
+        "qos_policy",
+        "raguard",
+        "rpvst_port",
+        "sample_direction",
+        "security_groups",
+        "sflow_counter_interval",
+        "snmp_index",
+        "sticky_mac",
+        "stp_bpdu_guard",
+        "stp_bpdu_guard_timeout",
+        "stp_loop_protection",
+        "stp_root_guard",
+        "stp_state",
+        "sub_vlan",
+        "switch_port_mode",
+        "trust_dot1p_map",
+        "trust_ip_dscp_map",
+        "type",
+        "untagged_vlans",
+        "vlan_mapping",
+        "vlan_mapping_miss_drop",
+        "vlan_tpid",
+        "vlan_traffic_type",
+    ]
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -992,16 +1055,16 @@ def underscore_to_hyphen(data):
     elif isinstance(data, dict):
         new_data = {}
         for k, v in data.items():
-            new_data[k.replace('_', '-')] = underscore_to_hyphen(v)
+            new_data[k.replace("_", "-")] = underscore_to_hyphen(v)
         data = new_data
 
     return data
 
 
 def switch_interface(data, fos, check_mode=False):
-    state = data.get('state', None)
+    state = data.get("state", None)
 
-    switch_interface_data = data['switch_interface']
+    switch_interface_data = data["switch_interface"]
 
     filtered_data = filter_switch_interface_data(switch_interface_data)
     filtered_data = underscore_to_hyphen(filtered_data)
@@ -1009,17 +1072,20 @@ def switch_interface(data, fos, check_mode=False):
     # check_mode starts from here
     if check_mode:
         diff = {
-            "before": '',
+            "before": "",
             "after": filtered_data,
         }
-        mkey = fos.get_mkey('switch', 'interface', filtered_data)
-        current_data = fos.get('switch', 'interface', mkey=mkey)
-        is_existed = current_data and current_data.get('http_status') == 200 \
-            and isinstance(current_data.get('results'), list) \
-            and len(current_data['results']) > 0
+        mkey = fos.get_mkey("switch", "interface", filtered_data)
+        current_data = fos.get("switch", "interface", mkey=mkey)
+        is_existed = (
+            current_data
+            and current_data.get("http_status") == 200
+            and isinstance(current_data.get("results"), list)
+            and len(current_data["results"]) > 0
+        )
 
         # 2. if it exists and the state is 'present' then compare current settings with desired
-        if state == 'present' or state is True or state is None:
+        if state == "present" or state is True or state is None:
             mkeyname = fos.get_mkeyname(None, None)
             # for non global modules, mkeyname must exist and it's a new module when mkey is None
             if mkeyname is not None and mkey is None:
@@ -1033,66 +1099,100 @@ def switch_interface(data, fos, check_mode=False):
             # handle global modules'
             if mkeyname is None and state is None:
                 is_same = is_same_comparison(
-                    serialize(current_data['results']), serialize(copied_filtered_data))
+                    serialize(current_data["results"]), serialize(copied_filtered_data)
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             if is_existed:
                 is_same = is_same_comparison(
-                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+                    serialize(current_data["results"][0]),
+                    serialize(copied_filtered_data),
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"][0]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             # record does not exist
             return False, True, filtered_data, diff
 
-        if state == 'absent':
+        if state == "absent":
             if mkey is None:
-                return False, False, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    False,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
 
             if is_existed:
-                return False, True, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    True,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
             return False, False, filtered_data, {}
 
-        return True, False, {'reason: ': 'Must provide state parameter'}, {}
+        return True, False, {"reason: ": "Must provide state parameter"}, {}
 
     if state == "present" or state is True:
-        return fos.set('switch',
-                       'interface',
-                       data=filtered_data,
-                       )
+        return fos.set(
+            "switch",
+            "interface",
+            data=filtered_data,
+        )
 
     elif state == "absent":
-        return fos.delete('switch',
-                          'interface',
-                          mkey=filtered_data['name'])
+        return fos.delete("switch", "interface", mkey=filtered_data["name"])
     else:
-        fos._module.fail_json(msg='state must be present or absent!')
+        fos._module.fail_json(msg="state must be present or absent!")
 
 
 def is_successful_status(resp):
-    return 'status' in resp and resp['status'] == 'success' or \
-        'http_status' in resp and resp['http_status'] == 200 or \
-        'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
+    return (
+        "status" in resp
+        and resp["status"] == "success"
+        or "http_status" in resp
+        and resp["http_status"] == 200
+        or "http_method" in resp
+        and resp["http_method"] == "DELETE"
+        and resp["http_status"] == 404
+    )
 
 
 def fortiswitch_switch(data, fos, check_mode):
-    fos.do_member_operation('switch', 'interface')
-    current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
-    if data['switch_interface']:
+    fos.do_member_operation("switch", "interface")
+    current_cmdb_index = fos.monitor_get("/system/status")["cmdb-index"]
+    if data["switch_interface"]:
         resp = switch_interface(data, fos, check_mode)
     else:
-        fos._module.fail_json(msg='missing task body: %s' % ('switch_interface'))
+        fos._module.fail_json(msg="missing task body: %s" % ("switch_interface"))
     if check_mode:
         return resp
-    return not is_successful_status(resp), \
-        is_successful_status(resp) and \
-        current_cmdb_index != resp['cmdb-index'], \
-        resp, {}
+    return (
+        not is_successful_status(resp),
+        is_successful_status(resp) and current_cmdb_index != resp["cmdb-index"],
+        resp,
+        {},
+    )
 
 
 versioned_schema = {
@@ -1100,2006 +1200,1005 @@ versioned_schema = {
     "elements": "dict",
     "children": {
         "fortilink_l3_mode": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.6"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.6"]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "fortilink-l3-mode",
             "help": "FortiLink L3 uplink port.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "igmp_snooping_flood_reports": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "igmp-snooping-flood-reports",
             "help": "Enable/disable flooding of IGMP snooping reports to this interface.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "auto_discovery_fortilink": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.2.4"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.2.4"]],
             "type": "string",
-            "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "enable"
-                }
-            ],
+            "options": [{"value": "disable"}, {"value": "enable"}],
             "name": "auto-discovery-fortilink",
             "help": "Enable/disable automatic FortiLink discovery mode.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "trust_dot1p_map": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "trust-dot1p-map",
             "help": "QOS trust 802.1p map.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "discard_mode": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "none"
-                },
-                {
-                    "value": "all-tagged"
-                },
-                {
-                    "value": "all-untagged"
-                }
+                {"value": "none"},
+                {"value": "all-tagged"},
+                {"value": "all-untagged"},
             ],
             "name": "discard-mode",
             "help": "Configure discard mode for interface.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "qos_policy": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "qos-policy",
             "help": "QOS egress COS queue policy.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "arp_inspection_trust": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "trusted"
-                },
-                {
-                    "value": "untrusted"
-                }
-            ],
+            "options": [{"value": "trusted"}, {"value": "untrusted"}],
             "name": "arp-inspection-trust",
             "help": "Dynamic ARP Inspection (trusted or untrusted).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "security_groups": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "name": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "name",
                     "help": "Group name.",
-                    "category": "unitary"
+                    "category": "unitary",
                 }
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "security-groups",
             "help": "Group name.",
             "mkey": "name",
-            "category": "table"
+            "category": "table",
         },
         "private_vlan": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "promiscuous"
-                },
-                {
-                    "value": "sub-vlan"
-                }
+                {"value": "disable"},
+                {"value": "promiscuous"},
+                {"value": "sub-vlan"},
             ],
             "name": "private-vlan",
             "help": "Configure private VLAN.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "sub_vlan": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "sub-vlan",
             "help": "Private VLAN sub-VLAN to host.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "allowed_sub_vlans": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "allowed-sub-vlans",
             "help": "Sub-VLANs allowed to egress this interface.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "sample_direction": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "tx"
-                },
-                {
-                    "value": "rx"
-                },
-                {
-                    "value": "both"
-                }
-            ],
+            "options": [{"value": "tx"}, {"value": "rx"}, {"value": "both"}],
             "name": "sample-direction",
             "help": "SFlow sample direction.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcp_snoop_option82_trust": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "dhcp-snoop-option82-trust",
             "help": "Enable/Disable (allow/disallow) dhcp pkt with option82 on untrusted interface.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "edge_port": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enabled"
-                },
-                {
-                    "value": "disabled"
-                }
-            ],
+            "options": [{"value": "enabled"}, {"value": "disabled"}],
             "name": "edge-port",
             "help": "Enable/disable interface as edge port.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "stp_bpdu_guard": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enabled"
-                },
-                {
-                    "value": "disabled"
-                }
-            ],
+            "options": [{"value": "enabled"}, {"value": "disabled"}],
             "name": "stp-bpdu-guard",
             "help": "Enable/disable STP BPDU guard protection (stp-state and edge-port must be enabled).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "loop_guard": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enabled"
-                },
-                {
-                    "value": "disabled"
-                }
-            ],
+            "options": [{"value": "enabled"}, {"value": "disabled"}],
             "name": "loop-guard",
             "help": "Enable/disable loop guard protection.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "qnq": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "dict",
             "children": {
                 "status": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "status",
                     "help": "Enable/Disable QinQ mode.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "vlan_mapping": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "new_s_vlan": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "new-s-vlan",
                             "help": "Set new service vlan.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "match_c_vlan": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "match-c-vlan",
                             "help": "Matching customer(inner) vlan.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "id": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "id",
                             "help": "Entry Id.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "description": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "description",
                             "help": "Description of Mapping entry.",
-                            "category": "unitary"
-                        }
+                            "category": "unitary",
+                        },
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "vlan-mapping",
                     "help": "Configure Vlan Mapping.",
                     "mkey": "id",
-                    "category": "table"
+                    "category": "table",
                 },
                 "stp_qnq_admin": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "stp-qnq-admin",
                     "help": "Enable/Disable QnQ to manage STP admin status.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "remove_inner": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "remove-inner",
                     "help": "Remove inner-tag upon egress.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "priority": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "follow-c-tag"
-                        },
-                        {
-                            "value": "follow-s-tag"
-                        }
-                    ],
+                    "options": [{"value": "follow-c-tag"}, {"value": "follow-s-tag"}],
                     "name": "priority",
                     "help": "Follow S-Tag or C-Tag's priority.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "vlan_mapping_miss_drop": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "vlan-mapping-miss-drop",
                     "help": "Enabled or disabled drop if mapping missed.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "untagged_s_vlan": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "untagged-s-vlan",
                     "help": "Add s-vlan to untagged packet.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "add_inner": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "add-inner",
                     "help": "Add inner-tag for untagged packets upon ingress.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "edge_type": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "customer"
-                        }
-                    ],
+                    "options": [{"value": "customer"}],
                     "name": "edge-type",
                     "help": "Choose edge type.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "s_tag_priority": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "s-tag-priority",
                     "help": "Set priority value if packets follow S-Tag's priority.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "native_c_vlan": {
                     "v_range": [],
                     "type": "integer",
                     "name": "native-c-vlan",
                     "help": "Native c vlan for untagged packets.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "allowed_c_vlan": {
                     "v_range": [],
                     "type": "string",
                     "name": "allowed-c-vlan",
                     "help": "Allowed c vlans.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
             "name": "qnq",
             "help": "Configure QinQ.",
-            "category": "complex"
+            "category": "complex",
         },
         "allowed_vlans": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "allowed-vlans",
             "help": "Allowed VLANs.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "nac": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "nac",
             "help": "Enable/disable NAC in Fortilink mode.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "auto_discovery_fortilink_packet_interval": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "auto-discovery-fortilink-packet-interval",
             "help": "FortiLink packet interval for automatic discovery (3 - 300 sec).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "primary_vlan": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "primary-vlan",
             "help": "Private VLAN to host.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "vlan_mapping": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "direction": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "ingress"
-                        },
-                        {
-                            "value": "egress"
-                        }
-                    ],
+                    "options": [{"value": "ingress"}, {"value": "egress"}],
                     "name": "direction",
                     "help": "Ingress or Egress direction.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "description": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "description",
                     "help": "Description of Mapping entry.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "match_s_vlan": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "match-s-vlan",
                     "help": "Matching service(outer) vlan.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "new_s_vlan": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "new-s-vlan",
                     "help": "Set new service(outer) vlan.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "action": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "add"
-                        },
-                        {
-                            "value": "replace"
-                        },
-                        {
-                            "value": "delete"
-                        }
+                        {"value": "add"},
+                        {"value": "replace"},
+                        {"value": "delete"},
                     ],
                     "name": "action",
                     "help": "Vlan action if packet is matched.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "match_c_vlan": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "match-c-vlan",
                     "help": "Matching customer(inner) vlan.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "id",
                     "help": "Entry Id.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "vlan-mapping",
             "help": "Configure vlan mapping table.",
             "mkey": "id",
-            "category": "table"
+            "category": "table",
         },
         "raguard": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "vlan_list": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "vlan-list",
                     "help": "Vlan list.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "id",
                     "help": "ID.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "raguard_policy": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "raguard-policy",
                     "help": "RA Guard policy name.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "raguard",
             "help": "IPV6 RA guard configuration.",
             "mkey": "id",
-            "category": "table"
+            "category": "table",
         },
         "stp_bpdu_guard_timeout": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "stp-bpdu-guard-timeout",
             "help": "BPDU Guard disabling protection (min).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "stp_loop_protection": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enabled"
-                },
-                {
-                    "value": "disabled"
-                }
-            ],
+            "options": [{"value": "enabled"}, {"value": "disabled"}],
             "name": "stp-loop-protection",
             "help": "Enable/disable spanning tree protocol loop guard protection (stp-state must be enabled).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "learning_limit": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "learning-limit",
             "help": "Limit the number of dynamic MAC addresses on this port.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "loop_guard_mac_move_threshold": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "loop-guard-mac-move-threshold",
             "help": "Trigger loop guard if MAC move per second of this interface reaches this threshold.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "log_mac_event": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "log-mac-event",
             "help": "Enable/disable logging for dynamic MAC address events.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcp_snoop_learning_limit": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "dhcp-snoop-learning-limit",
             "help": "Maximum DHCP IP learned on the interface.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "type": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "physical"
-                },
-                {
-                    "value": "trunk"
-                }
-            ],
+            "options": [{"value": "physical"}, {"value": "trunk"}],
             "name": "type",
             "help": "Interface type.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "snmp_index": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "snmp-index",
             "help": "SNMP index.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcp_snoop_learning_limit_check": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "enable"
-                }
-            ],
+            "options": [{"value": "disable"}, {"value": "enable"}],
             "name": "dhcp-snoop-learning-limit-check",
             "help": "Enable/Disable DHCP learning limit check on the interface.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "switch_port_mode": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "enable"
-                }
-            ],
+            "options": [{"value": "disable"}, {"value": "enable"}],
             "name": "switch-port-mode",
             "help": "Enable/disable port as L2 switch port (enable) or as pure routed port (disable).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "description": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "description",
             "help": "Description.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "stp_state": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enabled"
-                },
-                {
-                    "value": "disabled"
-                }
-            ],
+            "options": [{"value": "enabled"}, {"value": "disabled"}],
             "name": "stp-state",
             "help": "Enable/disable spanning tree protocol.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "vlan_traffic_type": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "untagged"
-                },
-                {
-                    "value": "tagged"
-                }
-            ],
+            "options": [{"value": "untagged"}, {"value": "tagged"}],
             "name": "vlan-traffic-type",
             "help": "Configure traffic tagging.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "sticky_mac": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "sticky-mac",
             "help": "Enable/disable Sticky MAC for this interface.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "packet_sampler": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enabled"
-                },
-                {
-                    "value": "disabled"
-                }
-            ],
+            "options": [{"value": "enabled"}, {"value": "disabled"}],
             "name": "packet-sampler",
             "help": "Enable/disable packet sampling.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "loop_guard_timeout": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "loop-guard-timeout",
             "help": "Loop guard disabling protection (min).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "rpvst_port": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enabled"
-                },
-                {
-                    "value": "disabled"
-                }
-            ],
+            "options": [{"value": "enabled"}, {"value": "disabled"}],
             "name": "rpvst-port",
             "help": "Enable/disable interface to inter-op with pvst",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ip_mac_binding": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "global"
-                },
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "global"}, {"value": "enable"}, {"value": "disable"}],
             "name": "ip-mac-binding",
             "help": "Enable/disable ip-mac-binding on this interaface.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mld_snooping_flood_reports": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "mld-snooping-flood-reports",
             "help": "Enable/disable flooding of MLD reports to this interface.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "sflow_counter_interval": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "sflow-counter-interval",
             "help": "SFlow sampler counter polling interval (0:disable - 255).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "name": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "name",
             "help": "Interface name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "native_vlan": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "native-vlan",
             "help": "Native (untagged) VLAN.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "vlan_mapping_miss_drop": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "enable"
-                }
-            ],
+            "options": [{"value": "disable"}, {"value": "enable"}],
             "name": "vlan-mapping-miss-drop",
             "help": "Enabled or disabled drop if mapping missed.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "untagged_vlans": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "untagged-vlans",
             "help": "Configure VLANs permitted to be transmitted without VLAN tags.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "private_vlan_port_type": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "private-vlan-port-type",
             "help": "Private VLAN or sub-VLAN based port type.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcp_snooping": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "trusted"
-                },
-                {
-                    "value": "untrusted"
-                }
-            ],
+            "options": [{"value": "trusted"}, {"value": "untrusted"}],
             "name": "dhcp-snooping",
             "help": "DHCP snooping interface (trusted or untrusted).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "filter_sub_vlans": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "enable"
-                }
-            ],
+            "options": [{"value": "disable"}, {"value": "enable"}],
             "name": "filter-sub-vlans",
             "help": "Private VLAN or sub-VLAN based port type.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "stp_root_guard": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enabled"
-                },
-                {
-                    "value": "disabled"
-                }
-            ],
+            "options": [{"value": "enabled"}, {"value": "disabled"}],
             "name": "stp-root-guard",
             "help": "Enable/disable STP root guard protection (stp-state must be enabled).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "trust_ip_dscp_map": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "trust-ip-dscp-map",
             "help": "QOS trust IP-DSCP map.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "port_security": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "dict",
             "children": {
                 "auth_fail_vlan": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "auth-fail-vlan",
                     "help": "Enable/disable auth_fail vlan.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "macsec_profile": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            "v7.2.4"
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", "v7.2.4"]],
                     "type": "string",
                     "name": "macsec-profile",
                     "help": "macsec port profile.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "auth_fail_vlanid": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "auth-fail-vlanid",
                     "help": "Set auth_fail vlanid.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "port_security_mode": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "none"
-                        },
-                        {
-                            "value": "802.1X"
-                        },
-                        {
-                            "value": "802.1X-mac-based"
-                        },
-                        {
-                            "value": "macsec"
-                        }
+                        {"value": "none"},
+                        {"value": "802.1X"},
+                        {"value": "802.1X-mac-based"},
+                        {"value": "macsec"},
                     ],
                     "name": "port-security-mode",
                     "help": "Security mode.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "mab_eapol_request": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "mab-eapol-request",
                     "help": "Set MAB EAPOL Request.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "authserver_timeout_vlan": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "authserver-timeout-vlan",
                     "help": "Enable/disable authserver_timeout vlan.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "allow_mac_move": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            "v7.2.2"
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", "v7.2.2"]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "allow-mac-move",
                     "help": "Enable/disable allow mac move mode.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "guest_vlan": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "guest-vlan",
                     "help": "Enable/disable guest vlan.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "guest_auth_delay": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "guest-auth-delay",
                     "help": "Set guest auth delay.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "framevid_apply": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "framevid-apply",
                     "help": "Enable/disable the capbility to apply the EAP/MAB frame vlan to the port native vlan.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "eap_auto_untagged_vlans": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "eap-auto-untagged-vlans",
                     "help": "Enable/disable EAP auto-untagged-vlans mode.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "mac_auth_bypass": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "mac-auth-bypass",
                     "help": "Enable/disable mac-authentication-bypass on this interaface.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "radius_timeout_overwrite": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "radius-timeout-overwrite",
                     "help": "Enable/disable radius server session timeout to overwrite local timeout.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "authserver_timeout_period": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "authserver-timeout-period",
                     "help": "Set authserver_timeout period.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "open_auth": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "open-auth",
                     "help": "Enable/disable open authentication on this interaface.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "authserver_timeout_vlanid": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "authserver-timeout-vlanid",
                     "help": "Set authserver_timeout vlanid.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "quarantine_vlan": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "quarantine-vlan",
                     "help": "Enable/disable Quarantine VLAN detection.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "guest_vlanid": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "guest-vlanid",
                     "help": "Set guest vlanid.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "eap_egress_tagged": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "eap-egress-tagged",
                     "help": "Enable/disable Egress frame tag.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "eap_passthru": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "eap-passthru",
                     "help": "Enable/disable EAP pass-through mode.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "dacl": {
-                    "v_range": [
-                        [
-                            "v7.0.3",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.3", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "dacl",
                     "help": "Enable/disable dynamic access control list mode.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "macsec_pae_mode": {
-                    "v_range": [
-                        [
-                            "v7.2.1",
-                            "v7.2.4"
-                        ]
-                    ],
+                    "v_range": [["v7.2.1", "v7.2.4"]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "none"
-                        },
-                        {
-                            "value": "supp"
-                        },
-                        {
-                            "value": "auth"
-                        }
+                        {"value": "none"},
+                        {"value": "supp"},
+                        {"value": "auth"},
                     ],
                     "name": "macsec-pae-mode",
                     "help": "Assign PAE mode to a MACSEC interface.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "auth_priority": {
-                    "v_range": [
-                        [
-                            "v7.2.1",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.2.1", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "legacy"
-                        },
-                        {
-                            "value": "dot1x-MAB"
-                        },
-                        {
-                            "value": "MAB-dot1x"
-                        }
+                        {"value": "legacy"},
+                        {"value": "dot1x-MAB"},
+                        {"value": "MAB-dot1x"},
                     ],
                     "name": "auth-priority",
                     "help": "set authentication auth priority.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "auth_order": {
-                    "v_range": [
-                        [
-                            "v7.2.1",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.2.1", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "dot1x-MAB"
-                        },
-                        {
-                            "value": "MAB-dot1x"
-                        },
-                        {
-                            "value": "MAB",
-                            "v_range": [
-                                [
-                                    "v7.2.3",
-                                    ""
-                                ]
-                            ]
-                        }
+                        {"value": "dot1x-MAB"},
+                        {"value": "MAB-dot1x"},
+                        {"value": "MAB", "v_range": [["v7.2.3", ""]]},
                     ],
                     "name": "auth-order",
                     "help": "set authentication auth order.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "allow_mac_move_to": {
-                    "v_range": [
-                        [
-                            "v7.2.3",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.2.3", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "allow-mac-move-to",
                     "help": "Enable/disable allow mac move mode to this port.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "authserver_timeout_tagged_lldp_voice_vlanid": {
                     "v_range": [],
                     "type": "integer",
                     "name": "authserver-timeout-tagged-lldp-voice-vlanid",
                     "help": "authserver_timeout tagged lldp voice vlanid.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "authserver_timeout_tagged_vlanid": {
                     "v_range": [],
                     "type": "integer",
                     "name": "authserver-timeout-tagged-vlanid",
                     "help": "Set authserver_timeout tagged vlanid.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "authserver_timeout_tagged": {
                     "v_range": [],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "lldp-voice"
-                        },
-                        {
-                            "value": "static"
-                        }
+                        {"value": "disable"},
+                        {"value": "lldp-voice"},
+                        {"value": "static"},
                     ],
                     "name": "authserver-timeout-tagged",
                     "help": "Set authserver_timeout tagged vlan mode.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
             "name": "port-security",
             "help": "Configure port security.",
-            "category": "complex"
+            "category": "complex",
         },
         "default_cos": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "default-cos",
             "help": "Set default COS for untagged packets.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mcast_snooping_flood_traffic": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "mcast-snooping-flood-traffic",
             "help": "Enable/disable flooding of multicast snooping traffic to this interface.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "vlan_tpid": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "vlan-tpid",
             "help": "Configure ether-type.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "packet_sample_rate": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "packet-sample-rate",
             "help": "Packet sample rate (0 - 99999).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ptp_policy": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "ptp-policy",
             "help": "PTP policy.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "learning_limit_action": {
-            "v_range": [
-                [
-                    "v7.0.2",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.2", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "none"
-                },
-                {
-                    "value": "shutdown"
-                }
-            ],
+            "options": [{"value": "none"}, {"value": "shutdown"}],
             "name": "learning-limit-action",
             "help": "Enable/disable turning off this interface on learn limit violation.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "interface_mode": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "L2"
-                },
-                {
-                    "value": "L3"
-                }
-            ],
+            "options": [{"value": "L2"}, {"value": "L3"}],
             "name": "interface-mode",
             "help": "Set interface mode - L2 or L3.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcp_snoop_option82_override": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "circuit_id": {
-                    "v_range": [
-                        [
-                            "v7.2.2",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.2.2", ""]],
                     "type": "string",
                     "name": "circuit-id",
                     "help": "Text String of Circuit Id.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "id": {
-                    "v_range": [
-                        [
-                            "v7.2.2",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.2.2", ""]],
                     "type": "integer",
                     "name": "id",
                     "help": "Vlan Id.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "remote_id": {
-                    "v_range": [
-                        [
-                            "v7.2.2",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.2.2", ""]],
                     "type": "string",
                     "name": "remote-id",
                     "help": "Text String of Remote Id.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.2.2",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.2", ""]],
             "name": "dhcp-snoop-option82-override",
             "help": "Configure per vlan option82 override.",
             "mkey": "id",
-            "category": "table"
+            "category": "table",
         },
         "ptp_status": {
-            "v_range": [
-                [
-                    "v7.4.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.4.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "ptp-status",
             "help": "PTP Admin. Status.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "allow_arp_monitor": {
             "v_range": [],
             "type": "string",
-            "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "enable"
-                }
-            ],
+            "options": [{"value": "disable"}, {"value": "enable"}],
             "name": "allow-arp-monitor",
             "help": "Enable/Disable ARP monitoring.",
-            "category": "unitary"
-        }
+            "category": "unitary",
+        },
     },
-    "v_range": [
-        [
-            "v7.0.0",
-            ""
-        ]
-    ],
+    "v_range": [["v7.0.0", ""]],
     "name": "interface",
     "help": "Usable interfaces (trunks and ports).",
     "mkey": "name",
-    "category": "table"
+    "category": "table",
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
+    mkeyname = versioned_schema["mkey"] if "mkey" in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},
         "member_state": {
             "type": "str",
             "required": False,
-            "choices": ["present", "absent"]
+            "choices": ["present", "absent"],
         },
-        "state": {"required": True, "type": "str",
-                  "choices": ["present", "absent"]},
+        "state": {"required": True, "type": "str", "choices": ["present", "absent"]},
         "switch_interface": {
-            "required": False, "type": "dict", "default": None,
-            "options": {}
-        }
+            "required": False,
+            "type": "dict",
+            "default": None,
+            "options": {},
+        },
     }
-    for attribute_name in module_spec['options']:
-        fields["switch_interface"]['options'][attribute_name] = module_spec['options'][attribute_name]
+    for attribute_name in module_spec["options"]:
+        fields["switch_interface"]["options"][attribute_name] = module_spec["options"][
+            attribute_name
+        ]
         if mkeyname and mkeyname == attribute_name:
-            fields["switch_interface"]['options'][attribute_name]['required'] = True
+            fields["switch_interface"]["options"][attribute_name]["required"] = True
 
-    module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=True)
+    module = AnsibleModule(argument_spec=fields, supports_check_mode=True)
 
     is_error = False
     has_changed = False
@@ -3110,30 +2209,45 @@ def main():
     if module._socket_path:
         connection = Connection(module._socket_path)
 
-        if 'enable_log' in module.params:
-            connection.set_custom_option('enable_log', module.params['enable_log'])
+        if "enable_log" in module.params:
+            connection.set_custom_option("enable_log", module.params["enable_log"])
         else:
-            connection.set_custom_option('enable_log', False)
+            connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module, mkeyname)
-        versions_check_result = check_schema_versioning(fos, versioned_schema, "switch_interface")
-        is_error, has_changed, result, diff = fortiswitch_switch(module.params, fos, module.check_mode)
+        versions_check_result = check_schema_versioning(
+            fos, versioned_schema, "switch_interface"
+        )
+        is_error, has_changed, result, diff = fortiswitch_switch(
+            module.params, fos, module.check_mode
+        )
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
-    if versions_check_result and versions_check_result['matched'] is False:
-        module.warn("Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv")
+    if versions_check_result and versions_check_result["matched"] is False:
+        module.warn(
+            "Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv"
+        )
 
     if not is_error:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.exit_json(changed=has_changed, version_check_warning=versions_check_result, meta=result, diff=diff)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.exit_json(
+                changed=has_changed,
+                version_check_warning=versions_check_result,
+                meta=result,
+                diff=diff,
+            )
         else:
             module.exit_json(changed=has_changed, meta=result, diff=diff)
     else:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.fail_json(msg="Error in repo", version_check_warning=versions_check_result, meta=result)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.fail_json(
+                msg="Error in repo",
+                version_check_warning=versions_check_result,
+                meta=result,
+            )
         else:
             module.fail_json(msg="Error in repo", meta=result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

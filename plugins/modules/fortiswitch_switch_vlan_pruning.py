@@ -19,11 +19,11 @@ ANSIBLE_METADATA = {
 
 DOCUMENTATION = """
 ---
-module: fortiswitch_log_fortianalyzer_filter
-short_description: Filters for FortiAnalyzer in Fortinet's FortiSwitch
+module: fortiswitch_switch_vlan_pruning
+short_description: Vlan Pruning in Fortinet's FortiSwitch
 description:
     - This module is able to configure a FortiSwitch device by allowing the
-      user to set and modify log_fortianalyzer feature and filter category.
+      user to set and modify switch feature and vlan_pruning category.
       Examples include all parameters and values need to be adjusted to datasources before usage.
       Tested with FOS v7.0.0
 version_added: "1.0.0"
@@ -59,37 +59,28 @@ options:
             - present
             - absent
 
-    log_fortianalyzer_filter:
+    switch_vlan_pruning:
         description:
-            - Filters for FortiAnalyzer.
+            - Vlan Pruning.
         default: null
         type: dict
         suboptions:
-            override:
+            join_timer:
                 description:
-                    - Override FortiAnalyzer setting or use the global setting.
-                type: str
-            severity:
+                    - Vlan Pruning Join Timer (in millisecond).
+                type: int
+            leave_timer:
                 description:
-                    - The least severity level to log.
-                type: str
-                choices:
-                    - 'emergency'
-                    - 'alert'
-                    - 'critical'
-                    - 'error'
-                    - 'warning'
-                    - 'notification'
-                    - 'information'
-                    - 'debug'
+                    - Vlan Pruning Leave Timer (in millisecond).
+                type: int
 """
 
 EXAMPLES = """
-- name: Filters for FortiAnalyzer.
-  fortinet.fortiswitch.fortiswitch_log_fortianalyzer_filter:
-      log_fortianalyzer_filter:
-          override: "<your_own_value>"
-          severity: "emergency"
+- name: Vlan Pruning.
+  fortinet.fortiswitch.fortiswitch_switch_vlan_pruning:
+      switch_vlan_pruning:
+          join_timer: "500"
+          leave_timer: "1500"
 """
 
 RETURN = """
@@ -157,19 +148,10 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import (
     remove_invalid_fields,
 )
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
-    is_same_comparison,
-)
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
-    serialize,
-)
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
-    find_current_values,
-)
 
 
-def filter_log_fortianalyzer_filter_data(json):
-    option_list = ["override", "severity"]
+def filter_switch_vlan_pruning_data(json):
+    option_list = ["join_timer", "leave_timer"]
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -194,101 +176,17 @@ def underscore_to_hyphen(data):
     return data
 
 
-def log_fortianalyzer_filter(data, fos, check_mode=False):
+def switch_vlan_pruning(data, fos):
     state = data.get("state", None)
 
-    log_fortianalyzer_filter_data = data["log_fortianalyzer_filter"]
+    switch_vlan_pruning_data = data["switch_vlan_pruning"]
 
-    filtered_data = filter_log_fortianalyzer_filter_data(log_fortianalyzer_filter_data)
+    filtered_data = filter_switch_vlan_pruning_data(switch_vlan_pruning_data)
     filtered_data = underscore_to_hyphen(filtered_data)
 
-    # check_mode starts from here
-    if check_mode:
-        diff = {
-            "before": "",
-            "after": filtered_data,
-        }
-        mkey = fos.get_mkey("log.fortianalyzer", "filter", filtered_data)
-        current_data = fos.get("log.fortianalyzer", "filter", mkey=mkey)
-        is_existed = (
-            current_data
-            and current_data.get("http_status") == 200
-            and isinstance(current_data.get("results"), list)
-            and len(current_data["results"]) > 0
-        )
-
-        # 2. if it exists and the state is 'present' then compare current settings with desired
-        if state == "present" or state is True or state is None:
-            mkeyname = fos.get_mkeyname(None, None)
-            # for non global modules, mkeyname must exist and it's a new module when mkey is None
-            if mkeyname is not None and mkey is None:
-                return False, True, filtered_data, diff
-
-            # if mkey exists then compare each other
-            # record exits and they're matched or not
-            copied_filtered_data = filtered_data.copy()
-            copied_filtered_data.pop(mkeyname, None)
-
-            # handle global modules'
-            if mkeyname is None and state is None:
-                is_same = is_same_comparison(
-                    serialize(current_data["results"]), serialize(copied_filtered_data)
-                )
-
-                current_values = find_current_values(
-                    copied_filtered_data, current_data["results"]
-                )
-
-                return (
-                    False,
-                    not is_same,
-                    filtered_data,
-                    {"before": current_values, "after": copied_filtered_data},
-                )
-
-            if is_existed:
-                is_same = is_same_comparison(
-                    serialize(current_data["results"][0]),
-                    serialize(copied_filtered_data),
-                )
-
-                current_values = find_current_values(
-                    copied_filtered_data, current_data["results"][0]
-                )
-
-                return (
-                    False,
-                    not is_same,
-                    filtered_data,
-                    {"before": current_values, "after": copied_filtered_data},
-                )
-
-            # record does not exist
-            return False, True, filtered_data, diff
-
-        if state == "absent":
-            if mkey is None:
-                return (
-                    False,
-                    False,
-                    filtered_data,
-                    {"before": current_data["results"][0], "after": ""},
-                )
-
-            if is_existed:
-                return (
-                    False,
-                    True,
-                    filtered_data,
-                    {"before": current_data["results"][0], "after": ""},
-                )
-            return False, False, filtered_data, {}
-
-        return True, False, {"reason: ": "Must provide state parameter"}, {}
-
     return fos.set(
-        "log.fortianalyzer",
-        "filter",
+        "switch",
+        "vlan-pruning",
         data=filtered_data,
     )
 
@@ -305,17 +203,14 @@ def is_successful_status(resp):
     )
 
 
-def fortiswitch_log_fortianalyzer(data, fos, check_mode):
-    fos.do_member_operation("log.fortianalyzer", "filter")
+def fortiswitch_switch(data, fos):
+    fos.do_member_operation("switch", "vlan-pruning")
     current_cmdb_index = fos.monitor_get("/system/status")["cmdb-index"]
-    if data["log_fortianalyzer_filter"]:
-        resp = log_fortianalyzer_filter(data, fos, check_mode)
+    if data["switch_vlan_pruning"]:
+        resp = switch_vlan_pruning(data, fos)
     else:
-        fos._module.fail_json(
-            msg="missing task body: %s" % ("log_fortianalyzer_filter")
-        )
-    if check_mode:
-        return resp
+        fos._module.fail_json(msg="missing task body: %s" % ("switch_vlan_pruning"))
+
     return (
         not is_successful_status(resp),
         is_successful_status(resp) and current_cmdb_index != resp["cmdb-index"],
@@ -325,36 +220,26 @@ def fortiswitch_log_fortianalyzer(data, fos, check_mode):
 
 
 versioned_schema = {
-    "v_range": [["v7.0.0", ""]],
+    "v_range": [],
     "type": "dict",
     "children": {
-        "override": {
-            "v_range": [["v7.0.0", ""]],
-            "type": "string",
-            "name": "override",
-            "help": "Override FortiAnalyzer setting or use the global setting.",
+        "join_timer": {
+            "v_range": [],
+            "type": "integer",
+            "name": "join-timer",
+            "help": "Vlan Pruning Join Timer (in millisecond).",
             "category": "unitary",
         },
-        "severity": {
-            "v_range": [["v7.0.0", ""]],
-            "type": "string",
-            "options": [
-                {"value": "emergency"},
-                {"value": "alert"},
-                {"value": "critical"},
-                {"value": "error"},
-                {"value": "warning"},
-                {"value": "notification"},
-                {"value": "information"},
-                {"value": "debug"},
-            ],
-            "name": "severity",
-            "help": "The least severity level to log.",
+        "leave_timer": {
+            "v_range": [],
+            "type": "integer",
+            "name": "leave-timer",
+            "help": "Vlan Pruning Leave Timer (in millisecond).",
             "category": "unitary",
         },
     },
-    "name": "filter",
-    "help": "Filters for FortiAnalyzer.",
+    "name": "vlan-pruning",
+    "help": "Vlan Pruning.",
     "category": "complex",
 }
 
@@ -370,7 +255,7 @@ def main():
             "required": False,
             "choices": ["present", "absent"],
         },
-        "log_fortianalyzer_filter": {
+        "switch_vlan_pruning": {
             "required": False,
             "type": "dict",
             "default": None,
@@ -378,15 +263,13 @@ def main():
         },
     }
     for attribute_name in module_spec["options"]:
-        fields["log_fortianalyzer_filter"]["options"][attribute_name] = module_spec[
+        fields["switch_vlan_pruning"]["options"][attribute_name] = module_spec[
             "options"
         ][attribute_name]
         if mkeyname and mkeyname == attribute_name:
-            fields["log_fortianalyzer_filter"]["options"][attribute_name][
-                "required"
-            ] = True
+            fields["switch_vlan_pruning"]["options"][attribute_name]["required"] = True
 
-    module = AnsibleModule(argument_spec=fields, supports_check_mode=True)
+    module = AnsibleModule(argument_spec=fields, supports_check_mode=False)
 
     is_error = False
     has_changed = False
@@ -403,11 +286,9 @@ def main():
             connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module, mkeyname)
         versions_check_result = check_schema_versioning(
-            fos, versioned_schema, "log_fortianalyzer_filter"
+            fos, versioned_schema, "switch_vlan_pruning"
         )
-        is_error, has_changed, result, diff = fortiswitch_log_fortianalyzer(
-            module.params, fos, module.check_mode
-        )
+        is_error, has_changed, result, diff = fortiswitch_switch(module.params, fos)
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 

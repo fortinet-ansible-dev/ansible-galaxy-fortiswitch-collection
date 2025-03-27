@@ -39,7 +39,7 @@ class HttpApi(HttpApiBase):
         self._ccsrftoken = ""
         self._system_version = None
         self._ansible_fos_version = "v7.0.0"
-        self._ansible_galaxy_version = "1.2.5"
+        self._ansible_galaxy_version = "1.2.6"
         self._log = None
 
     def set_custom_option(self, k, v):

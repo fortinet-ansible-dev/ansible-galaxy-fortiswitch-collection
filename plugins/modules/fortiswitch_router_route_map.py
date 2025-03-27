@@ -1,5 +1,6 @@
 #!/usr/bin/python
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 # Copyright (c) 2022 Fortinet
 # GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
 
@@ -10,11 +11,13 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'community',
-                    'metadata_version': '1.1'}
+ANSIBLE_METADATA = {
+    "status": ["preview"],
+    "supported_by": "community",
+    "metadata_version": "1.1",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: fortiswitch_router_route_map
 short_description: Route map configuration in Fortinet's FortiSwitch
@@ -286,9 +289,9 @@ options:
                         description:
                             - Set BGP weight for routing table.
                         type: int
-'''
+"""
 
-EXAMPLES = '''
+EXAMPLES = """
 - name: Route map configuration.
   fortinet.fortiswitch.fortiswitch_router_route_map:
       state: "present"
@@ -308,11 +311,11 @@ EXAMPLES = '''
                   match_ip6_address: "<your_own_value> (source router.access-list6.name router.prefix-list6.name)"
                   match_ip_address: "<your_own_value> (source router.access-list.name router.prefix-list.name)"
                   match_ip_nexthop: "<your_own_value> (source router.access-list.name router.prefix-list.name)"
-                  match_metric: "17"
+                  match_metric: "1073741823"
                   match_origin: "none"
                   match_route_type: "1"
-                  match_tag: "20"
-                  set_aggregator_as: "21"
+                  match_tag: "1073741823"
+                  set_aggregator_as: "2147483647"
                   set_aggregator_ip: "<your_own_value>"
                   set_aspath:
                       -
@@ -334,15 +337,15 @@ EXAMPLES = '''
                   set_ip6_nexthop_local: "<your_own_value>"
                   set_ip_nexthop: "<your_own_value>"
                   set_local_preference: "38"
-                  set_metric: "39"
+                  set_metric: "1073741823"
                   set_metric_type: "1"
                   set_origin: "none"
                   set_originator_id: "<your_own_value>"
-                  set_tag: "43"
-                  set_weight: "44"
-'''
+                  set_tag: "1073741823"
+                  set_weight: "1073741823"
+"""
 
-RETURN = '''
+RETURN = """
 build:
   description: Build number of the fortiSwitch image
   returned: always
@@ -389,22 +392,37 @@ version:
   type: str
   sample: "v7.0.0"
 
-'''
+"""
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import FortiOSHandler
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import schema_to_module_spec
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    FortiOSHandler,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    schema_to_module_spec,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    check_schema_versioning,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import (
+    FAIL_SOCKET_MSG,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import (
+    remove_invalid_fields,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    is_same_comparison,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    serialize,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    find_current_values,
+)
 
 
 def filter_router_route_map_data(json):
-    option_list = ['comments', 'name', 'protocol',
-                   'rule']
+    option_list = ["comments", "name", "protocol", "rule"]
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -423,16 +441,16 @@ def underscore_to_hyphen(data):
     elif isinstance(data, dict):
         new_data = {}
         for k, v in data.items():
-            new_data[k.replace('_', '-')] = underscore_to_hyphen(v)
+            new_data[k.replace("_", "-")] = underscore_to_hyphen(v)
         data = new_data
 
     return data
 
 
 def router_route_map(data, fos, check_mode=False):
-    state = data.get('state', None)
+    state = data.get("state", None)
 
-    router_route_map_data = data['router_route_map']
+    router_route_map_data = data["router_route_map"]
 
     filtered_data = filter_router_route_map_data(router_route_map_data)
     filtered_data = underscore_to_hyphen(filtered_data)
@@ -440,17 +458,20 @@ def router_route_map(data, fos, check_mode=False):
     # check_mode starts from here
     if check_mode:
         diff = {
-            "before": '',
+            "before": "",
             "after": filtered_data,
         }
-        mkey = fos.get_mkey('router', 'route-map', filtered_data)
-        current_data = fos.get('router', 'route-map', mkey=mkey)
-        is_existed = current_data and current_data.get('http_status') == 200 \
-            and isinstance(current_data.get('results'), list) \
-            and len(current_data['results']) > 0
+        mkey = fos.get_mkey("router", "route-map", filtered_data)
+        current_data = fos.get("router", "route-map", mkey=mkey)
+        is_existed = (
+            current_data
+            and current_data.get("http_status") == 200
+            and isinstance(current_data.get("results"), list)
+            and len(current_data["results"]) > 0
+        )
 
         # 2. if it exists and the state is 'present' then compare current settings with desired
-        if state == 'present' or state is True or state is None:
+        if state == "present" or state is True or state is None:
             mkeyname = fos.get_mkeyname(None, None)
             # for non global modules, mkeyname must exist and it's a new module when mkey is None
             if mkeyname is not None and mkey is None:
@@ -464,66 +485,100 @@ def router_route_map(data, fos, check_mode=False):
             # handle global modules'
             if mkeyname is None and state is None:
                 is_same = is_same_comparison(
-                    serialize(current_data['results']), serialize(copied_filtered_data))
+                    serialize(current_data["results"]), serialize(copied_filtered_data)
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             if is_existed:
                 is_same = is_same_comparison(
-                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+                    serialize(current_data["results"][0]),
+                    serialize(copied_filtered_data),
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"][0]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             # record does not exist
             return False, True, filtered_data, diff
 
-        if state == 'absent':
+        if state == "absent":
             if mkey is None:
-                return False, False, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    False,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
 
             if is_existed:
-                return False, True, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    True,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
             return False, False, filtered_data, {}
 
-        return True, False, {'reason: ': 'Must provide state parameter'}, {}
+        return True, False, {"reason: ": "Must provide state parameter"}, {}
 
     if state == "present" or state is True:
-        return fos.set('router',
-                       'route-map',
-                       data=filtered_data,
-                       )
+        return fos.set(
+            "router",
+            "route-map",
+            data=filtered_data,
+        )
 
     elif state == "absent":
-        return fos.delete('router',
-                          'route-map',
-                          mkey=filtered_data['name'])
+        return fos.delete("router", "route-map", mkey=filtered_data["name"])
     else:
-        fos._module.fail_json(msg='state must be present or absent!')
+        fos._module.fail_json(msg="state must be present or absent!")
 
 
 def is_successful_status(resp):
-    return 'status' in resp and resp['status'] == 'success' or \
-        'http_status' in resp and resp['http_status'] == 200 or \
-        'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
+    return (
+        "status" in resp
+        and resp["status"] == "success"
+        or "http_status" in resp
+        and resp["http_status"] == 200
+        or "http_method" in resp
+        and resp["http_method"] == "DELETE"
+        and resp["http_status"] == 404
+    )
 
 
 def fortiswitch_router(data, fos, check_mode):
-    fos.do_member_operation('router', 'route-map')
-    current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
-    if data['router_route_map']:
+    fos.do_member_operation("router", "route-map")
+    current_cmdb_index = fos.monitor_get("/system/status")["cmdb-index"]
+    if data["router_route_map"]:
         resp = router_route_map(data, fos, check_mode)
     else:
-        fos._module.fail_json(msg='missing task body: %s' % ('router_route_map'))
+        fos._module.fail_json(msg="missing task body: %s" % ("router_route_map"))
     if check_mode:
         return resp
-    return not is_successful_status(resp), \
-        is_successful_status(resp) and \
-        current_cmdb_index != resp['cmdb-index'], \
-        resp, {}
+    return (
+        not is_successful_status(resp),
+        is_successful_status(resp) and current_cmdb_index != resp["cmdb-index"],
+        resp,
+        {},
+    )
 
 
 versioned_schema = {
@@ -535,666 +590,379 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "match_community_exact": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "match-community-exact",
                     "help": "Do exact matching of communities.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "set_community": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "community": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "community",
                             "help": "AA|AA:NN|internet|local-AS|no-advertise|no-export.",
-                            "category": "unitary"
+                            "category": "unitary",
                         }
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "set-community",
                     "help": "Set BGP community attribute.",
                     "mkey": "community",
-                    "category": "table"
+                    "category": "table",
                 },
                 "set_metric": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "set-metric",
                     "help": "Set the metric value.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "set_atomic_aggregate": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "set-atomic-aggregate",
                     "help": "BGP atomic aggregate attribute.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "match_ip6_address": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "match-ip6-address",
                     "help": "Match ipv6 address permitted by access-list6 or prefix-list6.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "match_origin": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "none"
-                        },
-                        {
-                            "value": "egp"
-                        },
-                        {
-                            "value": "igp"
-                        },
-                        {
-                            "value": "incomplete"
-                        }
+                        {"value": "none"},
+                        {"value": "egp"},
+                        {"value": "igp"},
+                        {"value": "incomplete"},
                     ],
                     "name": "match-origin",
                     "help": "Match BGP origin code.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "match_metric": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "match-metric",
                     "help": "Match metric for redistribute routes.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "id",
                     "help": "Rule id.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "match_flags": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "match-flags",
                     "help": "Match-flags.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "match_ip_address": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "match-ip-address",
                     "help": "Match ip address permitted by access-list or prefix-list.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "set_origin": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "none"
-                        },
-                        {
-                            "value": "egp"
-                        },
-                        {
-                            "value": "igp"
-                        },
-                        {
-                            "value": "incomplete"
-                        }
+                        {"value": "none"},
+                        {"value": "egp"},
+                        {"value": "igp"},
+                        {"value": "incomplete"},
                     ],
                     "name": "set-origin",
                     "help": "Set BGP origin code.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "set_extcommunity_soo": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "community": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "community",
                             "help": "AA:NN.",
-                            "category": "unitary"
+                            "category": "unitary",
                         }
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "set-extcommunity-soo",
                     "help": "Set Site-of-Origin extended community.",
                     "mkey": "community",
-                    "category": "table"
+                    "category": "table",
                 },
                 "set_flags": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "set-flags",
                     "help": "Set-flags.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "set_ip6_nexthop": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "set-ip6-nexthop",
                     "help": "Set ipv6 global address of next hop.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "match_as_path": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "match-as-path",
                     "help": "Match BGP AS path list.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "set_extcommunity_rt": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "community": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "community",
                             "help": "AA:NN.",
-                            "category": "unitary"
+                            "category": "unitary",
                         }
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "set-extcommunity-rt",
                     "help": "Set Route Target extended community.",
                     "mkey": "community",
-                    "category": "table"
+                    "category": "table",
                 },
                 "set_ip_nexthop": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "set-ip-nexthop",
                     "help": "Set ip address of next hop.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "set_tag": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "set-tag",
                     "help": "Set the tag value.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "set_aggregator_as": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "set-aggregator-as",
                     "help": "Set BGP aggregator AS.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "set_weight": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "set-weight",
                     "help": "Set BGP weight for routing table.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "match_route_type": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "1"
-                        },
-                        {
-                            "value": "2"
-                        }
-                    ],
+                    "options": [{"value": "1"}, {"value": "2"}],
                     "name": "match-route-type",
                     "help": "Match route type.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "set_community_delete": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "set-community-delete",
                     "help": "Delete communities matching community list.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "match_community": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "match-community",
                     "help": "Match BGP community list.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "set_metric_type": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "1"
-                        },
-                        {
-                            "value": "2"
-                        }
-                    ],
+                    "options": [{"value": "1"}, {"value": "2"}],
                     "name": "set-metric-type",
                     "help": "Set the metric type.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "set_community_additive": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "set-community-additive",
                     "help": "Add set-community to existing community.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "match_ip_nexthop": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "match-ip-nexthop",
                     "help": "Match next hop ip address passed by access-list or prefix-list.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "set_originator_id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "set-originator-id",
                     "help": "Set BGP originator ID attribute.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "match_tag": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "match-tag",
                     "help": "Match tag.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "set_aggregator_ip": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "set-aggregator-ip",
                     "help": "Set BGP aggregator IP.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "match_interface": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "match-interface",
                     "help": "Match interface configuration.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "set_aspath": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "as": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "as",
                             "help": "AS number,value range from 0 to 4294967295",
-                            "category": "unitary"
+                            "category": "unitary",
                         }
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "set-aspath",
                     "help": "Prepend BGP AS path attribute.",
                     "mkey": "as",
-                    "category": "table"
+                    "category": "table",
                 },
                 "action": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "permit"
-                        },
-                        {
-                            "value": "deny"
-                        }
-                    ],
+                    "options": [{"value": "permit"}, {"value": "deny"}],
                     "name": "action",
                     "help": "Action.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "set_ip6_nexthop_local": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "set-ip6-nexthop-local",
                     "help": "Set ipv6 local address of next hop.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "set_local_preference": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "set-local-preference",
                     "help": "Set BGP local preference path attribute.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "rule",
             "help": "Rule.",
             "mkey": "id",
-            "category": "table"
+            "category": "table",
         },
         "protocol": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "ospf"
-                },
-                {
-                    "value": "ospf6"
-                },
-                {
-                    "value": "rip"
-                },
-                {
-                    "value": "bgp"
-                },
-                {
-                    "value": "isis"
-                },
-                {
-                    "value": "zebra"
-                },
-                {
-                    "value": "ripng"
-                },
-                {
-                    "value": "isis6"
-                }
+                {"value": "ospf"},
+                {"value": "ospf6"},
+                {"value": "rip"},
+                {"value": "bgp"},
+                {"value": "isis"},
+                {"value": "zebra"},
+                {"value": "ripng"},
+                {"value": "isis6"},
             ],
             "name": "protocol",
             "help": "Route-map type.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "name": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "name",
             "help": "Name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "comments": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "comments",
             "help": "Description/comments.",
-            "category": "unitary"
-        }
+            "category": "unitary",
+        },
     },
-    "v_range": [
-        [
-            "v7.0.0",
-            ""
-        ]
-    ],
+    "v_range": [["v7.0.0", ""]],
     "name": "route-map",
     "help": "Route map configuration.",
     "mkey": "name",
-    "category": "table"
+    "category": "table",
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
+    mkeyname = versioned_schema["mkey"] if "mkey" in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},
         "member_state": {
             "type": "str",
             "required": False,
-            "choices": ["present", "absent"]
+            "choices": ["present", "absent"],
         },
-        "state": {"required": True, "type": "str",
-                  "choices": ["present", "absent"]},
+        "state": {"required": True, "type": "str", "choices": ["present", "absent"]},
         "router_route_map": {
-            "required": False, "type": "dict", "default": None,
-            "options": {}
-        }
+            "required": False,
+            "type": "dict",
+            "default": None,
+            "options": {},
+        },
     }
-    for attribute_name in module_spec['options']:
-        fields["router_route_map"]['options'][attribute_name] = module_spec['options'][attribute_name]
+    for attribute_name in module_spec["options"]:
+        fields["router_route_map"]["options"][attribute_name] = module_spec["options"][
+            attribute_name
+        ]
         if mkeyname and mkeyname == attribute_name:
-            fields["router_route_map"]['options'][attribute_name]['required'] = True
+            fields["router_route_map"]["options"][attribute_name]["required"] = True
 
-    module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=True)
+    module = AnsibleModule(argument_spec=fields, supports_check_mode=True)
 
     is_error = False
     has_changed = False
@@ -1205,30 +973,45 @@ def main():
     if module._socket_path:
         connection = Connection(module._socket_path)
 
-        if 'enable_log' in module.params:
-            connection.set_custom_option('enable_log', module.params['enable_log'])
+        if "enable_log" in module.params:
+            connection.set_custom_option("enable_log", module.params["enable_log"])
         else:
-            connection.set_custom_option('enable_log', False)
+            connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module, mkeyname)
-        versions_check_result = check_schema_versioning(fos, versioned_schema, "router_route_map")
-        is_error, has_changed, result, diff = fortiswitch_router(module.params, fos, module.check_mode)
+        versions_check_result = check_schema_versioning(
+            fos, versioned_schema, "router_route_map"
+        )
+        is_error, has_changed, result, diff = fortiswitch_router(
+            module.params, fos, module.check_mode
+        )
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
-    if versions_check_result and versions_check_result['matched'] is False:
-        module.warn("Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv")
+    if versions_check_result and versions_check_result["matched"] is False:
+        module.warn(
+            "Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv"
+        )
 
     if not is_error:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.exit_json(changed=has_changed, version_check_warning=versions_check_result, meta=result, diff=diff)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.exit_json(
+                changed=has_changed,
+                version_check_warning=versions_check_result,
+                meta=result,
+                diff=diff,
+            )
         else:
             module.exit_json(changed=has_changed, meta=result, diff=diff)
     else:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.fail_json(msg="Error in repo", version_check_warning=versions_check_result, meta=result)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.fail_json(
+                msg="Error in repo",
+                version_check_warning=versions_check_result,
+                meta=result,
+            )
         else:
             module.fail_json(msg="Error in repo", meta=result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

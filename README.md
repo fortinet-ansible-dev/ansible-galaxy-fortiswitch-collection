@@ -196,6 +196,7 @@ The collection provides the following modules:
 * `fortiswitch_switch_stp_settings` Switch-global stp settings in Fortinet's FortiSwitch
 * `fortiswitch_switch_trunk` Link-aggregation in Fortinet's FortiSwitch
 * `fortiswitch_switch_virtual_wire` Configure virtual wire in Fortinet's FortiSwitch
+* `fortiswitch_switch_vlan_pruning` Vlan Pruning in Fortinet's FortiSwitch
 * `fortiswitch_switch_vlan_tpid` Configure switch global ether-types in Fortinet's FortiSwitch
 * `fortiswitch_switch_vlan` Configure optional per-VLAN settings in Fortinet's FortiSwitch
 * `fortiswitch_system_accprofile` Configure system administrative access group in Fortinet's FortiSwitch
@@ -223,6 +224,7 @@ The collection provides the following modules:
 * `fortiswitch_system_certificate_ocsp` Ocsp configuration in Fortinet's FortiSwitch
 * `fortiswitch_system_certificate_remote` Remote certificate in Fortinet's FortiSwitch
 * `fortiswitch_system_console` Configure console in Fortinet's FortiSwitch
+* `fortiswitch_system_debug` Application and CLI debug values to set at startup and retain over reboot in Fortinet's FortiSwitch
 * `fortiswitch_system_dhcp_server` Configure DHCP servers in Fortinet's FortiSwitch
 * `fortiswitch_system_dns_database` Dns-database in Fortinet's FortiSwitch
 * `fortiswitch_system_dns_server` Dns-server in Fortinet's FortiSwitch

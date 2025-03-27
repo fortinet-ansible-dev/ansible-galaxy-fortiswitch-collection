@@ -1,5 +1,6 @@
 #!/usr/bin/python
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 # Copyright (c) 2022 Fortinet
 # GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
 
@@ -10,11 +11,13 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'community',
-                    'metadata_version': '1.1'}
+ANSIBLE_METADATA = {
+    "status": ["preview"],
+    "supported_by": "community",
+    "metadata_version": "1.1",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: fortiswitch_router_policy
 short_description: Policy routing configuration in Fortinet's FortiSwitch
@@ -204,16 +207,16 @@ options:
                 description:
                     - Terms of service evaluated bits.
                 type: str
-'''
+"""
 
-EXAMPLES = '''
+EXAMPLES = """
 - name: Policy routing configuration.
   fortinet.fortiswitch.fortiswitch_router_policy:
       state: "present"
       router_policy:
           comments: "<your_own_value>"
           dst: "<your_own_value>"
-          end_port: "5"
+          end_port: "32767"
           gateway: "<your_own_value>"
           input_device: "<your_own_value> (source system.interface.name)"
           interface:
@@ -239,17 +242,17 @@ EXAMPLES = '''
                           nexthop_group_name: "<your_own_value>"
                           nexthop_ip: "<your_own_value>"
                           nexthop_vrf_name: "<your_own_value> (source router.vrf.name)"
-                          seq_num: "26"
+                          seq_num: "<you_own_value>"
                           src: "<your_own_value>"
-          protocol: "28"
-          seq_num: "29"
+          protocol: "127"
+          seq_num: "<you_own_value>"
           src: "<your_own_value>"
-          start_port: "31"
+          start_port: "32767"
           tos: "<your_own_value>"
           tos_mask: "<your_own_value>"
-'''
+"""
 
-RETURN = '''
+RETURN = """
 build:
   description: Build number of the fortiSwitch image
   returned: always
@@ -296,25 +299,53 @@ version:
   type: str
   sample: "v7.0.0"
 
-'''
+"""
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import FortiOSHandler
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import schema_to_module_spec
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    FortiOSHandler,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    schema_to_module_spec,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    check_schema_versioning,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import (
+    FAIL_SOCKET_MSG,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import (
+    remove_invalid_fields,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    is_same_comparison,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    serialize,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    find_current_values,
+)
 
 
 def filter_router_policy_data(json):
-    option_list = ['comments', 'dst', 'end_port',
-                   'gateway', 'input_device', 'interface',
-                   'nexthop_group', 'output_device', 'pbr_map',
-                   'protocol', 'seq_num', 'src',
-                   'start_port', 'tos', 'tos_mask']
+    option_list = [
+        "comments",
+        "dst",
+        "end_port",
+        "gateway",
+        "input_device",
+        "interface",
+        "nexthop_group",
+        "output_device",
+        "pbr_map",
+        "protocol",
+        "seq_num",
+        "src",
+        "start_port",
+        "tos",
+        "tos_mask",
+    ]
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -333,16 +364,16 @@ def underscore_to_hyphen(data):
     elif isinstance(data, dict):
         new_data = {}
         for k, v in data.items():
-            new_data[k.replace('_', '-')] = underscore_to_hyphen(v)
+            new_data[k.replace("_", "-")] = underscore_to_hyphen(v)
         data = new_data
 
     return data
 
 
 def router_policy(data, fos, check_mode=False):
-    state = data.get('state', None)
+    state = data.get("state", None)
 
-    router_policy_data = data['router_policy']
+    router_policy_data = data["router_policy"]
 
     filtered_data = filter_router_policy_data(router_policy_data)
     filtered_data = underscore_to_hyphen(filtered_data)
@@ -350,17 +381,20 @@ def router_policy(data, fos, check_mode=False):
     # check_mode starts from here
     if check_mode:
         diff = {
-            "before": '',
+            "before": "",
             "after": filtered_data,
         }
-        mkey = fos.get_mkey('router', 'policy', filtered_data)
-        current_data = fos.get('router', 'policy', mkey=mkey)
-        is_existed = current_data and current_data.get('http_status') == 200 \
-            and isinstance(current_data.get('results'), list) \
-            and len(current_data['results']) > 0
+        mkey = fos.get_mkey("router", "policy", filtered_data)
+        current_data = fos.get("router", "policy", mkey=mkey)
+        is_existed = (
+            current_data
+            and current_data.get("http_status") == 200
+            and isinstance(current_data.get("results"), list)
+            and len(current_data["results"]) > 0
+        )
 
         # 2. if it exists and the state is 'present' then compare current settings with desired
-        if state == 'present' or state is True or state is None:
+        if state == "present" or state is True or state is None:
             mkeyname = fos.get_mkeyname(None, None)
             # for non global modules, mkeyname must exist and it's a new module when mkey is None
             if mkeyname is not None and mkey is None:
@@ -374,66 +408,100 @@ def router_policy(data, fos, check_mode=False):
             # handle global modules'
             if mkeyname is None and state is None:
                 is_same = is_same_comparison(
-                    serialize(current_data['results']), serialize(copied_filtered_data))
+                    serialize(current_data["results"]), serialize(copied_filtered_data)
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             if is_existed:
                 is_same = is_same_comparison(
-                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+                    serialize(current_data["results"][0]),
+                    serialize(copied_filtered_data),
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"][0]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             # record does not exist
             return False, True, filtered_data, diff
 
-        if state == 'absent':
+        if state == "absent":
             if mkey is None:
-                return False, False, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    False,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
 
             if is_existed:
-                return False, True, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    True,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
             return False, False, filtered_data, {}
 
-        return True, False, {'reason: ': 'Must provide state parameter'}, {}
+        return True, False, {"reason: ": "Must provide state parameter"}, {}
 
     if state == "present" or state is True:
-        return fos.set('router',
-                       'policy',
-                       data=filtered_data,
-                       )
+        return fos.set(
+            "router",
+            "policy",
+            data=filtered_data,
+        )
 
     elif state == "absent":
-        return fos.delete('router',
-                          'policy',
-                          mkey=filtered_data['seq-num'])
+        return fos.delete("router", "policy", mkey=filtered_data["seq-num"])
     else:
-        fos._module.fail_json(msg='state must be present or absent!')
+        fos._module.fail_json(msg="state must be present or absent!")
 
 
 def is_successful_status(resp):
-    return 'status' in resp and resp['status'] == 'success' or \
-        'http_status' in resp and resp['http_status'] == 200 or \
-        'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
+    return (
+        "status" in resp
+        and resp["status"] == "success"
+        or "http_status" in resp
+        and resp["http_status"] == 200
+        or "http_method" in resp
+        and resp["http_method"] == "DELETE"
+        and resp["http_status"] == 404
+    )
 
 
 def fortiswitch_router(data, fos, check_mode):
-    fos.do_member_operation('router', 'policy')
-    current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
-    if data['router_policy']:
+    fos.do_member_operation("router", "policy")
+    current_cmdb_index = fos.monitor_get("/system/status")["cmdb-index"]
+    if data["router_policy"]:
         resp = router_policy(data, fos, check_mode)
     else:
-        fos._module.fail_json(msg='missing task body: %s' % ('router_policy'))
+        fos._module.fail_json(msg="missing task body: %s" % ("router_policy"))
     if check_mode:
         return resp
-    return not is_successful_status(resp), \
-        is_successful_status(resp) and \
-        current_cmdb_index != resp['cmdb-index'], \
-        resp, {}
+    return (
+        not is_successful_status(resp),
+        is_successful_status(resp) and current_cmdb_index != resp["cmdb-index"],
+        resp,
+        {},
+    )
 
 
 versioned_schema = {
@@ -441,176 +509,106 @@ versioned_schema = {
     "elements": "dict",
     "children": {
         "src": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.0"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.0"]],
             "type": "string",
             "name": "src",
             "help": "Source ip and mask.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "output_device": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.0"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.0"]],
             "type": "string",
             "name": "output-device",
             "help": "Outgoing interface name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "protocol": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.0"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.0"]],
             "type": "integer",
             "name": "protocol",
             "help": "Protocol number.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "end_port": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.0"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.0"]],
             "type": "integer",
             "name": "end-port",
             "help": "End port number.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dst": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.0"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.0"]],
             "type": "string",
             "name": "dst",
             "help": "Destination ip and mask.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "seq_num": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.0"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.0"]],
             "type": "integer",
             "name": "seq-num",
             "help": "Sequence number.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "tos_mask": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.0"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.0"]],
             "type": "string",
             "name": "tos-mask",
             "help": "Terms of service evaluated bits.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "input_device": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.0"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.0"]],
             "type": "string",
             "name": "input-device",
             "help": "Incoming interface name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "tos": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.0"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.0"]],
             "type": "string",
             "name": "tos",
             "help": "Terms of service bit pattern.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "gateway": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.0"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.0"]],
             "type": "string",
             "name": "gateway",
             "help": "IP address of gateway.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "start_port": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.0.0"
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.0.0"]],
             "type": "integer",
             "name": "start-port",
             "help": "Start port number.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "interface": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "name": {
-                    "v_range": [
-                        [
-                            "v7.0.1",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.1", ""]],
                     "type": "string",
                     "name": "name",
                     "help": "Interface name",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "pbr_map_name": {
-                    "v_range": [
-                        [
-                            "v7.0.1",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.1", ""]],
                     "type": "string",
                     "name": "pbr-map-name",
                     "help": "PBR policy map name.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.1", ""]],
             "name": "interface",
             "help": "Interface configuration.",
             "mkey": "name",
-            "category": "table"
+            "category": "table",
         },
         "nexthop_group": {
             "type": "list",
@@ -621,76 +619,46 @@ versioned_schema = {
                     "elements": "dict",
                     "children": {
                         "nexthop_vrf_name": {
-                            "v_range": [
-                                [
-                                    "v7.0.1",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.1", ""]],
                             "type": "string",
                             "name": "nexthop-vrf-name",
                             "help": "VRF name.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "nexthop_ip": {
-                            "v_range": [
-                                [
-                                    "v7.0.1",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.1", ""]],
                             "type": "string",
                             "name": "nexthop-ip",
                             "help": "IP address of nexthop.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "id": {
-                            "v_range": [
-                                [
-                                    "v7.0.1",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.1", ""]],
                             "type": "integer",
                             "name": "id",
                             "help": "Id (1-64).",
-                            "category": "unitary"
-                        }
+                            "category": "unitary",
+                        },
                     },
-                    "v_range": [
-                        [
-                            "v7.0.1",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.1", ""]],
                     "name": "nexthop",
                     "help": "Nexthop configuration.",
                     "mkey": "id",
-                    "category": "table"
+                    "category": "table",
                 },
                 "name": {
-                    "v_range": [
-                        [
-                            "v7.0.1",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.1", ""]],
                     "type": "string",
                     "name": "name",
                     "help": "Name.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.1", ""]],
             "name": "nexthop-group",
             "help": "Nexthop group (ECMP) configuration.",
             "mkey": "name",
-            "category": "table"
+            "category": "table",
         },
         "pbr_map": {
             "type": "list",
@@ -701,176 +669,118 @@ versioned_schema = {
                     "elements": "dict",
                     "children": {
                         "src": {
-                            "v_range": [
-                                [
-                                    "v7.0.1",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.1", ""]],
                             "type": "string",
                             "name": "src",
                             "help": "Source ip and mask.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "nexthop_vrf_name": {
-                            "v_range": [
-                                [
-                                    "v7.0.1",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.1", ""]],
                             "type": "string",
                             "name": "nexthop-vrf-name",
                             "help": "Nexthop vrf name.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "nexthop_group_name": {
-                            "v_range": [
-                                [
-                                    "v7.0.1",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.1", ""]],
                             "type": "string",
                             "name": "nexthop-group-name",
                             "help": "Nexthop group name. Used for ECMP.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "dst": {
-                            "v_range": [
-                                [
-                                    "v7.0.1",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.1", ""]],
                             "type": "string",
                             "name": "dst",
                             "help": "Destination ip and mask.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "nexthop_ip": {
-                            "v_range": [
-                                [
-                                    "v7.0.1",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.1", ""]],
                             "type": "string",
                             "name": "nexthop-ip",
                             "help": "IP address of nexthop.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "seq_num": {
-                            "v_range": [
-                                [
-                                    "v7.0.1",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.1", ""]],
                             "type": "integer",
                             "name": "seq-num",
                             "help": "Rule seq-num (1-10000).",
-                            "category": "unitary"
-                        }
+                            "category": "unitary",
+                        },
                     },
-                    "v_range": [
-                        [
-                            "v7.0.1",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.1", ""]],
                     "name": "rule",
                     "help": "Rule.",
                     "mkey": "seq-num",
-                    "category": "table"
+                    "category": "table",
                 },
                 "name": {
-                    "v_range": [
-                        [
-                            "v7.0.1",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.1", ""]],
                     "type": "string",
                     "name": "name",
                     "help": "Name.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "comments": {
-                    "v_range": [
-                        [
-                            "v7.0.1",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.1", ""]],
                     "type": "string",
                     "name": "comments",
                     "help": "Description/comments.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.1", ""]],
             "name": "pbr-map",
             "help": "PBR map configuration.",
             "mkey": "name",
-            "category": "table"
+            "category": "table",
         },
         "comments": {
-            "v_range": [
-                [
-                    "v7.0.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.1", ""]],
             "type": "string",
             "name": "comments",
             "help": "Description/comments.",
-            "category": "unitary"
-        }
+            "category": "unitary",
+        },
     },
-    "v_range": [
-        [
-            "v7.0.0",
-            ""
-        ]
-    ],
+    "v_range": [["v7.0.0", ""]],
     "name": "policy",
     "help": "Policy routing configuration.",
     "mkey": "seq-num",
-    "category": "table"
+    "category": "table",
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
+    mkeyname = versioned_schema["mkey"] if "mkey" in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},
         "member_state": {
             "type": "str",
             "required": False,
-            "choices": ["present", "absent"]
+            "choices": ["present", "absent"],
         },
-        "state": {"required": True, "type": "str",
-                  "choices": ["present", "absent"]},
+        "state": {"required": True, "type": "str", "choices": ["present", "absent"]},
         "router_policy": {
-            "required": False, "type": "dict", "default": None,
-            "options": {}
-        }
+            "required": False,
+            "type": "dict",
+            "default": None,
+            "options": {},
+        },
     }
-    for attribute_name in module_spec['options']:
-        fields["router_policy"]['options'][attribute_name] = module_spec['options'][attribute_name]
+    for attribute_name in module_spec["options"]:
+        fields["router_policy"]["options"][attribute_name] = module_spec["options"][
+            attribute_name
+        ]
         if mkeyname and mkeyname == attribute_name:
-            fields["router_policy"]['options'][attribute_name]['required'] = True
+            fields["router_policy"]["options"][attribute_name]["required"] = True
 
-    module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=True)
+    module = AnsibleModule(argument_spec=fields, supports_check_mode=True)
 
     is_error = False
     has_changed = False
@@ -881,30 +791,45 @@ def main():
     if module._socket_path:
         connection = Connection(module._socket_path)
 
-        if 'enable_log' in module.params:
-            connection.set_custom_option('enable_log', module.params['enable_log'])
+        if "enable_log" in module.params:
+            connection.set_custom_option("enable_log", module.params["enable_log"])
         else:
-            connection.set_custom_option('enable_log', False)
+            connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module, mkeyname)
-        versions_check_result = check_schema_versioning(fos, versioned_schema, "router_policy")
-        is_error, has_changed, result, diff = fortiswitch_router(module.params, fos, module.check_mode)
+        versions_check_result = check_schema_versioning(
+            fos, versioned_schema, "router_policy"
+        )
+        is_error, has_changed, result, diff = fortiswitch_router(
+            module.params, fos, module.check_mode
+        )
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
-    if versions_check_result and versions_check_result['matched'] is False:
-        module.warn("Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv")
+    if versions_check_result and versions_check_result["matched"] is False:
+        module.warn(
+            "Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv"
+        )
 
     if not is_error:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.exit_json(changed=has_changed, version_check_warning=versions_check_result, meta=result, diff=diff)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.exit_json(
+                changed=has_changed,
+                version_check_warning=versions_check_result,
+                meta=result,
+                diff=diff,
+            )
         else:
             module.exit_json(changed=has_changed, meta=result, diff=diff)
     else:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.fail_json(msg="Error in repo", version_check_warning=versions_check_result, meta=result)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.fail_json(
+                msg="Error in repo",
+                version_check_warning=versions_check_result,
+                meta=result,
+            )
         else:
             module.fail_json(msg="Error in repo", meta=result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

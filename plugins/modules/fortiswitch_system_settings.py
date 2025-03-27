@@ -1,5 +1,6 @@
 #!/usr/bin/python
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 # Copyright (c) 2022 Fortinet
 # GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
 
@@ -10,11 +11,13 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'community',
-                    'metadata_version': '1.1'}
+ANSIBLE_METADATA = {
+    "status": ["preview"],
+    "supported_by": "community",
+    "metadata_version": "1.1",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: fortiswitch_system_settings
 short_description: Settings in Fortinet's FortiSwitch
@@ -242,9 +245,9 @@ options:
                 choices:
                     - 'enable'
                     - 'disable'
-'''
+"""
 
-EXAMPLES = '''
+EXAMPLES = """
 - name: Settings.
   fortinet.fortiswitch.fortiswitch_system_settings:
       system_settings:
@@ -252,10 +255,10 @@ EXAMPLES = '''
           asymroute: "enable"
           asymroute6: "enable"
           bfd: "enable"
-          bfd_desired_min_tx: "7"
-          bfd_detect_mult: "8"
+          bfd_desired_min_tx: "50000"
+          bfd_detect_mult: "25"
           bfd_dont_enforce_src_port: "enable"
-          bfd_required_min_rx: "10"
+          bfd_required_min_rx: "50000"
           comments: "<your_own_value>"
           device: "<your_own_value> (source system.interface.name)"
           ecmp_max_paths: "13"
@@ -268,20 +271,20 @@ EXAMPLES = '''
           multicast_ttl_notchange: "enable"
           opmode: "nat"
           per_ip_bandwidth: "disable"
-          sccp_port: "23"
+          sccp_port: "32767"
           sip_helper: "enable"
           sip_nat_trace: "enable"
-          sip_tcp_port: "26"
-          sip_udp_port: "27"
+          sip_tcp_port: "32767"
+          sip_udp_port: "32767"
           status: "enable"
           strict_src_check: "enable"
           utf8_spam_tagging: "enable"
           vpn_stats_log: "ipsec"
-          vpn_stats_period: "32"
+          vpn_stats_period: "1073741823"
           wccp_cache_engine: "enable"
-'''
+"""
 
-RETURN = '''
+RETURN = """
 build:
   description: Build number of the fortiSwitch image
   returned: always
@@ -328,31 +331,69 @@ version:
   type: str
   sample: "v7.0.0"
 
-'''
+"""
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import FortiOSHandler
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import schema_to_module_spec
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    FortiOSHandler,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    schema_to_module_spec,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    check_schema_versioning,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import (
+    FAIL_SOCKET_MSG,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import (
+    remove_invalid_fields,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    is_same_comparison,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    serialize,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    find_current_values,
+)
 
 
 def filter_system_settings_data(json):
-    option_list = ['allow_subnet_overlap', 'asymroute', 'asymroute6',
-                   'bfd', 'bfd_desired_min_tx', 'bfd_detect_mult',
-                   'bfd_dont_enforce_src_port', 'bfd_required_min_rx', 'comments',
-                   'device', 'ecmp_max_paths', 'gateway',
-                   'ip', 'ip_ecmp_mode', 'manageip',
-                   'multicast_forward', 'multicast_skip_policy', 'multicast_ttl_notchange',
-                   'opmode', 'per_ip_bandwidth', 'sccp_port',
-                   'sip_helper', 'sip_nat_trace', 'sip_tcp_port',
-                   'sip_udp_port', 'status', 'strict_src_check',
-                   'utf8_spam_tagging', 'vpn_stats_log', 'vpn_stats_period',
-                   'wccp_cache_engine']
+    option_list = [
+        "allow_subnet_overlap",
+        "asymroute",
+        "asymroute6",
+        "bfd",
+        "bfd_desired_min_tx",
+        "bfd_detect_mult",
+        "bfd_dont_enforce_src_port",
+        "bfd_required_min_rx",
+        "comments",
+        "device",
+        "ecmp_max_paths",
+        "gateway",
+        "ip",
+        "ip_ecmp_mode",
+        "manageip",
+        "multicast_forward",
+        "multicast_skip_policy",
+        "multicast_ttl_notchange",
+        "opmode",
+        "per_ip_bandwidth",
+        "sccp_port",
+        "sip_helper",
+        "sip_nat_trace",
+        "sip_tcp_port",
+        "sip_udp_port",
+        "status",
+        "strict_src_check",
+        "utf8_spam_tagging",
+        "vpn_stats_log",
+        "vpn_stats_period",
+        "wccp_cache_engine",
+    ]
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -371,16 +412,16 @@ def underscore_to_hyphen(data):
     elif isinstance(data, dict):
         new_data = {}
         for k, v in data.items():
-            new_data[k.replace('_', '-')] = underscore_to_hyphen(v)
+            new_data[k.replace("_", "-")] = underscore_to_hyphen(v)
         data = new_data
 
     return data
 
 
 def system_settings(data, fos, check_mode=False):
-    state = data.get('state', None)
+    state = data.get("state", None)
 
-    system_settings_data = data['system_settings']
+    system_settings_data = data["system_settings"]
 
     filtered_data = filter_system_settings_data(system_settings_data)
     filtered_data = underscore_to_hyphen(filtered_data)
@@ -388,17 +429,20 @@ def system_settings(data, fos, check_mode=False):
     # check_mode starts from here
     if check_mode:
         diff = {
-            "before": '',
+            "before": "",
             "after": filtered_data,
         }
-        mkey = fos.get_mkey('system', 'settings', filtered_data)
-        current_data = fos.get('system', 'settings', mkey=mkey)
-        is_existed = current_data and current_data.get('http_status') == 200 \
-            and isinstance(current_data.get('results'), list) \
-            and len(current_data['results']) > 0
+        mkey = fos.get_mkey("system", "settings", filtered_data)
+        current_data = fos.get("system", "settings", mkey=mkey)
+        is_existed = (
+            current_data
+            and current_data.get("http_status") == 200
+            and isinstance(current_data.get("results"), list)
+            and len(current_data["results"]) > 0
+        )
 
         # 2. if it exists and the state is 'present' then compare current settings with desired
-        if state == 'present' or state is True or state is None:
+        if state == "present" or state is True or state is None:
             mkeyname = fos.get_mkeyname(None, None)
             # for non global modules, mkeyname must exist and it's a new module when mkey is None
             if mkeyname is not None and mkey is None:
@@ -412,621 +456,377 @@ def system_settings(data, fos, check_mode=False):
             # handle global modules'
             if mkeyname is None and state is None:
                 is_same = is_same_comparison(
-                    serialize(current_data['results']), serialize(copied_filtered_data))
+                    serialize(current_data["results"]), serialize(copied_filtered_data)
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             if is_existed:
                 is_same = is_same_comparison(
-                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+                    serialize(current_data["results"][0]),
+                    serialize(copied_filtered_data),
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"][0]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             # record does not exist
             return False, True, filtered_data, diff
 
-        if state == 'absent':
+        if state == "absent":
             if mkey is None:
-                return False, False, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    False,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
 
             if is_existed:
-                return False, True, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    True,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
             return False, False, filtered_data, {}
 
-        return True, False, {'reason: ': 'Must provide state parameter'}, {}
+        return True, False, {"reason: ": "Must provide state parameter"}, {}
 
-    return fos.set('system',
-                   'settings',
-                   data=filtered_data,
-                   )
+    return fos.set(
+        "system",
+        "settings",
+        data=filtered_data,
+    )
 
 
 def is_successful_status(resp):
-    return 'status' in resp and resp['status'] == 'success' or \
-        'http_status' in resp and resp['http_status'] == 200 or \
-        'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
+    return (
+        "status" in resp
+        and resp["status"] == "success"
+        or "http_status" in resp
+        and resp["http_status"] == 200
+        or "http_method" in resp
+        and resp["http_method"] == "DELETE"
+        and resp["http_status"] == 404
+    )
 
 
 def fortiswitch_system(data, fos, check_mode):
-    fos.do_member_operation('system', 'settings')
-    current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
-    if data['system_settings']:
+    fos.do_member_operation("system", "settings")
+    current_cmdb_index = fos.monitor_get("/system/status")["cmdb-index"]
+    if data["system_settings"]:
         resp = system_settings(data, fos, check_mode)
     else:
-        fos._module.fail_json(msg='missing task body: %s' % ('system_settings'))
+        fos._module.fail_json(msg="missing task body: %s" % ("system_settings"))
     if check_mode:
         return resp
-    return not is_successful_status(resp), \
-        is_successful_status(resp) and \
-        current_cmdb_index != resp['cmdb-index'], \
-        resp, {}
+    return (
+        not is_successful_status(resp),
+        is_successful_status(resp) and current_cmdb_index != resp["cmdb-index"],
+        resp,
+        {},
+    )
 
 
 versioned_schema = {
-    "v_range": [
-        [
-            "v7.0.0",
-            ""
-        ]
-    ],
+    "v_range": [["v7.0.0", ""]],
     "type": "dict",
     "children": {
         "utf8_spam_tagging": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "utf8-spam-tagging",
             "help": "Convert spam tags to UTF8 for better non-ascii character support.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ecmp_max_paths": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "ecmp-max-paths",
             "help": "Maximum number of ECMP next-hops.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "sip_udp_port": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "sip-udp-port",
             "help": "UDP port the SIP proxy will monitor for SIP traffic.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ip": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "ip",
             "help": "IP address and netmask.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "per_ip_bandwidth": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "enable"
-                }
-            ],
+            "options": [{"value": "disable"}, {"value": "enable"}],
             "name": "per-ip-bandwidth",
             "help": "Per-ip-bandwidth disable.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "vpn_stats_log": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "ipsec"
-                },
-                {
-                    "value": "pptp"
-                },
-                {
-                    "value": "l2tp"
-                },
-                {
-                    "value": "ssl"
-                }
+                {"value": "ipsec"},
+                {"value": "pptp"},
+                {"value": "l2tp"},
+                {"value": "ssl"},
             ],
             "name": "vpn-stats-log",
             "help": "Enable periodic VPN log statistics.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "bfd_detect_mult": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "bfd-detect-mult",
             "help": "BFD detection multiplier.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "bfd_required_min_rx": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "bfd-required-min-rx",
             "help": "BFD required minimal rx interval.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "wccp_cache_engine": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "wccp-cache-engine",
             "help": "Enable wccp cache engine or not.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ip_ecmp_mode": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "source-ip-based"
-                },
-                {
-                    "value": "dst-ip-based"
-                },
-                {
-                    "value": "port-based"
-                }
+                {"value": "source-ip-based"},
+                {"value": "dst-ip-based"},
+                {"value": "port-based"},
             ],
             "name": "ip-ecmp-mode",
             "help": "IP ecmp mode.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "multicast_ttl_notchange": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "multicast-ttl-notchange",
             "help": "Multicast ttl not change.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "gateway": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "gateway",
             "help": "Default gateway ip address.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "multicast_forward": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "multicast-forward",
             "help": "Multicast forwarding.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "bfd": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "bfd",
             "help": "Enable Bidirectional Forwarding Detection (BFD) on all interfaces.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "comments": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "comments",
             "help": "Vd comments.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "vpn_stats_period": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "vpn-stats-period",
             "help": "Period to send VPN log statistics (seconds).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "opmode": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "nat"
-                }
-            ],
+            "options": [{"value": "nat"}],
             "name": "opmode",
             "help": "Firewall operation mode.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "bfd_desired_min_tx": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "bfd-desired-min-tx",
             "help": "BFD desired minimal tx interval.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "sccp_port": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "sccp-port",
             "help": "TCP port the SCCP proxy will monitor for SCCP traffic.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "asymroute6": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "asymroute6",
             "help": "Asymmetric route6.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "status": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "status",
             "help": "Enable/disable this VDOM.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "asymroute": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "asymroute",
             "help": "Asymmetric route.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "allow_subnet_overlap": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "allow-subnet-overlap",
             "help": "Allow one interface subnet overlap with other interfaces.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "manageip": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "manageip",
             "help": "IP address and netmask.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "device": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "device",
             "help": "Interface.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "sip_helper": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "sip-helper",
             "help": "Helper to add dynamic sip firewall allow rule.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "sip_tcp_port": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "sip-tcp-port",
             "help": "TCP port the SIP proxy will monitor for SIP traffic.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "multicast_skip_policy": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "multicast-skip-policy",
             "help": "Skip policy check,and allow multicast through.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "sip_nat_trace": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "sip-nat-trace",
             "help": "Add original IP if NATed.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "bfd_dont_enforce_src_port": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "bfd-dont-enforce-src-port",
             "help": "Verify Source Port of BFD Packets.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "strict_src_check": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "strict-src-check",
             "help": "Strict source verification.",
-            "category": "unitary"
-        }
+            "category": "unitary",
+        },
     },
     "name": "settings",
     "help": "Settings.",
-    "category": "complex"
+    "category": "complex",
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
+    mkeyname = versioned_schema["mkey"] if "mkey" in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},
         "member_state": {
             "type": "str",
             "required": False,
-            "choices": ["present", "absent"]
+            "choices": ["present", "absent"],
         },
         "system_settings": {
-            "required": False, "type": "dict", "default": None,
-            "options": {}
-        }
+            "required": False,
+            "type": "dict",
+            "default": None,
+            "options": {},
+        },
     }
-    for attribute_name in module_spec['options']:
-        fields["system_settings"]['options'][attribute_name] = module_spec['options'][attribute_name]
+    for attribute_name in module_spec["options"]:
+        fields["system_settings"]["options"][attribute_name] = module_spec["options"][
+            attribute_name
+        ]
         if mkeyname and mkeyname == attribute_name:
-            fields["system_settings"]['options'][attribute_name]['required'] = True
+            fields["system_settings"]["options"][attribute_name]["required"] = True
 
-    module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=True)
+    module = AnsibleModule(argument_spec=fields, supports_check_mode=True)
 
     is_error = False
     has_changed = False
@@ -1037,30 +837,45 @@ def main():
     if module._socket_path:
         connection = Connection(module._socket_path)
 
-        if 'enable_log' in module.params:
-            connection.set_custom_option('enable_log', module.params['enable_log'])
+        if "enable_log" in module.params:
+            connection.set_custom_option("enable_log", module.params["enable_log"])
         else:
-            connection.set_custom_option('enable_log', False)
+            connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module, mkeyname)
-        versions_check_result = check_schema_versioning(fos, versioned_schema, "system_settings")
-        is_error, has_changed, result, diff = fortiswitch_system(module.params, fos, module.check_mode)
+        versions_check_result = check_schema_versioning(
+            fos, versioned_schema, "system_settings"
+        )
+        is_error, has_changed, result, diff = fortiswitch_system(
+            module.params, fos, module.check_mode
+        )
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
-    if versions_check_result and versions_check_result['matched'] is False:
-        module.warn("Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv")
+    if versions_check_result and versions_check_result["matched"] is False:
+        module.warn(
+            "Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv"
+        )
 
     if not is_error:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.exit_json(changed=has_changed, version_check_warning=versions_check_result, meta=result, diff=diff)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.exit_json(
+                changed=has_changed,
+                version_check_warning=versions_check_result,
+                meta=result,
+                diff=diff,
+            )
         else:
             module.exit_json(changed=has_changed, meta=result, diff=diff)
     else:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.fail_json(msg="Error in repo", version_check_warning=versions_check_result, meta=result)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.fail_json(
+                msg="Error in repo",
+                version_check_warning=versions_check_result,
+                meta=result,
+            )
         else:
             module.fail_json(msg="Error in repo", meta=result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

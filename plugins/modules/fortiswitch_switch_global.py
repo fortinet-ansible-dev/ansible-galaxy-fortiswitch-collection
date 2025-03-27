@@ -1,5 +1,6 @@
 #!/usr/bin/python
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 # Copyright (c) 2022 Fortinet
 # GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
 
@@ -10,11 +11,13 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'community',
-                    'metadata_version': '1.1'}
+ANSIBLE_METADATA = {
+    "status": ["preview"],
+    "supported_by": "community",
+    "metadata_version": "1.1",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: fortiswitch_switch_global
 short_description: Configure global settings in Fortinet's FortiSwitch
@@ -414,6 +417,13 @@ options:
                 description:
                     - TPID value used by virtual-wires.
                 type: int
+            vlan_pruning:
+                description:
+                    - Enable/disable VLAN pruning.
+                type: str
+                choices:
+                    - 'enable'
+                    - 'disable'
             vxlan_dport:
                 description:
                     - VXLAN destination UDP port.
@@ -437,9 +447,9 @@ options:
                 choices:
                     - 'enable'
                     - 'disable'
-'''
+"""
 
-EXAMPLES = '''
+EXAMPLES = """
 - name: Configure global settings.
   fortinet.fortiswitch.fortiswitch_switch_global:
       switch_global:
@@ -503,14 +513,15 @@ EXAMPLES = '''
           trunk_hash_unicast_src_port: "enable"
           trunk_hash_unkunicast_src_dst: "enable"
           virtual_wire_tpid: "62"
-          vxlan_dport: "63"
-          vxlan_port: "64"
-          vxlan_sport: "65"
+          vlan_pruning: "enable"
+          vxlan_dport: "64"
+          vxlan_port: "65"
+          vxlan_sport: "32767"
           vxlan_stp_virtual_mac: "<your_own_value>"
           vxlan_stp_virtual_root: "enable"
-'''
+"""
 
-RETURN = '''
+RETURN = """
 build:
   description: Build number of the fortiSwitch image
   returned: always
@@ -557,38 +568,92 @@ version:
   type: str
   sample: "v7.0.0"
 
-'''
+"""
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import FortiOSHandler
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import schema_to_module_spec
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    FortiOSHandler,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    schema_to_module_spec,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    check_schema_versioning,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import (
+    FAIL_SOCKET_MSG,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import (
+    remove_invalid_fields,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    is_same_comparison,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    serialize,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    find_current_values,
+)
 
 
 def filter_switch_global_data(json):
-    option_list = ['access_vlan_mode', 'auto_fortilink_discovery', 'auto_isl',
-                   'auto_isl_port_group', 'auto_stp_priority', 'bpdu_learn',
-                   'dhcp_snooping_database_export', 'dmi_global_all', 'flapguard_retain_trigger',
-                   'flood_unknown_multicast', 'flood_vtp', 'forti_trunk_dmac',
-                   'fortilink_heartbeat_timeout', 'fortilink_p2p_native_vlan', 'fortilink_p2p_tpid',
-                   'fortilink_vlan_optimization', 'ip_mac_binding', 'l2_memory_check',
-                   'l2_memory_check_interval', 'log_mac_limit_violations', 'loop_guard_tx_interval',
-                   'mac_address', 'mac_address_algorithm', 'mac_aging_interval',
-                   'mac_violation_timer', 'max_path_in_ecmp_group', 'mclag_igmpsnooping_aware',
-                   'mclag_peer_info_timeout', 'mclag_port_base', 'mclag_split_brain_all_ports_down',
-                   'mclag_split_brain_detect', 'mclag_split_brain_priority', 'mclag_stp_aware',
-                   'mirror_qos', 'name', 'poe_alarm_threshold',
-                   'poe_guard_band', 'poe_power_budget', 'poe_power_mode',
-                   'poe_pre_standard_detect', 'port_security', 'storm_control_high_rate',
-                   'storm_control_monitor', 'storm_control_rate_filter', 'trunk_hash_mode',
-                   'trunk_hash_unicast_src_port', 'trunk_hash_unkunicast_src_dst', 'virtual_wire_tpid',
-                   'vxlan_dport', 'vxlan_port', 'vxlan_sport',
-                   'vxlan_stp_virtual_mac', 'vxlan_stp_virtual_root']
+    option_list = [
+        "access_vlan_mode",
+        "auto_fortilink_discovery",
+        "auto_isl",
+        "auto_isl_port_group",
+        "auto_stp_priority",
+        "bpdu_learn",
+        "dhcp_snooping_database_export",
+        "dmi_global_all",
+        "flapguard_retain_trigger",
+        "flood_unknown_multicast",
+        "flood_vtp",
+        "forti_trunk_dmac",
+        "fortilink_heartbeat_timeout",
+        "fortilink_p2p_native_vlan",
+        "fortilink_p2p_tpid",
+        "fortilink_vlan_optimization",
+        "ip_mac_binding",
+        "l2_memory_check",
+        "l2_memory_check_interval",
+        "log_mac_limit_violations",
+        "loop_guard_tx_interval",
+        "mac_address",
+        "mac_address_algorithm",
+        "mac_aging_interval",
+        "mac_violation_timer",
+        "max_path_in_ecmp_group",
+        "mclag_igmpsnooping_aware",
+        "mclag_peer_info_timeout",
+        "mclag_port_base",
+        "mclag_split_brain_all_ports_down",
+        "mclag_split_brain_detect",
+        "mclag_split_brain_priority",
+        "mclag_stp_aware",
+        "mirror_qos",
+        "name",
+        "poe_alarm_threshold",
+        "poe_guard_band",
+        "poe_power_budget",
+        "poe_power_mode",
+        "poe_pre_standard_detect",
+        "port_security",
+        "storm_control_high_rate",
+        "storm_control_monitor",
+        "storm_control_rate_filter",
+        "trunk_hash_mode",
+        "trunk_hash_unicast_src_port",
+        "trunk_hash_unkunicast_src_dst",
+        "virtual_wire_tpid",
+        "vlan_pruning",
+        "vxlan_dport",
+        "vxlan_port",
+        "vxlan_sport",
+        "vxlan_stp_virtual_mac",
+        "vxlan_stp_virtual_root",
+    ]
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -607,16 +672,16 @@ def underscore_to_hyphen(data):
     elif isinstance(data, dict):
         new_data = {}
         for k, v in data.items():
-            new_data[k.replace('_', '-')] = underscore_to_hyphen(v)
+            new_data[k.replace("_", "-")] = underscore_to_hyphen(v)
         data = new_data
 
     return data
 
 
 def switch_global(data, fos, check_mode=False):
-    state = data.get('state', None)
+    state = data.get("state", None)
 
-    switch_global_data = data['switch_global']
+    switch_global_data = data["switch_global"]
 
     filtered_data = filter_switch_global_data(switch_global_data)
     filtered_data = underscore_to_hyphen(filtered_data)
@@ -624,17 +689,20 @@ def switch_global(data, fos, check_mode=False):
     # check_mode starts from here
     if check_mode:
         diff = {
-            "before": '',
+            "before": "",
             "after": filtered_data,
         }
-        mkey = fos.get_mkey('switch', 'global', filtered_data)
-        current_data = fos.get('switch', 'global', mkey=mkey)
-        is_existed = current_data and current_data.get('http_status') == 200 \
-            and isinstance(current_data.get('results'), list) \
-            and len(current_data['results']) > 0
+        mkey = fos.get_mkey("switch", "global", filtered_data)
+        current_data = fos.get("switch", "global", mkey=mkey)
+        is_existed = (
+            current_data
+            and current_data.get("http_status") == 200
+            and isinstance(current_data.get("results"), list)
+            and len(current_data["results"]) > 0
+        )
 
         # 2. if it exists and the state is 'present' then compare current settings with desired
-        if state == 'present' or state is True or state is None:
+        if state == "present" or state is True or state is None:
             mkeyname = fos.get_mkeyname(None, None)
             # for non global modules, mkeyname must exist and it's a new module when mkey is None
             if mkeyname is not None and mkey is None:
@@ -648,1181 +716,657 @@ def switch_global(data, fos, check_mode=False):
             # handle global modules'
             if mkeyname is None and state is None:
                 is_same = is_same_comparison(
-                    serialize(current_data['results']), serialize(copied_filtered_data))
+                    serialize(current_data["results"]), serialize(copied_filtered_data)
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             if is_existed:
                 is_same = is_same_comparison(
-                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+                    serialize(current_data["results"][0]),
+                    serialize(copied_filtered_data),
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"][0]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             # record does not exist
             return False, True, filtered_data, diff
 
-        if state == 'absent':
+        if state == "absent":
             if mkey is None:
-                return False, False, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    False,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
 
             if is_existed:
-                return False, True, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    True,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
             return False, False, filtered_data, {}
 
-        return True, False, {'reason: ': 'Must provide state parameter'}, {}
+        return True, False, {"reason: ": "Must provide state parameter"}, {}
 
-    return fos.set('switch',
-                   'global',
-                   data=filtered_data,
-                   )
+    return fos.set(
+        "switch",
+        "global",
+        data=filtered_data,
+    )
 
 
 def is_successful_status(resp):
-    return 'status' in resp and resp['status'] == 'success' or \
-        'http_status' in resp and resp['http_status'] == 200 or \
-        'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
+    return (
+        "status" in resp
+        and resp["status"] == "success"
+        or "http_status" in resp
+        and resp["http_status"] == 200
+        or "http_method" in resp
+        and resp["http_method"] == "DELETE"
+        and resp["http_status"] == 404
+    )
 
 
 def fortiswitch_switch(data, fos, check_mode):
-    fos.do_member_operation('switch', 'global')
-    current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
-    if data['switch_global']:
+    fos.do_member_operation("switch", "global")
+    current_cmdb_index = fos.monitor_get("/system/status")["cmdb-index"]
+    if data["switch_global"]:
         resp = switch_global(data, fos, check_mode)
     else:
-        fos._module.fail_json(msg='missing task body: %s' % ('switch_global'))
+        fos._module.fail_json(msg="missing task body: %s" % ("switch_global"))
     if check_mode:
         return resp
-    return not is_successful_status(resp), \
-        is_successful_status(resp) and \
-        current_cmdb_index != resp['cmdb-index'], \
-        resp, {}
+    return (
+        not is_successful_status(resp),
+        is_successful_status(resp) and current_cmdb_index != resp["cmdb-index"],
+        resp,
+        {},
+    )
 
 
 versioned_schema = {
-    "v_range": [
-        [
-            "v7.0.0",
-            ""
-        ]
-    ],
+    "v_range": [["v7.0.0", ""]],
     "type": "dict",
     "children": {
         "fortilink_heartbeat_timeout": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "fortilink-heartbeat-timeout",
             "help": "Max fortilinkd echo replies that can be missed before fortilink is considered down.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "log_mac_limit_violations": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "log-mac-limit-violations",
             "help": "Enable/disable logs for Learning Limit Violations globally.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "trunk_hash_unkunicast_src_dst": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "trunk-hash-unkunicast-src-dst",
             "help": "Enable/disable trunk hash for unknown unicast src-dst.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "poe_power_mode": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "priority"
-                },
-                {
-                    "value": "first-come-first-served"
-                }
-            ],
+            "options": [{"value": "priority"}, {"value": "first-come-first-served"}],
             "name": "poe-power-mode",
             "help": "Set poe power mode to priority based or first come first served.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ip_mac_binding": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "ip-mac-binding",
             "help": "Configure ip-mac-binding status.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mac_address_algorithm": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "auto"
-                },
-                {
-                    "value": "manual"
-                }
-            ],
+            "options": [{"value": "auto"}, {"value": "manual"}],
             "name": "mac-address-algorithm",
             "help": "Method to configure the fifth byte of the MAC address ",
-            "category": "unitary"
+            "category": "unitary",
         },
         "virtual_wire_tpid": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "virtual-wire-tpid",
             "help": "TPID value used by virtual-wires.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "trunk_hash_unicast_src_port": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "trunk-hash-unicast-src-port",
             "help": "Enable/disable source port in Unicast trunk hashing.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "auto_fortilink_discovery": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    "v7.2.4"
-                ],
-                [
-                    "v7.4.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", "v7.2.4"], ["v7.4.1", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "auto-fortilink-discovery",
             "help": "Enable/disable automatic FortiLink discovery.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "max_path_in_ecmp_group": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "max-path-in-ecmp-group",
             "help": "Set max path in one ecmp group.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "trunk_hash_mode": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "default"
-                },
-                {
-                    "value": "enhanced"
-                }
-            ],
+            "options": [{"value": "default"}, {"value": "enhanced"}],
             "name": "trunk-hash-mode",
             "help": "Trunk hash mode.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "fortilink_p2p_tpid": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "fortilink-p2p-tpid",
             "help": "FortiLink point-to-point TPID.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mac_violation_timer": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "mac-violation-timer",
             "help": "Set a global timeout for Learning Limit Violations (0 = disabled).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mirror_qos": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "mirror-qos",
             "help": "QOS value for locally mirrored traffic.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mclag_port_base": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "mclag-port-base",
             "help": "MCLAG port base.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "flapguard_retain_trigger": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "flapguard-retain-trigger",
             "help": "Enable/disable retention of triggered state upon reboot.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mac_address": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "mac-address",
             "help": "Manually configured MAC address when mac-address-algorithm is set to manual.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mclag_stp_aware": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "mclag-stp-aware",
             "help": "MCLAG STP aware.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "fortilink_p2p_native_vlan": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "fortilink-p2p-native-vlan",
             "help": "FortiLink point to point native VLAN.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "fortilink_vlan_optimization": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "fortilink-vlan-optimization",
             "help": "Controls VLAN assignment on ISL ports (assigns all 4k vlans when disabled).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "loop_guard_tx_interval": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "loop-guard-tx-interval",
             "help": "Loop guard packet Tx interval (sec).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "auto_isl_port_group": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "auto-isl-port-group",
             "help": "Configure global automatic inter-switch link port groups (overrides port level port groups).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "poe_alarm_threshold": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "poe-alarm-threshold",
             "help": "Threshold (% of total power budget) above which an alarm event is generated.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "poe_guard_band": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "poe-guard-band",
             "help": "Reserves power (W) in case of a spike in PoE consumption.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "auto_stp_priority": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "auto-stp-priority",
             "help": "Automatic assignment of STP priority for tier1 and tier2 switches.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "poe_power_budget": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "poe-power-budget",
             "help": "Set/override maximum power budget.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mclag_peer_info_timeout": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "mclag-peer-info-timeout",
             "help": "MCLAG peer info timeout.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mclag_igmpsnooping_aware": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "mclag-igmpsnooping-aware",
             "help": "MCLAG IGMP-snooping aware.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "poe_pre_standard_detect": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "poe-pre-standard-detect",
             "help": "set poe-pre-standard-detect",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dhcp_snooping_database_export": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "dhcp-snooping-database-export",
             "help": "Enable/disable DHCP snoop database export to file.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "name": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "name",
             "help": "Name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "auto_isl": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "auto-isl",
             "help": "Enable/Disable automatic inter switch LAG.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "dmi_global_all": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "dmi-global-all",
             "help": "Enable/disable DMI global status.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "l2_memory_check": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "l2-memory-check",
             "help": "Enable/disable L2 memory check,default interval is 120 seconds.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mclag_split_brain_detect": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "mclag-split-brain-detect",
             "help": "Enable/disable MCLAG split brain detect.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "forti_trunk_dmac": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "forti-trunk-dmac",
             "help": "Destination MAC address to be used for FortiTrunk heartbeat packets.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mac_aging_interval": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "mac-aging-interval",
             "help": "MAC address aging interval (sec; remove any MAC addresses unused since the the last check.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "port_security": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "dict",
             "children": {
                 "mab_reauth": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "mab-reauth",
                     "help": "Enable or disable MAB reauthentication settings.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "max_reauth_attempt": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "max-reauth-attempt",
                     "help": "802.1X/MAB maximum reauthorization attempt.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "link_down_auth": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "set-unauth"
-                        },
-                        {
-                            "value": "no-action"
-                        }
-                    ],
+                    "options": [{"value": "set-unauth"}, {"value": "no-action"}],
                     "name": "link-down-auth",
                     "help": "If link down detected,'set-unauth' reverts to un-authorized state.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "reauth_period": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "reauth-period",
                     "help": "802.1X/MAB reauthentication period ( minute ).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "quarantine_vlan": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "quarantine-vlan",
                     "help": "Enable or disable Quarantine VLAN detection.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "tx_period": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "tx-period",
                     "help": "802.1X tx period ( second ).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "mac_called_station_delimiter": {
-                    "v_range": [
-                        [
-                            "v7.4.1",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.4.1", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "hyphen"
-                        },
-                        {
-                            "value": "single-hyphen"
-                        },
-                        {
-                            "value": "colon"
-                        },
-                        {
-                            "value": "none"
-                        }
+                        {"value": "hyphen"},
+                        {"value": "single-hyphen"},
+                        {"value": "colon"},
+                        {"value": "none"},
                     ],
                     "name": "mac-called-station-delimiter",
                     "help": "MAC called station delimiter (default = hyphen).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "mac_case": {
-                    "v_range": [
-                        [
-                            "v7.4.1",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.4.1", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "uppercase"
-                        },
-                        {
-                            "value": "lowercase"
-                        }
-                    ],
+                    "options": [{"value": "uppercase"}, {"value": "lowercase"}],
                     "name": "mac-case",
                     "help": "MAC case (default = lowercase).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "mac_password_delimiter": {
-                    "v_range": [
-                        [
-                            "v7.4.1",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.4.1", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "hyphen"
-                        },
-                        {
-                            "value": "single-hyphen"
-                        },
-                        {
-                            "value": "colon"
-                        },
-                        {
-                            "value": "none"
-                        }
+                        {"value": "hyphen"},
+                        {"value": "single-hyphen"},
+                        {"value": "colon"},
+                        {"value": "none"},
                     ],
                     "name": "mac-password-delimiter",
                     "help": "MAC authentication password delimiter (default = hyphen).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "mab_entry_as": {
-                    "v_range": [
-                        [
-                            "v7.4.1",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.4.1", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "static"
-                        },
-                        {
-                            "value": "dynamic"
-                        }
-                    ],
+                    "options": [{"value": "static"}, {"value": "dynamic"}],
                     "name": "mab-entry-as",
                     "help": "Confgure MAB MAC entry as static or dynamic.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "mac_username_delimiter": {
-                    "v_range": [
-                        [
-                            "v7.4.1",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.4.1", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "hyphen"
-                        },
-                        {
-                            "value": "single-hyphen"
-                        },
-                        {
-                            "value": "colon"
-                        },
-                        {
-                            "value": "none"
-                        }
+                        {"value": "hyphen"},
+                        {"value": "single-hyphen"},
+                        {"value": "colon"},
+                        {"value": "none"},
                     ],
                     "name": "mac-username-delimiter",
                     "help": "MAC authentication username delimiter (default = hyphen).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "mac_calling_station_delimiter": {
-                    "v_range": [
-                        [
-                            "v7.4.1",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.4.1", ""]],
                     "type": "string",
                     "options": [
-                        {
-                            "value": "hyphen"
-                        },
-                        {
-                            "value": "single-hyphen"
-                        },
-                        {
-                            "value": "colon"
-                        },
-                        {
-                            "value": "none"
-                        }
+                        {"value": "hyphen"},
+                        {"value": "single-hyphen"},
+                        {"value": "colon"},
+                        {"value": "none"},
                     ],
                     "name": "mac-calling-station-delimiter",
                     "help": "MAC calling station delimiter (default = hyphen).",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
             "name": "port-security",
             "help": "Global parameters for port-security.",
-            "category": "complex"
+            "category": "complex",
         },
         "flood_unknown_multicast": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "flood-unknown-multicast",
             "help": "Enable/disable unknown mcast flood in the vlan.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "l2_memory_check_interval": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "integer",
             "name": "l2-memory-check-interval",
             "help": "User defined interval to check L2 memory(second). ",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mclag_split_brain_priority": {
-            "v_range": [
-                [
-                    "v7.0.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.1", ""]],
             "type": "integer",
             "name": "mclag-split-brain-priority",
             "help": "Set MCLAG split brain priority",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mclag_split_brain_all_ports_down": {
-            "v_range": [
-                [
-                    "v7.0.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.1", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "disable"
-                },
-                {
-                    "value": "enable"
-                }
-            ],
+            "options": [{"value": "disable"}, {"value": "enable"}],
             "name": "mclag-split-brain-all-ports-down",
             "help": "Enable/disable MCLAG split brain all ports down",
-            "category": "unitary"
+            "category": "unitary",
         },
         "bpdu_learn": {
-            "v_range": [
-                [
-                    "v7.0.5",
-                    "v7.0.6"
-                ],
-                [
-                    "v7.2.2",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.5", "v7.0.6"], ["v7.2.2", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "bpdu-learn",
             "help": "Enable/disable BPDU learn.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "flood_vtp": {
-            "v_range": [
-                [
-                    "v7.0.5",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.5", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "flood-vtp",
             "help": "Enable/disable Cisco VTP flood in the vlan.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "vxlan_stp_virtual_root": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "vxlan-stp-virtual-root",
             "help": "Enable/disable automatically making local switch the STP root for STP instances containing configured VXLAN's access vlan.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "vxlan_stp_virtual_mac": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.2.1", ""]],
             "type": "string",
             "name": "vxlan-stp-virtual-mac",
             "help": "Virtual STP root MAC address",
-            "category": "unitary"
+            "category": "unitary",
         },
         "vxlan_port": {
-            "v_range": [
-                [
-                    "v7.2.1",
-                    "v7.4.0"
-                ]
-            ],
+            "v_range": [["v7.2.1", "v7.4.0"]],
             "type": "integer",
             "name": "vxlan-port",
             "help": "VXLAN destination UDP port.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "vxlan_sport": {
-            "v_range": [
-                [
-                    "v7.4.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.4.1", ""]],
             "type": "integer",
             "name": "vxlan-sport",
             "help": "VXLAN source UDP port (0 - 65535).",
-            "category": "unitary"
+            "category": "unitary",
         },
         "access_vlan_mode": {
-            "v_range": [
-                [
-                    "v7.4.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.4.1", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "legacy"
-                },
-                {
-                    "value": "fail-open"
-                },
-                {
-                    "value": "fail-close"
-                }
+                {"value": "legacy"},
+                {"value": "fail-open"},
+                {"value": "fail-close"},
             ],
             "name": "access-vlan-mode",
             "help": "Intra VLAN traffic behavior with loss of connection to the FortiGate.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "vxlan_dport": {
-            "v_range": [
-                [
-                    "v7.4.1",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.4.1", ""]],
             "type": "integer",
             "name": "vxlan-dport",
             "help": "VXLAN destination UDP port.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "storm_control_rate_filter": {
             "v_range": [],
             "type": "integer",
             "name": "storm-control-rate-filter",
             "help": "Storm control rate filter.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "storm_control_high_rate": {
             "v_range": [],
             "type": "integer",
             "name": "storm-control-high-rate",
             "help": "Storm control high rate.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "storm_control_monitor": {
             "v_range": [],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "storm-control-monitor",
             "help": "Enable/disable storm control monitor.",
-            "category": "unitary"
-        }
+            "category": "unitary",
+        },
+        "vlan_pruning": {
+            "v_range": [],
+            "type": "string",
+            "options": [{"value": "enable"}, {"value": "disable"}],
+            "name": "vlan-pruning",
+            "help": "Enable/disable VLAN pruning.",
+            "category": "unitary",
+        },
     },
     "name": "global",
     "help": "Configure global settings.",
-    "category": "complex"
+    "category": "complex",
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
+    mkeyname = versioned_schema["mkey"] if "mkey" in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},
         "member_state": {
             "type": "str",
             "required": False,
-            "choices": ["present", "absent"]
+            "choices": ["present", "absent"],
         },
         "switch_global": {
-            "required": False, "type": "dict", "default": None,
-            "options": {}
-        }
+            "required": False,
+            "type": "dict",
+            "default": None,
+            "options": {},
+        },
     }
-    for attribute_name in module_spec['options']:
-        fields["switch_global"]['options'][attribute_name] = module_spec['options'][attribute_name]
+    for attribute_name in module_spec["options"]:
+        fields["switch_global"]["options"][attribute_name] = module_spec["options"][
+            attribute_name
+        ]
         if mkeyname and mkeyname == attribute_name:
-            fields["switch_global"]['options'][attribute_name]['required'] = True
+            fields["switch_global"]["options"][attribute_name]["required"] = True
 
-    module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=True)
+    module = AnsibleModule(argument_spec=fields, supports_check_mode=True)
 
     is_error = False
     has_changed = False
@@ -1833,30 +1377,45 @@ def main():
     if module._socket_path:
         connection = Connection(module._socket_path)
 
-        if 'enable_log' in module.params:
-            connection.set_custom_option('enable_log', module.params['enable_log'])
+        if "enable_log" in module.params:
+            connection.set_custom_option("enable_log", module.params["enable_log"])
         else:
-            connection.set_custom_option('enable_log', False)
+            connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module, mkeyname)
-        versions_check_result = check_schema_versioning(fos, versioned_schema, "switch_global")
-        is_error, has_changed, result, diff = fortiswitch_switch(module.params, fos, module.check_mode)
+        versions_check_result = check_schema_versioning(
+            fos, versioned_schema, "switch_global"
+        )
+        is_error, has_changed, result, diff = fortiswitch_switch(
+            module.params, fos, module.check_mode
+        )
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
-    if versions_check_result and versions_check_result['matched'] is False:
-        module.warn("Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv")
+    if versions_check_result and versions_check_result["matched"] is False:
+        module.warn(
+            "Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv"
+        )
 
     if not is_error:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.exit_json(changed=has_changed, version_check_warning=versions_check_result, meta=result, diff=diff)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.exit_json(
+                changed=has_changed,
+                version_check_warning=versions_check_result,
+                meta=result,
+                diff=diff,
+            )
         else:
             module.exit_json(changed=has_changed, meta=result, diff=diff)
     else:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.fail_json(msg="Error in repo", version_check_warning=versions_check_result, meta=result)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.fail_json(
+                msg="Error in repo",
+                version_check_warning=versions_check_result,
+                meta=result,
+            )
         else:
             module.fail_json(msg="Error in repo", meta=result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -1,5 +1,6 @@
 #!/usr/bin/python
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 # Copyright (c) 2022 Fortinet
 # GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
 
@@ -10,11 +11,13 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'community',
-                    'metadata_version': '1.1'}
+ANSIBLE_METADATA = {
+    "status": ["preview"],
+    "supported_by": "community",
+    "metadata_version": "1.1",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: fortiswitch_system_ptp_profile
 short_description: PTP policy configuration in Fortinet's FortiSwitch
@@ -154,29 +157,29 @@ options:
                 type: str
                 choices:
                     - 'l2-mcast'
-'''
+"""
 
-EXAMPLES = '''
+EXAMPLES = """
 - name: PTP policy configuration.
   fortinet.fortiswitch.fortiswitch_system_ptp_profile:
       state: "present"
       system_ptp_profile:
           announce_interval: "0.25sec"
-          announce_timeout: "4"
+          announce_timeout: "5"
           description: "<your_own_value>"
-          domain: "6"
+          domain: "127"
           min_delay_req_interval: "0.25sec"
           mode: "transparent-e2e"
           name: "default_name_9"
           pdelay_req_interval: "0.25sec"
-          priority1: "11"
-          priority2: "12"
+          priority1: "127"
+          priority2: "127"
           ptp_profile: "C37.238-2017"
           sync_interval: "0.25sec"
           transport: "l2-mcast"
-'''
+"""
 
-RETURN = '''
+RETURN = """
 build:
   description: Build number of the fortiSwitch image
   returned: always
@@ -223,25 +226,51 @@ version:
   type: str
   sample: "v7.0.0"
 
-'''
+"""
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import FortiOSHandler
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import schema_to_module_spec
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    FortiOSHandler,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    schema_to_module_spec,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    check_schema_versioning,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import (
+    FAIL_SOCKET_MSG,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import (
+    remove_invalid_fields,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    is_same_comparison,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    serialize,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    find_current_values,
+)
 
 
 def filter_system_ptp_profile_data(json):
-    option_list = ['announce_interval', 'announce_timeout', 'description',
-                   'domain', 'min_delay_req_interval', 'mode',
-                   'name', 'pdelay_req_interval', 'priority1',
-                   'priority2', 'ptp_profile', 'sync_interval',
-                   'transport']
+    option_list = [
+        "announce_interval",
+        "announce_timeout",
+        "description",
+        "domain",
+        "min_delay_req_interval",
+        "mode",
+        "name",
+        "pdelay_req_interval",
+        "priority1",
+        "priority2",
+        "ptp_profile",
+        "sync_interval",
+        "transport",
+    ]
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -260,16 +289,16 @@ def underscore_to_hyphen(data):
     elif isinstance(data, dict):
         new_data = {}
         for k, v in data.items():
-            new_data[k.replace('_', '-')] = underscore_to_hyphen(v)
+            new_data[k.replace("_", "-")] = underscore_to_hyphen(v)
         data = new_data
 
     return data
 
 
 def system_ptp_profile(data, fos, check_mode=False):
-    state = data.get('state', None)
+    state = data.get("state", None)
 
-    system_ptp_profile_data = data['system_ptp_profile']
+    system_ptp_profile_data = data["system_ptp_profile"]
 
     filtered_data = filter_system_ptp_profile_data(system_ptp_profile_data)
     filtered_data = underscore_to_hyphen(filtered_data)
@@ -277,17 +306,20 @@ def system_ptp_profile(data, fos, check_mode=False):
     # check_mode starts from here
     if check_mode:
         diff = {
-            "before": '',
+            "before": "",
             "after": filtered_data,
         }
-        mkey = fos.get_mkey('system.ptp', 'profile', filtered_data)
-        current_data = fos.get('system.ptp', 'profile', mkey=mkey)
-        is_existed = current_data and current_data.get('http_status') == 200 \
-            and isinstance(current_data.get('results'), list) \
-            and len(current_data['results']) > 0
+        mkey = fos.get_mkey("system.ptp", "profile", filtered_data)
+        current_data = fos.get("system.ptp", "profile", mkey=mkey)
+        is_existed = (
+            current_data
+            and current_data.get("http_status") == 200
+            and isinstance(current_data.get("results"), list)
+            and len(current_data["results"]) > 0
+        )
 
         # 2. if it exists and the state is 'present' then compare current settings with desired
-        if state == 'present' or state is True or state is None:
+        if state == "present" or state is True or state is None:
             mkeyname = fos.get_mkeyname(None, None)
             # for non global modules, mkeyname must exist and it's a new module when mkey is None
             if mkeyname is not None and mkey is None:
@@ -301,66 +333,100 @@ def system_ptp_profile(data, fos, check_mode=False):
             # handle global modules'
             if mkeyname is None and state is None:
                 is_same = is_same_comparison(
-                    serialize(current_data['results']), serialize(copied_filtered_data))
+                    serialize(current_data["results"]), serialize(copied_filtered_data)
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             if is_existed:
                 is_same = is_same_comparison(
-                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+                    serialize(current_data["results"][0]),
+                    serialize(copied_filtered_data),
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"][0]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             # record does not exist
             return False, True, filtered_data, diff
 
-        if state == 'absent':
+        if state == "absent":
             if mkey is None:
-                return False, False, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    False,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
 
             if is_existed:
-                return False, True, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    True,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
             return False, False, filtered_data, {}
 
-        return True, False, {'reason: ': 'Must provide state parameter'}, {}
+        return True, False, {"reason: ": "Must provide state parameter"}, {}
 
     if state == "present" or state is True:
-        return fos.set('system.ptp',
-                       'profile',
-                       data=filtered_data,
-                       )
+        return fos.set(
+            "system.ptp",
+            "profile",
+            data=filtered_data,
+        )
 
     elif state == "absent":
-        return fos.delete('system.ptp',
-                          'profile',
-                          mkey=filtered_data['name'])
+        return fos.delete("system.ptp", "profile", mkey=filtered_data["name"])
     else:
-        fos._module.fail_json(msg='state must be present or absent!')
+        fos._module.fail_json(msg="state must be present or absent!")
 
 
 def is_successful_status(resp):
-    return 'status' in resp and resp['status'] == 'success' or \
-        'http_status' in resp and resp['http_status'] == 200 or \
-        'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
+    return (
+        "status" in resp
+        and resp["status"] == "success"
+        or "http_status" in resp
+        and resp["http_status"] == 200
+        or "http_method" in resp
+        and resp["http_method"] == "DELETE"
+        and resp["http_status"] == 404
+    )
 
 
 def fortiswitch_system_ptp(data, fos, check_mode):
-    fos.do_member_operation('system.ptp', 'profile')
-    current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
-    if data['system_ptp_profile']:
+    fos.do_member_operation("system.ptp", "profile")
+    current_cmdb_index = fos.monitor_get("/system/status")["cmdb-index"]
+    if data["system_ptp_profile"]:
         resp = system_ptp_profile(data, fos, check_mode)
     else:
-        fos._module.fail_json(msg='missing task body: %s' % ('system_ptp_profile'))
+        fos._module.fail_json(msg="missing task body: %s" % ("system_ptp_profile"))
     if check_mode:
         return resp
-    return not is_successful_status(resp), \
-        is_successful_status(resp) and \
-        current_cmdb_index != resp['cmdb-index'], \
-        resp, {}
+    return (
+        not is_successful_status(resp),
+        is_successful_status(resp) and current_cmdb_index != resp["cmdb-index"],
+        resp,
+        {},
+    )
 
 
 versioned_schema = {
@@ -368,257 +434,163 @@ versioned_schema = {
     "elements": "dict",
     "children": {
         "domain": {
-            "v_range": [
-                [
-                    "v7.4.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.4.0", ""]],
             "type": "integer",
             "name": "domain",
             "help": "PTP domain (0-255)",
-            "category": "unitary"
+            "category": "unitary",
         },
         "name": {
-            "v_range": [
-                [
-                    "v7.4.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.4.0", ""]],
             "type": "string",
             "name": "name",
             "help": "Profile name.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "pdelay_req_interval": {
-            "v_range": [
-                [
-                    "v7.4.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.4.0", ""]],
             "type": "string",
             "options": [
-                {
-                    "value": "0.25sec"
-                },
-                {
-                    "value": "0.5sec"
-                },
-                {
-                    "value": "1sec"
-                },
-                {
-                    "value": "2sec"
-                },
-                {
-                    "value": "4sec"
-                }
+                {"value": "0.25sec"},
+                {"value": "0.5sec"},
+                {"value": "1sec"},
+                {"value": "2sec"},
+                {"value": "4sec"},
             ],
             "name": "pdelay-req-interval",
             "help": "PDelay Request interval.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "mode": {
-            "v_range": [
-                [
-                    "v7.4.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.4.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "transparent-e2e"
-                }
-            ],
+            "options": [{"value": "transparent-e2e"}],
             "name": "mode",
             "help": "Select PTP mode.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "ptp_profile": {
-            "v_range": [
-                [
-                    "v7.4.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.4.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "C37.238-2017"
-                },
-                {
-                    "value": "default",
-                    "v_range": []
-                }
-            ],
+            "options": [{"value": "C37.238-2017"}, {"value": "default", "v_range": []}],
             "name": "ptp-profile",
             "help": "Select PTP profile.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "transport": {
-            "v_range": [
-                [
-                    "v7.4.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.4.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "l2-mcast"
-                }
-            ],
+            "options": [{"value": "l2-mcast"}],
             "name": "transport",
             "help": "Select PTP transport.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "description": {
-            "v_range": [
-                [
-                    "v7.4.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.4.0", ""]],
             "type": "string",
             "name": "description",
             "help": "Description.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "priority1": {
             "v_range": [],
             "type": "integer",
             "name": "priority1",
             "help": "PTP priority1 (0-255)",
-            "category": "unitary"
+            "category": "unitary",
         },
         "announce_interval": {
             "v_range": [],
             "type": "string",
             "options": [
-                {
-                    "value": "0.25sec"
-                },
-                {
-                    "value": "0.5sec"
-                },
-                {
-                    "value": "1sec"
-                },
-                {
-                    "value": "2sec"
-                },
-                {
-                    "value": "4sec"
-                }
+                {"value": "0.25sec"},
+                {"value": "0.5sec"},
+                {"value": "1sec"},
+                {"value": "2sec"},
+                {"value": "4sec"},
             ],
             "name": "announce-interval",
             "help": "Announce interval.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "min_delay_req_interval": {
             "v_range": [],
             "type": "string",
             "options": [
-                {
-                    "value": "0.25sec"
-                },
-                {
-                    "value": "0.5sec"
-                },
-                {
-                    "value": "1sec"
-                },
-                {
-                    "value": "2sec"
-                },
-                {
-                    "value": "4sec"
-                }
+                {"value": "0.25sec"},
+                {"value": "0.5sec"},
+                {"value": "1sec"},
+                {"value": "2sec"},
+                {"value": "4sec"},
             ],
             "name": "min-delay-req-interval",
             "help": "Min Delay Request interval.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "sync_interval": {
             "v_range": [],
             "type": "string",
             "options": [
-                {
-                    "value": "0.25sec"
-                },
-                {
-                    "value": "0.5sec"
-                },
-                {
-                    "value": "1sec"
-                },
-                {
-                    "value": "2sec"
-                },
-                {
-                    "value": "4sec"
-                }
+                {"value": "0.25sec"},
+                {"value": "0.5sec"},
+                {"value": "1sec"},
+                {"value": "2sec"},
+                {"value": "4sec"},
             ],
             "name": "sync-interval",
             "help": "Sync interval.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "priority2": {
             "v_range": [],
             "type": "integer",
             "name": "priority2",
             "help": "PTP priority2 (0-255)",
-            "category": "unitary"
+            "category": "unitary",
         },
         "announce_timeout": {
             "v_range": [],
             "type": "integer",
             "name": "announce-timeout",
             "help": "PTP Announce timeout (2-10)",
-            "category": "unitary"
-        }
+            "category": "unitary",
+        },
     },
-    "v_range": [
-        [
-            "v7.4.0",
-            ""
-        ]
-    ],
+    "v_range": [["v7.4.0", ""]],
     "name": "profile",
     "help": "PTP policy configuration.",
     "mkey": "name",
-    "category": "table"
+    "category": "table",
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
+    mkeyname = versioned_schema["mkey"] if "mkey" in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},
         "member_state": {
             "type": "str",
             "required": False,
-            "choices": ["present", "absent"]
+            "choices": ["present", "absent"],
         },
-        "state": {"required": True, "type": "str",
-                  "choices": ["present", "absent"]},
+        "state": {"required": True, "type": "str", "choices": ["present", "absent"]},
         "system_ptp_profile": {
-            "required": False, "type": "dict", "default": None,
-            "options": {}
-        }
+            "required": False,
+            "type": "dict",
+            "default": None,
+            "options": {},
+        },
     }
-    for attribute_name in module_spec['options']:
-        fields["system_ptp_profile"]['options'][attribute_name] = module_spec['options'][attribute_name]
+    for attribute_name in module_spec["options"]:
+        fields["system_ptp_profile"]["options"][attribute_name] = module_spec[
+            "options"
+        ][attribute_name]
         if mkeyname and mkeyname == attribute_name:
-            fields["system_ptp_profile"]['options'][attribute_name]['required'] = True
+            fields["system_ptp_profile"]["options"][attribute_name]["required"] = True
 
-    module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=True)
+    module = AnsibleModule(argument_spec=fields, supports_check_mode=True)
 
     is_error = False
     has_changed = False
@@ -629,30 +601,45 @@ def main():
     if module._socket_path:
         connection = Connection(module._socket_path)
 
-        if 'enable_log' in module.params:
-            connection.set_custom_option('enable_log', module.params['enable_log'])
+        if "enable_log" in module.params:
+            connection.set_custom_option("enable_log", module.params["enable_log"])
         else:
-            connection.set_custom_option('enable_log', False)
+            connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module, mkeyname)
-        versions_check_result = check_schema_versioning(fos, versioned_schema, "system_ptp_profile")
-        is_error, has_changed, result, diff = fortiswitch_system_ptp(module.params, fos, module.check_mode)
+        versions_check_result = check_schema_versioning(
+            fos, versioned_schema, "system_ptp_profile"
+        )
+        is_error, has_changed, result, diff = fortiswitch_system_ptp(
+            module.params, fos, module.check_mode
+        )
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
-    if versions_check_result and versions_check_result['matched'] is False:
-        module.warn("Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv")
+    if versions_check_result and versions_check_result["matched"] is False:
+        module.warn(
+            "Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv"
+        )
 
     if not is_error:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.exit_json(changed=has_changed, version_check_warning=versions_check_result, meta=result, diff=diff)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.exit_json(
+                changed=has_changed,
+                version_check_warning=versions_check_result,
+                meta=result,
+                diff=diff,
+            )
         else:
             module.exit_json(changed=has_changed, meta=result, diff=diff)
     else:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.fail_json(msg="Error in repo", version_check_warning=versions_check_result, meta=result)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.fail_json(
+                msg="Error in repo",
+                version_check_warning=versions_check_result,
+                meta=result,
+            )
         else:
             module.fail_json(msg="Error in repo", meta=result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -1,5 +1,6 @@
 #!/usr/bin/python
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 # Copyright (c) 2022 Fortinet
 # GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
 
@@ -10,11 +11,13 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'community',
-                    'metadata_version': '1.1'}
+ANSIBLE_METADATA = {
+    "status": ["preview"],
+    "supported_by": "community",
+    "metadata_version": "1.1",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: fortiswitch_execute_sign_data
 short_description: Sign data with a local certificate.
@@ -52,9 +55,9 @@ options:
                 description:
                     - Signed data(Base64 Encoded) for the Verification.
                 type: str
-'''
+"""
 
-RETURN = '''
+RETURN = """
 build:
   description: Build number of the fortiSwitch image
   returned: always
@@ -99,25 +102,31 @@ results:
   description: the main output of the execution
   returned: only for successful calls
   type: str
-'''
-EXAMPLES = '''
+"""
+EXAMPLES = """
 - name: Sign data with a local certificate.
   fortinet.fortiswitch.execute_sign_data:
       sign_data:
           certificate: "<your_own_value>"
           signature: "<your_own_value>"
-'''
+"""
 
 
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import FortiOSHandler
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import schema_to_module_spec
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    FortiOSHandler,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    schema_to_module_spec,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import (
+    FAIL_SOCKET_MSG,
+)
 
 
 def filter_sign_data_data(config_data):
-    option_list = ['certificate', 'signature']
+    option_list = ["certificate", "signature"]
     dictionary = {}
 
     for attribute in option_list:
@@ -134,35 +143,39 @@ def underscore_to_hyphen(data):
     elif isinstance(data, dict):
         new_data = {}
         for k, v in data.items():
-            new_data[k.replace('_', '-')] = underscore_to_hyphen(v)
+            new_data[k.replace("_", "-")] = underscore_to_hyphen(v)
         data = new_data
 
     return data
 
 
 def sign_data(data, fos):
-    sign_data_data = data['execute_sign_data']
+    sign_data_data = data["execute_sign_data"]
     filtered_data = underscore_to_hyphen(filter_sign_data_data(sign_data_data))
 
     return fos.invoke_execute_api(
-        'sign',
-        'data',
+        "sign",
+        "data",
         data=filtered_data,
     )
 
 
 def is_successful_status(resp):
-    return 'status' in resp and resp['status'] == 'success' or \
-        'http_status' in resp and resp['http_status'] == 200 or \
-        'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
+    return (
+        "status" in resp
+        and resp["status"] == "success"
+        or "http_status" in resp
+        and resp["http_status"] == 200
+        or "http_method" in resp
+        and resp["http_method"] == "DELETE"
+        and resp["http_status"] == 404
+    )
 
 
 def fortiswitch_execute_sign_data(data, fos):
     resp = sign_data(data, fos)
 
-    return not is_successful_status(resp), \
-        is_successful_status(resp), \
-        resp
+    return not is_successful_status(resp), is_successful_status(resp), resp
 
 
 params = {
@@ -173,7 +186,7 @@ params = {
         "v7.0.3": True,
         "v7.0.4": True,
         "v7.0.5": True,
-        "v7.0.6": True
+        "v7.0.6": True,
     },
     "type": "dict",
     "children": {
@@ -185,9 +198,9 @@ params = {
                 "v7.0.3": True,
                 "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.6": True
+                "v7.0.6": True,
             },
-            "type": "string"
+            "type": "string",
         },
         "signature": {
             "revisions": {
@@ -197,11 +210,11 @@ params = {
                 "v7.0.3": True,
                 "v7.0.4": True,
                 "v7.0.5": True,
-                "v7.0.6": True
+                "v7.0.6": True,
             },
-            "type": "string"
-        }
-    }
+            "type": "string",
+        },
+    },
 }
 
 
@@ -210,18 +223,19 @@ def main():
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "execute_sign_data": {
-            "required": False, "type": "dict", "default": None,
-            "options": {
-            }
-        }
+            "required": False,
+            "type": "dict",
+            "default": None,
+            "options": {},
+        },
     }
 
-    for attribute_name in module_spec['options']:
-        fields["execute_sign_data"]['options'][attribute_name] = module_spec['options'][attribute_name]
+    for attribute_name in module_spec["options"]:
+        fields["execute_sign_data"]["options"][attribute_name] = module_spec["options"][
+            attribute_name
+        ]
 
-    module = AnsibleModule(
-        argument_spec=fields
-    )
+    module = AnsibleModule(argument_spec=fields)
 
     is_error = False
     has_changed = False
@@ -230,12 +244,14 @@ def main():
     if module._socket_path:
         connection = Connection(module._socket_path)
 
-        if 'enable_log' in module.params:
-            connection.set_custom_option('enable_log', module.params['enable_log'])
+        if "enable_log" in module.params:
+            connection.set_custom_option("enable_log", module.params["enable_log"])
         else:
-            connection.set_custom_option('enable_log', False)
+            connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module)
-        is_error, has_changed, result = fortiswitch_execute_sign_data(module.params, fos)
+        is_error, has_changed, result = fortiswitch_execute_sign_data(
+            module.params, fos
+        )
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
@@ -245,5 +261,5 @@ def main():
         module.fail_json(msg="Error in repo", meta=result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

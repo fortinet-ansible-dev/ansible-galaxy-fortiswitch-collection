@@ -1,5 +1,6 @@
 #!/usr/bin/python
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 # Copyright (c) 2022 Fortinet
 # GNU General Public License v3.0+ (see LICENSE or https://www.gnu.org/licenses/gpl-3.0.txt)
 
@@ -10,11 +11,13 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'community',
-                    'metadata_version': '1.1'}
+ANSIBLE_METADATA = {
+    "status": ["preview"],
+    "supported_by": "community",
+    "metadata_version": "1.1",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: fortiswitch_router_ospf6
 short_description: Router OSPF6 configuration in Fortinet's FortiSwitch
@@ -234,9 +237,9 @@ options:
                 description:
                     - SPF calculation frequency.
                 type: str
-'''
+"""
 
-EXAMPLES = '''
+EXAMPLES = """
 - name: Router OSPF6 configuration.
   fortinet.fortiswitch.fortiswitch_router_ospf6:
       router_ospf6:
@@ -278,9 +281,9 @@ EXAMPLES = '''
                   status: "enable"
           router_id: "<your_own_value>"
           spf_timers: "<your_own_value>"
-'''
+"""
 
-RETURN = '''
+RETURN = """
 build:
   description: Build number of the fortiSwitch image
   returned: always
@@ -327,22 +330,44 @@ version:
   type: str
   sample: "v7.0.0"
 
-'''
+"""
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import FortiOSHandler
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import schema_to_module_spec
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import check_schema_versioning
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import FAIL_SOCKET_MSG
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import remove_invalid_fields
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import is_same_comparison
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import serialize
-from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import find_current_values
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    FortiOSHandler,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    schema_to_module_spec,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.fortiswitch_handler import (
+    check_schema_versioning,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.common import (
+    FAIL_SOCKET_MSG,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.data_post_processor import (
+    remove_invalid_fields,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    is_same_comparison,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    serialize,
+)
+from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.comparison import (
+    find_current_values,
+)
 
 
 def filter_router_ospf6_data(json):
-    option_list = ['area', 'interface', 'log_neighbor_changes',
-                   'redistribute', 'router_id', 'spf_timers']
+    option_list = [
+        "area",
+        "interface",
+        "log_neighbor_changes",
+        "redistribute",
+        "router_id",
+        "spf_timers",
+    ]
 
     json = remove_invalid_fields(json)
     dictionary = {}
@@ -361,16 +386,16 @@ def underscore_to_hyphen(data):
     elif isinstance(data, dict):
         new_data = {}
         for k, v in data.items():
-            new_data[k.replace('_', '-')] = underscore_to_hyphen(v)
+            new_data[k.replace("_", "-")] = underscore_to_hyphen(v)
         data = new_data
 
     return data
 
 
 def router_ospf6(data, fos, check_mode=False):
-    state = data.get('state', None)
+    state = data.get("state", None)
 
-    router_ospf6_data = data['router_ospf6']
+    router_ospf6_data = data["router_ospf6"]
 
     filtered_data = filter_router_ospf6_data(router_ospf6_data)
     filtered_data = underscore_to_hyphen(filtered_data)
@@ -378,17 +403,20 @@ def router_ospf6(data, fos, check_mode=False):
     # check_mode starts from here
     if check_mode:
         diff = {
-            "before": '',
+            "before": "",
             "after": filtered_data,
         }
-        mkey = fos.get_mkey('router', 'ospf6', filtered_data)
-        current_data = fos.get('router', 'ospf6', mkey=mkey)
-        is_existed = current_data and current_data.get('http_status') == 200 \
-            and isinstance(current_data.get('results'), list) \
-            and len(current_data['results']) > 0
+        mkey = fos.get_mkey("router", "ospf6", filtered_data)
+        current_data = fos.get("router", "ospf6", mkey=mkey)
+        is_existed = (
+            current_data
+            and current_data.get("http_status") == 200
+            and isinstance(current_data.get("results"), list)
+            and len(current_data["results"]) > 0
+        )
 
         # 2. if it exists and the state is 'present' then compare current settings with desired
-        if state == 'present' or state is True or state is None:
+        if state == "present" or state is True or state is None:
             mkeyname = fos.get_mkeyname(None, None)
             # for non global modules, mkeyname must exist and it's a new module when mkey is None
             if mkeyname is not None and mkey is None:
@@ -402,67 +430,98 @@ def router_ospf6(data, fos, check_mode=False):
             # handle global modules'
             if mkeyname is None and state is None:
                 is_same = is_same_comparison(
-                    serialize(current_data['results']), serialize(copied_filtered_data))
+                    serialize(current_data["results"]), serialize(copied_filtered_data)
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             if is_existed:
                 is_same = is_same_comparison(
-                    serialize(current_data['results'][0]), serialize(copied_filtered_data))
+                    serialize(current_data["results"][0]),
+                    serialize(copied_filtered_data),
+                )
 
-                current_values = find_current_values(copied_filtered_data, current_data['results'][0])
+                current_values = find_current_values(
+                    copied_filtered_data, current_data["results"][0]
+                )
 
-                return False, not is_same, filtered_data, {"before": current_values, "after": copied_filtered_data}
+                return (
+                    False,
+                    not is_same,
+                    filtered_data,
+                    {"before": current_values, "after": copied_filtered_data},
+                )
 
             # record does not exist
             return False, True, filtered_data, diff
 
-        if state == 'absent':
+        if state == "absent":
             if mkey is None:
-                return False, False, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    False,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
 
             if is_existed:
-                return False, True, filtered_data, {"before": current_data['results'][0], "after": ''}
+                return (
+                    False,
+                    True,
+                    filtered_data,
+                    {"before": current_data["results"][0], "after": ""},
+                )
             return False, False, filtered_data, {}
 
-        return True, False, {'reason: ': 'Must provide state parameter'}, {}
+        return True, False, {"reason: ": "Must provide state parameter"}, {}
 
-    return fos.set('router',
-                   'ospf6',
-                   data=filtered_data,
-                   )
+    return fos.set(
+        "router",
+        "ospf6",
+        data=filtered_data,
+    )
 
 
 def is_successful_status(resp):
-    return 'status' in resp and resp['status'] == 'success' or \
-        'http_status' in resp and resp['http_status'] == 200 or \
-        'http_method' in resp and resp['http_method'] == "DELETE" and resp['http_status'] == 404
+    return (
+        "status" in resp
+        and resp["status"] == "success"
+        or "http_status" in resp
+        and resp["http_status"] == 200
+        or "http_method" in resp
+        and resp["http_method"] == "DELETE"
+        and resp["http_status"] == 404
+    )
 
 
 def fortiswitch_router(data, fos, check_mode):
-    fos.do_member_operation('router', 'ospf6')
-    current_cmdb_index = fos.monitor_get('/system/status')['cmdb-index']
-    if data['router_ospf6']:
+    fos.do_member_operation("router", "ospf6")
+    current_cmdb_index = fos.monitor_get("/system/status")["cmdb-index"]
+    if data["router_ospf6"]:
         resp = router_ospf6(data, fos, check_mode)
     else:
-        fos._module.fail_json(msg='missing task body: %s' % ('router_ospf6'))
+        fos._module.fail_json(msg="missing task body: %s" % ("router_ospf6"))
     if check_mode:
         return resp
-    return not is_successful_status(resp), \
-        is_successful_status(resp) and \
-        current_cmdb_index != resp['cmdb-index'], \
-        resp, {}
+    return (
+        not is_successful_status(resp),
+        is_successful_status(resp) and current_cmdb_index != resp["cmdb-index"],
+        resp,
+        {},
+    )
 
 
 versioned_schema = {
-    "v_range": [
-        [
-            "v7.0.0",
-            ""
-        ]
-    ],
+    "v_range": [["v7.0.0", ""]],
     "type": "dict",
     "children": {
         "redistribute": {
@@ -470,527 +529,295 @@ versioned_schema = {
             "elements": "dict",
             "children": {
                 "status": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "status",
                     "help": "status",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "metric_type": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "1"
-                        },
-                        {
-                            "value": "2"
-                        }
-                    ],
+                    "options": [{"value": "1"}, {"value": "2"}],
                     "name": "metric-type",
                     "help": "metric type",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "metric": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "metric",
                     "help": "Redistribute metric setting.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "routemap": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "routemap",
                     "help": "Route map name.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "name": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "name",
                     "help": "Redistribute name.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "redistribute",
             "help": "Redistribute configuration.",
             "mkey": "name",
-            "category": "table"
+            "category": "table",
         },
         "router_id": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "router-id",
             "help": "A.B.C.D,in IPv4 address format.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "spf_timers": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
             "name": "spf-timers",
             "help": "SPF calculation frequency.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "area": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "stub_type": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "no-summary"
-                        },
-                        {
-                            "value": "summary"
-                        }
-                    ],
+                    "options": [{"value": "no-summary"}, {"value": "summary"}],
                     "name": "stub-type",
                     "help": "Stub summary setting.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "filter_list": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "direction": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
-                            "options": [
-                                {
-                                    "value": "in"
-                                },
-                                {
-                                    "value": "out"
-                                }
-                            ],
+                            "options": [{"value": "in"}, {"value": "out"}],
                             "name": "direction",
                             "help": "Direction.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "list": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "list",
                             "help": "Access-list or prefix-list name.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "id": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "id",
                             "help": "Filter list entry ID.",
-                            "category": "unitary"
-                        }
+                            "category": "unitary",
+                        },
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "filter-list",
                     "help": "OSPF area filter-list configuration.",
                     "mkey": "id",
-                    "category": "table"
+                    "category": "table",
                 },
                 "range": {
                     "type": "list",
                     "elements": "dict",
                     "children": {
                         "advertise": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
-                            "options": [
-                                {
-                                    "value": "disable"
-                                },
-                                {
-                                    "value": "enable"
-                                }
-                            ],
+                            "options": [{"value": "disable"}, {"value": "enable"}],
                             "name": "advertise",
                             "help": "Enable/disable advertise status.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "id": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "integer",
                             "name": "id",
                             "help": "Range entry id.",
-                            "category": "unitary"
+                            "category": "unitary",
                         },
                         "prefix6": {
-                            "v_range": [
-                                [
-                                    "v7.0.0",
-                                    ""
-                                ]
-                            ],
+                            "v_range": [["v7.0.0", ""]],
                             "type": "string",
                             "name": "prefix6",
                             "help": "<prefix6>   IPv6 prefix",
-                            "category": "unitary"
-                        }
+                            "category": "unitary",
+                        },
                     },
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "name": "range",
                     "help": "OSPF6 area range configuration.",
                     "mkey": "id",
-                    "category": "table"
+                    "category": "table",
                 },
                 "type": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "regular"
-                        },
-                        {
-                            "value": "stub"
-                        }
-                    ],
+                    "options": [{"value": "regular"}, {"value": "stub"}],
                     "name": "type",
                     "help": "Area type setting.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "id",
                     "help": "Area entry ip address.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "area",
             "help": "OSPF6 area configuration.",
             "mkey": "id",
-            "category": "table"
+            "category": "table",
         },
         "log_neighbor_changes": {
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "type": "string",
-            "options": [
-                {
-                    "value": "enable"
-                },
-                {
-                    "value": "disable"
-                }
-            ],
+            "options": [{"value": "enable"}, {"value": "disable"}],
             "name": "log-neighbor-changes",
             "help": "Enable logging of OSPF neighbor's changes.",
-            "category": "unitary"
+            "category": "unitary",
         },
         "interface": {
             "type": "list",
             "elements": "dict",
             "children": {
                 "status": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "disable"
-                        },
-                        {
-                            "value": "enable"
-                        }
-                    ],
+                    "options": [{"value": "disable"}, {"value": "enable"}],
                     "name": "status",
                     "help": "Enable/disable OSPF6 routing on this interface.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "dead_interval": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "dead-interval",
                     "help": "Dead interval.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "hello_interval": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "hello-interval",
                     "help": "Hello interval.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "name": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "name",
                     "help": "Interface name.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "bfd": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "bfd",
                     "help": "Enable/Disable Bidirectional Forwarding Detection (BFD).",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "area_id": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
                     "name": "area-id",
                     "help": "A.B.C.D,in IPv4 address format.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "transmit_delay": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "transmit-delay",
                     "help": "Link state transmit delay.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "retransmit_interval": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "retransmit-interval",
                     "help": "Time between retransmitting lost link state advertisements.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "cost": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "cost",
                     "help": "The cost of the interface.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "passive": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "string",
-                    "options": [
-                        {
-                            "value": "enable"
-                        },
-                        {
-                            "value": "disable"
-                        }
-                    ],
+                    "options": [{"value": "enable"}, {"value": "disable"}],
                     "name": "passive",
                     "help": "Enable/disable passive interface.",
-                    "category": "unitary"
+                    "category": "unitary",
                 },
                 "priority": {
-                    "v_range": [
-                        [
-                            "v7.0.0",
-                            ""
-                        ]
-                    ],
+                    "v_range": [["v7.0.0", ""]],
                     "type": "integer",
                     "name": "priority",
                     "help": "Router priority.",
-                    "category": "unitary"
-                }
+                    "category": "unitary",
+                },
             },
-            "v_range": [
-                [
-                    "v7.0.0",
-                    ""
-                ]
-            ],
+            "v_range": [["v7.0.0", ""]],
             "name": "interface",
             "help": "OSPF6 interface configuration.",
             "mkey": "name",
-            "category": "table"
-        }
+            "category": "table",
+        },
     },
     "name": "ospf6",
     "help": "Router OSPF6 configuration.",
-    "category": "complex"
+    "category": "complex",
 }
 
 
 def main():
     module_spec = schema_to_module_spec(versioned_schema)
-    mkeyname = versioned_schema['mkey'] if 'mkey' in versioned_schema else None
+    mkeyname = versioned_schema["mkey"] if "mkey" in versioned_schema else None
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
         "member_path": {"required": False, "type": "str"},
         "member_state": {
             "type": "str",
             "required": False,
-            "choices": ["present", "absent"]
+            "choices": ["present", "absent"],
         },
         "router_ospf6": {
-            "required": False, "type": "dict", "default": None,
-            "options": {}
-        }
+            "required": False,
+            "type": "dict",
+            "default": None,
+            "options": {},
+        },
     }
-    for attribute_name in module_spec['options']:
-        fields["router_ospf6"]['options'][attribute_name] = module_spec['options'][attribute_name]
+    for attribute_name in module_spec["options"]:
+        fields["router_ospf6"]["options"][attribute_name] = module_spec["options"][
+            attribute_name
+        ]
         if mkeyname and mkeyname == attribute_name:
-            fields["router_ospf6"]['options'][attribute_name]['required'] = True
+            fields["router_ospf6"]["options"][attribute_name]["required"] = True
 
-    module = AnsibleModule(argument_spec=fields,
-                           supports_check_mode=True)
+    module = AnsibleModule(argument_spec=fields, supports_check_mode=True)
 
     is_error = False
     has_changed = False
@@ -1001,30 +828,45 @@ def main():
     if module._socket_path:
         connection = Connection(module._socket_path)
 
-        if 'enable_log' in module.params:
-            connection.set_custom_option('enable_log', module.params['enable_log'])
+        if "enable_log" in module.params:
+            connection.set_custom_option("enable_log", module.params["enable_log"])
         else:
-            connection.set_custom_option('enable_log', False)
+            connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module, mkeyname)
-        versions_check_result = check_schema_versioning(fos, versioned_schema, "router_ospf6")
-        is_error, has_changed, result, diff = fortiswitch_router(module.params, fos, module.check_mode)
+        versions_check_result = check_schema_versioning(
+            fos, versioned_schema, "router_ospf6"
+        )
+        is_error, has_changed, result, diff = fortiswitch_router(
+            module.params, fos, module.check_mode
+        )
     else:
         module.fail_json(**FAIL_SOCKET_MSG)
 
-    if versions_check_result and versions_check_result['matched'] is False:
-        module.warn("Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv")
+    if versions_check_result and versions_check_result["matched"] is False:
+        module.warn(
+            "Ansible has detected version mismatch between FortiSwitch system and your playbook, see more details by specifying option -vvv"
+        )
 
     if not is_error:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.exit_json(changed=has_changed, version_check_warning=versions_check_result, meta=result, diff=diff)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.exit_json(
+                changed=has_changed,
+                version_check_warning=versions_check_result,
+                meta=result,
+                diff=diff,
+            )
         else:
             module.exit_json(changed=has_changed, meta=result, diff=diff)
     else:
-        if versions_check_result and versions_check_result['matched'] is False:
-            module.fail_json(msg="Error in repo", version_check_warning=versions_check_result, meta=result)
+        if versions_check_result and versions_check_result["matched"] is False:
+            module.fail_json(
+                msg="Error in repo",
+                version_check_warning=versions_check_result,
+                meta=result,
+            )
         else:
             module.fail_json(msg="Error in repo", meta=result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

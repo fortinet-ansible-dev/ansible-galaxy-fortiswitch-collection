@@ -4,6 +4,24 @@ Fortinet.Fortiswitch Release Notes
 
 .. contents:: Topics
 
+v1.2.6
+======
+
+Release Summary
+---------------
+
+patch release of 1.2.6
+
+Major Changes
+-------------
+
+- Support new version 7.6.1.
+
+Bugfixes
+--------
+
+- Corrected the value of `dns_cache_ttl` in `fortiswitch_system_dns` in the documentation.
+- Fix the issue that all non-sensitive data shows as sensitive in meta data.
 
 v1.2.5
 ======
@@ -16,13 +34,17 @@ patch release of 1.2.5
 Major Changes
 -------------
 
-- Support new version 7.6.0
+- Add `fortiswitch_json_generic` module.
+- Improve the code logic to send GET request and then POST or PUT request.
+- Support check_mode and diff feature for all the configuration modules.
+- Support new version 7.6.0.
 - Update README.md to satisfy the latest Ansible collection requirements.
 
 Bugfixes
 --------
 
-- Fix the issue while unsetting allowaccess in `fortiswitch_system_interface`
+- Fix the issue that the session max out while running multiple playboks.
+- Fix the issue while unsetting allowaccess in `fortiswitch_system_interface`.
 
 v1.2.4
 ======
