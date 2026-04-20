@@ -14,7 +14,10 @@ import os
 import time
 import traceback
 
-from ansible.module_utils._text import to_text
+try:
+    from ansible.module_utils.common.text.converters import to_text
+except ImportError:
+    from ansible.module_utils._text import to_text
 import json
 from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortiswitch.secret_field import (
     is_secret_field,

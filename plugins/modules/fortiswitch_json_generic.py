@@ -35,7 +35,7 @@ author:
     - Miguel Angel Munoz (@mamunozgonzalez)
 
 requirements:
-    - ansible>=2.15
+    - ansible>=2.16
 options:
     enable_log:
         description:

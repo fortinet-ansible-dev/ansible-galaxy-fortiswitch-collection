@@ -9,8 +9,8 @@ Please refer to https://ansible-galaxy-fortiswitch-docs.readthedocs.io/en/latest
 
 ## Requirements
 
-- Ansible 2.15.0 or above
-- Python 3.9 or above
+- Ansible-core 2.16 or above
+- Python 3.12 or above
 
 ## Installation
 This collection is distributed via [ansible-galaxy](https://galaxy.ansible.com/).
@@ -101,6 +101,7 @@ The collection provides the following modules:
 
 * `fortiswitch_alertemail_setting` Alertemail setting configuration in Fortinet's FortiSwitch
 * `fortiswitch_configuration_fact` Retrieve Facts of FortiSwitch Configurable Objects.
+* `fortiswitch_execute_backup_config` Backup Switch's Configuration.
 * `fortiswitch_execute_backup_default_config` Backup Switch's Default Configuration.
 * `fortiswitch_execute_backup_full_config` Backup Switch's Full Configuration.
 * `fortiswitch_execute_backup_standalone_config` Backup Switch's Standalone Configuration.

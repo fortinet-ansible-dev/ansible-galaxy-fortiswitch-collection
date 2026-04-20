@@ -33,7 +33,7 @@ author:
     - Frank Shen (@frankshen01)
     - Miguel Angel Munoz (@mamunozgonzalez)
 requirements:
-    - ansible>=2.15
+    - ansible>=2.16
 options:
     enable_log:
         description:
@@ -187,6 +187,12 @@ params = {
                 "v7.0.4": True,
                 "v7.0.5": True,
                 "v7.0.6": True,
+                "v7.4.3": True,
+                "v7.6.0": True,
+                "v7.6.1": True,
+                "v7.6.2": True,
+                "v7.6.3": True,
+                "v7.6.4": True,
             },
             "type": "string",
         }
@@ -199,6 +205,12 @@ params = {
         "v7.0.4": True,
         "v7.0.5": True,
         "v7.0.6": True,
+        "v7.4.3": True,
+        "v7.6.0": True,
+        "v7.6.1": True,
+        "v7.6.2": True,
+        "v7.6.3": True,
+        "v7.6.4": True,
     },
 }
 

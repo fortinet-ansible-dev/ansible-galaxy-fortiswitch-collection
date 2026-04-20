@@ -4,6 +4,24 @@ Fortinet.Fortiswitch Release Notes
 
 .. contents:: Topics
 
+v1.3.0
+======
+
+Release Summary
+---------------
+
+Minor release of 1.3.0
+
+Major Changes
+-------------
+
+- Support new versions 7.6.2, 7.6.3, and 7.6.4.
+
+Bugfixes
+--------
+
+- Fixed an issue where list-type data was displayed incorrectly when using check mode to view diffs.
+
 v1.2.6
 ======
 
@@ -15,13 +33,15 @@ patch release of 1.2.6
 Major Changes
 -------------
 
-- Support new version 7.6.1.
+- Improved the documentation for all the parameters with min and max values in all the modules.
+- Supported new version 7.6.1.
 
 Bugfixes
 --------
 
 - Corrected the value of `dns_cache_ttl` in `fortiswitch_system_dns` in the documentation.
-- Fix the issue that all non-sensitive data shows as sensitive in meta data.
+- Fixed sanity-test errors.
+- Fixed the issue that all non-sensitive data shows as sensitive in meta data.
 
 v1.2.5
 ======

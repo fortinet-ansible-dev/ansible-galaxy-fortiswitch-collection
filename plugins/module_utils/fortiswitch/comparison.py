@@ -82,7 +82,12 @@ def is_same_comparison(reorder_current, reorder_filtered):
                 return False
             if len(value) and isinstance(value[0], dict):
                 for current_dict in reorder_current[key]:
-                    if not is_same_comparison(current_dict, value[0]):
+                    found_match = False
+                    for desired_dict in value:
+                        if is_same_comparison(current_dict, desired_dict):
+                            found_match = True
+                            break
+                    if not found_match:
                         return False
             elif reorder_current[key] != value:
                 return False
@@ -171,7 +176,7 @@ def is_subset(small, big):
         return True
 
     # potential issue: backend returns integer as string
-    return True
+    return small == big
 
 
 def omit_hidden_keys(input, omit_keys):
@@ -181,6 +186,7 @@ def omit_hidden_keys(input, omit_keys):
             if key in omit_keys:
                 continue
             result[key] = omit_hidden_keys(value, omit_keys)
+        return result
     elif isinstance(input, list):
         result = []
         for item in input:

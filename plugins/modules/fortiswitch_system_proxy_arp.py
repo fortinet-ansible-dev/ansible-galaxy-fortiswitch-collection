@@ -38,7 +38,7 @@ notes:
     - The module is currently under development and testing, so we do not recommend using it for production purposes. It may also be deprecated in the future.
 
 requirements:
-    - ansible>=2.15
+    - ansible>=2.16
 options:
     enable_log:
         description:

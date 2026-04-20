@@ -19,11 +19,11 @@ ANSIBLE_METADATA = {
 
 DOCUMENTATION = """
 ---
-module: fortiswitch_execute_backup_full_config
-short_description: Backup Switch's Full Configuration.
+module: fortiswitch_execute_backup_config
+short_description: Backup Switch's Configuration.
 description:
     - This module is able to configure a FortiSwitch device by allowing the
-      user to set and modify backup feature and full_config category.
+      user to set and modify backup feature and config category.
       Examples include all parameters and values need to be adjusted to datasources before usage.
 version_added: 1.0.0
 author:
@@ -41,9 +41,9 @@ options:
         type: bool
         required: false
         default: false
-    execute_backup_full_config:
+    execute_backup_config:
         description:
-            - Backup Switch's Full Configuration.
+            - Backup Switch's Configuration.
         default: null
         type: dict
         suboptions:
@@ -100,9 +100,9 @@ results:
   type: str
 """
 EXAMPLES = """
-- name: Backup Switch's Full Configuration.
-  fortinet.fortiswitch.execute_backup_full_config:
-      backup_full_config:
+- name: Backup Switch's Configuration.
+  fortinet.fortiswitch.execute_backup_config:
+      backup_config:
           config: "<your_own_value>"
 """
 
@@ -120,7 +120,7 @@ from ansible_collections.fortinet.fortiswitch.plugins.module_utils.fortimanager.
 )
 
 
-def filter_backup_full_config_data(config_data):
+def filter_backup_config_data(config_data):
     option_list = ["config"]
     dictionary = {}
 
@@ -144,15 +144,13 @@ def underscore_to_hyphen(data):
     return data
 
 
-def backup_full_config(data, fos):
-    backup_full_config_data = data["execute_backup_full_config"]
-    filtered_data = underscore_to_hyphen(
-        filter_backup_full_config_data(backup_full_config_data)
-    )
+def backup_config(data, fos):
+    backup_config_data = data["execute_backup_config"]
+    filtered_data = underscore_to_hyphen(filter_backup_config_data(backup_config_data))
 
     return fos.invoke_execute_api(
         "backup",
-        "full-config",
+        "config",
         data=filtered_data,
     )
 
@@ -169,8 +167,8 @@ def is_successful_status(resp):
     )
 
 
-def fortiswitch_execute_backup_full_config(data, fos):
-    resp = backup_full_config(data, fos)
+def fortiswitch_execute_backup_config(data, fos):
+    resp = backup_config(data, fos)
 
     return not is_successful_status(resp), is_successful_status(resp), resp
 
@@ -180,13 +178,6 @@ params = {
     "children": {
         "config": {
             "revisions": {
-                "v7.0.0": True,
-                "v7.0.1": True,
-                "v7.0.2": True,
-                "v7.0.3": True,
-                "v7.0.4": True,
-                "v7.0.5": True,
-                "v7.0.6": True,
                 "v7.4.3": True,
                 "v7.6.0": True,
                 "v7.6.1": True,
@@ -198,13 +189,6 @@ params = {
         }
     },
     "revisions": {
-        "v7.0.0": True,
-        "v7.0.1": True,
-        "v7.0.2": True,
-        "v7.0.3": True,
-        "v7.0.4": True,
-        "v7.0.5": True,
-        "v7.0.6": True,
         "v7.4.3": True,
         "v7.6.0": True,
         "v7.6.1": True,
@@ -219,7 +203,7 @@ def main():
     module_spec = schema_to_module_spec(params)
     fields = {
         "enable_log": {"required": False, "type": "bool", "default": False},
-        "execute_backup_full_config": {
+        "execute_backup_config": {
             "required": False,
             "type": "dict",
             "default": None,
@@ -228,7 +212,7 @@ def main():
     }
 
     for attribute_name in module_spec["options"]:
-        fields["execute_backup_full_config"]["options"][attribute_name] = module_spec[
+        fields["execute_backup_config"]["options"][attribute_name] = module_spec[
             "options"
         ][attribute_name]
 
@@ -246,7 +230,7 @@ def main():
         else:
             connection.set_custom_option("enable_log", False)
         fos = FortiOSHandler(connection, module)
-        is_error, has_changed, result = fortiswitch_execute_backup_full_config(
+        is_error, has_changed, result = fortiswitch_execute_backup_config(
             module.params, fos
         )
     else:
